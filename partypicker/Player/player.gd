@@ -13,7 +13,7 @@ func set_player_stats(value: Entity) -> void:
 		await ready
 	
 	print("StartingSettingStats")
-	stats = value.create_instance()
+	
 	print("SettingStats")
 	update_player()
 

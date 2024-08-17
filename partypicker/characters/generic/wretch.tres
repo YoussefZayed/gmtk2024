@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Entity" load_steps=5 format=3 uid="uid://dbrthdi8nca7b"]
+[gd_resource type="Resource" script_class="Entity" load_steps=5 format=3 uid="uid://cdem37yijnkuc"]
 
 [ext_resource type="Texture2D" uid="uid://dm01t8a7p5xa1" path="res://Assets/Art/Enemies/SwordSkelly.png" id="1_dotig"]
 [ext_resource type="Script" path="res://custom_resources/card.gd" id="1_i6r2m"]
@@ -7,8 +7,7 @@
 
 [resource]
 script = ExtResource("2_fk11v")
-id = "Wretch"
-name = "Entity"
+name = "Wretch"
 max_health = 100
 max_draw = 7
 draw = 4

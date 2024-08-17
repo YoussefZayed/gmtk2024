@@ -5,6 +5,7 @@ var entities: Array[Entity]
 var battles: Array[Battle]
 var entitiesDict = {}
 var gen_deck = preload("res://characters/generic/generic_deck.tres")
+var player_entity_wretch = preload("res://characters/generic/wretch.tres")
 var battleInstanceScene = preload("res://Scenes/BattleInstance/BattleInstance.tscn")
 
 
@@ -37,18 +38,24 @@ func createBattleInstance(battle: Battle, parent: Node) -> void:
 	
 		
 func testSetup():
-	var player = Entity.new(gen_deck.cards)
+	var player = Entity.new() 
+	player.load_from_resource(player_entity_wretch)
 	player.id = "1"
-	var player2 = Entity.new(gen_deck.cards)
+	print(player.id)
+	print(player.name)
+	var player2 = Entity.new()
+	player2.deck = gen_deck.cards
 	player2.id = "2"
-	var enemy1 = Entity.new(gen_deck.cards)
+	var enemy1 = Entity.new()
+	enemy1.deck = gen_deck.cards
 	enemy1.id = "3"
 	enemy1.type = Entity.Type.ENEMY
 	enemy1.max_draw = 1
 	enemy1.max_energy = 1
 	enemy1.draw = 1
 	
-	var enemy2 = Entity.new(gen_deck.cards)
+	var enemy2 = Entity.new()
+	enemy2.deck = gen_deck.cards
 	enemy2.id = "4"
 	enemy2.type = Entity.Type.ENEMY
 	enemy2.max_draw = 1
