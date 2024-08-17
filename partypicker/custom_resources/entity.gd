@@ -19,7 +19,11 @@ signal magical_taken_increased(id, amount)
 
 enum Type {PLAYER, ENEMY}
 
-@export var id: String = ''
+var id: String = '':
+	set(value):
+		id = value
+	get:
+		return id
 @export var name: String = "Entity"
 @export var max_health: int = 100
 @export var max_draw: int = 7
@@ -87,16 +91,33 @@ var energy: int = max_energy:
 		return energy
 
 var effects: Dictionary = {}
-var deck: Array[Card] = []
+var deck: Array[Card] = []: 
+	set(value):
+		deck = value
+		draw_pile = deck
+	get:
+		return deck
 var discard_pile: Array[Card] = []
 var draw_pile: Array[Card] = []
 
 
-func _init(init_deck: Array[Card]) -> void:
+func _init() -> void:
 	health = max_health
 	energy = max_energy
-	self.deck = init_deck
-	self.draw_pile = self.deck
+
+	
+func load_from_resource(resource) -> void:
+	print(typeof(resource))
+	name = resource.name
+	max_health = resource.max_health
+	max_draw = resource.max_draw
+	draw = resource.draw
+	max_energy = resource.max_energy
+	base_damage = resource.base_damage
+	base_defense = resource.base_defense
+	type = resource.type
+	art = resource.art
+	deck = resource.deck.duplicate()
 
 func change_physical_block(amount: int) -> void:
 	if amount == 0:

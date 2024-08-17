@@ -10,7 +10,7 @@ func _init() -> void:
 
 func set_player_stats(value: Entity) -> void:
 	print("StartingSettingStats")
-	stats = value.create_instance()
+	
 	print("SettingStats")
 	update_player()
 

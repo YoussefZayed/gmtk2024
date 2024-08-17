@@ -9,7 +9,7 @@ func _init() -> void:
 	print("EnemyRunning")
 
 func set_enemy_stats(value: Entity) -> void:
-	stats = value.create_instance()
+	#stats = value.create_instance()
 	print("SettingStats")
 	update_enemy()
 
