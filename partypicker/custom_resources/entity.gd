@@ -90,10 +90,10 @@ func reset_energy() -> void:
 func can_play_card(card: Card) -> bool:
 	return energy >= card.energy_cost
 
-func play_card(card: Card, target: Entity) -> void:
+func play_card(card: Card, target: String) -> void:
 	emit_signal("card_played", id, card, target)
 	hand.erase(card)
 	discard_card(card)
 
 func end_turn() -> void:
-	emit_signal("turn_ended", id, )
+	emit_signal("turn_ended", id)
