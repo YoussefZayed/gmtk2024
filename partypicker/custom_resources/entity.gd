@@ -115,11 +115,24 @@ func change_magical_block(amount: int) -> void:
 	emit_signal("magical_block_changed", id, magical_block)
 
 
-func take_damage(amount: int) -> void:
-	health -= max(0, amount - base_defense)
+func take_damage(amount: int, attack_type: String) -> void:
+	if attack_type == "physical":
+		amount = max(0, amount - physical_block)
+		physical_block = max(0, physical_block - amount)
+	elif attack_type == "magical":
+		amount = max(0, amount - magical_block)
+		magical_block = max(0, magical_block - amount)
+	health -= amount
+	health = max(0, health)
 
+	
 func heal(amount: int) -> void:
 	health += amount
+	health = min(health, max_health)
+
+func shuffle_deck() -> void:
+	deck.shuffle()
+
 
 func add_status_effect(effect: String) -> void:
 	emit_signal("effect_added", id, effect)
@@ -142,6 +155,16 @@ func draw_card() -> Card:
 	
 	return null
 
+func draw_hand() -> void:
+	for i in range(draw):
+		draw_card()
+
+func discard_hand() -> void:
+	for card in hand:
+		discard_card(card)
+	hand.clear()
+
+
 func discard_card(card: Card) -> void:
 	discard_pile.append(card)
 
@@ -163,6 +186,10 @@ func play_card(card: Card, target: String) -> void:
 
 func end_turn() -> void:
 	emit_signal("turn_ended", id)
+	energy = max_energy
+	discard_hand()
+	draw_hand()
+
 
 func battle_ended(player_lost: bool) -> void:
 	emit_signal("battleEnded", player_lost)
