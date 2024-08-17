@@ -10,7 +10,8 @@ func enter() -> void:
 	
 	if not card_ui.targets.is_empty():
 		played = true
-		print("play card for target(s)", card_ui.targets)
+		# print("play card for target(s)", card_ui.targets)
+		played = card_ui.play()
 
 func on_input(_event: InputEvent) -> void:
 	if played:

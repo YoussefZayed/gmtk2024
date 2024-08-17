@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://bvxqwcjg5niyw"]
+[gd_scene load_steps=23 format=3 uid="uid://bvxqwcjg5niyw"]
 
 [ext_resource type="Script" path="res://Scenes/BattleInstance/battle_instance.gd" id="1_ldqhx"]
 [ext_resource type="Script" path="res://Scenes/BattleInstance/BattleInstanceUI/hand.gd" id="2_71o20"]
@@ -20,7 +20,6 @@
 [ext_resource type="Resource" uid="uid://dfid1r68kq5ps" path="res://Enemy_resources/Skeletons/Armored_Skeleton.tres" id="13_bhu7m"]
 [ext_resource type="PackedScene" uid="uid://r1w8873d38uh" path="res://Player/player.tscn" id="14_nieeb"]
 [ext_resource type="Resource" uid="uid://dbrthdi8nca7b" path="res://characters/generic/wretch.tres" id="15_dnll6"]
-[ext_resource type="Resource" uid="uid://q3jtcgeo3nc2" path="res://characters/generic/cards/generic_axe_attack.tres" id="20_x5npl"]
 [ext_resource type="Resource" uid="uid://g16ymeugr3rj" path="res://characters/generic/cards/generic_sword_attack.tres" id="21_rp0tu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_utwlq"]
@@ -446,7 +445,7 @@ card = ExtResource("6_vrksm")
 
 [node name="CardUI2" parent="BattleUI/MarginContainer/Hand" instance=ExtResource("2_s0ui1")]
 layout_mode = 2
-card = ExtResource("20_x5npl")
+card = ExtResource("6_vrksm")
 
 [node name="CardUI3" parent="BattleUI/MarginContainer/Hand" instance=ExtResource("2_s0ui1")]
 layout_mode = 2

@@ -20,12 +20,17 @@ func init(playerEntity, enemyEntity) -> void:
 	player = playerEntity
 	enemy = enemyEntity
 	print("READY")
+	list_hand()
 
 #func create_instance() -> Resource:
 	#var enemy: Entity = 
 
 func _ready() -> void:
 	pass
+
+func list_hand():
+	var hand_node = $BattleUI/MarginContainer/Hand
+	print(hand_node.get_children())
 
 func can_play_card(card: Card) -> bool:
 	return player.energy >= card.energy_cost

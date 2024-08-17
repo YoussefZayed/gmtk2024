@@ -9,6 +9,9 @@ func _init() -> void:
 	print("PlayerRunning")
 
 func set_player_stats(value: Entity) -> void:
+	if not is_node_ready():
+		await ready
+	
 	print("StartingSettingStats")
 	stats = value.create_instance()
 	print("SettingStats")

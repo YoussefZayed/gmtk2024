@@ -9,6 +9,9 @@ func _init() -> void:
 	print("EnemyRunning")
 
 func set_enemy_stats(value: Entity) -> void:
+	if not is_node_ready():
+		await ready
+	
 	stats = value.create_instance()
 	print("SettingStats")
 	update_enemy()

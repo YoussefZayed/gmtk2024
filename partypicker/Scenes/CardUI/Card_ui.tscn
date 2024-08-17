@@ -1,7 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://5xqwmu2gdanx"]
+[gd_scene load_steps=11 format=3 uid="uid://5xqwmu2gdanx"]
 
 [ext_resource type="Script" path="res://Scenes/CardUI/card_ui.gd" id="1_a8plt"]
+[ext_resource type="Resource" uid="uid://dbrthdi8nca7b" path="res://characters/generic/wretch.tres" id="2_fur0e"]
 [ext_resource type="Script" path="res://Scenes/CardUI/card_state_machine.gd" id="2_s6r1v"]
+[ext_resource type="Texture2D" uid="uid://cngehbm20ema" path="res://Assets/Art/Icons/PhysDam Icon.png" id="2_whgcd"]
 [ext_resource type="Script" path="res://Scenes/CardUI/CardStates/card_base_state.gd" id="3_gs2sk"]
 [ext_resource type="Script" path="res://Scenes/CardUI/CardStates/card_clicked_state.gd" id="4_ih7nq"]
 [ext_resource type="Script" path="res://Scenes/CardUI/CardStates/card_dragging_state.gd" id="5_peqya"]
@@ -23,6 +25,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_default_cursor_shape = 2
 script = ExtResource("1_a8plt")
+char_stats = ExtResource("2_fur0e")
 
 [node name="Color" type="ColorRect" parent="."]
 layout_mode = 1
@@ -42,6 +45,27 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "state"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Card_art" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("2_whgcd")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="ManaCost" type="Label" parent="."]
+custom_minimum_size = Vector2(10, 10)
+layout_mode = 0
+offset_right = 25.0
+offset_bottom = 25.0
+text = "2"
 horizontal_alignment = 1
 vertical_alignment = 1
 
