@@ -16,20 +16,16 @@ var enemy: Entity
 #	player  = Entity.new([gen_deck])
 #	enemy  = Entity.new([gen_deck])
 
-func _init() -> void:
-	player  = Entity.new(gen_deck.cards)
-	enemy  = Entity.new(gen_deck.cards)
+func init(playerEntity, enemyEntity) -> void:
+	player = playerEntity
+	enemy = enemyEntity
+	print("READY")
 
 #func create_instance() -> Resource:
 	#var enemy: Entity = 
 
 func _ready() -> void:
-	print(gen_deck.cards[0].name)
-	print(gen_deck.cards)
-	print(player.hand)
-	player.draw_card()
-	print(player.hand)
-	print(player.energy)
+	pass
 
 func can_play_card(card: Card) -> bool:
 	return player.energy >= card.energy_cost

@@ -4,9 +4,11 @@ extends Node2D
 var entities: Array[Entity]
 var battles: Array[Battle]
 var entitiesDict = {}
+var gen_deck = preload("res://characters/generic/generic_deck.tres")
+var battleInstanceScene = preload("res://Scenes/BattleInstance/BattleInstance.tscn")
 
 
-func _init() -> void:
+func _ready() -> void:
 	var test_items = testSetup()
 	for entity in entities:
 		connectToEntity(entity)
@@ -14,25 +16,39 @@ func _init() -> void:
 		entity.draw_hand()
 	createBattles(battles)
 
+func find_child_by_name(parent: Node, child_name: String) -> Node:
+	return parent.find_child(child_name, true, false);
 	
 func createBattles(battles: Array[Battle]) -> void:
-	pass
-		
+	var battle_instance_parent1 = $HBoxContainer/SubViewportContainer/SubViewport1
+	var battle_instance_parent2 =  $HBoxContainer/SubViewportContainer2/SubViewport
+	print(battle_instance_parent1 )
+	print(battle_instance_parent2)
+	
+	if battles.size() >= 2:
+		createBattleInstance(battles[0], battle_instance_parent1)
+		createBattleInstance(battles[1], battle_instance_parent2)
 
+func createBattleInstance(battle: Battle, parent: Node) -> void:
+	var battle_instance = battleInstanceScene.instantiate()
+	print(battle_instance)
+	battle_instance.init(battle.player, battle.enemy)
+	parent.add_child(battle_instance)
+	
+		
 func testSetup():
-	var card = Card.new()
-	var player = Entity.new([card])
+	var player = Entity.new(gen_deck.cards)
 	player.id = "1"
-	var player2 = Entity.new([card])
+	var player2 = Entity.new(gen_deck.cards)
 	player2.id = "2"
-	var enemy1 = Entity.new([card])
+	var enemy1 = Entity.new(gen_deck.cards)
 	enemy1.id = "3"
 	enemy1.type = Entity.Type.ENEMY
 	enemy1.max_draw = 1
 	enemy1.max_energy = 1
 	enemy1.draw = 1
 	
-	var enemy2 = Entity.new([card])
+	var enemy2 = Entity.new(gen_deck.cards)
 	enemy2.id = "4"
 	enemy2.type = Entity.Type.ENEMY
 	enemy2.max_draw = 1
@@ -110,11 +126,3 @@ func checkDeaths():
 			battle.battleEnded = true
 			battle.player.emit_signal("battleEnded", battle.player.id, false)
 	
-	
-func _ready() -> void:
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
