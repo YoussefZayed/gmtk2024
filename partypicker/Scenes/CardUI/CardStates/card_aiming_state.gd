@@ -1,6 +1,6 @@
 extends CardState
 
-const MOUSE_Y_SNAPBACK_THRESHOLD := 420 # check number works with scaling
+const MOUSE_Y_SNAPBACK_THRESHOLD := 840 # check number works with scaling
 
 func enter() -> void:
 	card_ui.color.color = Color.WEB_PURPLE

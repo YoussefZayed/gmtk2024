@@ -8,6 +8,14 @@ signal reparent_requested(which_card_ui: CardUI)
 
 @onready var card_art: TextureRect = $Card_art
 @onready var mana_cost: Label = $ManaCost
+@onready var card_name: Label = $"HBoxContainer/Card Ally Stat Bar/CardName"
+@onready var phys_def_num: Label = $"HBoxContainer/Card Ally Stat Bar/CardStats/PhysDef Container/PhysDef Label"
+@onready var mag_def_num: Label = $"HBoxContainer/Card Ally Stat Bar/CardStats/MagDef Container/MagDef Label"
+@onready var phys_dam_num: Label = $"HBoxContainer/Card Ally Stat Bar/CardStats/PhysDam Container/PhysDam Label"
+@onready var mag_dam_num: Label = $"HBoxContainer/Card Ally Stat Bar/CardStats/MagDam Container/MagDam Label"
+@onready var phys_vul_num: Label = $"HBoxContainer/Card Ally Stat Bar/CardStats/PhysVul Container/PhysVul Label"
+@onready var mag_vul_num: Label = $"HBoxContainer/Card Ally Stat Bar/CardStats/MagVul Container/MagVul Label"
+
 
 @onready var color: ColorRect = $Color
 @onready var state: Label = $State
@@ -63,6 +71,13 @@ func _set_card(value: Card) -> void:
 	
 	card = value
 	mana_cost.text = str(card.energy_cost)
+	card_name.text = str(card.name)
+	phys_def_num.text = str(card.physical_block)
+	mag_def_num.text = str(card.magical_block)
+	phys_dam_num.text = str(card.physical_damage)
+	mag_dam_num.text = str(card.magical_damage)
+	phys_vul_num.text = str(card.physical_taken_increase)
+	mag_vul_num.text = str(card.magical_taken_increase)
 	card_art.texture = card.card_art
 
 func _set_playable(value: bool) -> void:

@@ -5,7 +5,7 @@
 
 [resource]
 script = ExtResource("1_p5m2i")
-name = ""
+name = "Block"
 type = 1
 target = 0
 energy_cost = 1

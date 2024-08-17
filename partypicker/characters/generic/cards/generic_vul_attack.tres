@@ -5,7 +5,7 @@
 
 [resource]
 script = ExtResource("2_t2ppk")
-name = "Generic_Sword_Attack"
+name = "Shatter"
 type = 0
 target = 2
 energy_cost = 1
@@ -17,7 +17,7 @@ card_draw = 0
 card_discard = 0
 physical_dealt_increase = 0
 magical_dealt_increase = 0
-physical_taken_increase = 5
+physical_taken_increase = 2
 magical_taken_increase = 0
 health_increase = 0
 card_art = ExtResource("1_ogngv")

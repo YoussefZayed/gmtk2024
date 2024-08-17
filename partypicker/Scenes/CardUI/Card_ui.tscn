@@ -1,28 +1,29 @@
-[gd_scene load_steps=11 format=3 uid="uid://5xqwmu2gdanx"]
+[gd_scene load_steps=16 format=3 uid="uid://5xqwmu2gdanx"]
 
 [ext_resource type="Script" path="res://Scenes/CardUI/card_ui.gd" id="1_a8plt"]
 [ext_resource type="Resource" uid="uid://dbrthdi8nca7b" path="res://characters/generic/wretch.tres" id="2_fur0e"]
 [ext_resource type="Script" path="res://Scenes/CardUI/card_state_machine.gd" id="2_s6r1v"]
 [ext_resource type="Texture2D" uid="uid://cngehbm20ema" path="res://Assets/Art/Icons/PhysDam Icon.png" id="2_whgcd"]
 [ext_resource type="Script" path="res://Scenes/CardUI/CardStates/card_base_state.gd" id="3_gs2sk"]
+[ext_resource type="Texture2D" uid="uid://bdts50mncwnx8" path="res://Assets/Art/Icons/PhysDef Icon.png" id="4_c5ibo"]
 [ext_resource type="Script" path="res://Scenes/CardUI/CardStates/card_clicked_state.gd" id="4_ih7nq"]
+[ext_resource type="Texture2D" uid="uid://blggm0xupsq88" path="res://Assets/Art/Icons/MagDef Icon.png" id="5_1merg"]
 [ext_resource type="Script" path="res://Scenes/CardUI/CardStates/card_dragging_state.gd" id="5_peqya"]
+[ext_resource type="Texture2D" uid="uid://b1kridefxia3e" path="res://Assets/Art/Icons/MagDam Icon.png" id="6_fjkmn"]
 [ext_resource type="Script" path="res://Scenes/CardUI/CardStates/card_released_state.gd" id="6_qo5lh"]
+[ext_resource type="Texture2D" uid="uid://8h5ppop1n8ex" path="res://Assets/Art/Icons/PhysVul Icon.png" id="6_rvatk"]
 [ext_resource type="Script" path="res://Scenes/CardUI/CardStates/card_aiming_state.gd" id="7_1cdm7"]
+[ext_resource type="Texture2D" uid="uid://diur5ks5h0uw4" path="res://Assets/Art/Icons/MagVul Icon.png" id="7_3l3gp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jx84x"]
 size = Vector2(64, 89)
 
 [node name="CardUI" type="Control"]
-custom_minimum_size = Vector2(64, 89)
+custom_minimum_size = Vector2(128, 178)
 layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_right = -896.0
-offset_bottom = -451.0
-grow_horizontal = 2
-grow_vertical = 2
+anchors_preset = 0
+offset_right = 128.0
+offset_bottom = 178.0
 mouse_default_cursor_shape = 2
 script = ExtResource("1_a8plt")
 char_stats = ExtResource("2_fur0e")
@@ -49,6 +50,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Card_art" type="TextureRect" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -60,16 +62,176 @@ texture = ExtResource("2_whgcd")
 expand_mode = 1
 stretch_mode = 5
 
+[node name="Overlay" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.716434, 0.646527, 0.441808, 1)
+
 [node name="ManaCost" type="Label" parent="."]
 custom_minimum_size = Vector2(10, 10)
 layout_mode = 0
-offset_right = 25.0
-offset_bottom = 25.0
+offset_right = 45.0
+offset_bottom = 45.0
+theme_override_font_sizes/font_size = 32
 text = "2"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -62.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Card Ally Stat Bar" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+size_flags_stretch_ratio = 2.0
+
+[node name="CardStats" type="GridContainer" parent="HBoxContainer/Card Ally Stat Bar"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_stretch_ratio = 2.0
+columns = 2
+
+[node name="PhysDef Container" type="HBoxContainer" parent="HBoxContainer/Card Ally Stat Bar/CardStats"]
+layout_mode = 2
+size_flags_horizontal = 2
+
+[node name="PhysDef Icon" type="TextureRect" parent="HBoxContainer/Card Ally Stat Bar/CardStats/PhysDef Container"]
+layout_mode = 2
+size_flags_horizontal = 0
+texture = ExtResource("4_c5ibo")
+expand_mode = 3
+
+[node name="PhysDef Label" type="Label" parent="HBoxContainer/Card Ally Stat Bar/CardStats/PhysDef Container"]
+custom_minimum_size = Vector2(25, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 20
+text = "0
+"
+horizontal_alignment = 1
+
+[node name="MagDef Container" type="HBoxContainer" parent="HBoxContainer/Card Ally Stat Bar/CardStats"]
+layout_mode = 2
+size_flags_horizontal = 2
+
+[node name="MagDef Icon" type="TextureRect" parent="HBoxContainer/Card Ally Stat Bar/CardStats/MagDef Container"]
+layout_mode = 2
+size_flags_horizontal = 0
+texture = ExtResource("5_1merg")
+expand_mode = 3
+
+[node name="MagDef Label" type="Label" parent="HBoxContainer/Card Ally Stat Bar/CardStats/MagDef Container"]
+custom_minimum_size = Vector2(25, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 20
+text = "0
+"
+horizontal_alignment = 1
+
+[node name="PhysDam Container" type="HBoxContainer" parent="HBoxContainer/Card Ally Stat Bar/CardStats"]
+layout_mode = 2
+size_flags_horizontal = 2
+
+[node name="PhysDam Icon" type="TextureRect" parent="HBoxContainer/Card Ally Stat Bar/CardStats/PhysDam Container"]
+layout_mode = 2
+size_flags_horizontal = 0
+texture = ExtResource("2_whgcd")
+expand_mode = 3
+
+[node name="PhysDam Label" type="Label" parent="HBoxContainer/Card Ally Stat Bar/CardStats/PhysDam Container"]
+custom_minimum_size = Vector2(25, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 20
+text = "0
+"
+horizontal_alignment = 1
+
+[node name="MagDam Container" type="HBoxContainer" parent="HBoxContainer/Card Ally Stat Bar/CardStats"]
+layout_mode = 2
+size_flags_horizontal = 2
+
+[node name="MagDam Icon" type="TextureRect" parent="HBoxContainer/Card Ally Stat Bar/CardStats/MagDam Container"]
+layout_mode = 2
+size_flags_horizontal = 0
+texture = ExtResource("6_fjkmn")
+expand_mode = 3
+
+[node name="MagDam Label" type="Label" parent="HBoxContainer/Card Ally Stat Bar/CardStats/MagDam Container"]
+custom_minimum_size = Vector2(25, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 20
+text = "0
+"
+horizontal_alignment = 1
+
+[node name="PhysVul Container" type="HBoxContainer" parent="HBoxContainer/Card Ally Stat Bar/CardStats"]
+layout_mode = 2
+size_flags_horizontal = 2
+
+[node name="PhysVul Icon" type="TextureRect" parent="HBoxContainer/Card Ally Stat Bar/CardStats/PhysVul Container"]
+layout_mode = 2
+size_flags_horizontal = 0
+texture = ExtResource("6_rvatk")
+expand_mode = 3
+
+[node name="PhysVul Label" type="Label" parent="HBoxContainer/Card Ally Stat Bar/CardStats/PhysVul Container"]
+custom_minimum_size = Vector2(25, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 20
+text = "0
+"
+horizontal_alignment = 1
+
+[node name="MagVul Container" type="HBoxContainer" parent="HBoxContainer/Card Ally Stat Bar/CardStats"]
+layout_mode = 2
+size_flags_horizontal = 2
+
+[node name="MagVul Icon" type="TextureRect" parent="HBoxContainer/Card Ally Stat Bar/CardStats/MagVul Container"]
+layout_mode = 2
+size_flags_horizontal = 0
+texture = ExtResource("7_3l3gp")
+expand_mode = 3
+
+[node name="MagVul Label" type="Label" parent="HBoxContainer/Card Ally Stat Bar/CardStats/MagVul Container"]
+custom_minimum_size = Vector2(25, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 20
+text = "0
+"
+horizontal_alignment = 1
+
+[node name="CardName" type="Label" parent="HBoxContainer/Card Ally Stat Bar"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "Test"
+horizontal_alignment = 1
+vertical_alignment = 2
+
 [node name="DropPointDetector" type="Area2D" parent="."]
+visible = false
 collision_mask = 2
 monitorable = false
 
