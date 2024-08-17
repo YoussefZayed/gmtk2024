@@ -4,6 +4,6 @@
 
 [resource]
 script = ExtResource("1_6qxtx")
-id = "generic_sword_attack"
+name = "Generic _Sword_Attack"
 type = 0
 target = 1

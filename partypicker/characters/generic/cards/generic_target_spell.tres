@@ -4,6 +4,6 @@
 
 [resource]
 script = ExtResource("1_07rb6")
-id = "generic_target_spell"
+name = "Generic_Target_Spell"
 type = 0
 target = 3

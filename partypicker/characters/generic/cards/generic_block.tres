@@ -4,6 +4,6 @@
 
 [resource]
 script = ExtResource("1_p5m2i")
-id = "generic_block"
+name = "Generic _Block"
 type = 1
 target = 0
