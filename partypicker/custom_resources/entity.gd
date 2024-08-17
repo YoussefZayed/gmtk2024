@@ -8,6 +8,8 @@ signal effect_removed(id, effect)
 signal card_played(id, card, target)
 signal turn_ended(id)
 signal card_added(id, card)
+signal physical_block_changed(id, new_block)
+signal magical_block_changed(id, new_block)
 
 
 enum Type {PLAYER, ENEMY}
@@ -22,6 +24,8 @@ enum Type {PLAYER, ENEMY}
 @export var base_defense: int = 0
 @export var type: Type = Type.PLAYER
 @export var hand: Array[Card] = []
+@export var physical_block: int = 0
+@export var magical_block: int = 0
 
 var health: int = max_health:
 	set(value):
@@ -48,6 +52,20 @@ func _init(init_deck: Array[Card]) -> void:
 	energy = max_energy
 	self.deck = init_deck
 	self.draw_pile = self.deck
+
+func change_physical_block(amount: int) -> void:
+	if amount > 0:
+		physical_block += amount
+	else:
+		physical_block = min(0, physical_block + amount)
+	emit_signal("physical_block_changed", id, physical_block)
+
+func change_magical_block(amount: int) -> void:
+	if amount > 0:
+		magical_block += amount
+	else:
+		magical_block = min(0, magical_block + amount)
+	emit_signal("magical_block_changed", id, magical_block)
 
 
 func take_damage(amount: int) -> void:
