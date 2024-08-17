@@ -12,9 +12,14 @@ func enter() -> void:
 	card_ui.color.color = Color.NAVY_BLUE
 	card_ui.state.text = "DRAGGING"
 	
+	Events.card_drag_started.emit(card_ui)
+	
 	minimum_drag_time_elapsed = false
 	var threshold_timer := get_tree().create_timer(DRAG_MINIMUM_THRESHOLD, false)
 	threshold_timer.timeout.connect(func():minimum_drag_time_elapsed = true)
+
+func exit() -> void:
+		Events.card_drag_ended.emit(card_ui)
 
 func on_input(event: InputEvent) -> void:
 	var single_targeted := card_ui.card.is_single_targeted()
