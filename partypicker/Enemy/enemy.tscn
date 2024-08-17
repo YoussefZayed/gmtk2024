@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://bhcpl8hhnvlib"]
+
+[ext_resource type="Script" path="res://Enemy/enemy.gd" id="1_ccxvg"]
+[ext_resource type="Texture2D" uid="uid://dm01t8a7p5xa1" path="res://Assets/Art/Enemies/SwordSkelly.png" id="1_vic3t"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bsmpq"]
+size = Vector2(93, 210)
+
+[node name="Enemy" type="Area2D" groups=["enemies"]]
+position = Vector2(100, 100)
+collision_layer = 4
+script = ExtResource("1_ccxvg")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_vic3t")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-15, 0)
+shape = SubResource("RectangleShape2D_bsmpq")

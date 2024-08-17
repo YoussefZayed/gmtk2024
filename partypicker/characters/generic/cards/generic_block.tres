@@ -18,3 +18,4 @@ physical_dealt_increase = 0
 magical_dealt_increase = 0
 physical_taken_increase = 0
 magical_taken_increase = 0
+health_increase = 0

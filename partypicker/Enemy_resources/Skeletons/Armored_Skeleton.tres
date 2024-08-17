@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="Entity" load_steps=5 format=3 uid="uid://dfid1r68kq5ps"]
+
+[ext_resource type="Texture2D" uid="uid://dm01t8a7p5xa1" path="res://Assets/Art/Enemies/SwordSkelly.png" id="1_cl7mm"]
+[ext_resource type="Script" path="res://custom_resources/card.gd" id="1_sp1q0"]
+[ext_resource type="Script" path="res://custom_resources/entity.gd" id="2_f0k01"]
+[ext_resource type="Resource" uid="uid://cgw1ene2bmkc0" path="res://characters/generic/cards/generic_block.tres" id="3_l5d66"]
+
+[resource]
+script = ExtResource("2_f0k01")
+id = "Armored_Skeleton"
+name = "Entity"
+max_health = 100
+max_draw = 1
+draw = 1
+max_energy = 1
+base_damage = 0
+base_defense = 0
+type = 1
+hand = Array[ExtResource("1_sp1q0")]([ExtResource("3_l5d66")])
+physical_block = 0
+magical_block = 0
+art = ExtResource("1_cl7mm")

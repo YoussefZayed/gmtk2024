@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="Entity" load_steps=5 format=3 uid="uid://dbrthdi8nca7b"]
+
+[ext_resource type="Texture2D" uid="uid://dm01t8a7p5xa1" path="res://Assets/Art/Enemies/SwordSkelly.png" id="1_dotig"]
+[ext_resource type="Script" path="res://custom_resources/card.gd" id="1_i6r2m"]
+[ext_resource type="Script" path="res://custom_resources/entity.gd" id="2_fk11v"]
+[ext_resource type="Resource" uid="uid://cgw1ene2bmkc0" path="res://characters/generic/cards/generic_block.tres" id="3_4nj41"]
+
+[resource]
+script = ExtResource("2_fk11v")
+id = "Wretch"
+name = "Entity"
+max_health = 100
+max_draw = 7
+draw = 4
+max_energy = 3
+base_damage = 0
+base_defense = 0
+type = 0
+hand = Array[ExtResource("1_i6r2m")]([ExtResource("3_4nj41")])
+physical_block = 0
+magical_block = 0
+art = ExtResource("1_dotig")
