@@ -84,6 +84,7 @@ texture = ExtResource("4_w2ju7")
 expand_mode = 3
 
 [node name="Health Label" type="Label" parent="BattleStatsUI/MarginContainer/InstanceStats Container/Player Stat Bar/PlayerStats/Health Container"]
+custom_minimum_size = Vector2(25, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 text = "0
@@ -100,6 +101,7 @@ texture = ExtResource("5_ur12a")
 expand_mode = 3
 
 [node name="Energy Label" type="Label" parent="BattleStatsUI/MarginContainer/InstanceStats Container/Player Stat Bar/PlayerStats/Energy Container"]
+custom_minimum_size = Vector2(25, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 text = "0
@@ -116,6 +118,7 @@ texture = ExtResource("6_0re61")
 expand_mode = 3
 
 [node name="PhysDef Label" type="Label" parent="BattleStatsUI/MarginContainer/InstanceStats Container/Player Stat Bar/PlayerStats/PhysDef Container"]
+custom_minimum_size = Vector2(25, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 text = "0
@@ -132,6 +135,7 @@ texture = ExtResource("7_yt7sn")
 expand_mode = 3
 
 [node name="MagDef Label" type="Label" parent="BattleStatsUI/MarginContainer/InstanceStats Container/Player Stat Bar/PlayerStats/MagDef Container"]
+custom_minimum_size = Vector2(25, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 text = "0
@@ -148,6 +152,7 @@ texture = ExtResource("8_ovhs4")
 expand_mode = 3
 
 [node name="PhysVul Label" type="Label" parent="BattleStatsUI/MarginContainer/InstanceStats Container/Player Stat Bar/PlayerStats/PhysVul Container"]
+custom_minimum_size = Vector2(25, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 text = "0
@@ -164,6 +169,7 @@ texture = ExtResource("9_ye07s")
 expand_mode = 3
 
 [node name="MagVul Label" type="Label" parent="BattleStatsUI/MarginContainer/InstanceStats Container/Player Stat Bar/PlayerStats/MagVul Container"]
+custom_minimum_size = Vector2(25, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 text = "0
@@ -180,6 +186,7 @@ texture = ExtResource("10_7jsr8")
 expand_mode = 3
 
 [node name="PhysUp Label" type="Label" parent="BattleStatsUI/MarginContainer/InstanceStats Container/Player Stat Bar/PlayerStats/PhysUp Container"]
+custom_minimum_size = Vector2(25, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 text = "0
@@ -196,6 +203,7 @@ texture = ExtResource("11_6n71j")
 expand_mode = 3
 
 [node name="MagUp Label" type="Label" parent="BattleStatsUI/MarginContainer/InstanceStats Container/Player Stat Bar/PlayerStats/MagUp Container"]
+custom_minimum_size = Vector2(25, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 text = "0
@@ -232,6 +240,7 @@ texture = ExtResource("4_w2ju7")
 expand_mode = 3
 
 [node name="Health Label" type="Label" parent="BattleStatsUI/MarginContainer/InstanceStats Container/Enemy Stat Bar/Enemy Stats/Health Container"]
+custom_minimum_size = Vector2(25, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 text = "0
@@ -248,6 +257,7 @@ texture = ExtResource("5_ur12a")
 expand_mode = 3
 
 [node name="Energy Label" type="Label" parent="BattleStatsUI/MarginContainer/InstanceStats Container/Enemy Stat Bar/Enemy Stats/Energy Container"]
+custom_minimum_size = Vector2(25, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 text = "0
@@ -264,6 +274,7 @@ texture = ExtResource("6_0re61")
 expand_mode = 3
 
 [node name="PhysDef Label" type="Label" parent="BattleStatsUI/MarginContainer/InstanceStats Container/Enemy Stat Bar/Enemy Stats/PhysDef Container"]
+custom_minimum_size = Vector2(25, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 text = "0
@@ -280,6 +291,7 @@ texture = ExtResource("7_yt7sn")
 expand_mode = 3
 
 [node name="MagDef Label" type="Label" parent="BattleStatsUI/MarginContainer/InstanceStats Container/Enemy Stat Bar/Enemy Stats/MagDef Container"]
+custom_minimum_size = Vector2(25, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 text = "0
@@ -296,6 +308,7 @@ texture = ExtResource("8_ovhs4")
 expand_mode = 3
 
 [node name="PhysVul Label" type="Label" parent="BattleStatsUI/MarginContainer/InstanceStats Container/Enemy Stat Bar/Enemy Stats/PhysVul Container"]
+custom_minimum_size = Vector2(25, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 text = "0
@@ -312,6 +325,7 @@ texture = ExtResource("9_ye07s")
 expand_mode = 3
 
 [node name="MagVul Label" type="Label" parent="BattleStatsUI/MarginContainer/InstanceStats Container/Enemy Stat Bar/Enemy Stats/MagVul Container"]
+custom_minimum_size = Vector2(25, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 text = "0
@@ -328,6 +342,7 @@ texture = ExtResource("10_7jsr8")
 expand_mode = 3
 
 [node name="PhysUp Label" type="Label" parent="BattleStatsUI/MarginContainer/InstanceStats Container/Enemy Stat Bar/Enemy Stats/PhysUp Container"]
+custom_minimum_size = Vector2(25, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 text = "0
@@ -344,6 +359,7 @@ texture = ExtResource("11_6n71j")
 expand_mode = 3
 
 [node name="MagUp Label" type="Label" parent="BattleStatsUI/MarginContainer/InstanceStats Container/Enemy Stat Bar/Enemy Stats/MagUp Container"]
+custom_minimum_size = Vector2(25, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 text = "0
