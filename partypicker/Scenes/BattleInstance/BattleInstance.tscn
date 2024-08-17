@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://dm01t8a7p5xa1" path="res://Assets/Art/Enemies/SwordSkelly.png" id="3_5itqf"]
 [ext_resource type="PackedScene" uid="uid://cdn0mbexkeirp" path="res://Scenes/CardTargetSelector/card_target_selector.tscn" id="4_8m2pj"]
 [ext_resource type="Texture2D" uid="uid://c221c4ijgqln1" path="res://Assets/Art/Icons/Health Icon.png" id="4_w2ju7"]
-[ext_resource type="Texture2D" uid="uid://bhb03oeqjy21i" path="res://Assets/Art/icon.svg" id="5_52c1g"]
+[ext_resource type="Texture2D" uid="uid://bvammojqyacbk" path="res://Assets/Art/Icons/Energy Icon.png" id="5_ur12a"]
 [ext_resource type="Texture2D" uid="uid://bdts50mncwnx8" path="res://Assets/Art/Icons/PhysDef Icon.png" id="6_0re61"]
 [ext_resource type="Resource" uid="uid://sxsx1eriqqkp" path="res://characters/generic/cards/generic_target_spell.tres" id="6_vrksm"]
 [ext_resource type="Resource" uid="uid://cgw1ene2bmkc0" path="res://characters/generic/cards/generic_block.tres" id="7_nnr4h"]
@@ -89,17 +89,17 @@ size_flags_horizontal = 3
 text = "0
 "
 
-[node name="Placeholder Container" type="HBoxContainer" parent="BattleStatsUI/MarginContainer/InstanceStats Container/Player Stat Bar/PlayerStats"]
+[node name="Energy Container" type="HBoxContainer" parent="BattleStatsUI/MarginContainer/InstanceStats Container/Player Stat Bar/PlayerStats"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Health Icon" type="TextureRect" parent="BattleStatsUI/MarginContainer/InstanceStats Container/Player Stat Bar/PlayerStats/Placeholder Container"]
+[node name="Energy Icon" type="TextureRect" parent="BattleStatsUI/MarginContainer/InstanceStats Container/Player Stat Bar/PlayerStats/Energy Container"]
 layout_mode = 2
 size_flags_horizontal = 3
-texture = ExtResource("5_52c1g")
+texture = ExtResource("5_ur12a")
 expand_mode = 3
 
-[node name="Placeholder" type="Label" parent="BattleStatsUI/MarginContainer/InstanceStats Container/Player Stat Bar/PlayerStats/Placeholder Container"]
+[node name="Energy Label" type="Label" parent="BattleStatsUI/MarginContainer/InstanceStats Container/Player Stat Bar/PlayerStats/Energy Container"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "0
@@ -237,17 +237,17 @@ size_flags_horizontal = 3
 text = "0
 "
 
-[node name="Placeholder Container" type="HBoxContainer" parent="BattleStatsUI/MarginContainer/InstanceStats Container/Enemy Stat Bar/Enemy Stats"]
+[node name="Energy Container" type="HBoxContainer" parent="BattleStatsUI/MarginContainer/InstanceStats Container/Enemy Stat Bar/Enemy Stats"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Health Icon" type="TextureRect" parent="BattleStatsUI/MarginContainer/InstanceStats Container/Enemy Stat Bar/Enemy Stats/Placeholder Container"]
+[node name="Energy Icon" type="TextureRect" parent="BattleStatsUI/MarginContainer/InstanceStats Container/Enemy Stat Bar/Enemy Stats/Energy Container"]
 layout_mode = 2
 size_flags_horizontal = 3
-texture = ExtResource("5_52c1g")
+texture = ExtResource("5_ur12a")
 expand_mode = 3
 
-[node name="Placeholder" type="Label" parent="BattleStatsUI/MarginContainer/InstanceStats Container/Enemy Stat Bar/Enemy Stats/Placeholder Container"]
+[node name="Energy Label" type="Label" parent="BattleStatsUI/MarginContainer/InstanceStats Container/Enemy Stat Bar/Enemy Stats/Energy Container"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "0
