@@ -10,6 +10,7 @@ signal turn_ended(id)
 signal card_added(id, card)
 signal physical_block_changed(id, new_block)
 signal magical_block_changed(id, new_block)
+signal battleEnded(id, player_lost)
 
 
 enum Type {PLAYER, ENEMY}
@@ -116,3 +117,6 @@ func play_card(card: Card, target: String) -> void:
 
 func end_turn() -> void:
 	emit_signal("turn_ended", id)
+
+func battle_ended(player_lost: bool) -> void:
+	emit_signal("battleEnded", player_lost)
