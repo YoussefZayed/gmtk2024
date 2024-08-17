@@ -48,8 +48,41 @@ func connectToEntity(entity: Entity) -> void:
 
 func play_card(id: String, card: Card, target: String) -> void:
 	var card_player = entitiesDict[id]
+	if (card.target == card.Target.LANE_CHOICE) && (target == "" || target == null):
+		assert(target != "", "ERROR: You must give target a value.");
+	var appliedEntites = []
+	if card.target == card.Target.LANE_SELF:
+		appliedEntites = [card_player]
+	elif card.target == card.Target.LANE_ENEMY:
+		for battle in battles:
+			if battle.player.id == id:
+				appliedEntites.append(battle.enemy)
+			elif battle.enemy.id == id:
+				appliedEntites.append(battle.player)
+	
+	elif card.target == card.Target.LANE_ALL:
+		for battle in battles:
+			if battle.player.id == id:
+				appliedEntites.append(battle.enemy)
+			elif battle.enemy.id == id:
+				appliedEntites.append(battle.player)
+	elif card.target == card.Target.LANE_CHOICE:
+		appliedEntites.append(entitiesDict[target])
+	
+	for entity in appliedEntites:
+		applyCardToEntity(card, entity)
 	
 
+func applyCardToEntity(card: Card, entity: Entity) -> void:
+	entity.change_physical_block(card.physical_block)
+	entity.change_magical_block(card.magical_block)
+	entity.physical_dealt_increase += card.physical_dealt_increase
+	entity.magical_dealt_increase += card.magical_dealt_increase
+	entity.physical_taken_increase += card.physical_taken_increase
+	entity.magical_taken_increase += card.magical_taken_increase
+	entity.health += card.health_increase
+
+	
 func _ready() -> void:
 	pass # Replace with function body.
 

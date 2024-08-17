@@ -11,6 +11,10 @@ signal card_added(id, card)
 signal physical_block_changed(id, new_block)
 signal magical_block_changed(id, new_block)
 signal battleEnded(id, player_lost)
+signal physical_dealt_increased(id, amount)
+signal magical_dealt_increased(id, amount)
+signal physical_taken_increased(id, amount)
+signal magical_taken_increased(id, amount)
 
 
 enum Type {PLAYER, ENEMY}
@@ -27,6 +31,46 @@ enum Type {PLAYER, ENEMY}
 @export var hand: Array[Card] = []
 @export var physical_block: int = 0
 @export var magical_block: int = 0
+@export var art: Texture
+
+
+var physical_dealt_increase: int = 0:
+	set(value):
+		if value == 0:
+			return
+		physical_dealt_increase = value
+		emit_signal("physical_dealt_increased", id, physical_dealt_increase)
+	get:
+		return physical_dealt_increase
+
+var magical_dealt_increase: int = 0:
+	set(value):
+		if value == 0:
+			return
+		magical_dealt_increase = value
+		emit_signal("magical_dealt_increased", id, magical_dealt_increase)
+	get:
+		return magical_dealt_increase
+
+
+var physical_taken_increase: int = 0:
+	set(value):
+		if value == 0:
+			return
+		physical_taken_increase = value
+		emit_signal("physical_taken_increased", id, physical_taken_increase)
+	get:
+		return physical_taken_increase
+
+var magical_taken_increase: int = 0:
+	set(value):
+		if value == 0:
+			return
+		magical_taken_increase = value
+		emit_signal("magical_taken_increased", id, magical_taken_increase)
+	get:
+		return magical_taken_increase
+
 
 var health: int = max_health:
 	set(value):
@@ -55,6 +99,8 @@ func _init(init_deck: Array[Card]) -> void:
 	self.draw_pile = self.deck
 
 func change_physical_block(amount: int) -> void:
+	if amount == 0:
+		return
 	if amount > 0:
 		physical_block += amount
 	else:
