@@ -47,6 +47,7 @@ func _init(init_deck: Array[Card]) -> void:
 	health = max_health
 	energy = max_energy
 	self.deck = init_deck
+	self.draw_pile = self.deck
 
 
 func take_damage(amount: int) -> void:
