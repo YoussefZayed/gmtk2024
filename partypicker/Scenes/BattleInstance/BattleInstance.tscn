@@ -23,7 +23,7 @@ shape = SubResource("RectangleShape2D_utwlq")
 
 [node name="BattleUI" type="CanvasLayer" parent="." groups=["ui_layer"]]
 
-[node name="Hand" type="HBoxContainer" parent="BattleUI"]
+[node name="MarginContainer" type="MarginContainer" parent="BattleUI"]
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
@@ -34,14 +34,19 @@ offset_top = -89.0
 offset_right = 100.0
 grow_horizontal = 2
 grow_vertical = 0
+
+[node name="Hand" type="HBoxContainer" parent="BattleUI/MarginContainer"]
+layout_direction = 1
+layout_mode = 2
 alignment = 1
 script = ExtResource("2_71o20")
+metadata/_edit_use_anchors_ = true
 
-[node name="CardUI" parent="BattleUI/Hand" instance=ExtResource("2_s0ui1")]
+[node name="CardUI" parent="BattleUI/MarginContainer/Hand" instance=ExtResource("2_s0ui1")]
 layout_mode = 2
 
-[node name="CardUI2" parent="BattleUI/Hand" instance=ExtResource("2_s0ui1")]
+[node name="CardUI2" parent="BattleUI/MarginContainer/Hand" instance=ExtResource("2_s0ui1")]
 layout_mode = 2
 
-[node name="CardUI3" parent="BattleUI/Hand" instance=ExtResource("2_s0ui1")]
+[node name="CardUI3" parent="BattleUI/MarginContainer/Hand" instance=ExtResource("2_s0ui1")]
 layout_mode = 2
