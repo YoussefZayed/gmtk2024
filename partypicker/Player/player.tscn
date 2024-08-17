@@ -7,7 +7,7 @@
 size = Vector2(93, 210)
 
 [node name="Player" type="Area2D" groups=["player"]]
-position = Vector2(-100, 100)
+position = Vector2(-50, 75)
 collision_layer = 4
 script = ExtResource("1_7myiy")
 

@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Scenes/BattleInstance/battle_instance.gd" id="1_ldqhx"]
 [ext_resource type="Script" path="res://Scenes/BattleInstance/BattleInstanceUI/hand.gd" id="2_71o20"]
 [ext_resource type="PackedScene" uid="uid://5xqwmu2gdanx" path="res://Scenes/CardUI/Card_ui.tscn" id="2_s0ui1"]
-[ext_resource type="Texture2D" uid="uid://btwhk6ytf4bji" path="res://Assets/Art/Backgrounds/Background_main.png" id="2_xkh07"]
+[ext_resource type="Texture2D" uid="uid://56vheg7ekeil" path="res://Assets/Art/Backgrounds/Background1.png" id="2_vxoeb"]
 [ext_resource type="PackedScene" uid="uid://cdn0mbexkeirp" path="res://Scenes/CardTargetSelector/card_target_selector.tscn" id="4_8m2pj"]
 [ext_resource type="Texture2D" uid="uid://c221c4ijgqln1" path="res://Assets/Art/Icons/Health Icon.png" id="4_w2ju7"]
 [ext_resource type="Texture2D" uid="uid://bvammojqyacbk" path="res://Assets/Art/Icons/Energy Icon.png" id="5_ur12a"]
@@ -28,9 +28,8 @@ script = ExtResource("1_ldqhx")
 metadata/_edit_lock_ = true
 
 [node name="Background" type="Sprite2D" parent="."]
-modulate = Color(0.5, 0.5, 0.5, 1)
 scale = Vector2(0.5, 0.5)
-texture = ExtResource("2_xkh07")
+texture = ExtResource("2_vxoeb")
 centered = false
 
 [node name="CardDropArea" type="Area2D" parent="."]

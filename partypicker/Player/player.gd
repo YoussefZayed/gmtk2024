@@ -6,9 +6,10 @@ extends Area2D
 @onready var sprite_2D: Sprite2D = $Sprite2D
 
 func _init() -> void:
-	print("EnemyRunning")
+	print("PlayerRunning")
 
 func set_player_stats(value: Entity) -> void:
+	print("StartingSettingStats")
 	stats = value.create_instance()
 	print("SettingStats")
 	update_player()
