@@ -13,6 +13,7 @@ layout_mode = 2
 
 [node name="SubViewport" type="SubViewport" parent="HBoxContainer/SubViewportContainer"]
 handle_input_locally = false
+size = Vector2i(480, 540)
 render_target_update_mode = 4
 
 [node name="Battle" parent="HBoxContainer/SubViewportContainer/SubViewport" instance=ExtResource("1_msofc")]
@@ -22,6 +23,7 @@ layout_mode = 2
 
 [node name="SubViewport" type="SubViewport" parent="HBoxContainer/SubViewportContainer2"]
 handle_input_locally = false
+size = Vector2i(480, 540)
 render_target_update_mode = 4
 
 [node name="Battle" parent="HBoxContainer/SubViewportContainer2/SubViewport" instance=ExtResource("1_msofc")]
