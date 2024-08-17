@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://bvxqwcjg5niyw"]
+[gd_scene load_steps=22 format=3 uid="uid://bvxqwcjg5niyw"]
 
 [ext_resource type="Script" path="res://Scenes/BattleInstance/battle_instance.gd" id="1_ldqhx"]
 [ext_resource type="Script" path="res://Scenes/BattleInstance/BattleInstanceUI/hand.gd" id="2_71o20"]
@@ -14,8 +14,6 @@
 [ext_resource type="Texture2D" uid="uid://blggm0xupsq88" path="res://Assets/Art/Icons/MagDef Icon.png" id="7_yt7sn"]
 [ext_resource type="Texture2D" uid="uid://8h5ppop1n8ex" path="res://Assets/Art/Icons/PhysVul Icon.png" id="8_ovhs4"]
 [ext_resource type="Texture2D" uid="uid://diur5ks5h0uw4" path="res://Assets/Art/Icons/MagVul Icon.png" id="9_ye07s"]
-[ext_resource type="Texture2D" uid="uid://dsfbc8ojc26ps" path="res://Assets/Art/Icons/PhysUp Icon.png" id="10_7jsr8"]
-[ext_resource type="Texture2D" uid="uid://16p8oeu0xffn" path="res://Assets/Art/Icons/MagUp Icon.png" id="11_6n71j"]
 [ext_resource type="PackedScene" uid="uid://bhcpl8hhnvlib" path="res://Enemy/enemy.tscn" id="12_tqnsr"]
 [ext_resource type="Resource" uid="uid://dfid1r68kq5ps" path="res://Enemy_resources/Skeletons/Armored_Skeleton.tres" id="13_bhu7m"]
 [ext_resource type="PackedScene" uid="uid://r1w8873d38uh" path="res://Player/player.tscn" id="14_nieeb"]
@@ -198,42 +196,6 @@ text = "0
 "
 horizontal_alignment = 1
 
-[node name="PhysUp Container" type="HBoxContainer" parent="BattleStatsUI/MarginContainer/MarginContainer/InstanceStats Container/Player Stat Bar/PlayerStats"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="PhysUp Icon" type="TextureRect" parent="BattleStatsUI/MarginContainer/MarginContainer/InstanceStats Container/Player Stat Bar/PlayerStats/PhysUp Container"]
-layout_mode = 2
-size_flags_horizontal = 3
-texture = ExtResource("10_7jsr8")
-expand_mode = 3
-
-[node name="PhysUp Label" type="Label" parent="BattleStatsUI/MarginContainer/MarginContainer/InstanceStats Container/Player Stat Bar/PlayerStats/PhysUp Container"]
-custom_minimum_size = Vector2(25, 0)
-layout_mode = 2
-size_flags_horizontal = 3
-text = "0
-"
-horizontal_alignment = 1
-
-[node name="MagUp Container" type="HBoxContainer" parent="BattleStatsUI/MarginContainer/MarginContainer/InstanceStats Container/Player Stat Bar/PlayerStats"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="MagUp Icon" type="TextureRect" parent="BattleStatsUI/MarginContainer/MarginContainer/InstanceStats Container/Player Stat Bar/PlayerStats/MagUp Container"]
-layout_mode = 2
-size_flags_horizontal = 3
-texture = ExtResource("11_6n71j")
-expand_mode = 3
-
-[node name="MagUp Label" type="Label" parent="BattleStatsUI/MarginContainer/MarginContainer/InstanceStats Container/Player Stat Bar/PlayerStats/MagUp Container"]
-custom_minimum_size = Vector2(25, 0)
-layout_mode = 2
-size_flags_horizontal = 3
-text = "0
-"
-horizontal_alignment = 1
-
 [node name="Spacer" type="Control" parent="BattleStatsUI/MarginContainer/MarginContainer/InstanceStats Container"]
 layout_mode = 2
 size_flags_horizontal = 3
@@ -355,42 +317,6 @@ texture = ExtResource("9_ye07s")
 expand_mode = 3
 
 [node name="MagVul Label" type="Label" parent="BattleStatsUI/MarginContainer/MarginContainer/InstanceStats Container/Enemy Stat Bar/Enemy Stats/MagVul Container"]
-custom_minimum_size = Vector2(25, 0)
-layout_mode = 2
-size_flags_horizontal = 3
-text = "0
-"
-horizontal_alignment = 1
-
-[node name="PhysUp Container" type="HBoxContainer" parent="BattleStatsUI/MarginContainer/MarginContainer/InstanceStats Container/Enemy Stat Bar/Enemy Stats"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="PhysUp Icon" type="TextureRect" parent="BattleStatsUI/MarginContainer/MarginContainer/InstanceStats Container/Enemy Stat Bar/Enemy Stats/PhysUp Container"]
-layout_mode = 2
-size_flags_horizontal = 3
-texture = ExtResource("10_7jsr8")
-expand_mode = 3
-
-[node name="PhysUp Label" type="Label" parent="BattleStatsUI/MarginContainer/MarginContainer/InstanceStats Container/Enemy Stat Bar/Enemy Stats/PhysUp Container"]
-custom_minimum_size = Vector2(25, 0)
-layout_mode = 2
-size_flags_horizontal = 3
-text = "0
-"
-horizontal_alignment = 1
-
-[node name="MagUp Container" type="HBoxContainer" parent="BattleStatsUI/MarginContainer/MarginContainer/InstanceStats Container/Enemy Stat Bar/Enemy Stats"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="MagUp Icon" type="TextureRect" parent="BattleStatsUI/MarginContainer/MarginContainer/InstanceStats Container/Enemy Stat Bar/Enemy Stats/MagUp Container"]
-layout_mode = 2
-size_flags_horizontal = 3
-texture = ExtResource("11_6n71j")
-expand_mode = 3
-
-[node name="MagUp Label" type="Label" parent="BattleStatsUI/MarginContainer/MarginContainer/InstanceStats Container/Enemy Stat Bar/Enemy Stats/MagUp Container"]
 custom_minimum_size = Vector2(25, 0)
 layout_mode = 2
 size_flags_horizontal = 3

@@ -17,8 +17,14 @@ signal reparent_requested(which_card_ui: CardUI)
 
 var parent: Control
 var tween: Tween
+var playable := true : set = _set_playable
+var disabled := false
 
 func _ready() -> void:
+	#Events.card_aim_started.connect(_on_card_drag_or_aim_started)
+	#Events.card_drag_started.connect(_on_card_drag_or_aim_started)
+	#Events.card_drag_ended.connect(_on_card_drag_or_aim_ended)
+	#Events.card_aim_ended.connect(_on_card_drag_or_aim_ended)
 	card_state_machine.init(self)
 
 func _input(event: InputEvent) -> void:
@@ -58,6 +64,15 @@ func _set_card(value: Card) -> void:
 	card = value
 	mana_cost.text = str(card.energy_cost)
 	card_art.texture = card.card_art
+
+func _set_playable(value: bool) -> void:
+	playable = value
+	if not playable:
+		mana_cost.add_theme_color_override("font_color", Color.RED)
+		card_art.modulate = Color(1, 1, 1, 0.5)
+	else:
+		mana_cost.add_theme_color_override("font_color", Color.WHITE)
+		card_art.modulate = Color(1, 1, 1, 1)
 
 func _on_drop_point_detector_area_entered(area: Area2D) -> void:
 	if not targets.has(area):

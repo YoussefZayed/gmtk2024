@@ -6,15 +6,16 @@ extends Area2D
 @onready var sprite_2D: Sprite2D = $Sprite2D
 
 func _init() -> void:
-	print("PlayerRunning")
+	#print("PlayerRunning")
+	pass
 
 func set_player_stats(value: Entity) -> void:
 	if not is_node_ready():
 		await ready
 	
-	print("StartingSettingStats")
+	#print("StartingSettingStats")
 	
-	print("SettingStats")
+	#print("SettingStats")
 	update_player()
 
 func update_player() -> void:
@@ -23,5 +24,5 @@ func update_player() -> void:
 	if not is_inside_tree():
 		await ready
 	
-	print("SettingSprite")
+	#print("SettingSprite")
 	sprite_2D.texture = stats.art

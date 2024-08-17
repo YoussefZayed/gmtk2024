@@ -34,3 +34,12 @@ func list_hand():
 
 func can_play_card(card: Card) -> bool:
 	return player.energy >= card.energy_cost
+
+func _process(delta):
+	var player_stat_bar = self.find_child("Player Stat Bar")
+	player_stat_bar.find_child("Health Label").text = str(player.health)
+	player_stat_bar.find_child("Energy Label").text = str(player.energy)
+	player_stat_bar.find_child("PhysDef Label").text = str(player.physical_block)
+	player_stat_bar.find_child("MagDef Label").text = str(player.magical_block)
+	player_stat_bar.find_child("PhysVul Label").text = str(player.physical_taken_increase)
+	player_stat_bar.find_child("MagVul Label").text = str(player.magical_taken_increase)

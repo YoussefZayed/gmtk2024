@@ -117,7 +117,8 @@ func load_from_resource(resource) -> void:
 	base_defense = resource.base_defense
 	type = resource.type
 	art = resource.art
-	deck = resource.deck.duplicate()
+	deck = resource.hand.duplicate()
+	print(["here ->", resource.hand])
 
 func change_physical_block(amount: int) -> void:
 	if amount == 0:
@@ -138,11 +139,11 @@ func change_magical_block(amount: int) -> void:
 
 func take_damage(amount: int, attack_type: String) -> void:
 	if attack_type == "physical":
-		amount = max(0, amount - physical_block)
-		physical_block = max(0, physical_block - amount)
+		amount = max(0, amount - (physical_block-physical_taken_increase))
+		change_physical_block(-max(0, (physical_block-physical_taken_increase) - amount))
 	elif attack_type == "magical":
 		amount = max(0, amount - magical_block)
-		magical_block = max(0, magical_block - amount)
+		change_physical_block(-max(0, magical_block - amount))
 	health -= amount
 	health = max(0, health)
 
@@ -172,6 +173,7 @@ func draw_card() -> Card:
 		var card = draw_pile.pop_back()
 		hand.append(card)
 		emit_signal("card_added", id, card)
+		#print([self.id, self.hand, "Drawn Card"])
 		return card
 	
 	return null
@@ -187,6 +189,7 @@ func discard_hand() -> void:
 
 
 func discard_card(card: Card) -> void:
+	#print([self.id, self.hand, "Discard Card"])
 	discard_pile.append(card)
 
 func shuffle_discard_into_draw() -> void:
@@ -209,7 +212,9 @@ func end_turn() -> void:
 	emit_signal("turn_ended", id)
 	energy = max_energy
 	discard_hand()
+	draw_pile.shuffle()
 	draw_hand()
+	print([id, health])
 
 
 func battle_ended(player_lost: bool) -> void:

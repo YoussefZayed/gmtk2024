@@ -43,11 +43,13 @@ func testSetup():
 	player.id = "1"
 	print(player.id)
 	print(player.name)
+	
 	var player2 = Entity.new()
-	player2.deck = gen_deck.cards
+	player2.deck = gen_deck.cards.duplicate()
 	player2.id = "2"
+	
 	var enemy1 = Entity.new()
-	enemy1.deck = gen_deck.cards
+	enemy1.deck = gen_deck.cards.duplicate()
 	enemy1.id = "3"
 	enemy1.type = Entity.Type.ENEMY
 	enemy1.max_draw = 1
@@ -55,12 +57,13 @@ func testSetup():
 	enemy1.draw = 1
 	
 	var enemy2 = Entity.new()
-	enemy2.deck = gen_deck.cards
+	enemy2.deck = gen_deck.cards.duplicate()
 	enemy2.id = "4"
 	enemy2.type = Entity.Type.ENEMY
 	enemy2.max_draw = 1
 	enemy2.max_energy = 1
-	enemy1.draw = 1
+	enemy2.draw = 1
+	
 	var test_battles: Array[Battle] = [Battle.new(player, enemy1), Battle.new(player2, enemy2)]
 	var test_entities: Array[Entity] = [player, player2, enemy1, enemy2]
 	battles = test_battles
@@ -119,7 +122,10 @@ func applyCardToEntity(card: Card, entity: Entity) -> void:
 
 func end_turn():
 	for battle in battles:
+		if battle.battleEnded:
+			continue
 		battle.player.end_turn()
+		print(battle.enemy.hand[0])
 		battle.enemy.play_card(battle.enemy.hand[0], battle.player.id)
 		battle.enemy.end_turn()
 	checkDeaths()
@@ -127,9 +133,16 @@ func end_turn():
 func checkDeaths():
 	for battle in battles:
 		if battle.player.health <= 0:
+			battle.player.energy = 0
+			battle.player.discard_hand()
 			battle.battleEnded = true
 			battle.player.emit_signal("battleEnded", battle.player.id, true)
 		elif battle.enemy.health <= 0:
+			battle.player.energy = 0
+			battle.player.discard_hand()
 			battle.battleEnded = true
 			battle.player.emit_signal("battleEnded", battle.player.id, false)
 	
+
+func _on_button_pressed() -> void:
+	end_turn()

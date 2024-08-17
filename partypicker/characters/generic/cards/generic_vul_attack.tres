@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="Card" load_steps=3 format=3 uid="uid://cgs6q34b5bm4b"]
+
+[ext_resource type="Texture2D" uid="uid://8h5ppop1n8ex" path="res://Assets/Art/Icons/PhysVul Icon.png" id="1_ogngv"]
+[ext_resource type="Script" path="res://custom_resources/card.gd" id="2_t2ppk"]
+
+[resource]
+script = ExtResource("2_t2ppk")
+name = "Generic_Sword_Attack"
+type = 0
+target = 2
+energy_cost = 1
+physical_damage = 0
+magical_damage = 0
+physical_block = 0
+magical_block = 0
+card_draw = 0
+card_discard = 0
+physical_dealt_increase = 0
+magical_dealt_increase = 0
+physical_taken_increase = 5
+magical_taken_increase = 0
+health_increase = 0
+card_art = ExtResource("1_ogngv")
+tooltip_text = "Card that deals damage."
