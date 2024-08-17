@@ -16,12 +16,13 @@ texture = ExtResource("1_4nwx2")
 centered = false
 
 [node name="CardDropArea" type="Area2D" parent="."]
+collision_layer = 2
 
 [node name="CardDropCollision" type="CollisionShape2D" parent="CardDropArea"]
 position = Vector2(480, 166.5)
 shape = SubResource("RectangleShape2D_utwlq")
 
-[node name="BattleUI" type="CanvasLayer" parent="." groups=["ui_layer"]]
+[node name="BattleUI" type="CanvasLayer" parent="."]
 
 [node name="MarginContainer" type="MarginContainer" parent="BattleUI"]
 anchors_preset = 7

@@ -5,7 +5,8 @@ const DRAG_MINIMUM_THRESHOLD := 0.05 # time in seconds
 var minimum_drag_time_elapsed := false
 
 func enter() -> void:
-	var ui_layer := get_tree().get_first_node_in_group("ui_layer")
+	var ui_layer := get_parent().get_parent().get_parent().get_parent().get_parent() # only works with the current tree, needs fixing to reference in a more flexible way
+	print(ui_layer)
 	if ui_layer:
 		card_ui.reparent(ui_layer)
 	
