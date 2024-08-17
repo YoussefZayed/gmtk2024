@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bvxqwcjg5niyw"]
+[gd_scene load_steps=19 format=3 uid="uid://bvxqwcjg5niyw"]
 
 [ext_resource type="Script" path="res://Scenes/BattleInstance/battle_instance.gd" id="1_ldqhx"]
 [ext_resource type="Script" path="res://Scenes/BattleInstance/BattleInstanceUI/hand.gd" id="2_71o20"]
@@ -6,8 +6,16 @@
 [ext_resource type="Texture2D" uid="uid://btwhk6ytf4bji" path="res://Assets/Art/Backgrounds/Background_main.png" id="2_xkh07"]
 [ext_resource type="Texture2D" uid="uid://dm01t8a7p5xa1" path="res://Assets/Art/Enemies/SwordSkelly.png" id="3_5itqf"]
 [ext_resource type="PackedScene" uid="uid://cdn0mbexkeirp" path="res://Scenes/CardTargetSelector/card_target_selector.tscn" id="4_8m2pj"]
+[ext_resource type="Texture2D" uid="uid://c221c4ijgqln1" path="res://Assets/Art/Icons/Health Icon.png" id="4_w2ju7"]
+[ext_resource type="Texture2D" uid="uid://bhb03oeqjy21i" path="res://Assets/Art/icon.svg" id="5_52c1g"]
+[ext_resource type="Texture2D" uid="uid://bdts50mncwnx8" path="res://Assets/Art/Icons/PhysDef Icon.png" id="6_0re61"]
 [ext_resource type="Resource" uid="uid://sxsx1eriqqkp" path="res://characters/generic/cards/generic_target_spell.tres" id="6_vrksm"]
 [ext_resource type="Resource" uid="uid://cgw1ene2bmkc0" path="res://characters/generic/cards/generic_block.tres" id="7_nnr4h"]
+[ext_resource type="Texture2D" uid="uid://blggm0xupsq88" path="res://Assets/Art/Icons/MagDef Icon.png" id="7_yt7sn"]
+[ext_resource type="Texture2D" uid="uid://8h5ppop1n8ex" path="res://Assets/Art/Icons/PhysVul Icon.png" id="8_ovhs4"]
+[ext_resource type="Texture2D" uid="uid://diur5ks5h0uw4" path="res://Assets/Art/Icons/MagVul Icon.png" id="9_ye07s"]
+[ext_resource type="Texture2D" uid="uid://dsfbc8ojc26ps" path="res://Assets/Art/Icons/PhysUp Icon.png" id="10_7jsr8"]
+[ext_resource type="Texture2D" uid="uid://16p8oeu0xffn" path="res://Assets/Art/Icons/MagUp Icon.png" id="11_6n71j"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_utwlq"]
 size = Vector2(960, 333)
@@ -34,6 +42,313 @@ shape = SubResource("RectangleShape2D_utwlq")
 
 [node name="CardTargetSelector" parent="." instance=ExtResource("4_8m2pj")]
 
+[node name="BattleStatsUI" type="CanvasLayer" parent="."]
+
+[node name="MarginContainer" type="MarginContainer" parent="BattleStatsUI"]
+custom_minimum_size = Vector2(240, 100)
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 40.0
+grow_horizontal = 2
+
+[node name="InstanceStats Container" type="HBoxContainer" parent="BattleStatsUI/MarginContainer"]
+layout_mode = 2
+
+[node name="Player Stat Bar" type="VBoxContainer" parent="BattleStatsUI/MarginContainer/InstanceStats Container"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+
+[node name="Player" type="Label" parent="BattleStatsUI/MarginContainer/InstanceStats Container/Player Stat Bar"]
+layout_mode = 2
+text = "Player"
+horizontal_alignment = 1
+
+[node name="PlayerStats" type="GridContainer" parent="BattleStatsUI/MarginContainer/InstanceStats Container/Player Stat Bar"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+columns = 2
+
+[node name="Health Container" type="HBoxContainer" parent="BattleStatsUI/MarginContainer/InstanceStats Container/Player Stat Bar/PlayerStats"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Health Icon" type="TextureRect" parent="BattleStatsUI/MarginContainer/InstanceStats Container/Player Stat Bar/PlayerStats/Health Container"]
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("4_w2ju7")
+expand_mode = 3
+
+[node name="Health Label" type="Label" parent="BattleStatsUI/MarginContainer/InstanceStats Container/Player Stat Bar/PlayerStats/Health Container"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "0
+"
+
+[node name="Placeholder Container" type="HBoxContainer" parent="BattleStatsUI/MarginContainer/InstanceStats Container/Player Stat Bar/PlayerStats"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Health Icon" type="TextureRect" parent="BattleStatsUI/MarginContainer/InstanceStats Container/Player Stat Bar/PlayerStats/Placeholder Container"]
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("5_52c1g")
+expand_mode = 3
+
+[node name="Placeholder" type="Label" parent="BattleStatsUI/MarginContainer/InstanceStats Container/Player Stat Bar/PlayerStats/Placeholder Container"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "0
+"
+
+[node name="PhysDef Container" type="HBoxContainer" parent="BattleStatsUI/MarginContainer/InstanceStats Container/Player Stat Bar/PlayerStats"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="PhysDef Icon" type="TextureRect" parent="BattleStatsUI/MarginContainer/InstanceStats Container/Player Stat Bar/PlayerStats/PhysDef Container"]
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("6_0re61")
+expand_mode = 3
+
+[node name="PhysDef Label" type="Label" parent="BattleStatsUI/MarginContainer/InstanceStats Container/Player Stat Bar/PlayerStats/PhysDef Container"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "0
+"
+
+[node name="MagDef Container" type="HBoxContainer" parent="BattleStatsUI/MarginContainer/InstanceStats Container/Player Stat Bar/PlayerStats"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="MagDef Icon" type="TextureRect" parent="BattleStatsUI/MarginContainer/InstanceStats Container/Player Stat Bar/PlayerStats/MagDef Container"]
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("7_yt7sn")
+expand_mode = 3
+
+[node name="MagDef Label" type="Label" parent="BattleStatsUI/MarginContainer/InstanceStats Container/Player Stat Bar/PlayerStats/MagDef Container"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "0
+"
+
+[node name="PhysVul Container" type="HBoxContainer" parent="BattleStatsUI/MarginContainer/InstanceStats Container/Player Stat Bar/PlayerStats"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="PhysVul Icon" type="TextureRect" parent="BattleStatsUI/MarginContainer/InstanceStats Container/Player Stat Bar/PlayerStats/PhysVul Container"]
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("8_ovhs4")
+expand_mode = 3
+
+[node name="PhysVul Label" type="Label" parent="BattleStatsUI/MarginContainer/InstanceStats Container/Player Stat Bar/PlayerStats/PhysVul Container"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "0
+"
+
+[node name="MagVul Container" type="HBoxContainer" parent="BattleStatsUI/MarginContainer/InstanceStats Container/Player Stat Bar/PlayerStats"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="MagVul Icon" type="TextureRect" parent="BattleStatsUI/MarginContainer/InstanceStats Container/Player Stat Bar/PlayerStats/MagVul Container"]
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("9_ye07s")
+expand_mode = 3
+
+[node name="MagVul Label" type="Label" parent="BattleStatsUI/MarginContainer/InstanceStats Container/Player Stat Bar/PlayerStats/MagVul Container"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "0
+"
+
+[node name="PhysUp Container" type="HBoxContainer" parent="BattleStatsUI/MarginContainer/InstanceStats Container/Player Stat Bar/PlayerStats"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="PhysUp Icon" type="TextureRect" parent="BattleStatsUI/MarginContainer/InstanceStats Container/Player Stat Bar/PlayerStats/PhysUp Container"]
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("10_7jsr8")
+expand_mode = 3
+
+[node name="PhysUp Label" type="Label" parent="BattleStatsUI/MarginContainer/InstanceStats Container/Player Stat Bar/PlayerStats/PhysUp Container"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "0
+"
+
+[node name="MagUp Container" type="HBoxContainer" parent="BattleStatsUI/MarginContainer/InstanceStats Container/Player Stat Bar/PlayerStats"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="MagUp Icon" type="TextureRect" parent="BattleStatsUI/MarginContainer/InstanceStats Container/Player Stat Bar/PlayerStats/MagUp Container"]
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("11_6n71j")
+expand_mode = 3
+
+[node name="MagUp Label" type="Label" parent="BattleStatsUI/MarginContainer/InstanceStats Container/Player Stat Bar/PlayerStats/MagUp Container"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "0
+"
+
+[node name="Spacer" type="Control" parent="BattleStatsUI/MarginContainer/InstanceStats Container"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Enemy Stat Bar" type="VBoxContainer" parent="BattleStatsUI/MarginContainer/InstanceStats Container"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+
+[node name="Enemy" type="Label" parent="BattleStatsUI/MarginContainer/InstanceStats Container/Enemy Stat Bar"]
+layout_mode = 2
+text = "Enemy"
+horizontal_alignment = 1
+
+[node name="Enemy Stats" type="GridContainer" parent="BattleStatsUI/MarginContainer/InstanceStats Container/Enemy Stat Bar"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+columns = 2
+
+[node name="Health Container" type="HBoxContainer" parent="BattleStatsUI/MarginContainer/InstanceStats Container/Enemy Stat Bar/Enemy Stats"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Health Icon" type="TextureRect" parent="BattleStatsUI/MarginContainer/InstanceStats Container/Enemy Stat Bar/Enemy Stats/Health Container"]
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("4_w2ju7")
+expand_mode = 3
+
+[node name="Health Label" type="Label" parent="BattleStatsUI/MarginContainer/InstanceStats Container/Enemy Stat Bar/Enemy Stats/Health Container"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "0
+"
+
+[node name="Placeholder Container" type="HBoxContainer" parent="BattleStatsUI/MarginContainer/InstanceStats Container/Enemy Stat Bar/Enemy Stats"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Health Icon" type="TextureRect" parent="BattleStatsUI/MarginContainer/InstanceStats Container/Enemy Stat Bar/Enemy Stats/Placeholder Container"]
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("5_52c1g")
+expand_mode = 3
+
+[node name="Placeholder" type="Label" parent="BattleStatsUI/MarginContainer/InstanceStats Container/Enemy Stat Bar/Enemy Stats/Placeholder Container"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "0
+"
+
+[node name="PhysDef Container" type="HBoxContainer" parent="BattleStatsUI/MarginContainer/InstanceStats Container/Enemy Stat Bar/Enemy Stats"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="PhysDef Icon" type="TextureRect" parent="BattleStatsUI/MarginContainer/InstanceStats Container/Enemy Stat Bar/Enemy Stats/PhysDef Container"]
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("6_0re61")
+expand_mode = 3
+
+[node name="PhysDef Label" type="Label" parent="BattleStatsUI/MarginContainer/InstanceStats Container/Enemy Stat Bar/Enemy Stats/PhysDef Container"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "0
+"
+
+[node name="MagDef Container" type="HBoxContainer" parent="BattleStatsUI/MarginContainer/InstanceStats Container/Enemy Stat Bar/Enemy Stats"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="MagDef Icon" type="TextureRect" parent="BattleStatsUI/MarginContainer/InstanceStats Container/Enemy Stat Bar/Enemy Stats/MagDef Container"]
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("7_yt7sn")
+expand_mode = 3
+
+[node name="MagDef Label" type="Label" parent="BattleStatsUI/MarginContainer/InstanceStats Container/Enemy Stat Bar/Enemy Stats/MagDef Container"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "0
+"
+
+[node name="PhysVul Container" type="HBoxContainer" parent="BattleStatsUI/MarginContainer/InstanceStats Container/Enemy Stat Bar/Enemy Stats"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="PhysVul Icon" type="TextureRect" parent="BattleStatsUI/MarginContainer/InstanceStats Container/Enemy Stat Bar/Enemy Stats/PhysVul Container"]
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("8_ovhs4")
+expand_mode = 3
+
+[node name="PhysVul Label" type="Label" parent="BattleStatsUI/MarginContainer/InstanceStats Container/Enemy Stat Bar/Enemy Stats/PhysVul Container"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "0
+"
+
+[node name="MagVul Container" type="HBoxContainer" parent="BattleStatsUI/MarginContainer/InstanceStats Container/Enemy Stat Bar/Enemy Stats"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="MagVul Icon" type="TextureRect" parent="BattleStatsUI/MarginContainer/InstanceStats Container/Enemy Stat Bar/Enemy Stats/MagVul Container"]
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("9_ye07s")
+expand_mode = 3
+
+[node name="MagVul Label" type="Label" parent="BattleStatsUI/MarginContainer/InstanceStats Container/Enemy Stat Bar/Enemy Stats/MagVul Container"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "0
+"
+
+[node name="PhysUp Container" type="HBoxContainer" parent="BattleStatsUI/MarginContainer/InstanceStats Container/Enemy Stat Bar/Enemy Stats"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="PhysUp Icon" type="TextureRect" parent="BattleStatsUI/MarginContainer/InstanceStats Container/Enemy Stat Bar/Enemy Stats/PhysUp Container"]
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("10_7jsr8")
+expand_mode = 3
+
+[node name="PhysUp Label" type="Label" parent="BattleStatsUI/MarginContainer/InstanceStats Container/Enemy Stat Bar/Enemy Stats/PhysUp Container"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "0
+"
+
+[node name="MagUp Container" type="HBoxContainer" parent="BattleStatsUI/MarginContainer/InstanceStats Container/Enemy Stat Bar/Enemy Stats"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="MagUp Icon" type="TextureRect" parent="BattleStatsUI/MarginContainer/InstanceStats Container/Enemy Stat Bar/Enemy Stats/MagUp Container"]
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("11_6n71j")
+expand_mode = 3
+
+[node name="MagUp Label" type="Label" parent="BattleStatsUI/MarginContainer/InstanceStats Container/Enemy Stat Bar/Enemy Stats/MagUp Container"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "0
+"
+
 [node name="UnitsUI" type="CanvasLayer" parent="."]
 
 [node name="MarginContainer" type="MarginContainer" parent="UnitsUI"]
@@ -50,7 +365,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Enemy" type="Area2D" parent="UnitsUI/MarginContainer"]
-position = Vector2(105, 90)
+position = Vector2(102, 73)
 collision_layer = 4
 
 [node name="Sprite2D" type="Sprite2D" parent="UnitsUI/MarginContainer/Enemy"]
