@@ -1,13 +1,22 @@
-[gd_scene load_steps=5 format=3 uid="uid://bvxqwcjg5niyw"]
+[gd_scene load_steps=11 format=3 uid="uid://bvxqwcjg5niyw"]
 
 [ext_resource type="Texture2D" uid="uid://xwuatapro0mx" path="res://Assets/Art/Temp Background.png" id="1_4nwx2"]
+[ext_resource type="Script" path="res://Scenes/BattleInstance/battle_instance.gd" id="1_ldqhx"]
 [ext_resource type="Script" path="res://Scenes/BattleInstance/BattleInstanceUI/hand.gd" id="2_71o20"]
 [ext_resource type="PackedScene" uid="uid://5xqwmu2gdanx" path="res://Scenes/CardUI/Card_ui.tscn" id="2_s0ui1"]
+[ext_resource type="Texture2D" uid="uid://dm01t8a7p5xa1" path="res://Assets/Art/Enemies/SwordSkelly.png" id="3_5itqf"]
+[ext_resource type="PackedScene" uid="uid://cdn0mbexkeirp" path="res://Scenes/CardTargetSelector/card_target_selector.tscn" id="4_8m2pj"]
+[ext_resource type="Resource" uid="uid://sxsx1eriqqkp" path="res://characters/generic/cards/generic_target_spell.tres" id="6_vrksm"]
+[ext_resource type="Resource" uid="uid://cgw1ene2bmkc0" path="res://characters/generic/cards/generic_block.tres" id="7_nnr4h"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_utwlq"]
 size = Vector2(960, 333)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bsmpq"]
+size = Vector2(93, 210)
+
 [node name="Battle" type="Node2D"]
+script = ExtResource("1_ldqhx")
 metadata/_edit_lock_ = true
 
 [node name="Background" type="Sprite2D" parent="."]
@@ -21,6 +30,20 @@ collision_layer = 2
 [node name="CardDropCollision" type="CollisionShape2D" parent="CardDropArea"]
 position = Vector2(480, 166.5)
 shape = SubResource("RectangleShape2D_utwlq")
+
+[node name="Enemy" type="Area2D" parent="."]
+position = Vector2(644, 227)
+collision_layer = 4
+
+[node name="Sprite2D" type="Sprite2D" parent="Enemy"]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_5itqf")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy"]
+position = Vector2(-15, 0)
+shape = SubResource("RectangleShape2D_bsmpq")
+
+[node name="CardTargetSelector" parent="." instance=ExtResource("4_8m2pj")]
 
 [node name="BattleUI" type="CanvasLayer" parent="."]
 
@@ -45,9 +68,12 @@ metadata/_edit_use_anchors_ = true
 
 [node name="CardUI" parent="BattleUI/MarginContainer/Hand" instance=ExtResource("2_s0ui1")]
 layout_mode = 2
+card = ExtResource("6_vrksm")
 
 [node name="CardUI2" parent="BattleUI/MarginContainer/Hand" instance=ExtResource("2_s0ui1")]
 layout_mode = 2
+card = ExtResource("6_vrksm")
 
 [node name="CardUI3" parent="BattleUI/MarginContainer/Hand" instance=ExtResource("2_s0ui1")]
 layout_mode = 2
+card = ExtResource("7_nnr4h")
