@@ -108,7 +108,7 @@ func battleEnded():
 	else:
 		if len(players) < 4 && len(players)>0:
 			showShop()
-		else:
+		elif len(players)>0:
 			startBattle()
 		
 
