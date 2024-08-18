@@ -10,7 +10,7 @@
 
 [resource]
 script = ExtResource("2_0imgj")
-name = "Entity"
+name = "Armourer"
 max_health = 100
 max_draw = 7
 draw = 4

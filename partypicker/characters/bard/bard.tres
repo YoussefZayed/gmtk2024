@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="Entity" load_steps=10 format=3 uid="uid://ehlsvfbpcsbh"]
+
+[ext_resource type="Script" path="res://custom_resources/card.gd" id="1_g18ud"]
+[ext_resource type="Script" path="res://custom_resources/entity.gd" id="2_5yo5l"]
+[ext_resource type="Resource" uid="uid://dq21epsrgf51m" path="res://characters/bard/cards/Bolster.tres" id="2_y7jq7"]
+[ext_resource type="Resource" uid="uid://blua7x6lymiom" path="res://characters/generic/cards/Block.tres" id="3_biisi"]
+[ext_resource type="Resource" uid="uid://c025xmmvgll6d" path="res://characters/generic/cards/Resist.tres" id="4_vm534"]
+[ext_resource type="Resource" uid="uid://be4vg1w4cxn23" path="res://characters/generic/cards/Heal.tres" id="5_cascm"]
+[ext_resource type="Resource" uid="uid://5yxyhty4dsxy" path="res://characters/generic/cards/Smite.tres" id="6_8tqgu"]
+[ext_resource type="Resource" uid="uid://dutidssai5qni" path="res://characters/generic/cards/Hex.tres" id="7_0h6lb"]
+[ext_resource type="Resource" uid="uid://cr76dw77mosli" path="res://characters/generic/cards/Strike.tres" id="8_2qqco"]
+
+[resource]
+script = ExtResource("2_5yo5l")
+name = "Bard"
+max_health = 80
+max_draw = 7
+draw = 4
+max_energy = 3
+base_damage = 0
+base_defense = 0
+type = 0
+hand = Array[ExtResource("1_g18ud")]([ExtResource("2_y7jq7"), ExtResource("2_y7jq7"), ExtResource("3_biisi"), ExtResource("4_vm534"), ExtResource("5_cascm"), ExtResource("6_8tqgu"), ExtResource("6_8tqgu"), ExtResource("7_0h6lb"), ExtResource("8_2qqco"), ExtResource("8_2qqco")])
+physical_block = 0
+magical_block = 0

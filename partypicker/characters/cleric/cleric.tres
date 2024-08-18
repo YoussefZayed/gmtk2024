@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="Entity" load_steps=8 format=3 uid="uid://c0y5625tmya44"]
+
+[ext_resource type="Script" path="res://custom_resources/card.gd" id="1_5h04j"]
+[ext_resource type="Resource" uid="uid://dwcls34dqcgfw" path="res://characters/cleric/cards/Protection.tres" id="2_b5gxv"]
+[ext_resource type="Script" path="res://custom_resources/entity.gd" id="2_g3wy8"]
+[ext_resource type="Resource" uid="uid://blua7x6lymiom" path="res://characters/generic/cards/Block.tres" id="3_m5f67"]
+[ext_resource type="Resource" uid="uid://be4vg1w4cxn23" path="res://characters/generic/cards/Heal.tres" id="4_cyj8x"]
+[ext_resource type="Resource" uid="uid://5yxyhty4dsxy" path="res://characters/generic/cards/Smite.tres" id="5_03s6x"]
+[ext_resource type="Resource" uid="uid://dutidssai5qni" path="res://characters/generic/cards/Hex.tres" id="6_7b4fp"]
+
+[resource]
+script = ExtResource("2_g3wy8")
+name = "Cleric"
+max_health = 100
+max_draw = 7
+draw = 4
+max_energy = 3
+base_damage = 0
+base_defense = 0
+type = 0
+hand = Array[ExtResource("1_5h04j")]([ExtResource("2_b5gxv"), ExtResource("2_b5gxv"), ExtResource("3_m5f67"), ExtResource("3_m5f67"), ExtResource("4_cyj8x"), ExtResource("5_03s6x"), ExtResource("5_03s6x"), ExtResource("5_03s6x"), ExtResource("5_03s6x"), ExtResource("6_7b4fp")])
+physical_block = 0
+magical_block = 0

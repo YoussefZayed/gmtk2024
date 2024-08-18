@@ -11,8 +11,8 @@
 
 [resource]
 script = ExtResource("2_4ipj1")
-name = "alchemist"
-max_health = 100
+name = "Alchemist"
+max_health = 80
 max_draw = 7
 draw = 4
 max_energy = 3
