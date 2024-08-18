@@ -44,7 +44,17 @@ func init(all_entities, battles_for_combat, timer_time_amount: int):
 
 
 func createBattles(battles: Array[Battle]) -> void:
-	if battles.size() == 3:
+	if battles.size() == 4:
+		$_3piece.visible = true
+		var battle_instance_parent1 = $_4piece/VBoxContainer2/SubViewportContainer3/SubViewport
+		var battle_instance_parent2 = $_4piece/VBoxContainer2/SubViewportContainer4/SubViewport
+		var battle_instance_parent3 = $_4piece/VBoxContainer/SubViewportContainer/SubViewport1
+		var battle_instance_parent4 = $_4piece/VBoxContainer/SubViewportContainer2/SubViewport
+		createBattleInstance(battles[0], battle_instance_parent1)
+		createBattleInstance(battles[1], battle_instance_parent2)
+		createBattleInstance(battles[2], battle_instance_parent3)
+		createBattleInstance(battles[3], battle_instance_parent4)
+	elif battles.size() == 3:
 		$_3piece.visible = true
 		var battle_instance_parent1 = $_3piece/SubViewportContainer/SubViewport1
 		var battle_instance_parent2 = $_3piece/SubViewportContainer2/SubViewport

@@ -33,6 +33,49 @@ visible = false
 offset_right = 40.0
 offset_bottom = 40.0
 
+[node name="_4piece" type="HBoxContainer" parent="."]
+visible = false
+offset_right = 1928.0
+offset_bottom = 1080.0
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="_4piece"]
+layout_mode = 2
+
+[node name="SubViewportContainer3" type="SubViewportContainer" parent="_4piece/VBoxContainer2"]
+layout_mode = 2
+
+[node name="SubViewport" type="SubViewport" parent="_4piece/VBoxContainer2/SubViewportContainer3"]
+handle_input_locally = false
+size = Vector2i(960, 1080)
+render_target_update_mode = 0
+
+[node name="SubViewportContainer4" type="SubViewportContainer" parent="_4piece/VBoxContainer2"]
+layout_mode = 2
+
+[node name="SubViewport" type="SubViewport" parent="_4piece/VBoxContainer2/SubViewportContainer4"]
+handle_input_locally = false
+size = Vector2i(960, 1080)
+render_target_update_mode = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="_4piece"]
+layout_mode = 2
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="_4piece/VBoxContainer"]
+layout_mode = 2
+
+[node name="SubViewport1" type="SubViewport" parent="_4piece/VBoxContainer/SubViewportContainer"]
+handle_input_locally = false
+size = Vector2i(960, 1080)
+render_target_update_mode = 0
+
+[node name="SubViewportContainer2" type="SubViewportContainer" parent="_4piece/VBoxContainer"]
+layout_mode = 2
+
+[node name="SubViewport" type="SubViewport" parent="_4piece/VBoxContainer/SubViewportContainer2"]
+handle_input_locally = false
+size = Vector2i(960, 1080)
+render_target_update_mode = 0
+
 [node name="_3piece" type="HBoxContainer" parent="."]
 visible = false
 offset_right = 1924.0

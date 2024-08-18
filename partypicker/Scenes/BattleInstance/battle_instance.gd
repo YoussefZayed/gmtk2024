@@ -16,6 +16,7 @@ func init(playerEntity, enemyEntity) -> void:
 	$"BattleStatsUI/MarginContainer/MarginContainer/InstanceStats Container/Player Stat Bar/Player".text = player.name
 	enemy = enemyEntity
 	enemy.connect("card_added",set_enemy_card)
+	$UnitsUI/MarginContainer/Enemy/Sprite2D.texture = enemy.art
 	$"BattleStatsUI/MarginContainer/MarginContainer/InstanceStats Container/Enemy Stat Bar/Enemy".text = enemy.name
 	print("READY")
 	list_hand()

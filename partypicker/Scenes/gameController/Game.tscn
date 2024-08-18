@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bnj3emdrvilnr"]
+[gd_scene load_steps=14 format=3 uid="uid://bnj3emdrvilnr"]
 
 [ext_resource type="PackedScene" uid="uid://c3orxpr6ll0jc" path="res://Scenes/battle_controller/battle_controller.tscn" id="1_utmhg"]
 [ext_resource type="PackedScene" uid="uid://ccd4pm0b04v1d" path="res://Scenes/Menus/MainMenu.tscn" id="2_mrty1"]
@@ -9,8 +9,9 @@
 [ext_resource type="Resource" path="res://characters/bard/bard.tres" id="6_xege5"]
 [ext_resource type="Resource" uid="uid://c0y5625tmya44" path="res://characters/cleric/cleric.tres" id="7_roi6b"]
 [ext_resource type="Resource" uid="uid://c6tkmgux206dg" path="res://Enemy_resources/Skeletons/armourer_skelly.tres" id="10_7hub4"]
-[ext_resource type="Resource" path="res://Enemy_resources/Skeletons/hunter_skelly.tres" id="10_mc6us"]
+[ext_resource type="Resource" uid="uid://cir6i8nhld3wh" path="res://Enemy_resources/Skeletons/hunter_skelly.tres" id="10_mc6us"]
 [ext_resource type="Resource" uid="uid://byxsoc1cm60jo" path="res://Enemy_resources/Skeletons/mage_skelly.tres" id="11_iafoj"]
+[ext_resource type="Resource" uid="uid://dfidpun2cjqql" path="res://Enemy_resources/Skeletons/boss_skelly.tres" id="12_uslkw"]
 
 [sub_resource type="GDScript" id="GDScript_gd4kx"]
 script/source = "extends Node2D
@@ -169,7 +170,7 @@ mainMenuScene = ExtResource("2_mrty1")
 shopScreenScene = ExtResource("3_l8qpc")
 playerChars = Array[ExtResource("3_6io0h")]([ExtResource("4_mpn64"), ExtResource("5_xkilt"), ExtResource("6_xege5"), ExtResource("7_roi6b")])
 EnemyChars = Array[ExtResource("3_6io0h")]([ExtResource("10_mc6us"), ExtResource("10_7hub4"), ExtResource("11_iafoj")])
-boss = ExtResource("10_mc6us")
+boss = ExtResource("12_uslkw")
 
 [node name="GameOver" type="CenterContainer" parent="."]
 visible = false

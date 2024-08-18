@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="Entity" load_steps=5 format=3 uid="uid://dfidpun2cjqql"]
+
+[ext_resource type="Texture2D" uid="uid://ctfc6m6a83tq" path="res://Assets/Art/Enemies/BowSkeleton.png" id="1_mrdjn"]
+[ext_resource type="Script" path="res://custom_resources/card.gd" id="2_k0buf"]
+[ext_resource type="Resource" uid="uid://5yxyhty4dsxy" path="res://characters/generic/cards/Smite.tres" id="3_dhpyb"]
+[ext_resource type="Script" path="res://custom_resources/entity.gd" id="7_2khyr"]
+
+[resource]
+script = ExtResource("7_2khyr")
+name = "Final Boss"
+max_health = 300
+max_draw = 1
+draw = 1
+max_energy = 1
+base_damage = 0
+base_defense = 0
+type = 1
+hand = Array[ExtResource("2_k0buf")]([ExtResource("3_dhpyb")])
+physical_block = 0
+magical_block = 0
+art = ExtResource("1_mrdjn")
