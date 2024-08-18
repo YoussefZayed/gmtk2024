@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="Entity" load_steps=7 format=3 uid="uid://dbrthdi8nca7b"]
 
-[ext_resource type="Texture2D" uid="uid://dm01t8a7p5xa1" path="res://Assets/Art/Enemies/SwordSkelly.png" id="1_dotig"]
+[ext_resource type="Texture2D" uid="uid://b6usgllbpohfj" path="res://Assets/Art/Characters/Fighter.jpg" id="1_1qw0p"]
 [ext_resource type="Script" path="res://custom_resources/card.gd" id="1_i6r2m"]
 [ext_resource type="Script" path="res://custom_resources/entity.gd" id="2_fk11v"]
 [ext_resource type="Resource" uid="uid://cgw1ene2bmkc0" path="res://characters/generic/cards/generic_block.tres" id="3_4nj41"]
@@ -20,4 +20,4 @@ type = 0
 hand = Array[ExtResource("1_i6r2m")]([ExtResource("3_7mee3"), ExtResource("3_7mee3"), ExtResource("3_4nj41"), ExtResource("5_4hgqr"), ExtResource("5_4hgqr")])
 physical_block = 0
 magical_block = 0
-art = ExtResource("1_dotig")
+art = ExtResource("1_1qw0p")
