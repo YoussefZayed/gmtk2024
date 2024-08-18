@@ -77,7 +77,7 @@ size_flags_stretch_ratio = 2.0
 
 [node name="Player" type="Label" parent="BattleStatsUI/MarginContainer/MarginContainer/InstanceStats Container/Player Stat Bar"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 32
+theme_override_font_sizes/font_size = 16
 text = "Player"
 horizontal_alignment = 1
 
@@ -212,7 +212,7 @@ size_flags_stretch_ratio = 2.0
 
 [node name="Enemy" type="Label" parent="BattleStatsUI/MarginContainer/MarginContainer/InstanceStats Container/Enemy Stat Bar"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 32
+theme_override_font_sizes/font_size = 16
 text = "Enemy"
 horizontal_alignment = 1
 
