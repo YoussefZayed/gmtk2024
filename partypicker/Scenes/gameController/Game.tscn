@@ -88,9 +88,9 @@ func player_died(id):
 	if not inBattle:
 		pass
 	inBattle = false
-	for i in range(len(players)):
-		if players[i].id == id:
-			players.erase(players[i])
+	for i in players: #range(len(players)):
+		if i.id == id:
+			players.erase(i)
 	if len(players) == 0:
 		gameOver()
 		
