@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://2du2d3kelks6" path="res://Scenes/Menus/Shop.tscn" id="3_l8qpc"]
 [ext_resource type="Resource" uid="uid://dk2jueyvb1x5t" path="res://characters/armourer/armourer.tres" id="4_mpn64"]
 [ext_resource type="Resource" uid="uid://b0wvoa777equr" path="res://characters/alchemist/alchemist.tres" id="5_xkilt"]
-[ext_resource type="Resource" path="res://characters/bard/bard.tres" id="6_xege5"]
+[ext_resource type="Resource" uid="uid://cng7dhvk6y5fb" path="res://characters/bard/bard.tres" id="6_xege5"]
 [ext_resource type="Resource" uid="uid://c0y5625tmya44" path="res://characters/cleric/cleric.tres" id="7_roi6b"]
 [ext_resource type="Resource" uid="uid://c6tkmgux206dg" path="res://Enemy_resources/Skeletons/armourer_skelly.tres" id="10_7hub4"]
 [ext_resource type="Resource" uid="uid://cir6i8nhld3wh" path="res://Enemy_resources/Skeletons/hunter_skelly.tres" id="10_mc6us"]
@@ -106,7 +106,7 @@ func battleEnded():
 		$GameOver2/VBoxContainer/HBoxContainer/Button.connect(\"pressed\",restart)
 		$GameOver2/VBoxContainer/HBoxContainer/Button2.connect(\"pressed\",quit)
 	else:
-		if len(players) < 4:
+		if len(players) < 4 && len(players)>0:
 			showShop()
 		else:
 			startBattle()
