@@ -137,6 +137,8 @@ func play_card(id: String, card: Card, target: String) -> void:
 
 	card_player.energy -= card.energy_cost
 	checkDeaths()
+	
+	hero_powers(card_player, appliedEntites, card)
 
 	
 func applyCardToEntity(card: Card, entity: Entity) -> void:
@@ -167,6 +169,22 @@ func end_turn():
 	#turnTimer.wait_time = max(30, turnTimer.wait_time - 10)
 	turnTimer.wait_time = 60
 	turnTimer.start()
+
+func hero_powers(card_player, appliedEntites, card: Card):
+	var entity_class = appliedEntites[0].name
+	var all_players = get_tree().get_nodes_in_group("player")
+	var all_enemies = get_tree().get_nodes_in_group("enemies")
+	print(all_players)
+	
+	match entity_class:
+		"Entity": #test case
+			if card.physical_damage>0:
+				#print(unithold)
+				print("BIG")
+		"Armourer":
+			if card.physical_block>0:
+				print("Arm")
+	
 
 func checkDeaths():
 	for battle in battles:

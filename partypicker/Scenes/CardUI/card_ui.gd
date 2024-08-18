@@ -117,8 +117,6 @@ func _set_card(value: Card) -> void:
 	else:
 		heal_num.get_parent().visible = false
 	
-	print("Matching...")
-	print(card.target)
 	match card.target:
 		0:
 			target_icon.texture = load("res://Assets/Art/Icons/LaneSelf Icon.png")

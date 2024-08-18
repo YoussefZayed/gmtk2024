@@ -36,6 +36,9 @@ func can_play_card(card: Card) -> bool:
 	return player.energy >= card.energy_cost
 
 func _process(delta):
+	update_scordeboard()
+
+func update_scordeboard():
 	var player_stat_bar = self.find_child("Player Stat Bar")
 	player_stat_bar.find_child("Health Label").text = str(player.health)
 	player_stat_bar.find_child("Energy Label").text = str(player.energy)
