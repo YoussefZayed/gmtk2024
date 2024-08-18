@@ -17,11 +17,10 @@ signal battle_ended()
 
 
 func _ready() -> void:
-	
-	
-	if demo_scene:
+	if demo_scene and self.get_parent().name != "Game":
 		var test_items = testSetup(demo_scene_battles)
 		init(test_items[0], test_items[1], timer_time_limit)
+
 	
 func init(all_entities, battles_for_combat, timer_time_amount: int):
 	print([all_entities, battles_for_combat, timer_time_amount])

@@ -5,6 +5,7 @@
 [node name="battleController" type="Node2D"]
 script = ExtResource("1_r7nbl")
 demo_scene = true
+demo_scene_battles = 2
 
 [node name="_2piece" type="HBoxContainer" parent="."]
 visible = false
