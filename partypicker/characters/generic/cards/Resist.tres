@@ -5,7 +5,7 @@
 
 [resource]
 script = ExtResource("1_ni1h3")
-name = ""
+name = "Resist"
 type = 1
 target = 0
 energy_cost = 1
