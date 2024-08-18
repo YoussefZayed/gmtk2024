@@ -181,6 +181,7 @@ func hero_powers(card_player, appliedEntites, card: Card):
 			if card.physical_damage>0:
 				#print(unithold)
 				print("BIG")
+				# damage(enemies, 1)
 		"Armourer":
 			if card.physical_block>0:
 				print("Arm")

@@ -40,6 +40,7 @@ func startGame():
 	battleController.init(items[0],items[1],items[2])
 	self.add_child(battleController)
 	mainMenu.queue_free()
+	print([\"Items ->\", items])
 	
 func addPlayer(resource: Resource):
 	var player = Entity.new()
