@@ -28,6 +28,7 @@ var shopScreen: Node
 var players: Array[Entity] = []
 var ids = 1;
 var level = 1;
+var choices: Array[Entity] = []
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -43,15 +44,44 @@ func _process(delta: float) -> void:
 	pass
 
 func showShop():
+	shopScreen = shopScreenScene.instantiate()
+	choices = []
+	choices.append(playerChars.pick_random())
+	choices.append(playerChars.pick_random())
+	shopScreen.find_child(\"PARTY_CHOICE_1\").text= choices[0].name
+	shopScreen.find_child(\"PARTY_CHOICE_1\").connect(\"pressed\",addChoice0)
+	shopScreen.find_child(\"PARTY_CHOICE_2\").text= choices[1].name
+	shopScreen.find_child(\"PARTY_CHOICE_2\").connect(\"pressed\",addChoice1)
+
+func addChoice0():
+	var player = Entity.new()
+	player.load_from_resource(choices[0])
+	player.id = str(ids)
+	ids+=1
+	players.append(player)
+	startBattle()
+	
+func addChoice1():
+	var player = Entity.new()
+	player.load_from_resource(choices[1])
+	player.id = str(ids)
+	ids+=1
+	players.append(player)
+	startBattle()
+	
+func startBattle():
+	var items = getBattleControllerItems()
+	battleController = battleControllerScene.instantiate()
+	battleController.init(items[0],items[1],items[2])
+	self.add_child(battleController)
+	level += 1;
+	shopScreen.queue_free()
+	
 	
 
 func startGame():
 	print(\"STARTED!\")
-	#addPlayer(player_entity_wretch)
-	#var items = getBattleControllerItems()
-	#battleController = battleControllerScene.instantiate()
-	#battleController.init(items[0],items[1],items[2])
-	#self.add_child(battleController)
+	showShop()
 	mainMenu.queue_free()
 	
 	
@@ -66,14 +96,14 @@ func getEnemies() -> Array[Entity]:
 	var enemies: Array[Entity] = []
 	for i in range(max(1, min(len(players), level))):
 		var enemy = Entity.new()
-		#enemy.load_from_resource(player_entity_wretch)
+		enemy.load_from_resource(EnemyChars[randi_range(max(0,level-1),min(level,len(EnemyChars)-1))])
 		enemy.id = str(ids)
 		ids+=1
 		enemies.append(enemy)
 	return enemies
 
 func getBattleControllerItems():
-	var enemies = getEnemies()
+	var enemies : Array[Entity] = []
 	enemies.shuffle()
 	var battles: Array[Battle] = []
 	for player in players:
