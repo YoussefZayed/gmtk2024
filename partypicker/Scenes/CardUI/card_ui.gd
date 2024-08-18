@@ -7,6 +7,7 @@ signal reparent_requested(which_card_ui: CardUI)
 @export var char_stats: Entity
 
 @onready var card_art: TextureRect = $Card_art
+@onready var target_icon: TextureRect = $MarginContainer/TargetIcon
 @onready var mana_cost: Label = $ManaCost
 @onready var card_name: Label = $"HBoxContainer/Card Ally Stat Bar/CardName"
 @onready var phys_def_num: Label = $"HBoxContainer/Card Ally Stat Bar/CardStats/PhysDef Container/PhysDef Label"
@@ -72,13 +73,57 @@ func _set_card(value: Card) -> void:
 	card = value
 	mana_cost.text = str(card.energy_cost)
 	card_name.text = str(card.name)
-	phys_def_num.text = str(card.physical_block)
-	mag_def_num.text = str(card.magical_block)
-	phys_dam_num.text = str(card.physical_damage)
-	mag_dam_num.text = str(card.magical_damage)
-	phys_vul_num.text = str(card.physical_taken_increase)
-	mag_vul_num.text = str(card.magical_taken_increase)
 	card_art.texture = card.card_art
+	
+	if card.physical_block > 0:
+		phys_def_num.text = str(card.physical_block)
+		phys_def_num.get_parent().visible = true
+	else:
+		phys_def_num.get_parent().visible = false
+	
+	if card.magical_block > 0:
+		mag_def_num.text = str(card.magical_block)
+		mag_def_num.get_parent().visible = true
+	else:
+		mag_def_num.get_parent().visible = false
+	
+	if card.physical_damage > 0:
+		phys_dam_num.text = str(card.physical_damage)
+		phys_dam_num.get_parent().visible = true
+	else:
+		phys_dam_num.get_parent().visible = false
+	
+	if card.magical_damage > 0:
+		mag_dam_num.text = str(card.magical_damage)
+		mag_dam_num.get_parent().visible = true
+	else:
+		mag_dam_num.get_parent().visible = false
+	
+	if card.physical_taken_increase > 0:
+		phys_vul_num.text = str(card.physical_taken_increase)
+		phys_vul_num.get_parent().visible = true
+	else:
+		phys_vul_num.get_parent().visible = false
+	
+	if card.magical_taken_increase > 0:
+		mag_vul_num.text = str(card.magical_taken_increase)
+		mag_vul_num.get_parent().visible = true
+	else:
+		mag_vul_num.get_parent().visible = false
+	
+	print("Matching...")
+	print(card.target)
+	match card.target:
+		0:
+			target_icon.texture = load("res://Assets/Art/Icons/LaneSelf Icon.png")
+		1:
+			target_icon.texture = load("res://Assets/Art/Icons/LaneEnemy Icon.png")
+		2:
+			target_icon.texture = load("res://Assets/Art/Icons/LaneAll Icon.png")
+		3:
+			target_icon.texture = load("res://Assets/Art/Icons/LaneTargeted Icon.png")
+
+
 
 func _set_playable(value: bool) -> void:
 	playable = value

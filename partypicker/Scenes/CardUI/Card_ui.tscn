@@ -1,10 +1,11 @@
-[gd_scene load_steps=16 format=3 uid="uid://5xqwmu2gdanx"]
+[gd_scene load_steps=17 format=3 uid="uid://5xqwmu2gdanx"]
 
 [ext_resource type="Script" path="res://Scenes/CardUI/card_ui.gd" id="1_a8plt"]
 [ext_resource type="Resource" uid="uid://dbrthdi8nca7b" path="res://characters/generic/wretch.tres" id="2_fur0e"]
 [ext_resource type="Script" path="res://Scenes/CardUI/card_state_machine.gd" id="2_s6r1v"]
 [ext_resource type="Texture2D" uid="uid://cngehbm20ema" path="res://Assets/Art/Icons/PhysDam Icon.png" id="2_whgcd"]
 [ext_resource type="Script" path="res://Scenes/CardUI/CardStates/card_base_state.gd" id="3_gs2sk"]
+[ext_resource type="Texture2D" uid="uid://5qcjk1vucgx1" path="res://Assets/Art/Icons/LaneTargeted Icon.png" id="4_1bapy"]
 [ext_resource type="Texture2D" uid="uid://bdts50mncwnx8" path="res://Assets/Art/Icons/PhysDef Icon.png" id="4_c5ibo"]
 [ext_resource type="Script" path="res://Scenes/CardUI/CardStates/card_clicked_state.gd" id="4_ih7nq"]
 [ext_resource type="Texture2D" uid="uid://blggm0xupsq88" path="res://Assets/Art/Icons/MagDef Icon.png" id="5_1merg"]
@@ -62,13 +63,21 @@ texture = ExtResource("2_whgcd")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="Overlay" type="ColorRect" parent="."]
+[node name="Border" type="MarginContainer" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/margin_left = 2
+theme_override_constants/margin_top = 2
+theme_override_constants/margin_right = 2
+theme_override_constants/margin_bottom = 2
+
+[node name="Card Base Color" type="ColorRect" parent="Border"]
+layout_mode = 2
+mouse_filter = 2
 color = Color(0.716434, 0.646527, 0.441808, 1)
 
 [node name="ManaCost" type="Label" parent="."]
@@ -77,9 +86,24 @@ layout_mode = 0
 offset_right = 45.0
 offset_bottom = 45.0
 theme_override_font_sizes/font_size = 32
-text = "2"
+text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -45.0
+offset_bottom = 45.0
+grow_horizontal = 0
+
+[node name="TargetIcon" type="TextureRect" parent="MarginContainer"]
+custom_minimum_size = Vector2(0, 45)
+layout_mode = 2
+texture = ExtResource("4_1bapy")
+expand_mode = 3
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 1
@@ -100,6 +124,7 @@ size_flags_stretch_ratio = 2.0
 [node name="CardStats" type="GridContainer" parent="HBoxContainer/Card Ally Stat Bar"]
 layout_mode = 2
 size_flags_horizontal = 6
+size_flags_vertical = 0
 size_flags_stretch_ratio = 2.0
 columns = 2
 

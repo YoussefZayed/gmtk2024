@@ -7,7 +7,6 @@
 
 [resource]
 script = ExtResource("2_f0k01")
-id = "Armored_Skeleton"
 name = "Entity"
 max_health = 100
 max_draw = 1

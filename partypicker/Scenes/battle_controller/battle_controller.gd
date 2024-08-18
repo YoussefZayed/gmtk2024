@@ -194,4 +194,6 @@ func on_turnTimer_timeout() -> void:
 	end_turn()
 	
 func _process(delta: float) -> void:
-	$EndTurn/VBoxContainer/TurnTimerLabel.text = "( " + str(round(turnTimer.time_left)) + " secs)"
+	var time_rem = turnTimer.time_left
+	$"EndTurn/VBoxContainer/Timer Bar/MarginContainer/TimeRemaining".value = time_rem
+	$EndTurn/VBoxContainer/TurnTimerLabel.text = "( " + str(round(time_rem)) + " secs)"

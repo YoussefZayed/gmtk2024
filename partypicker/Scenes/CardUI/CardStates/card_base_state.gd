@@ -4,6 +4,8 @@ func enter() -> void:
 	if not card_ui.is_node_ready():
 		await card_ui.ready
 	
+	card_ui.scale = Vector2(1, 1)
+	
 	if card_ui.tween and card_ui.tween.is_running():
 		card_ui.tween.kill()
 	
