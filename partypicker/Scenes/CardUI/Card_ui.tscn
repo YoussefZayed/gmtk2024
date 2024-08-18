@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://5xqwmu2gdanx"]
+[gd_scene load_steps=18 format=3 uid="uid://5xqwmu2gdanx"]
 
 [ext_resource type="Script" path="res://Scenes/CardUI/card_ui.gd" id="1_a8plt"]
 [ext_resource type="Resource" uid="uid://dbrthdi8nca7b" path="res://characters/generic/wretch.tres" id="2_fur0e"]
@@ -15,6 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://8h5ppop1n8ex" path="res://Assets/Art/Icons/PhysVul Icon.png" id="6_rvatk"]
 [ext_resource type="Script" path="res://Scenes/CardUI/CardStates/card_aiming_state.gd" id="7_1cdm7"]
 [ext_resource type="Texture2D" uid="uid://diur5ks5h0uw4" path="res://Assets/Art/Icons/MagVul Icon.png" id="7_3l3gp"]
+[ext_resource type="Texture2D" uid="uid://cw4wnknya5pq3" path="res://Assets/Art/Icons/Heal Icon.png" id="10_7amlf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jx84x"]
 size = Vector2(64, 89)
@@ -239,6 +240,26 @@ texture = ExtResource("7_3l3gp")
 expand_mode = 3
 
 [node name="MagVul Label" type="Label" parent="HBoxContainer/Card Ally Stat Bar/CardStats/MagVul Container"]
+custom_minimum_size = Vector2(25, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 20
+text = "0
+"
+horizontal_alignment = 1
+
+[node name="Heal Container" type="HBoxContainer" parent="HBoxContainer/Card Ally Stat Bar/CardStats"]
+layout_mode = 2
+size_flags_horizontal = 2
+
+[node name="Heal Icon" type="TextureRect" parent="HBoxContainer/Card Ally Stat Bar/CardStats/Heal Container"]
+layout_mode = 2
+size_flags_horizontal = 0
+texture = ExtResource("10_7amlf")
+expand_mode = 3
+
+[node name="Heal Label" type="Label" parent="HBoxContainer/Card Ally Stat Bar/CardStats/Heal Container"]
 custom_minimum_size = Vector2(25, 0)
 layout_mode = 2
 size_flags_horizontal = 0

@@ -94,7 +94,8 @@ theme_override_constants/margin_bottom = 5
 modulate = Color(0.561256, 0.633773, 0.874122, 1)
 layout_mode = 2
 size_flags_vertical = 1
-value = 100.0
+max_value = 60.0
+value = 60.0
 fill_mode = 3
 show_percentage = false
 

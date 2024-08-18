@@ -164,7 +164,8 @@ func end_turn():
 		battle.enemy.play_card(battle.enemy.hand[0], battle.player.id)
 		battle.enemy.end_turn()
 	checkDeaths()
-	turnTimer.wait_time = max(30, turnTimer.wait_time - 10)
+	#turnTimer.wait_time = max(30, turnTimer.wait_time - 10)
+	turnTimer.wait_time = 60
 	turnTimer.start()
 
 func checkDeaths():
