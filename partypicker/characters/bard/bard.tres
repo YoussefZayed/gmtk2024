@@ -1,5 +1,6 @@
-[gd_resource type="Resource" script_class="Entity" load_steps=10 format=3 uid="uid://ehlsvfbpcsbh"]
+[gd_resource type="Resource" script_class="Entity" load_steps=11 format=3 uid="uid://cng7dhvk6y5fb"]
 
+[ext_resource type="Texture2D" uid="uid://fqgdu0dtid72" path="res://Assets/Art/Characters/Warrior.png" id="1_3x72m"]
 [ext_resource type="Script" path="res://custom_resources/card.gd" id="1_g18ud"]
 [ext_resource type="Script" path="res://custom_resources/entity.gd" id="2_5yo5l"]
 [ext_resource type="Resource" uid="uid://dq21epsrgf51m" path="res://characters/bard/cards/Bolster.tres" id="2_y7jq7"]
@@ -23,3 +24,4 @@ type = 0
 hand = Array[ExtResource("1_g18ud")]([ExtResource("2_y7jq7"), ExtResource("2_y7jq7"), ExtResource("3_biisi"), ExtResource("4_vm534"), ExtResource("5_cascm"), ExtResource("6_8tqgu"), ExtResource("6_8tqgu"), ExtResource("7_0h6lb"), ExtResource("8_2qqco"), ExtResource("8_2qqco")])
 physical_block = 0
 magical_block = 0
+art = ExtResource("1_3x72m")
