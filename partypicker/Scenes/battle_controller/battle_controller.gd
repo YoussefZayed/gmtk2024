@@ -45,7 +45,7 @@ func init(all_entities, battles_for_combat, timer_time_amount: int):
 
 func createBattles(battles: Array[Battle]) -> void:
 	if battles.size() == 4:
-		$_3piece.visible = true
+		$_4piece.visible = true
 		var battle_instance_parent1 = $_4piece/VBoxContainer2/SubViewportContainer3/SubViewport
 		var battle_instance_parent2 = $_4piece/VBoxContainer2/SubViewportContainer4/SubViewport
 		var battle_instance_parent3 = $_4piece/VBoxContainer/SubViewportContainer/SubViewport1
@@ -76,7 +76,9 @@ func createBattleInstance(battle: Battle, parent: Node) -> void:
 	var battle_instance = battleInstanceScene.instantiate()
 	print(battle_instance)
 	battle_instance.init(battle.player, battle.enemy)
+	
 	parent.add_child(battle_instance)
+	
 	
 		
 func testSetup(battle_num):
