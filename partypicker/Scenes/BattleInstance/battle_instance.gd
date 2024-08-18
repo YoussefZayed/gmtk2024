@@ -21,9 +21,16 @@ func init(playerEntity, enemyEntity) -> void:
 	player.connect("card_added",add_player_card)
 	player.connect("hand_discarded",discard_player_hand)
 	$UnitsUI/MarginContainer/Player/Sprite2D.texture = player.art
+	$"BattleStatsUI/MarginContainer/MarginContainer/InstanceStats Container/Player Stat Bar/Player".text = player.name
 	enemy = enemyEntity
+	enemy.connect("card_added",set_enemy_card)
+	$"BattleStatsUI/MarginContainer/MarginContainer/InstanceStats Container/Enemy Stat Bar/Enemy".text = enemy.name
 	print("READY")
 	list_hand()
+	
+func set_enemy_card(id,card):
+	$"BattleUI/Intent Margin/EnemyIntent".card = card
+	$"BattleUI/Intent Margin/EnemyIntent".visible = true
 	
 func add_player_card(id,card):
 	var new_card = $BattleUI/MarginContainer/CardUI.duplicate()

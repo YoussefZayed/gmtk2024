@@ -12,6 +12,7 @@ var battleInstanceScene = preload("res://Scenes/BattleInstance/BattleInstance.ts
 @export var demo_scene = false
 @export var demo_scene_battles = 1
 @export var timer_time_limit = 100
+var turn_num = 0
 var turnTimer: Timer
 signal player_died(id)
 signal battle_ended()
@@ -32,13 +33,14 @@ func init(all_entities, battles_for_combat, timer_time_amount: int):
 	for entity in entities:
 		connectToEntity(entity)
 		entitiesDict[entity.id] = entity
-		entity.draw_hand()
+
 	createBattles(battles)
 	if (not timer_time_amount):
 		turnTimer.wait_time = 100
 	else:
 		turnTimer.wait_time = timer_time_amount
 	turnTimer.start()
+	
 
 
 func createBattles(battles: Array[Battle]) -> void:
@@ -65,7 +67,6 @@ func createBattleInstance(battle: Battle, parent: Node) -> void:
 	print(battle_instance)
 	battle_instance.init(battle.player, battle.enemy)
 	parent.add_child(battle_instance)
-	battle.player.draw_hand()
 	
 		
 func testSetup(battle_num):
@@ -158,13 +159,15 @@ func applyCardToEntity(card: Card, entity: Entity) -> void:
 		entity.take_damage(card.physical_damage, "physical")
 
 func end_turn():
+	$EndTurn/VBoxContainer/Button.text = "End Turn"
 	for battle in battles:
 		if battle.battleEnded:
 			continue
 		if battle.player.health > 0:
 			battle.player.end_turn()
-		print(battle.enemy.hand[0])
-		battle.enemy.play_card(battle.enemy.hand[0], battle.player.id)
+		if (battle.enemy.hand):
+			print(battle.enemy.hand[0])
+			battle.enemy.play_card(battle.enemy.hand[0], battle.player.id)
 		battle.enemy.end_turn()
 	checkDeaths()
 	#turnTimer.wait_time = max(30, turnTimer.wait_time - 10)

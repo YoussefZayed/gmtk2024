@@ -103,7 +103,7 @@ show_percentage = false
 [node name="Button" type="Button" parent="EndTurn/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 16
-text = "End Turn"
+text = "Start Battle"
 
 [node name="TurnTimerLabel" type="Label" parent="EndTurn/VBoxContainer"]
 layout_mode = 2
