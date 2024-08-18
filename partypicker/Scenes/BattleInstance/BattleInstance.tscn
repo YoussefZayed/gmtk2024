@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://bvxqwcjg5niyw"]
+[gd_scene load_steps=21 format=3 uid="uid://bvxqwcjg5niyw"]
 
 [ext_resource type="Script" path="res://Scenes/BattleInstance/battle_instance.gd" id="1_ldqhx"]
 [ext_resource type="Script" path="res://Scenes/BattleInstance/BattleInstanceUI/hand.gd" id="2_71o20"]
@@ -10,7 +10,6 @@
 [ext_resource type="Texture2D" uid="uid://bvammojqyacbk" path="res://Assets/Art/Icons/Energy Icon.png" id="5_ur12a"]
 [ext_resource type="Texture2D" uid="uid://bdts50mncwnx8" path="res://Assets/Art/Icons/PhysDef Icon.png" id="6_0re61"]
 [ext_resource type="Resource" uid="uid://sxsx1eriqqkp" path="res://characters/generic/cards/generic_target_spell.tres" id="6_vrksm"]
-[ext_resource type="Resource" uid="uid://cgw1ene2bmkc0" path="res://characters/generic/cards/generic_block.tres" id="7_nnr4h"]
 [ext_resource type="Texture2D" uid="uid://blggm0xupsq88" path="res://Assets/Art/Icons/MagDef Icon.png" id="7_yt7sn"]
 [ext_resource type="Texture2D" uid="uid://8h5ppop1n8ex" path="res://Assets/Art/Icons/PhysVul Icon.png" id="8_ovhs4"]
 [ext_resource type="Texture2D" uid="uid://diur5ks5h0uw4" path="res://Assets/Art/Icons/MagVul Icon.png" id="9_ye07s"]
@@ -19,7 +18,6 @@
 [ext_resource type="Resource" uid="uid://dfid1r68kq5ps" path="res://Enemy_resources/Skeletons/Armored_Skeleton.tres" id="13_bhu7m"]
 [ext_resource type="PackedScene" uid="uid://r1w8873d38uh" path="res://Player/player.tscn" id="14_nieeb"]
 [ext_resource type="Resource" uid="uid://dbrthdi8nca7b" path="res://characters/generic/wretch.tres" id="15_dnll6"]
-[ext_resource type="Resource" uid="uid://q3jtcgeo3nc2" path="res://characters/generic/cards/generic_axe_attack.tres" id="20_x5npl"]
 [ext_resource type="Resource" uid="uid://g16ymeugr3rj" path="res://characters/generic/cards/generic_sword_attack.tres" id="21_rp0tu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_utwlq"]
@@ -384,21 +382,16 @@ alignment = 1
 script = ExtResource("2_71o20")
 metadata/_edit_use_anchors_ = true
 
-[node name="CardUI" parent="BattleUI/MarginContainer/Hand" instance=ExtResource("2_s0ui1")]
+[node name="CardUI" parent="BattleUI/MarginContainer" instance=ExtResource("2_s0ui1")]
+visible = false
 layout_mode = 2
 card = ExtResource("6_vrksm")
 
-[node name="CardUI2" parent="BattleUI/MarginContainer/Hand" instance=ExtResource("2_s0ui1")]
+[node name="HIDEHAND" type="ColorRect" parent="BattleUI/MarginContainer"]
+visible = false
+modulate = Color(0.41, 0.41, 0.41, 0.388235)
 layout_mode = 2
-card = ExtResource("20_x5npl")
-
-[node name="CardUI3" parent="BattleUI/MarginContainer/Hand" instance=ExtResource("2_s0ui1")]
-layout_mode = 2
-card = ExtResource("7_nnr4h")
-
-[node name="CardUI4" parent="BattleUI/MarginContainer/Hand" instance=ExtResource("2_s0ui1")]
-layout_mode = 2
-card = ExtResource("21_rp0tu")
+color = Color(0.190762, 0.190762, 0.190762, 0.419608)
 
 [node name="Intent Margin" type="MarginContainer" parent="BattleUI"]
 anchors_preset = 8

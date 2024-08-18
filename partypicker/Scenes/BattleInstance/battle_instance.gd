@@ -18,9 +18,21 @@ var enemy: Entity
 
 func init(playerEntity, enemyEntity) -> void:
 	player = playerEntity
+	player.connect("card_added",add_player_card)
+	$UnitsUI/MarginContainer/Player/Sprite2D.texture = player.art
 	enemy = enemyEntity
 	print("READY")
 	list_hand()
+	
+func add_player_card(id,card):
+	var new_card = $BattleUI/MarginContainer/CardUI.duplicate()
+	new_card.card = card
+	
+	$BattleUI/MarginContainer/Hand.add_child(new_card)
+	for child in $BattleUI/MarginContainer/Hand.get_children():
+		child.set_visible(true)
+	
+	print(["👍",card.name])
 
 #func create_instance() -> Resource:
 	#var enemy: Entity = 
@@ -53,3 +65,7 @@ func update_scordeboard():
 	enemy_stat_bar.find_child("MagDef Label").text = str(enemy.magical_block)
 	enemy_stat_bar.find_child("PhysVul Label").text = str(enemy.physical_taken_increase)
 	enemy_stat_bar.find_child("MagVul Label").text = str(enemy.magical_taken_increase)
+	if player.energy == 0:
+		$BattleUI/MarginContainer/HIDEHAND.set_visible(true)
+	else:
+		$BattleUI/MarginContainer/HIDEHAND.set_visible(false)
