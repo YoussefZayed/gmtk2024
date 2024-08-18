@@ -177,7 +177,6 @@ func hero_powers(card_player, appliedEntites, card: Card):
 	var entity_class = appliedEntites[0].name
 	var all_players = get_tree().get_nodes_in_group("player")
 	var all_enemies = get_tree().get_nodes_in_group("enemies")
-	print(all_players)
 	
 	match entity_class:
 		"Entity": #test case

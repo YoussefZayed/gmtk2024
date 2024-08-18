@@ -63,6 +63,7 @@ func _on_gui_input(event: InputEvent) -> void:
 
 func _on_mouse_entered() -> void:
 	card_state_machine.on_mouse_entered()
+	print(["Card parent ->", self.get_parent()])
 
 func _on_mouse_exited() -> void:
 	card_state_machine.on_mouse_exited()
