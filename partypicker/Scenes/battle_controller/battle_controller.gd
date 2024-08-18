@@ -44,7 +44,17 @@ func init(all_entities, battles_for_combat, timer_time_amount: int):
 
 
 func createBattles(battles: Array[Battle]) -> void:
-	if battles.size() == 3:
+	if battles.size() == 4:
+		$_3piece.visible = true
+		var battle_instance_parent1 = $_4piece/VBoxContainer2/SubViewportContainer3/SubViewport
+		var battle_instance_parent2 = $_4piece/VBoxContainer2/SubViewportContainer4/SubViewport
+		var battle_instance_parent3 = $_4piece/VBoxContainer/SubViewportContainer/SubViewport1
+		var battle_instance_parent4 = $_4piece/VBoxContainer/SubViewportContainer2/SubViewport
+		createBattleInstance(battles[0], battle_instance_parent1)
+		createBattleInstance(battles[1], battle_instance_parent2)
+		createBattleInstance(battles[2], battle_instance_parent3)
+		createBattleInstance(battles[3], battle_instance_parent4)
+	elif battles.size() == 3:
 		$_3piece.visible = true
 		var battle_instance_parent1 = $_3piece/SubViewportContainer/SubViewport1
 		var battle_instance_parent2 = $_3piece/SubViewportContainer2/SubViewport
@@ -171,7 +181,6 @@ func end_turn():
 		battle.enemy.end_turn()
 	checkDeaths()
 	#turnTimer.wait_time = max(30, turnTimer.wait_time - 10)
-	turnTimer.wait_time = 60
 	turnTimer.start()
 
 func hero_powers(card_player, appliedEntites, card: Card):
@@ -196,18 +205,20 @@ func checkDeaths():
 			battle.player.energy = 0
 			battle.player.discard_hand()
 			battle.battleEnded = true
+			print("👍👍👍 ENDED")
 			battle.player.emit_signal("battleEnded", battle.player.id, true)
 			self.emit_signal("player_died", battle.player.id)
 		elif battle.enemy.health <= 0:
 			battle.player.energy = 0
 			battle.player.discard_hand()
+			print("ASDASd ENDED")
 			battle.battleEnded = true
 			battle.player.emit_signal("battleEnded", battle.player.id, false)
 	var battle_on_going = false
 	for battle in battles:
 		if not battle.battleEnded:
 			battle_on_going = true
-	if (battle_on_going):
+	if (not battle_on_going):
 		self.emit_signal("battle_ended")
 
 func _on_button_pressed() -> void:
