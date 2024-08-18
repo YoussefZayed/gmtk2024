@@ -13,7 +13,7 @@ config_version=5
 config/name="PartyPicker"
 run/main_scene="res://Scenes/gameController/Game.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
-config/icon="res://Assets/Art/icon.svg"
+config/icon="res://Assets/Art/Characters/Warrior.png"
 
 [autoload]
 

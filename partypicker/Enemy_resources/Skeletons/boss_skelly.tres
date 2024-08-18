@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Entity" load_steps=9 format=3 uid="uid://dfidpun2cjqql"]
+[gd_resource type="Resource" script_class="Entity" load_steps=9 format=3 uid="uid://tmf78ri77wg7"]
 
 [ext_resource type="Texture2D" uid="uid://i2u0813gvptp" path="res://Assets/Art/Enemies/WizStaffSkeleton.png" id="1_li2wp"]
 [ext_resource type="Script" path="res://custom_resources/card.gd" id="2_k0buf"]
