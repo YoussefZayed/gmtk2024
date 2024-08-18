@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="Entity" load_steps=8 format=3 uid="uid://cir6i8nhld3wh"]
+
+[ext_resource type="Texture2D" uid="uid://ctfc6m6a83tq" path="res://Assets/Art/Enemies/BowSkeleton.png" id="1_5ppgb"]
+[ext_resource type="Script" path="res://custom_resources/card.gd" id="1_v130v"]
+[ext_resource type="Resource" uid="uid://blua7x6lymiom" path="res://characters/generic/cards/Block.tres" id="3_poftf"]
+[ext_resource type="Resource" uid="uid://c025xmmvgll6d" path="res://characters/generic/cards/Resist.tres" id="4_es0yr"]
+[ext_resource type="Resource" uid="uid://c8mxvqit2hs23" path="res://characters/generic/cards/Shatter.tres" id="6_hb4sy"]
+[ext_resource type="Resource" uid="uid://cr76dw77mosli" path="res://characters/generic/cards/Strike.tres" id="7_7020n"]
+[ext_resource type="Script" path="res://custom_resources/entity.gd" id="8_yg53w"]
+
+[resource]
+script = ExtResource("8_yg53w")
+name = "Hunter_skelly"
+max_health = 40
+max_draw = 1
+draw = 1
+max_energy = 1
+base_damage = 0
+base_defense = 0
+type = 1
+hand = Array[ExtResource("1_v130v")]([ExtResource("3_poftf"), ExtResource("3_poftf"), ExtResource("4_es0yr"), ExtResource("4_es0yr"), ExtResource("7_7020n"), ExtResource("7_7020n"), ExtResource("7_7020n"), ExtResource("6_hb4sy"), ExtResource("6_hb4sy")])
+physical_block = 0
+magical_block = 0
+art = ExtResource("1_5ppgb")

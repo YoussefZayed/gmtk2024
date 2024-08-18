@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="Entity" load_steps=9 format=3 uid="uid://d0qyy41hh5272"]
+
+[ext_resource type="Texture2D" uid="uid://hmhk466xc3je" path="res://Assets/Art/Enemies/StaffSkeleton.png" id="1_v6653"]
+[ext_resource type="Script" path="res://custom_resources/card.gd" id="2_k6sqm"]
+[ext_resource type="Resource" uid="uid://blua7x6lymiom" path="res://characters/generic/cards/Block.tres" id="3_asqe5"]
+[ext_resource type="Resource" uid="uid://c025xmmvgll6d" path="res://characters/generic/cards/Resist.tres" id="4_y1av0"]
+[ext_resource type="Resource" uid="uid://5yxyhty4dsxy" path="res://characters/generic/cards/Smite.tres" id="5_pntnu"]
+[ext_resource type="Resource" uid="uid://dutidssai5qni" path="res://characters/generic/cards/Hex.tres" id="6_gyhkd"]
+[ext_resource type="Resource" uid="uid://cr76dw77mosli" path="res://characters/generic/cards/Strike.tres" id="7_3xq8w"]
+[ext_resource type="Script" path="res://custom_resources/entity.gd" id="8_asltn"]
+
+[resource]
+script = ExtResource("8_asltn")
+name = "Mage_skelly"
+max_health = 40
+max_draw = 1
+draw = 1
+max_energy = 1
+base_damage = 0
+base_defense = 0
+type = 1
+hand = Array[ExtResource("2_k6sqm")]([ExtResource("3_asqe5"), ExtResource("3_asqe5"), ExtResource("4_y1av0"), ExtResource("4_y1av0"), ExtResource("5_pntnu"), ExtResource("5_pntnu"), ExtResource("6_gyhkd"), ExtResource("6_gyhkd"), ExtResource("7_3xq8w")])
+physical_block = 0
+magical_block = 0
+art = ExtResource("1_v6653")
