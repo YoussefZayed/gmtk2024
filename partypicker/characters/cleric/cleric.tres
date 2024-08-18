@@ -1,6 +1,7 @@
-[gd_resource type="Resource" script_class="Entity" load_steps=8 format=3 uid="uid://c0y5625tmya44"]
+[gd_resource type="Resource" script_class="Entity" load_steps=9 format=3 uid="uid://c0y5625tmya44"]
 
 [ext_resource type="Script" path="res://custom_resources/card.gd" id="1_5h04j"]
+[ext_resource type="Texture2D" uid="uid://ds0njri1t5j6t" path="res://Assets/Art/Characters/Cleric.png" id="1_jbal1"]
 [ext_resource type="Resource" uid="uid://dwcls34dqcgfw" path="res://characters/cleric/cards/Protection.tres" id="2_b5gxv"]
 [ext_resource type="Script" path="res://custom_resources/entity.gd" id="2_g3wy8"]
 [ext_resource type="Resource" uid="uid://blua7x6lymiom" path="res://characters/generic/cards/Block.tres" id="3_m5f67"]
@@ -21,3 +22,4 @@ type = 0
 hand = Array[ExtResource("1_5h04j")]([ExtResource("2_b5gxv"), ExtResource("2_b5gxv"), ExtResource("3_m5f67"), ExtResource("3_m5f67"), ExtResource("4_cyj8x"), ExtResource("5_03s6x"), ExtResource("5_03s6x"), ExtResource("5_03s6x"), ExtResource("5_03s6x"), ExtResource("6_7b4fp")])
 physical_block = 0
 magical_block = 0
+art = ExtResource("1_jbal1")
