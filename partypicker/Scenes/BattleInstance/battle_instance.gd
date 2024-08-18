@@ -79,3 +79,9 @@ func update_scordeboard():
 		$BattleUI/MarginContainer/HIDEHAND.set_visible(true)
 	else:
 		$BattleUI/MarginContainer/HIDEHAND.set_visible(false)
+	if player.health == 0:
+		$CanvasLayer/CenterContainer/Lost.visible= true
+		$CanvasLayer/CenterContainer/Lost/Label.text = player.name + " Has Died"
+	elif enemy.health == 0:
+		$CanvasLayer/CenterContainer/Lost.visible= true
+		$CanvasLayer/CenterContainer/Lost/Label.text = player.name + " has killed the enemy"
