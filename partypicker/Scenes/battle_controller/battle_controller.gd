@@ -7,6 +7,7 @@ var battles: Array[Battle]
 var entitiesDict = {}
 var gen_deck = preload("res://characters/generic/generic_deck.tres")
 var player_entity_wretch = preload("res://characters/generic/wretch.tres")
+var cleric = preload('res://characters/armourer/armourer.tres')
 var battleInstanceScene = preload("res://Scenes/BattleInstance/BattleInstance.tscn")
 @export var demo_scene = false
 @export var demo_scene_battles = 1
@@ -64,6 +65,7 @@ func createBattleInstance(battle: Battle, parent: Node) -> void:
 	print(battle_instance)
 	battle_instance.init(battle.player, battle.enemy)
 	parent.add_child(battle_instance)
+	battle.player.draw_hand()
 	
 		
 func testSetup(battle_num):
@@ -74,7 +76,7 @@ func testSetup(battle_num):
 	print(player.name)
 	
 	var player2 = Entity.new()
-	player2.deck = gen_deck.cards.duplicate()
+	player2.load_from_resource(cleric)
 	player2.id = "2"
 	
 	var enemy1 = Entity.new()
