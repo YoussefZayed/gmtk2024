@@ -9,7 +9,7 @@
 [ext_resource type="Resource" path="res://characters/bard/bard.tres" id="6_xege5"]
 [ext_resource type="Resource" uid="uid://c0y5625tmya44" path="res://characters/cleric/cleric.tres" id="7_roi6b"]
 [ext_resource type="Resource" uid="uid://dbrthdi8nca7b" path="res://characters/generic/wretch.tres" id="8_atxal"]
-[ext_resource type="Resource" uid="uid://dfid1r68kq5ps" path="res://Enemy_resources/Skeletons/Armored_Skeleton.tres" id="10_nqsxk"]
+[ext_resource type="Resource" path="res://Enemy_resources/Skeletons/hunter_skelly.tres" id="10_mc6us"]
 
 [sub_resource type="GDScript" id="GDScript_gd4kx"]
 script/source = "extends Node2D
@@ -52,6 +52,7 @@ func showShop():
 	shopScreen.find_child(\"PARTY_CHOICE_1\").connect(\"pressed\",addChoice0)
 	shopScreen.find_child(\"PARTY_CHOICE_2\").text= choices[1].name
 	shopScreen.find_child(\"PARTY_CHOICE_2\").connect(\"pressed\",addChoice1)
+	self.add_child(shopScreen)
 
 func addChoice0():
 	var player = Entity.new()
@@ -96,14 +97,14 @@ func getEnemies() -> Array[Entity]:
 	var enemies: Array[Entity] = []
 	for i in range(max(1, min(len(players), level))):
 		var enemy = Entity.new()
-		enemy.load_from_resource(EnemyChars[randi_range(max(0,level-1),min(level,len(EnemyChars)-1))])
+		enemy.load_from_resource(EnemyChars.pick_random())
 		enemy.id = str(ids)
 		ids+=1
 		enemies.append(enemy)
 	return enemies
 
 func getBattleControllerItems():
-	var enemies : Array[Entity] = []
+	var enemies : Array[Entity] =getEnemies()
 	enemies.shuffle()
 	var battles: Array[Battle] = []
 	for player in players:
@@ -120,4 +121,4 @@ battleControllerScene = ExtResource("1_utmhg")
 mainMenuScene = ExtResource("2_mrty1")
 shopScreenScene = ExtResource("3_l8qpc")
 playerChars = Array[ExtResource("3_6io0h")]([ExtResource("4_mpn64"), ExtResource("5_xkilt"), ExtResource("6_xege5"), ExtResource("7_roi6b"), ExtResource("8_atxal")])
-EnemyChars = Array[ExtResource("3_6io0h")]([ExtResource("10_nqsxk")])
+EnemyChars = Array[ExtResource("3_6io0h")]([ExtResource("10_mc6us")])
