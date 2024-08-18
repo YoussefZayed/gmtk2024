@@ -19,6 +19,7 @@ var enemy: Entity
 func init(playerEntity, enemyEntity) -> void:
 	player = playerEntity
 	player.connect("card_added",add_player_card)
+	player.connect("hand_discarded",discard_player_hand)
 	$UnitsUI/MarginContainer/Player/Sprite2D.texture = player.art
 	enemy = enemyEntity
 	print("READY")
@@ -31,8 +32,10 @@ func add_player_card(id,card):
 	$BattleUI/MarginContainer/Hand.add_child(new_card)
 	for child in $BattleUI/MarginContainer/Hand.get_children():
 		child.set_visible(true)
-	
-	print(["👍",card.name])
+
+func discard_player_hand():
+	for child in $BattleUI/MarginContainer/Hand.get_children():
+		child.queue_free()
 
 #func create_instance() -> Resource:
 	#var enemy: Entity = 
