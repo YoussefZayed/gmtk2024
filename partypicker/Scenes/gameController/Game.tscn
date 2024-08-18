@@ -3,14 +3,14 @@
 [ext_resource type="PackedScene" uid="uid://c3orxpr6ll0jc" path="res://Scenes/battle_controller/battle_controller.tscn" id="1_utmhg"]
 [ext_resource type="PackedScene" uid="uid://ccd4pm0b04v1d" path="res://Scenes/Menus/MainMenu.tscn" id="2_mrty1"]
 [ext_resource type="Script" path="res://custom_resources/entity.gd" id="3_6io0h"]
-[ext_resource type="PackedScene" path="res://Scenes/Menus/Shop.tscn" id="3_l8qpc"]
+[ext_resource type="PackedScene" uid="uid://2du2d3kelks6" path="res://Scenes/Menus/Shop.tscn" id="3_l8qpc"]
 [ext_resource type="Resource" uid="uid://dk2jueyvb1x5t" path="res://characters/armourer/armourer.tres" id="4_mpn64"]
 [ext_resource type="Resource" uid="uid://b0wvoa777equr" path="res://characters/alchemist/alchemist.tres" id="5_xkilt"]
-[ext_resource type="Resource" uid="uid://ehlsvfbpcsbh" path="res://characters/bard/bard.tres" id="6_xege5"]
+[ext_resource type="Resource" path="res://characters/bard/bard.tres" id="6_xege5"]
 [ext_resource type="Resource" uid="uid://c0y5625tmya44" path="res://characters/cleric/cleric.tres" id="7_roi6b"]
-[ext_resource type="Resource" uid="uid://b3o1ybivqmuyk" path="res://Enemy_resources/Skeletons/armourer_skelly.tres" id="10_7hub4"]
-[ext_resource type="Resource" uid="uid://cir6i8nhld3wh" path="res://Enemy_resources/Skeletons/hunter_skelly.tres" id="10_mc6us"]
-[ext_resource type="Resource" uid="uid://d0qyy41hh5272" path="res://Enemy_resources/Skeletons/mage_skelly.tres" id="11_iafoj"]
+[ext_resource type="Resource" uid="uid://c6tkmgux206dg" path="res://Enemy_resources/Skeletons/armourer_skelly.tres" id="10_7hub4"]
+[ext_resource type="Resource" path="res://Enemy_resources/Skeletons/hunter_skelly.tres" id="10_mc6us"]
+[ext_resource type="Resource" uid="uid://byxsoc1cm60jo" path="res://Enemy_resources/Skeletons/mage_skelly.tres" id="11_iafoj"]
 
 [sub_resource type="GDScript" id="GDScript_gd4kx"]
 script/source = "extends Node2D
@@ -30,6 +30,9 @@ var players: Array[Entity] = []
 var ids = 1;
 var level = 1;
 var choices: Array[Entity] = []
+@export var boss: Entity
+var inBattle = false
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -37,14 +40,11 @@ func _ready() -> void:
 	print(mainMenu)
 	self.add_child(mainMenu)
 	mainMenu.find_child(\"StartButton\").connect('pressed',startGame)
-	
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
 
 func showShop():
+	if (self.get_child_count() > 3):
+		print(self.get_child_count())
+		return
 	shopScreen = shopScreenScene.instantiate()
 	choices = []
 	choices.append(playerChars.pick_random())
@@ -72,12 +72,56 @@ func addChoice1():
 	startBattle()
 	
 func startBattle():
+	inBattle = true
 	var items = getBattleControllerItems()
 	battleController = battleControllerScene.instantiate()
 	battleController.init(items[0],items[1],items[2])
+	battleController.connect(\"player_died\",player_died)
+	battleController.connect(\"battle_ended\",battleEnded)
 	self.add_child(battleController)
 	level += 1;
-	shopScreen.queue_free()
+	if (is_instance_valid(shopScreen)):
+		shopScreen.queue_free()
+	
+func player_died(id):
+	if not inBattle:
+		pass
+	inBattle = false
+	for i in range(len(players)):
+		if players[i].id == id:
+			players.erase(players[i])
+	if len(players) == 0:
+		gameOver()
+		
+func battleEnded():
+	if not inBattle:
+		pass
+	inBattle = false
+	print(\"👍\")
+	battleController.queue_free()
+	if level == 6:
+		print(\"ASDasd\")
+		$GameOver2.visible = true
+		$GameOver2/VBoxContainer/HBoxContainer/Button.connect(\"pressed\",restart)
+		$GameOver2/VBoxContainer/HBoxContainer/Button2.connect(\"pressed\",quit)
+	else:
+		if len(players) < 4:
+			showShop()
+		else:
+			startBattle()
+		
+
+func gameOver():
+	battleController.queue_free()
+	$GameOver.visible = true
+	$GameOver/VBoxContainer/HBoxContainer/Button.connect(\"pressed\",restart)
+	$GameOver/VBoxContainer/HBoxContainer/Button2.connect(\"pressed\",quit)
+
+func quit():
+	get_tree().quit()
+	
+func restart():
+	self.get_tree().reload_current_scene()
 	
 	
 
@@ -106,12 +150,14 @@ func getEnemies() -> Array[Entity]:
 
 func getBattleControllerItems():
 	var enemies : Array[Entity] =getEnemies()
+	if level == 5:
+		enemies = [boss]
 	enemies.shuffle()
 	var battles: Array[Battle] = []
 	for player in players:
 		var battle = Battle.new(player, enemies.pick_random())
 		battles.append(battle)
-	return [players+enemies, battles, max(100 - level*10, 30)] 
+	return [players+enemies, battles, 10+ 5*len(players)] 
 		
 	
 "
@@ -123,3 +169,48 @@ mainMenuScene = ExtResource("2_mrty1")
 shopScreenScene = ExtResource("3_l8qpc")
 playerChars = Array[ExtResource("3_6io0h")]([ExtResource("4_mpn64"), ExtResource("5_xkilt"), ExtResource("6_xege5"), ExtResource("7_roi6b")])
 EnemyChars = Array[ExtResource("3_6io0h")]([ExtResource("10_mc6us"), ExtResource("10_7hub4"), ExtResource("11_iafoj")])
+boss = ExtResource("10_mc6us")
+
+[node name="GameOver" type="CenterContainer" parent="."]
+visible = false
+custom_minimum_size = Vector2(1920, 1080)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="GameOver"]
+layout_mode = 2
+
+[node name="GameOver" type="Label" parent="GameOver/VBoxContainer"]
+layout_mode = 2
+text = "GAME OVER!"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="GameOver/VBoxContainer"]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="GameOver/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Restart"
+
+[node name="Button2" type="Button" parent="GameOver/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Exit"
+
+[node name="GameOver2" type="CenterContainer" parent="."]
+visible = false
+custom_minimum_size = Vector2(1920, 1080)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="GameOver2"]
+layout_mode = 2
+
+[node name="GameOver" type="Label" parent="GameOver2/VBoxContainer"]
+layout_mode = 2
+text = "YOU WON!"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="GameOver2/VBoxContainer"]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="GameOver2/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Restart"
+
+[node name="Button2" type="Button" parent="GameOver2/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Exit"

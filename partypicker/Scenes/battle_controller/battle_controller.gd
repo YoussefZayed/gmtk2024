@@ -171,7 +171,6 @@ func end_turn():
 		battle.enemy.end_turn()
 	checkDeaths()
 	#turnTimer.wait_time = max(30, turnTimer.wait_time - 10)
-	turnTimer.wait_time = 60
 	turnTimer.start()
 
 func hero_powers(card_player, appliedEntites, card: Card):
@@ -197,18 +196,20 @@ func checkDeaths():
 			battle.player.energy = 0
 			battle.player.discard_hand()
 			battle.battleEnded = true
+			print("👍👍👍 ENDED")
 			battle.player.emit_signal("battleEnded", battle.player.id, true)
 			self.emit_signal("player_died", battle.player.id)
 		elif battle.enemy.health <= 0:
 			battle.player.energy = 0
 			battle.player.discard_hand()
+			print("ASDASd ENDED")
 			battle.battleEnded = true
 			battle.player.emit_signal("battleEnded", battle.player.id, false)
 	var battle_on_going = false
 	for battle in battles:
 		if not battle.battleEnded:
 			battle_on_going = true
-	if (battle_on_going):
+	if (not battle_on_going):
 		self.emit_signal("battle_ended")
 
 func _on_button_pressed() -> void:

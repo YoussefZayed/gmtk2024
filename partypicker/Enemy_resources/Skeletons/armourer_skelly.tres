@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Entity" load_steps=8 format=3 uid="uid://b3o1ybivqmuyk"]
+[gd_resource type="Resource" script_class="Entity" load_steps=8 format=3 uid="uid://c6tkmgux206dg"]
 
 [ext_resource type="Texture2D" uid="uid://b8osuk7pjvqks" path="res://Assets/Art/Enemies/HelmArmorSwordSkeleton.png" id="1_j1ogs"]
 [ext_resource type="Script" path="res://custom_resources/card.gd" id="2_2j36d"]
