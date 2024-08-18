@@ -158,7 +158,7 @@ func getBattleControllerItems():
 	for player in players:
 		var battle = Battle.new(player, enemies.pick_random())
 		battles.append(battle)
-	return [players+enemies, battles, 10+ 5*len(players)] 
+	return [players+enemies, battles, 5+ 4*len(players)] 
 		
 	
 "
