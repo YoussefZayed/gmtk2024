@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="PartyPicker"
-run/main_scene="res://Scenes/Game/battle_controller.tscn"
+run/main_scene="res://Scenes/gameController/Game.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
 config/icon="res://Assets/Art/icon.svg"
 

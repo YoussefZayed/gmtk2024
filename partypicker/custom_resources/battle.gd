@@ -6,6 +6,6 @@ extends Resource
 @export var battleEnded: bool
 
 func _init(player_entity: Entity, enemy_entity: Entity) -> void:
-    self.player = player_entity
-    self.enemy = enemy_entity
-    self.battleEnded = false
+	self.player = player_entity
+	self.enemy = enemy_entity
+	self.battleEnded = false

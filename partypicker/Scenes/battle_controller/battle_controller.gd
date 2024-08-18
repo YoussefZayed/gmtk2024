@@ -1,3 +1,4 @@
+class_name BattleController
 extends Node2D
 
 
@@ -7,28 +8,57 @@ var entitiesDict = {}
 var gen_deck = preload("res://characters/generic/generic_deck.tres")
 var player_entity_wretch = preload("res://characters/generic/wretch.tres")
 var battleInstanceScene = preload("res://Scenes/BattleInstance/BattleInstance.tscn")
+@export var demo_scene = false
+@export var demo_scene_battles = 1
+@export var timer_time_limit = 100
+var turnTimer: Timer
+signal player_died(id)
+signal battle_ended()
 
 
 func _ready() -> void:
-	var test_items = testSetup()
+	
+	
+	if demo_scene:
+		var test_items = testSetup(demo_scene_battles)
+		init(test_items[0], test_items[1], timer_time_limit)
+	
+func init(all_entities, battles_for_combat, timer_time_amount: int):
+	print([all_entities, battles_for_combat, timer_time_amount])
+	turnTimer = self.find_child("TurnTimer")
+	turnTimer.connect("timeout", on_turnTimer_timeout)
+	entities = all_entities as Array[Entity]
+	battles = battles_for_combat
 	for entity in entities:
 		connectToEntity(entity)
 		entitiesDict[entity.id] = entity
 		entity.draw_hand()
 	createBattles(battles)
+	if (not timer_time_amount):
+		turnTimer.wait_time = 100
+	else:
+		turnTimer.wait_time = timer_time_amount
+	turnTimer.start()
 
-func find_child_by_name(parent: Node, child_name: String) -> Node:
-	return parent.find_child(child_name, true, false);
-	
+
 func createBattles(battles: Array[Battle]) -> void:
-	var battle_instance_parent1 = $HBoxContainer/SubViewportContainer/SubViewport1
-	var battle_instance_parent2 =  $HBoxContainer/SubViewportContainer2/SubViewport
-	print(battle_instance_parent1 )
-	print(battle_instance_parent2)
-	
-	if battles.size() >= 2:
+	if battles.size() == 3:
+		$_3piece.visible = true
+		var battle_instance_parent1 = $_3piece/SubViewportContainer/SubViewport1
+		var battle_instance_parent2 = $_3piece/SubViewportContainer2/SubViewport
+		var battle_instance_parent3 = $_3piece/SubViewportContainer3/SubViewport
 		createBattleInstance(battles[0], battle_instance_parent1)
 		createBattleInstance(battles[1], battle_instance_parent2)
+		createBattleInstance(battles[2], battle_instance_parent3)
+	elif battles.size() == 2:
+		$_2piece.visible = true
+		var battle_instance_parent1 = $_2piece/SubViewportContainer/SubViewport1
+		var battle_instance_parent2 = $_2piece/SubViewportContainer2/SubViewport
+		createBattleInstance(battles[0], battle_instance_parent1)
+		createBattleInstance(battles[1], battle_instance_parent2)
+	else:
+		$_1v1.visible = true
+		createBattleInstance(battles[0], $_1v1)
 
 func createBattleInstance(battle: Battle, parent: Node) -> void:
 	var battle_instance = battleInstanceScene.instantiate()
@@ -37,8 +67,8 @@ func createBattleInstance(battle: Battle, parent: Node) -> void:
 	parent.add_child(battle_instance)
 	
 		
-func testSetup():
-	var player = Entity.new() 
+func testSetup(battle_num):
+	var player = Entity.new()
 	player.load_from_resource(player_entity_wretch)
 	player.id = "1"
 	print(player.id)
@@ -64,7 +94,11 @@ func testSetup():
 	enemy2.max_energy = 1
 	enemy2.draw = 1
 	
-	var test_battles: Array[Battle] = [Battle.new(player, enemy1), Battle.new(player2, enemy2)]
+	var test_battles: Array[Battle] = [Battle.new(player, enemy1)]
+	if battle_num > 1:
+		for i in range(battle_num - 1):
+			test_battles.append(Battle.new(player2, enemy2))
+	
 	var test_entities: Array[Entity] = [player, player2, enemy1, enemy2]
 	battles = test_battles
 	entities = test_entities
@@ -124,25 +158,40 @@ func end_turn():
 	for battle in battles:
 		if battle.battleEnded:
 			continue
-		battle.player.end_turn()
+		if battle.player.health > 0:
+			battle.player.end_turn()
 		print(battle.enemy.hand[0])
 		battle.enemy.play_card(battle.enemy.hand[0], battle.player.id)
 		battle.enemy.end_turn()
 	checkDeaths()
+	turnTimer.wait_time = max(30, turnTimer.wait_time - 10)
+	turnTimer.start()
 
 func checkDeaths():
 	for battle in battles:
-		if battle.player.health <= 0:
+		if battle.player.health <= 0 && not battle.battleEnded:
 			battle.player.energy = 0
 			battle.player.discard_hand()
 			battle.battleEnded = true
 			battle.player.emit_signal("battleEnded", battle.player.id, true)
+			self.emit_signal("player_died", battle.player.id)
 		elif battle.enemy.health <= 0:
 			battle.player.energy = 0
 			battle.player.discard_hand()
 			battle.battleEnded = true
 			battle.player.emit_signal("battleEnded", battle.player.id, false)
-	
+	var battle_on_going = false
+	for battle in battles:
+		if not battle.battleEnded:
+			battle_on_going = true
+	if (battle_on_going):
+		self.emit_signal("battle_ended")
 
 func _on_button_pressed() -> void:
 	end_turn()
+
+func on_turnTimer_timeout() -> void:
+	end_turn()
+	
+func _process(delta: float) -> void:
+	$EndTurn/VBoxContainer/TurnTimerLabel.text = "( " + str(round(turnTimer.time_left)) + " secs)"

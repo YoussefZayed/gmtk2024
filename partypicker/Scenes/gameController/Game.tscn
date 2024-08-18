@@ -1,0 +1,76 @@
+[gd_scene load_steps=4 format=3 uid="uid://bnj3emdrvilnr"]
+
+[ext_resource type="PackedScene" uid="uid://c3orxpr6ll0jc" path="res://Scenes/battle_controller/battle_controller.tscn" id="1_utmhg"]
+[ext_resource type="PackedScene" uid="uid://ccd4pm0b04v1d" path="res://Scenes/Menus/MainMenu.tscn" id="2_mrty1"]
+
+[sub_resource type="GDScript" id="GDScript_gd4kx"]
+script/source = "extends Node2D
+
+@export var battleControllerScene: PackedScene
+@export var mainMenuScene: PackedScene
+@export var postBattleScreenScene: PackedScene
+@export var shopScreenScene: PackedScene 
+var player_entity_wretch = preload(\"res://characters/generic/wretch.tres\")
+
+
+var battleController: BattleController
+var mainMenu: Node
+var players: Array[Entity] = []
+var ids = 1;
+var level = 1;
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	mainMenu = mainMenuScene.instantiate()
+	print(mainMenu)
+	self.add_child(mainMenu)
+	mainMenu.find_child(\"StartButton\").connect('pressed',startGame)
+	
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+
+func startGame():
+	print(\"STARTED!\")
+	addPlayer(player_entity_wretch)
+	var items = getBattleControllerItems()
+	battleController = battleControllerScene.instantiate()
+	battleController.init(items[0],items[1],items[2])
+	self.add_child(battleController)
+	mainMenu.queue_free()
+	
+func addPlayer(resource: Resource):
+	var player = Entity.new()
+	player.load_from_resource(resource)
+	player.id = str(ids)
+	ids+=1
+	players.append(player)
+
+func getEnemies() -> Array[Entity]:
+	var enemies: Array[Entity] = []
+	for i in range(max(1, min(len(players), level))):
+		var enemy = Entity.new()
+		enemy.load_from_resource(player_entity_wretch)
+		enemy.id = str(ids)
+		ids+=1
+		enemies.append(enemy)
+	return enemies
+
+func getBattleControllerItems():
+	var enemies = getEnemies()
+	enemies.shuffle()
+	var battles: Array[Battle] = []
+	for player in players:
+		var battle = Battle.new(player, enemies.pick_random())
+		battles.append(battle)
+	return [players+enemies, battles, max(100 - level*10, 30)] 
+		
+	
+"
+
+[node name="Game" type="Node2D"]
+script = SubResource("GDScript_gd4kx")
+battleControllerScene = ExtResource("1_utmhg")
+mainMenuScene = ExtResource("2_mrty1")

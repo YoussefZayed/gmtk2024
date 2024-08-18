@@ -15,6 +15,7 @@ signal physical_dealt_increased(id, amount)
 signal magical_dealt_increased(id, amount)
 signal physical_taken_increased(id, amount)
 signal magical_taken_increased(id, amount)
+signal card_discarded(id,card)
 
 
 enum Type {PLAYER, ENEMY}
@@ -190,6 +191,7 @@ func discard_hand() -> void:
 
 func discard_card(card: Card) -> void:
 	#print([self.id, self.hand, "Discard Card"])
+	emit_signal("card_discarded", id, card)
 	discard_pile.append(card)
 
 func shuffle_discard_into_draw() -> void:
