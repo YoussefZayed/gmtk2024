@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="Card" load_steps=3 format=3 uid="uid://bf7dqr5kxd4k3"]
+
+[ext_resource type="Script" path="res://custom_resources/card.gd" id="1_cohxo"]
+[ext_resource type="Texture2D" uid="uid://cngehbm20ema" path="res://Assets/Art/Icons/PhysDam Icon.png" id="1_qy5h7"]
+
+[resource]
+script = ExtResource("1_cohxo")
+name = "Explosion"
+type = 0
+target = 2
+energy_cost = 1
+physical_damage = 10
+magical_damage = 0
+physical_block = 0
+magical_block = 0
+card_draw = 0
+card_discard = 0
+physical_dealt_increase = 0
+magical_dealt_increase = 0
+physical_taken_increase = 0
+magical_taken_increase = 0
+health_increase = 0
+card_art = ExtResource("1_qy5h7")
+tooltip_text = ""

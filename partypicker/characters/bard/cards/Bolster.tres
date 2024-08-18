@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="Card" load_steps=3 format=3 uid="uid://dq21epsrgf51m"]
+
+[ext_resource type="Texture2D" uid="uid://cw4wnknya5pq3" path="res://Assets/Art/Icons/Heal Icon.png" id="1_w2irv"]
+[ext_resource type="Script" path="res://custom_resources/card.gd" id="2_0dmjj"]
+
+[resource]
+script = ExtResource("2_0dmjj")
+name = "Bolster"
+type = 1
+target = 0
+energy_cost = 1
+physical_damage = 0
+magical_damage = 0
+physical_block = 2
+magical_block = 2
+card_draw = 0
+card_discard = 0
+physical_dealt_increase = 0
+magical_dealt_increase = 0
+physical_taken_increase = 0
+magical_taken_increase = 0
+health_increase = 2
+card_art = ExtResource("1_w2irv")
+tooltip_text = ""

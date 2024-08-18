@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="Entity" load_steps=9 format=3 uid="uid://b0wvoa777equr"]
+
+[ext_resource type="Script" path="res://custom_resources/card.gd" id="1_tskpd"]
+[ext_resource type="Resource" uid="uid://ckdb5wpncf7ai" path="res://characters/alchemist/cards/Acid Potion.tres" id="2_4gftj"]
+[ext_resource type="Script" path="res://custom_resources/entity.gd" id="2_4ipj1"]
+[ext_resource type="Resource" uid="uid://blua7x6lymiom" path="res://characters/generic/cards/Block.tres" id="3_e1ywm"]
+[ext_resource type="Resource" uid="uid://c025xmmvgll6d" path="res://characters/generic/cards/Resist.tres" id="4_xpntg"]
+[ext_resource type="Resource" uid="uid://dutidssai5qni" path="res://characters/generic/cards/Hex.tres" id="5_fplw6"]
+[ext_resource type="Resource" uid="uid://5yxyhty4dsxy" path="res://characters/generic/cards/Smite.tres" id="6_iyw1k"]
+[ext_resource type="Resource" uid="uid://cr76dw77mosli" path="res://characters/generic/cards/Strike.tres" id="7_45ai5"]
+
+[resource]
+script = ExtResource("2_4ipj1")
+name = "alchemist"
+max_health = 100
+max_draw = 7
+draw = 4
+max_energy = 3
+base_damage = 0
+base_defense = 0
+type = 0
+hand = Array[ExtResource("1_tskpd")]([ExtResource("2_4gftj"), ExtResource("3_e1ywm"), ExtResource("3_e1ywm"), ExtResource("4_xpntg"), ExtResource("4_xpntg"), ExtResource("5_fplw6"), ExtResource("5_fplw6"), ExtResource("6_iyw1k"), ExtResource("6_iyw1k"), ExtResource("7_45ai5")])
+physical_block = 0
+magical_block = 0
