@@ -1,13 +1,5 @@
 extends Node2D
 
-# need to make this so that it is individual for each instance
-#func _notification(what):
-#	if what == NOTIFICATION_WM_MOUSE_ENTER:
-#		print("enter")
-#	elif what == NOTIFICATION_WM_MOUSE_EXIT:
-#		print("exit")
-		# Here include code to reset all cards into hand using the _on_card_ui_reparent_requested function in hand.gd
-
 var gen_deck = preload("res://characters/generic/generic_deck.tres")
 var player: Entity
 var enemy: Entity
@@ -37,6 +29,7 @@ func add_player_card(id,card):
 	new_card.card = card
 	
 	$BattleUI/MarginContainer/Hand.add_child(new_card)
+	$BattleUI/MarginContainer/Hand.something_else()
 	for child in $BattleUI/MarginContainer/Hand.get_children():
 		child.set_visible(true)
 
@@ -75,10 +68,10 @@ func update_scordeboard():
 	enemy_stat_bar.find_child("MagDef Label").text = str(enemy.magical_block)
 	enemy_stat_bar.find_child("PhysVul Label").text = str(enemy.physical_taken_increase)
 	enemy_stat_bar.find_child("MagVul Label").text = str(enemy.magical_taken_increase)
-	if player.energy == 0:
-		$BattleUI/MarginContainer/HIDEHAND.set_visible(true)
-	else:
-		$BattleUI/MarginContainer/HIDEHAND.set_visible(false)
+	#if player.energy == 0:
+		#$BattleUI/MarginContainer/HIDEHAND.set_visible(true)
+	#else:
+		#$BattleUI/MarginContainer/HIDEHAND.set_visible(false)
 	if player.health == 0:
 		$CanvasLayer/CenterContainer/Lost.visible= true
 		$CanvasLayer/CenterContainer/Lost/Label.text = player.name + " Has Died"

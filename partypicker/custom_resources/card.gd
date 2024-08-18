@@ -34,7 +34,7 @@ func _get_targets(targets: Array[Node], node) -> Array[Node]:
 	
 	var tree := targets[0]
 	var unithold = node.find_child("UnitsUI")
-
+	print(unithold)
 	
 	match target:
 		Target.LANE_SELF:
@@ -63,9 +63,7 @@ func play(targets: Array[Node], char_stats: Entity, node, card) -> bool:
 	
 	is_played = true
 	
-	print(battle.player.energy)
 	battle.player.play_card(card, battle.enemy.id)
-	print(battle.player.energy)
 	
 	Events.card_played.emit(self)
 	
