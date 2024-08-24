@@ -174,16 +174,45 @@ func end_turn():
 	$EndTurn/VBoxContainer/Button.text = "End Turn"
 	for battle in battles:
 		if battle.battleEnded:
+			hero_lane_won_ability(battle)
 			continue
+		
+		enemy_stat_endturn(battle)
+		
 		if battle.player.health > 0:
 			battle.player.end_turn()
 		if (battle.enemy.hand):
 			print(battle.enemy.hand[0])
 			battle.enemy.play_card(battle.enemy.hand[0], battle.player.id)
 		battle.enemy.end_turn()
+		
+		player_stat_endturn(battle)
+		
 	checkDeaths()
 	#turnTimer.wait_time = max(30, turnTimer.wait_time - 10)
 	turnTimer.start()
+
+func player_stat_endturn(battle):
+	if battle.player.physical_block > 0: # reset block at end of turn
+		battle.player.physical_block = 0
+	if battle.player.magical_block > 0: # reset block at end of turn
+		battle.player.magical_block = 0
+	
+	if battle.player.physical_taken_increase > 0: # decrement vulnerability by one at end of turn
+		battle.player.physical_taken_increase -= 1
+	if battle.player.magical_taken_increase > 0: # decrement vulnerability by one at end of turn
+		battle.player.magical_taken_increase -= 1
+
+func enemy_stat_endturn(battle):
+	if battle.enemy.physical_block > 0: # reset block at end of turn
+		battle.enemy.physical_block = 0
+	if battle.enemy.magical_block > 0: # reset block at end of turn
+		battle.enemy.magical_block = 0
+	
+	if battle.enemy.physical_taken_increase > 0: # decrement vulnerability by one at end of turn
+		battle.enemy.physical_taken_increase -= 1
+	if battle.enemy.magical_taken_increase > 0: # decrement vulnerability by one at end of turn
+		battle.enemy.magical_taken_increase -= 1
 
 func hero_powers(card_player, appliedEntites, card: Card):
 	var entity_class = appliedEntites[0].name
@@ -199,7 +228,10 @@ func hero_powers(card_player, appliedEntites, card: Card):
 		"Armourer":
 			if card.physical_block>0:
 				print("Arm")
-	
+
+func hero_lane_won_ability(battle):
+	print("Ability Cast")
+	pass
 
 func checkDeaths():
 	for battle in battles:

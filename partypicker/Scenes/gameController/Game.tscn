@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://c3orxpr6ll0jc" path="res://Scenes/battle_controller/battle_controller.tscn" id="1_utmhg"]
 [ext_resource type="PackedScene" uid="uid://ccd4pm0b04v1d" path="res://Scenes/Menus/MainMenu.tscn" id="2_mrty1"]
 [ext_resource type="Script" path="res://custom_resources/entity.gd" id="3_6io0h"]
-[ext_resource type="PackedScene" path="res://Scenes/Menus/Shop.tscn" id="3_l8qpc"]
+[ext_resource type="PackedScene" uid="uid://2du2d3kelks6" path="res://Scenes/Menus/Shop.tscn" id="3_l8qpc"]
 [ext_resource type="Resource" uid="uid://dk2jueyvb1x5t" path="res://characters/armourer/armourer.tres" id="4_mpn64"]
 [ext_resource type="Resource" uid="uid://b0wvoa777equr" path="res://characters/alchemist/alchemist.tres" id="5_xkilt"]
 [ext_resource type="Resource" uid="uid://ehlsvfbpcsbh" path="res://characters/bard/bard.tres" id="6_xege5"]
