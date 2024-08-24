@@ -23,7 +23,7 @@ func _ready() -> void:
 		var test_items = testSetup(demo_scene_battles)
 		init(test_items[0], test_items[1], timer_time_limit)
 
-	
+
 func init(all_entities, battles_for_combat, timer_time_amount: int):
 	print([all_entities, battles_for_combat, timer_time_amount])
 	turnTimer = self.find_child("TurnTimer")
@@ -80,7 +80,7 @@ func createBattleInstance(battle: Battle, parent: Node) -> void:
 	parent.add_child(battle_instance)
 	
 	
-		
+	
 func testSetup(battle_num):
 	var player = Entity.new()
 	player.load_from_resource(player_entity_wretch)
