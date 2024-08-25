@@ -369,9 +369,9 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -100.0
-offset_top = -89.0
-offset_right = 100.0
+offset_left = -250.0
+offset_top = -250.0
+offset_right = 250.0
 grow_horizontal = 2
 grow_vertical = 0
 
@@ -385,6 +385,8 @@ metadata/_edit_use_anchors_ = true
 [node name="CardUI" parent="BattleUI/MarginContainer" instance=ExtResource("2_s0ui1")]
 visible = false
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 card = ExtResource("6_vrksm")
 
 [node name="HIDEHAND" type="ColorRect" parent="BattleUI/MarginContainer"]
@@ -399,12 +401,13 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 107.0
-offset_top = -332.0
-offset_right = 235.0
-offset_bottom = -154.0
+offset_left = 100.0
+offset_top = -315.0
+offset_right = 228.0
+offset_bottom = -137.0
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(0.75, 0.75)
 
 [node name="EnemyIntent" parent="BattleUI/Intent Margin" instance=ExtResource("2_s0ui1")]
 visible = false
