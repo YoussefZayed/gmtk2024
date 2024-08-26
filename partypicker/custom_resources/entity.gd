@@ -144,11 +144,9 @@ func change_magical_block(amount: int) -> void:
 func take_damage(amount: int, attack_type: String) -> void:
 	var post_amount
 	if attack_type == "physical":
-		print(["Physical  Block ->", physical_block])
 		post_amount = max(0, (amount+physical_taken_increase-physical_block))
 		change_physical_block(-min(amount+physical_taken_increase, physical_block))
 	elif attack_type == "magical":
-		print(["Magic  Block ->", magical_block])
 		post_amount = max(0, (amount+magical_taken_increase-magical_block))
 		change_magical_block(-min(amount+magical_taken_increase, magical_block))
 	health -= post_amount

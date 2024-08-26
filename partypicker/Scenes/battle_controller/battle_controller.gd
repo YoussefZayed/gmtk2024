@@ -127,6 +127,9 @@ func play_card(id: String, card: Card, target: String) -> void:
 	if (card.target == card.Target.LANE_CHOICE) && (target == "" || target == null):
 		assert(target != "", "ERROR: You must give target a value.");
 	var appliedEntites = []
+	
+	hero_powers(card_player, card)
+	
 	if card.target == card.Target.LANE_SELF:
 		appliedEntites = [card_player]
 	elif card.target == card.Target.LANE_ENEMY:
@@ -151,8 +154,7 @@ func play_card(id: String, card: Card, target: String) -> void:
 
 	card_player.energy -= card.energy_cost
 	checkDeaths()
-	
-	hero_powers(card_player, appliedEntites, card)
+
 
 	
 func applyCardToEntity(card: Card, entity: Entity) -> void:
@@ -214,20 +216,33 @@ func enemy_stat_endturn(battle):
 	if battle.enemy.magical_taken_increase > 0: # decrement vulnerability by one at end of turn
 		battle.enemy.magical_taken_increase -= 1
 
-func hero_powers(card_player, appliedEntites, card: Card):
-	var entity_class = appliedEntites[0].name
+func hero_powers(card_player, card: Card):
+	var entity_class = card_player.name
 	var all_players = get_tree().get_nodes_in_group("player")
 	var all_enemies = get_tree().get_nodes_in_group("enemies")
 	
 	match entity_class:
-		"Entity": #test case
-			if card.physical_damage>0:
-				#print(unithold)
-				print("BIG")
-				# damage(enemies, 1)
+		"Alchemist":
+			if card.magical_damage>0:
+				print("Alc")
 		"Armourer":
 			if card.physical_block>0:
 				print("Arm")
+		"Bard":
+			if card.magical_damage>0 or card.physical_damage>0:
+				print("Bar")
+		"Cleric":
+			if card.health_increase>0:
+				print("Cle")
+		"Grenadier":
+			if card.physical_damage>0:
+				print("Gre")
+		"Hunter":
+			if card.physical_damage>0:
+				print("Hun")
+		"Mage":
+			if card.magical_damage>0:
+				print("Mag")
 
 func hero_lane_won_ability(battle):
 	print("Ability Cast")
