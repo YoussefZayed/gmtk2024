@@ -9,3 +9,41 @@ offset_right = 40.0
 offset_bottom = 40.0
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("1_vwbjh")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+offset_right = 1920.0
+offset_bottom = 196.0
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 50
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="To the bar" type="Button" parent="MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "To the bar"
+
+[node name="Spacer" type="Control" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="To outside" type="Button" parent="MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "To outside
+"
+
+[node name="Spacer2" type="Control" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="To the bounty board" type="Button" parent="MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "To the bounty board"

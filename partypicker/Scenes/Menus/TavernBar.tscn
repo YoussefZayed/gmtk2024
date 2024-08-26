@@ -1,8 +1,28 @@
-[gd_scene load_steps=2 format=3 uid="uid://2du2d3kelks6"]
+[gd_scene load_steps=3 format=3 uid="uid://2du2d3kelks6"]
 
 [ext_resource type="Texture2D" uid="uid://bkx3cd1dqts7b" path="res://Assets/Art/Backgrounds/Tavern Background.png" id="1_d0ggn"]
 
+[sub_resource type="GDScript" id="GDScript_2afvb"]
+script/source = "extends Node2D
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+
+
+func _on_return_to_tavern_pressed() -> void:
+	
+	pass # Replace with function body.
+"
+
 [node name="Node2D" type="Node2D"]
+script = SubResource("GDScript_2afvb")
 
 [node name="Tavern Background" type="TextureRect" parent="."]
 anchors_preset = 4
@@ -87,24 +107,28 @@ theme_override_constants/separation = 10
 custom_minimum_size = Vector2(650, 100)
 layout_mode = 2
 theme_override_font_sizes/font_size = 50
+disabled = true
 text = "Return to tavern"
 
 [node name="To bounty board" type="Button" parent="Travel Option Container"]
 custom_minimum_size = Vector2(650, 100)
 layout_mode = 2
 theme_override_font_sizes/font_size = 50
+disabled = true
 text = "To bounty board"
 
 [node name="To training yard" type="Button" parent="Travel Option Container"]
 custom_minimum_size = Vector2(650, 100)
 layout_mode = 2
 theme_override_font_sizes/font_size = 50
+disabled = true
 text = "To training yard"
 
 [node name="To market" type="Button" parent="Travel Option Container"]
 custom_minimum_size = Vector2(650, 100)
 layout_mode = 2
 theme_override_font_sizes/font_size = 50
+disabled = true
 text = "To market"
 
 [node name="Continue Quest" type="Button" parent="Travel Option Container"]
