@@ -1,8 +1,33 @@
-[gd_scene format=3 uid="uid://ccd4pm0b04v1d"]
+[gd_scene load_steps=5 format=3 uid="uid://ccd4pm0b04v1d"]
+
+[ext_resource type="Texture2D" uid="uid://d28f246kt6uag" path="res://Assets/Art/PartyPickerTempMainMenu.png" id="1_xnt8q"]
+
+[sub_resource type="Gradient" id="Gradient_p1k0t"]
+offsets = PackedFloat32Array(0, 0.998008)
+colors = PackedColorArray(0.666667, 0.580392, 0.431373, 1, 0.870588, 0.768627, 0.580392, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_lp3xx"]
+frequency = 0.001
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_ixd4a"]
+width = 1920
+height = 1080
+color_ramp = SubResource("Gradient_p1k0t")
+noise = SubResource("FastNoiseLite_lp3xx")
 
 [node name="Node2D" type="Node2D"]
 
-[node name="BoxContainer" type="BoxContainer" parent="."]
+[node name="TextureRect2" type="TextureRect" parent="."]
+offset_right = 1920.0
+offset_bottom = 1080.0
+texture = SubResource("NoiseTexture2D_ixd4a")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_right = 1920.0
+offset_bottom = 1080.0
+texture = ExtResource("1_xnt8q")
+
+[node name="Margin Container" type="MarginContainer" parent="."]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -12,17 +37,26 @@ offset_right = 1920.0
 offset_bottom = 1080.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 50
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Margin Container"]
+custom_minimum_size = Vector2(270, 0)
+layout_mode = 2
+size_flags_horizontal = 8
 alignment = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="BoxContainer"]
+[node name="StartButton" type="Button" parent="Margin Container/VBoxContainer"]
 layout_mode = 2
-alignment = 1
+theme_override_font_sizes/font_size = 32
+text = "Start Game
+"
 
-[node name="Label" type="Label" parent="BoxContainer/VBoxContainer"]
+[node name="Options Button" type="Button" parent="Margin Container/VBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 100
-text = "PartyPicker!"
-
-[node name="StartButton" type="Button" parent="BoxContainer/VBoxContainer"]
-layout_mode = 2
-text = "Start!"
+theme_override_font_sizes/font_size = 32
+disabled = true
+text = "Options
+"
