@@ -123,6 +123,7 @@ func connectToEntity(entity: Entity) -> void:
 	entity.card_played.connect(play_card)
 
 func play_card(id: String, card: Card, target: String) -> void:
+	print(id)
 	var card_player = entitiesDict[id]
 	if (card.target == card.Target.LANE_CHOICE) && (target == "" || target == null):
 		assert(target != "", "ERROR: You must give target a value.");
@@ -158,6 +159,7 @@ func play_card(id: String, card: Card, target: String) -> void:
 
 	
 func applyCardToEntity(card: Card, entity: Entity) -> void:
+	print(["What entity? ->", entity])
 	entity.change_physical_block(card.physical_block)
 	entity.change_magical_block(card.magical_block)
 	entity.physical_dealt_increase += card.physical_dealt_increase
@@ -201,9 +203,9 @@ func player_stat_endturn(battle):
 		battle.player.magical_block = 0
 	
 	if battle.player.physical_taken_increase > 0: # decrement vulnerability by one at end of turn
-		battle.player.physical_taken_increase -= 1
+		battle.player.physical_taken_increase = floor(battle.player.physical_taken_increase/2)
 	if battle.player.magical_taken_increase > 0: # decrement vulnerability by one at end of turn
-		battle.player.magical_taken_increase -= 1
+		battle.player.magical_taken_increase = floor(battle.player.magical_taken_increase/2)
 
 func enemy_stat_endturn(battle):
 	if battle.enemy.physical_block > 0: # reset block at end of turn
@@ -212,14 +214,17 @@ func enemy_stat_endturn(battle):
 		battle.enemy.magical_block = 0
 	
 	if battle.enemy.physical_taken_increase > 0: # decrement vulnerability by one at end of turn
-		battle.enemy.physical_taken_increase -= 1
+		battle.enemy.physical_taken_increase = floor(battle.enemy.physical_taken_increase/2)
 	if battle.enemy.magical_taken_increase > 0: # decrement vulnerability by one at end of turn
-		battle.enemy.magical_taken_increase -= 1
+		battle.enemy.magical_taken_increase = floor(battle.enemy.magical_taken_increase/2)
 
 func hero_powers(card_player, card: Card):
 	var entity_class = card_player.name
 	var all_players = get_tree().get_nodes_in_group("player")
 	var all_enemies = get_tree().get_nodes_in_group("enemies")
+	print(all_players)
+	var appliedAllies = [card_player] # need to change this to all allies
+	var appliedEnemies = [card_player] # need to change this to all enemies
 	
 	match entity_class:
 		"Alchemist":
@@ -228,9 +233,13 @@ func hero_powers(card_player, card: Card):
 		"Armourer":
 			if card.physical_block>0:
 				print("Arm")
+				for entity in appliedAllies:
+					entity.change_physical_block(1)
 		"Bard":
 			if card.magical_damage>0 or card.physical_damage>0:
 				print("Bar")
+				for entity in appliedAllies:
+					entity.health += 1
 		"Cleric":
 			if card.health_increase>0:
 				print("Cle")
