@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="Card" load_steps=3 format=3 uid="uid://5m8gb24sf6eo"]
+
+[ext_resource type="Texture2D" uid="uid://diur5ks5h0uw4" path="res://Assets/Art/Icons/MagVul Icon.png" id="1_stj05"]
+[ext_resource type="Script" path="res://custom_resources/card.gd" id="2_jaixr"]
+
+[resource]
+script = ExtResource("2_jaixr")
+name = "Divination"
+type = 3
+target = 0
+energy_cost = 0
+physical_damage = 0
+magical_damage = 0
+physical_block = 0
+magical_block = 0
+card_draw = 3
+card_discard = 0
+physical_dealt_increase = 0
+magical_dealt_increase = 0
+physical_taken_increase = 0
+magical_taken_increase = 2
+health_increase = 0
+card_art = ExtResource("1_stj05")
+tooltip_text = ""

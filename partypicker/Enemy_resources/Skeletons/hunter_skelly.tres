@@ -22,3 +22,4 @@ hand = Array[ExtResource("1_v130v")]([ExtResource("3_poftf"), ExtResource("3_pof
 physical_block = 0
 magical_block = 0
 art = ExtResource("1_5ppgb")
+tool_tip = ""

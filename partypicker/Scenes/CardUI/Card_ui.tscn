@@ -169,46 +169,6 @@ text = "0
 "
 horizontal_alignment = 1
 
-[node name="PhysDam Container" type="HBoxContainer" parent="HBoxContainer/Card Ally Stat Bar/CardStats"]
-layout_mode = 2
-size_flags_horizontal = 2
-
-[node name="PhysDam Icon" type="TextureRect" parent="HBoxContainer/Card Ally Stat Bar/CardStats/PhysDam Container"]
-layout_mode = 2
-size_flags_horizontal = 0
-texture = ExtResource("2_whgcd")
-expand_mode = 3
-
-[node name="PhysDam Label" type="Label" parent="HBoxContainer/Card Ally Stat Bar/CardStats/PhysDam Container"]
-custom_minimum_size = Vector2(25, 0)
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 1
-theme_override_font_sizes/font_size = 24
-text = "0
-"
-horizontal_alignment = 1
-
-[node name="MagDam Container" type="HBoxContainer" parent="HBoxContainer/Card Ally Stat Bar/CardStats"]
-layout_mode = 2
-size_flags_horizontal = 2
-
-[node name="MagDam Icon" type="TextureRect" parent="HBoxContainer/Card Ally Stat Bar/CardStats/MagDam Container"]
-layout_mode = 2
-size_flags_horizontal = 0
-texture = ExtResource("6_fjkmn")
-expand_mode = 3
-
-[node name="MagDam Label" type="Label" parent="HBoxContainer/Card Ally Stat Bar/CardStats/MagDam Container"]
-custom_minimum_size = Vector2(25, 0)
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 1
-theme_override_font_sizes/font_size = 24
-text = "0
-"
-horizontal_alignment = 1
-
 [node name="PhysVul Container" type="HBoxContainer" parent="HBoxContainer/Card Ally Stat Bar/CardStats"]
 layout_mode = 2
 size_flags_horizontal = 2
@@ -240,6 +200,46 @@ texture = ExtResource("7_3l3gp")
 expand_mode = 3
 
 [node name="MagVul Label" type="Label" parent="HBoxContainer/Card Ally Stat Bar/CardStats/MagVul Container"]
+custom_minimum_size = Vector2(25, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 24
+text = "0
+"
+horizontal_alignment = 1
+
+[node name="PhysDam Container" type="HBoxContainer" parent="HBoxContainer/Card Ally Stat Bar/CardStats"]
+layout_mode = 2
+size_flags_horizontal = 2
+
+[node name="PhysDam Icon" type="TextureRect" parent="HBoxContainer/Card Ally Stat Bar/CardStats/PhysDam Container"]
+layout_mode = 2
+size_flags_horizontal = 0
+texture = ExtResource("2_whgcd")
+expand_mode = 3
+
+[node name="PhysDam Label" type="Label" parent="HBoxContainer/Card Ally Stat Bar/CardStats/PhysDam Container"]
+custom_minimum_size = Vector2(25, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 24
+text = "0
+"
+horizontal_alignment = 1
+
+[node name="MagDam Container" type="HBoxContainer" parent="HBoxContainer/Card Ally Stat Bar/CardStats"]
+layout_mode = 2
+size_flags_horizontal = 2
+
+[node name="MagDam Icon" type="TextureRect" parent="HBoxContainer/Card Ally Stat Bar/CardStats/MagDam Container"]
+layout_mode = 2
+size_flags_horizontal = 0
+texture = ExtResource("6_fjkmn")
+expand_mode = 3
+
+[node name="MagDam Label" type="Label" parent="HBoxContainer/Card Ally Stat Bar/CardStats/MagDam Container"]
 custom_minimum_size = Vector2(25, 0)
 layout_mode = 2
 size_flags_horizontal = 0

@@ -1,0 +1,33 @@
+[gd_resource type="Resource" script_class="Entity" load_steps=9 format=3 uid="uid://bxaroytjwirl3"]
+
+[ext_resource type="Texture2D" uid="uid://di03cx0lox6d2" path="res://Assets/Art/Characters/Alchemist.png" id="1_xsmfr"]
+[ext_resource type="Script" path="res://custom_resources/card.gd" id="2_60u8f"]
+[ext_resource type="Resource" uid="uid://5m8gb24sf6eo" path="res://characters/fortune_teller/card/Divination.tres" id="3_x4mdy"]
+[ext_resource type="Resource" uid="uid://blua7x6lymiom" path="res://characters/generic/cards/Block.tres" id="4_0r2p8"]
+[ext_resource type="Resource" uid="uid://c025xmmvgll6d" path="res://characters/generic/cards/Resist.tres" id="5_pr6j5"]
+[ext_resource type="Resource" uid="uid://dutidssai5qni" path="res://characters/generic/cards/Hex.tres" id="6_jkfk6"]
+[ext_resource type="Resource" uid="uid://5yxyhty4dsxy" path="res://characters/generic/cards/Smite.tres" id="7_frvbi"]
+[ext_resource type="Script" path="res://custom_resources/entity.gd" id="9_72es8"]
+
+[resource]
+script = ExtResource("9_72es8")
+name = "Fortune Teller"
+max_health = 80
+max_draw = 7
+draw = 4
+max_energy = 3
+base_damage = 0
+base_defense = 0
+type = 0
+hand = Array[ExtResource("2_60u8f")]([ExtResource("3_x4mdy"), ExtResource("4_0r2p8"), ExtResource("4_0r2p8"), ExtResource("5_pr6j5"), ExtResource("5_pr6j5"), ExtResource("6_jkfk6"), ExtResource("6_jkfk6"), ExtResource("7_frvbi"), ExtResource("7_frvbi"), ExtResource("7_frvbi")])
+physical_block = 0
+magical_block = 0
+art = ExtResource("1_xsmfr")
+tool_tip = "Magic
+Support
+Character abilities:
+Whenever I play 5 cards,
+ all allies draw 1 card.
+If I have won my lane, and combat is still ongoing,
+ at the begining of each round,
+ all allies draw 1 card."

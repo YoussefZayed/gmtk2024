@@ -40,6 +40,7 @@ var id: String = '':
 @export var art: Texture
 @export_multiline var tool_tip: String
 
+var cards_played = 0
 
 var physical_dealt_increase: int = 0:
 	set(value):
@@ -77,7 +78,6 @@ var magical_taken_increase: int = 0:
 		emit_signal("magical_taken_increased", id, magical_taken_increase)
 	get:
 		return magical_taken_increase
-
 
 var health: int = max_health:
 	set(value):
@@ -128,6 +128,8 @@ func change_physical_block(amount: int) -> void:
 		return
 	if amount > 0:
 		physical_block += amount
+		# If class = Knight, physical_dealt_increase += 1
+		# If class = Artificer, magical_dealt_increase += 1
 	else:
 		physical_block = min(0, physical_block + amount)
 	emit_signal("physical_block_changed", id, physical_block)

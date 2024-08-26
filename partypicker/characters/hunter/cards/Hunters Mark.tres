@@ -1,5 +1,6 @@
-[gd_resource type="Resource" script_class="Card" load_steps=2 format=3 uid="uid://cmjre5x0gecxu"]
+[gd_resource type="Resource" script_class="Card" load_steps=3 format=3 uid="uid://cmjre5x0gecxu"]
 
+[ext_resource type="Texture2D" uid="uid://d3btxe5u08r2g" path="res://Assets/Art/Icons/CardDraw Icon.png" id="1_6640h"]
 [ext_resource type="Script" path="res://custom_resources/card.gd" id="1_bv2yr"]
 
 [resource]
@@ -7,7 +8,7 @@ script = ExtResource("1_bv2yr")
 name = "Hunters Mark"
 type = 0
 target = 1
-energy_cost = 1
+energy_cost = 0
 physical_damage = 0
 magical_damage = 0
 physical_block = 0
@@ -16,7 +17,8 @@ card_draw = 0
 card_discard = 0
 physical_dealt_increase = 0
 magical_dealt_increase = 0
-physical_taken_increase = 4
+physical_taken_increase = 3
 magical_taken_increase = 0
 health_increase = 0
+card_art = ExtResource("1_6640h")
 tooltip_text = ""

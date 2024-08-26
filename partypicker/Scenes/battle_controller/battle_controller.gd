@@ -245,6 +245,13 @@ func hero_powers(card_player, card: Card):
 				print("Cle")
 				for entity in appliedAllies:
 					entity.health += 2
+		"Fortune Teller":
+			card_player.cards_played += 1
+			if card_player.cards_played>4:
+				print("For")
+				card_player.cards_played = 0
+				for entity in appliedAllies:
+					entity.draw_card()
 		"Grenadier":
 			if card.physical_damage>0:
 				print("Gre")

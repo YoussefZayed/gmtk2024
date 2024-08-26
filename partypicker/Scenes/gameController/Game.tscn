@@ -1,10 +1,11 @@
-[gd_scene load_steps=16 format=3 uid="uid://bnj3emdrvilnr"]
+[gd_scene load_steps=18 format=3 uid="uid://bnj3emdrvilnr"]
 
 [ext_resource type="PackedScene" uid="uid://c3orxpr6ll0jc" path="res://Scenes/battle_controller/battle_controller.tscn" id="1_utmhg"]
 [ext_resource type="PackedScene" uid="uid://ccd4pm0b04v1d" path="res://Scenes/Menus/MainMenu.tscn" id="2_mrty1"]
 [ext_resource type="Script" path="res://custom_resources/entity.gd" id="3_6io0h"]
 [ext_resource type="PackedScene" uid="uid://2du2d3kelks6" path="res://Scenes/Menus/TavernBar.tscn" id="3_l8qpc"]
 [ext_resource type="Resource" uid="uid://dk2jueyvb1x5t" path="res://characters/armourer/armourer.tres" id="4_mpn64"]
+[ext_resource type="Resource" uid="uid://bxaroytjwirl3" path="res://characters/fortune_teller/fortune_teller.tres" id="5_ng1im"]
 [ext_resource type="Resource" uid="uid://b0wvoa777equr" path="res://characters/alchemist/alchemist.tres" id="5_xkilt"]
 [ext_resource type="Resource" uid="uid://ehlsvfbpcsbh" path="res://characters/bard/bard.tres" id="6_xege5"]
 [ext_resource type="Resource" uid="uid://c0y5625tmya44" path="res://characters/cleric/cleric.tres" id="7_roi6b"]
@@ -13,6 +14,7 @@
 [ext_resource type="Resource" uid="uid://b3o1ybivqmuyk" path="res://Enemy_resources/Skeletons/armourer_skelly.tres" id="10_7hub4"]
 [ext_resource type="Resource" uid="uid://cir6i8nhld3wh" path="res://Enemy_resources/Skeletons/hunter_skelly.tres" id="10_mc6us"]
 [ext_resource type="Resource" uid="uid://d0qyy41hh5272" path="res://Enemy_resources/Skeletons/mage_skelly.tres" id="11_iafoj"]
+[ext_resource type="Resource" uid="uid://dmm44vioiqfa1" path="res://characters/hunter/hunter.tres" id="11_mo1va"]
 [ext_resource type="Resource" uid="uid://tmf78ri77wg7" path="res://Enemy_resources/Skeletons/boss_skelly.tres" id="12_uslkw"]
 
 [sub_resource type="GDScript" id="GDScript_gd4kx"]
@@ -210,7 +212,7 @@ script = SubResource("GDScript_gd4kx")
 battleControllerScene = ExtResource("1_utmhg")
 mainMenuScene = ExtResource("2_mrty1")
 shopScreenScene = ExtResource("3_l8qpc")
-playerChars = Array[ExtResource("3_6io0h")]([ExtResource("4_mpn64"), ExtResource("5_xkilt"), ExtResource("6_xege5"), ExtResource("7_roi6b"), ExtResource("9_yy8s6"), ExtResource("10_4opj8")])
+playerChars = Array[ExtResource("3_6io0h")]([ExtResource("5_xkilt"), ExtResource("4_mpn64"), ExtResource("6_xege5"), ExtResource("7_roi6b"), ExtResource("5_ng1im"), ExtResource("10_4opj8"), ExtResource("11_mo1va"), ExtResource("9_yy8s6")])
 EnemyChars = Array[ExtResource("3_6io0h")]([ExtResource("10_mc6us"), ExtResource("10_7hub4"), ExtResource("11_iafoj")])
 boss = ExtResource("12_uslkw")
 
