@@ -243,6 +243,8 @@ func hero_powers(card_player, card: Card):
 		"Cleric":
 			if card.health_increase>0:
 				print("Cle")
+				for entity in appliedAllies:
+					entity.health += 2
 		"Grenadier":
 			if card.physical_damage>0:
 				print("Gre")
