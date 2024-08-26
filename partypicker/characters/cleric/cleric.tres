@@ -23,4 +23,11 @@ hand = Array[ExtResource("1_5h04j")]([ExtResource("2_b5gxv"), ExtResource("2_b5g
 physical_block = 0
 magical_block = 0
 art = ExtResource("1_jbal1")
-tool_tip = "Magic, support"
+tool_tip = "Magic
+Support
+Character abilities:
+Whenever I play a card with healing,
+ all allies are healed for 1.
+If I have won my lane, and combat is still ongoing,
+ at the begining of each round,
+ I heal all allies for 2."

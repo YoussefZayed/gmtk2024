@@ -24,4 +24,11 @@ hand = Array[ExtResource("1_tskpd")]([ExtResource("2_4gftj"), ExtResource("3_e1y
 physical_block = 0
 magical_block = 0
 art = ExtResource("1_ghfoe")
-tool_tip = "Magic, offensive"
+tool_tip = "Magic
+Offensive
+Character abilities:
+Whenever I play a card with magic damage,
+ all enemies gain 1 vulnerability to magic damage.
+If I have won my lane, and combat is still ongoing,
+ at the begining of each round,
+ I apply 2 magic vulnerability to all enemies."

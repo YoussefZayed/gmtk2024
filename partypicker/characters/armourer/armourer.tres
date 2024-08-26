@@ -23,4 +23,11 @@ hand = Array[ExtResource("1_71tfs")]([ExtResource("2_ptbhv"), ExtResource("2_ptb
 physical_block = 0
 magical_block = 0
 art = ExtResource("1_2cukk")
-tool_tip = "Physical, defensive"
+tool_tip = "Physical,
+Defensive
+Character abilities:
+Whenever I play a card with physical block,
+ all allies gain 1 physical block.
+If I have won my lane, and combat is still ongoing,
+ at the begining of each round,
+ I apply 2 physical block to all allies."

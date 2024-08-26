@@ -21,4 +21,11 @@ type = 0
 hand = Array[ExtResource("1_bwhus")]([ExtResource("2_uo345"), ExtResource("3_dl1xi"), ExtResource("3_dl1xi"), ExtResource("4_exd8h"), ExtResource("4_exd8h"), ExtResource("7_3w2ux"), ExtResource("7_3w2ux"), ExtResource("7_3w2ux"), ExtResource("6_4vobt"), ExtResource("6_4vobt")])
 physical_block = 0
 magical_block = 0
-tool_tip = "Physical, damage"
+tool_tip = "Physical
+Damage
+Character abilities:
+Whenever I play a card with physical damage,
+ all enemies gain 1 vulnerability to physical damage.
+If I have won my lane, and combat is still ongoing,
+ at the begining of each round,
+ I apply 2 physical vulnerability to all enemies."

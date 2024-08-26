@@ -24,4 +24,11 @@ hand = Array[ExtResource("1_hny3h")]([ExtResource("3_dwyr5"), ExtResource("3_378
 physical_block = 0
 magical_block = 0
 art = ExtResource("1_o8rgh")
-tool_tip = "Magic, damage"
+tool_tip = "Magic
+Damage
+Character abilities:
+Whenever I play a card with magical damage,
+ all enemies take 1 magical damage.
+If I have won my lane, and combat is still ongoing,
+ at the begining of each round,
+ I deal 2 magical damage to all enemies."

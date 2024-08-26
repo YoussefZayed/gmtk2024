@@ -38,7 +38,7 @@ var id: String = '':
 @export var physical_block: int = 0
 @export var magical_block: int = 0
 @export var art: Texture
-@export var tool_tip: String
+@export_multiline var tool_tip: String
 
 
 var physical_dealt_increase: int = 0:

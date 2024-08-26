@@ -57,6 +57,7 @@ func showTavernBar():
 	var PC1 = shopScreen.find_child(\"PARTY_CHOICE_1\")
 	var PC2 = shopScreen.find_child(\"PARTY_CHOICE_2\")
 	var PC3 = shopScreen.find_child(\"PARTY_CHOICE_3\")
+	
 	PC1.text= choices[0].name
 	PC1.tooltip_text = choices[0].tool_tip
 	PC1.connect(\"pressed\",addChoice0)
@@ -66,6 +67,7 @@ func showTavernBar():
 	PC3.text= choices[2].name
 	PC3.tooltip_text = choices[2].tool_tip
 	PC3.connect(\"pressed\",addChoice2)
+	
 	# Location Select Buttons
 	shopScreen.find_child(\"Continue Quest\").disabled = true
 	shopScreen.find_child(\"Continue Quest\").connect(\"pressed\",continueQuest)
