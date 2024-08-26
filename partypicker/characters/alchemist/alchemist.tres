@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="Entity" load_steps=10 format=3 uid="uid://b0wvoa777equr"]
 
-[ext_resource type="Texture2D" uid="uid://c7ucqy2clvark" path="res://Assets/Art/Characters/Wizard.png" id="1_lf3mb"]
+[ext_resource type="Texture2D" uid="uid://di03cx0lox6d2" path="res://Assets/Art/Characters/Alchemist.png" id="1_ghfoe"]
 [ext_resource type="Script" path="res://custom_resources/card.gd" id="1_tskpd"]
 [ext_resource type="Resource" uid="uid://ckdb5wpncf7ai" path="res://characters/alchemist/cards/Acid Potion.tres" id="2_4gftj"]
 [ext_resource type="Script" path="res://custom_resources/entity.gd" id="2_4ipj1"]
@@ -23,4 +23,4 @@ type = 0
 hand = Array[ExtResource("1_tskpd")]([ExtResource("2_4gftj"), ExtResource("3_e1ywm"), ExtResource("3_e1ywm"), ExtResource("4_xpntg"), ExtResource("4_xpntg"), ExtResource("5_fplw6"), ExtResource("5_fplw6"), ExtResource("6_iyw1k"), ExtResource("6_iyw1k"), ExtResource("7_45ai5")])
 physical_block = 0
 magical_block = 0
-art = ExtResource("1_lf3mb")
+art = ExtResource("1_ghfoe")

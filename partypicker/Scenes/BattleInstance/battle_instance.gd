@@ -20,6 +20,8 @@ func init(playerEntity, enemyEntity) -> void:
 	$"BattleStatsUI/MarginContainer/MarginContainer/InstanceStats Container/Enemy Stat Bar/Enemy".text = enemy.name
 	print("READY")
 	list_hand()
+	player.heal(0)
+	enemy.heal(0)
 	
 func set_enemy_card(id,card):
 	$"BattleUI/Intent Margin/EnemyIntent".card = card

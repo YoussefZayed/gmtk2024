@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b6usgllbpohfj"
-path="res://.godot/imported/Fighter.jpg-6a0d068b20d6195251d2b3a68391faaf.ctex"
+uid="uid://di03cx0lox6d2"
+path="res://.godot/imported/Alchemist.png-e647752d7481a476b58a140c079a397b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Art/Characters/Fighter.jpg"
-dest_files=["res://.godot/imported/Fighter.jpg-6a0d068b20d6195251d2b3a68391faaf.ctex"]
+source_file="res://Assets/Art/Characters/Alchemist.png"
+dest_files=["res://.godot/imported/Alchemist.png-e647752d7481a476b58a140c079a397b.ctex"]
 
 [params]
 
