@@ -21,3 +21,4 @@ type = 0
 hand = Array[ExtResource("1_bwhus")]([ExtResource("2_uo345"), ExtResource("3_dl1xi"), ExtResource("3_dl1xi"), ExtResource("4_exd8h"), ExtResource("4_exd8h"), ExtResource("7_3w2ux"), ExtResource("7_3w2ux"), ExtResource("7_3w2ux"), ExtResource("6_4vobt"), ExtResource("6_4vobt")])
 physical_block = 0
 magical_block = 0
+tool_tip = "Physical, damage"

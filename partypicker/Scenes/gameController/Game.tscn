@@ -54,12 +54,18 @@ func showTavernBar():
 	choices.append(playerChars.pick_random())
 	choices.append(playerChars.pick_random())
 	# Character Select Buttons
-	shopScreen.find_child(\"PARTY_CHOICE_1\").text= choices[0].name
-	shopScreen.find_child(\"PARTY_CHOICE_1\").connect(\"pressed\",addChoice0)
-	shopScreen.find_child(\"PARTY_CHOICE_2\").text= choices[1].name
-	shopScreen.find_child(\"PARTY_CHOICE_2\").connect(\"pressed\",addChoice1)
-	shopScreen.find_child(\"PARTY_CHOICE_3\").text= choices[2].name
-	shopScreen.find_child(\"PARTY_CHOICE_3\").connect(\"pressed\",addChoice2)
+	var PC1 = shopScreen.find_child(\"PARTY_CHOICE_1\")
+	var PC2 = shopScreen.find_child(\"PARTY_CHOICE_2\")
+	var PC3 = shopScreen.find_child(\"PARTY_CHOICE_3\")
+	PC1.text= choices[0].name
+	PC1.tooltip_text = choices[0].tool_tip
+	PC1.connect(\"pressed\",addChoice0)
+	PC2.text= choices[1].name
+	PC2.tooltip_text = choices[1].tool_tip
+	PC2.connect(\"pressed\",addChoice1)
+	PC3.text= choices[2].name
+	PC3.tooltip_text = choices[2].tool_tip
+	PC3.connect(\"pressed\",addChoice2)
 	# Location Select Buttons
 	shopScreen.find_child(\"Continue Quest\").disabled = true
 	shopScreen.find_child(\"Continue Quest\").connect(\"pressed\",continueQuest)

@@ -106,6 +106,7 @@ theme_override_constants/separation = 10
 [node name="Return to tavern" type="Button" parent="Travel Option Container"]
 custom_minimum_size = Vector2(650, 100)
 layout_mode = 2
+tooltip_text = "Return to the tavern overview."
 theme_override_font_sizes/font_size = 50
 disabled = true
 text = "Return to tavern"
@@ -113,6 +114,9 @@ text = "Return to tavern"
 [node name="To bounty board" type="Button" parent="Travel Option Container"]
 custom_minimum_size = Vector2(650, 100)
 layout_mode = 2
+tooltip_text = "View the bounty board.
+Buy requests for certain character classes.
+Claim extra gold for defeating certain enemies."
 theme_override_font_sizes/font_size = 50
 disabled = true
 text = "To bounty board"
@@ -120,6 +124,8 @@ text = "To bounty board"
 [node name="To training yard" type="Button" parent="Travel Option Container"]
 custom_minimum_size = Vector2(650, 100)
 layout_mode = 2
+tooltip_text = "Go to the trainig yard.
+Level up your characters."
 theme_override_font_sizes/font_size = 50
 disabled = true
 text = "To training yard"
@@ -127,6 +133,8 @@ text = "To training yard"
 [node name="To market" type="Button" parent="Travel Option Container"]
 custom_minimum_size = Vector2(650, 100)
 layout_mode = 2
+tooltip_text = "Go to the market.
+Buy and sell relics."
 theme_override_font_sizes/font_size = 50
 disabled = true
 text = "To market"
@@ -134,5 +142,6 @@ text = "To market"
 [node name="Continue Quest" type="Button" parent="Travel Option Container"]
 custom_minimum_size = Vector2(650, 100)
 layout_mode = 2
+tooltip_text = "Start the next round of combat."
 theme_override_font_sizes/font_size = 50
 text = "Continue Quest"

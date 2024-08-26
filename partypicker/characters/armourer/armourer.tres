@@ -23,3 +23,4 @@ hand = Array[ExtResource("1_71tfs")]([ExtResource("2_ptbhv"), ExtResource("2_ptb
 physical_block = 0
 magical_block = 0
 art = ExtResource("1_2cukk")
+tool_tip = "Physical, defensive"
