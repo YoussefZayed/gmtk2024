@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://c3orxpr6ll0jc" path="res://Scenes/battle_controller/battle_controller.tscn" id="1_utmhg"]
 [ext_resource type="PackedScene" uid="uid://ccd4pm0b04v1d" path="res://Scenes/Menus/MainMenu.tscn" id="2_mrty1"]
 [ext_resource type="Script" path="res://custom_resources/entity.gd" id="3_6io0h"]
-[ext_resource type="PackedScene" uid="uid://2du2d3kelks6" path="res://Scenes/Menus/Shop.tscn" id="3_l8qpc"]
+[ext_resource type="PackedScene" uid="uid://2du2d3kelks6" path="res://Scenes/Menus/TavernBar.tscn" id="3_l8qpc"]
 [ext_resource type="Resource" uid="uid://dk2jueyvb1x5t" path="res://characters/armourer/armourer.tres" id="4_mpn64"]
 [ext_resource type="Resource" uid="uid://b0wvoa777equr" path="res://characters/alchemist/alchemist.tres" id="5_xkilt"]
 [ext_resource type="Resource" uid="uid://ehlsvfbpcsbh" path="res://characters/bard/bard.tres" id="6_xege5"]
@@ -42,7 +42,7 @@ func _ready() -> void:
 	self.add_child(mainMenu)
 	mainMenu.find_child(\"StartButton\").connect('pressed',startGame)
 
-func showShop():
+func showTavernBar():
 	if (self.get_child_count() > 3):
 		print(self.get_child_count())
 		return
@@ -50,10 +50,20 @@ func showShop():
 	choices = []
 	choices.append(playerChars.pick_random())
 	choices.append(playerChars.pick_random())
+	choices.append(playerChars.pick_random())
+	# Character Select Buttons
 	shopScreen.find_child(\"PARTY_CHOICE_1\").text= choices[0].name
 	shopScreen.find_child(\"PARTY_CHOICE_1\").connect(\"pressed\",addChoice0)
 	shopScreen.find_child(\"PARTY_CHOICE_2\").text= choices[1].name
 	shopScreen.find_child(\"PARTY_CHOICE_2\").connect(\"pressed\",addChoice1)
+	shopScreen.find_child(\"PARTY_CHOICE_3\").text= choices[2].name
+	shopScreen.find_child(\"PARTY_CHOICE_3\").connect(\"pressed\",addChoice2)
+	# Location Select Buttons
+	shopScreen.find_child(\"Continue Quest\").disabled = true
+	shopScreen.find_child(\"Continue Quest\").connect(\"pressed\",continueQuest)
+	if len(players) > 0:
+		shopScreen.find_child(\"Continue Quest\").disabled = false
+	
 	self.add_child(shopScreen)
 
 func addChoice0():
@@ -62,16 +72,38 @@ func addChoice0():
 	player.id = str(ids)
 	ids+=1
 	players.append(player)
-	startBattle()
-	
+	if len(players) > 0:
+		shopScreen.find_child(\"Continue Quest\").disabled = false
+		disableAddCharacters()
+
 func addChoice1():
 	var player = Entity.new()
 	player.load_from_resource(choices[1])
 	player.id = str(ids)
 	ids+=1
 	players.append(player)
+	if len(players) > 0:
+		shopScreen.find_child(\"Continue Quest\").disabled = false
+		disableAddCharacters()
+
+func addChoice2():
+	var player = Entity.new()
+	player.load_from_resource(choices[2])
+	player.id = str(ids)
+	ids+=1
+	players.append(player)
+	if len(players) > 0:
+		shopScreen.find_child(\"Continue Quest\").disabled = false
+		disableAddCharacters()
+
+func disableAddCharacters():
+	shopScreen.find_child(\"PARTY_CHOICE_1\").disabled = true
+	shopScreen.find_child(\"PARTY_CHOICE_2\").disabled = true
+	shopScreen.find_child(\"PARTY_CHOICE_3\").disabled = true
+
+func continueQuest():
 	startBattle()
-	
+
 func startBattle():
 	inBattle = true
 	var items = getBattleControllerItems()
@@ -107,7 +139,7 @@ func battleEnded():
 		$GameOver2/VBoxContainer/HBoxContainer/Button2.connect(\"pressed\",quit)
 	else:
 		if len(players) < 4 && len(players)>0:
-			showShop()
+			showTavernBar()
 		elif len(players)>0:
 			startBattle()
 		
@@ -128,7 +160,7 @@ func restart():
 
 func startGame():
 	print(\"STARTED!\")
-	showShop()
+	showTavernBar()
 	mainMenu.queue_free()
 	
 	
