@@ -219,48 +219,49 @@ func enemy_stat_endturn(battle):
 		battle.enemy.magical_taken_increase = floor(battle.enemy.magical_taken_increase/2)
 
 func hero_powers(card_player, card: Card):
+	card_player.cards_played += 1
 	var entity_class = card_player.name
-	var all_players = get_tree().get_nodes_in_group("player")
-	var all_enemies = get_tree().get_nodes_in_group("enemies")
-	print(all_players)
-	var appliedAllies = [card_player] # need to change this to all allies
-	var appliedEnemies = [card_player] # need to change this to all enemies
+	
+	var appliedAllies = [] # need to change this to all allies
+	var appliedEnemies = [] # need to change this to all enemies
+	
+	for battle in battles:
+		appliedAllies.append(battle.player)
+		appliedEnemies.append(battle.enemy)
 	
 	match entity_class:
 		"Alchemist":
 			if card.magical_damage>0:
-				print("Alc")
+				for entity in appliedEnemies:
+					entity.magical_taken_increase += 1
 		"Armourer":
 			if card.physical_block>0:
-				print("Arm")
 				for entity in appliedAllies:
 					entity.change_physical_block(1)
 		"Bard":
 			if card.magical_damage>0 or card.physical_damage>0:
-				print("Bar")
 				for entity in appliedAllies:
 					entity.health += 1
 		"Cleric":
 			if card.health_increase>0:
-				print("Cle")
 				for entity in appliedAllies:
 					entity.health += 2
 		"Fortune Teller":
-			card_player.cards_played += 1
-			if card_player.cards_played>4:
-				print("For")
-				card_player.cards_played = 0
+			if (card_player.cards_played%5) == 0:
 				for entity in appliedAllies:
 					entity.draw_card()
 		"Grenadier":
 			if card.physical_damage>0:
-				print("Gre")
+				for entity in appliedEnemies:
+					entity.take_damage(1, "physical")
 		"Hunter":
 			if card.physical_damage>0:
-				print("Hun")
+				for entity in appliedEnemies:
+					entity.physical_taken_increase += 1
 		"Mage":
 			if card.magical_damage>0:
-				print("Mag")
+				for entity in appliedEnemies:
+					entity.take_damage(1, "magical")
 
 func hero_lane_won_ability(battle):
 	print("Ability Cast")
