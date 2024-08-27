@@ -60,17 +60,72 @@ func update_scordeboard():
 	var player_stat_bar = self.find_child("Player Stat Bar")
 	player_stat_bar.find_child("Health Label").text = str(player.health)
 	player_stat_bar.find_child("Energy Label").text = str(player.energy)
+	
 	player_stat_bar.find_child("PhysDef Label").text = str(player.physical_block)
+	if player_stat_bar.find_child("PhysDef Label").text == "0":
+		player_stat_bar.find_child("PhysDef Container").visible = false
+	else:
+		player_stat_bar.find_child("PhysDef Container").visible = true
+	
 	player_stat_bar.find_child("MagDef Label").text = str(player.magical_block)
+	if player_stat_bar.find_child("MagDef Label").text == "0":
+		player_stat_bar.find_child("MagDef Container").visible = false
+	else:
+		player_stat_bar.find_child("MagDef Container").visible = true
+	
 	player_stat_bar.find_child("PhysVul Label").text = str(player.physical_taken_increase)
+	if player_stat_bar.find_child("PhysVul Label").text == "0":
+		player_stat_bar.find_child("PhysVul Container").visible = false
+	else:
+		player_stat_bar.find_child("PhysVul Container").visible = true
+	
 	player_stat_bar.find_child("MagVul Label").text = str(player.magical_taken_increase)
+	if player_stat_bar.find_child("MagVul Label").text == "0":
+		player_stat_bar.find_child("MagVul Container").visible = false
+	else:
+		player_stat_bar.find_child("MagVul Container").visible = true
+	
+	player_stat_bar.find_child("PhysUp Label").text = str(player.physical_dealt_increase)
+	if player_stat_bar.find_child("PhysUp Label").text == "0":
+		player_stat_bar.find_child("PhysUp Container").visible = false
+	else:
+		player_stat_bar.find_child("PhysUp Container").visible = true
+	
+	player_stat_bar.find_child("MagUp Label").text = str(player.magical_dealt_increase)
+	if player_stat_bar.find_child("MagUp Label").text == "0":
+		player_stat_bar.find_child("MagUp Container").visible = false
+	else:
+		player_stat_bar.find_child("MagUp Container").visible = true
+	
 	var enemy_stat_bar = self.find_child("Enemy Stat Bar")
+	
 	enemy_stat_bar.find_child("Health Label").text = str(enemy.health)
 	enemy_stat_bar.find_child("Energy Label").text = str(enemy.max_energy)
+	
 	enemy_stat_bar.find_child("PhysDef Label").text = str(enemy.physical_block)
+	if enemy_stat_bar.find_child("PhysDef Label").text == "0":
+		enemy_stat_bar.find_child("PhysDef Container").visible = false
+	else:
+		enemy_stat_bar.find_child("PhysDef Container").visible = true
+	
 	enemy_stat_bar.find_child("MagDef Label").text = str(enemy.magical_block)
+	if enemy_stat_bar.find_child("MagDef Label").text == "0":
+		enemy_stat_bar.find_child("MagDef Container").visible = false
+	else:
+		enemy_stat_bar.find_child("MagDef Container").visible = true
+	
 	enemy_stat_bar.find_child("PhysVul Label").text = str(enemy.physical_taken_increase)
+	if enemy_stat_bar.find_child("PhysVul Label").text == "0":
+		enemy_stat_bar.find_child("PhysVul Container").visible = false
+	else:
+		enemy_stat_bar.find_child("PhysVul Container").visible = true
+	
 	enemy_stat_bar.find_child("MagVul Label").text = str(enemy.magical_taken_increase)
+	if enemy_stat_bar.find_child("MagVul Label").text == "0":
+		enemy_stat_bar.find_child("MagVul Container").visible = false
+	else:
+		enemy_stat_bar.find_child("MagVul Container").visible = true
+	
 	#if player.energy == 0:
 		#$BattleUI/MarginContainer/HIDEHAND.set_visible(true)
 	#else:

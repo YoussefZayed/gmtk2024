@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="Card" load_steps=2 format=3 uid="uid://cdnn3h3vqvsja"]
+
+[ext_resource type="Script" path="res://custom_resources/card.gd" id="1_ln0hu"]
+
+[resource]
+script = ExtResource("1_ln0hu")
+name = "Charge Up"
+type = 3
+target = 0
+energy_cost = 1
+physical_damage = 0
+magical_damage = 0
+physical_block = 0
+magical_block = 0
+card_draw = 0
+card_discard = 0
+physical_dealt_increase = 10
+magical_dealt_increase = 0
+physical_taken_increase = 0
+magical_taken_increase = 0
+health_increase = 0
+tooltip_text = ""

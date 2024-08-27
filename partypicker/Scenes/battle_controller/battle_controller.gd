@@ -151,14 +151,14 @@ func play_card(id: String, card: Card, target: String) -> void:
 		appliedEntites.append(entitiesDict[target])
 	
 	for entity in appliedEntites:
-		applyCardToEntity(card, entity)
+		applyCardToEntity(card_player, card, entity)
 
 	card_player.energy -= card.energy_cost
 	checkDeaths()
 
 
 	
-func applyCardToEntity(card: Card, entity: Entity) -> void:
+func applyCardToEntity(card_player: Entity, card: Card, entity: Entity) -> void:
 	print(["What entity? ->", entity])
 	entity.change_physical_block(card.physical_block)
 	entity.change_magical_block(card.magical_block)
@@ -170,9 +170,11 @@ func applyCardToEntity(card: Card, entity: Entity) -> void:
 	for i in range(card.card_draw):
 		entity.draw_card()
 	if card.magical_damage > 0:
-		entity.take_damage(card.magical_damage, "magical")
+		entity.take_damage((card.magical_damage+card_player.magical_dealt_increase), "magical")
+		card_player.magical_dealt_increase = 0
 	if card.physical_damage > 0:
-		entity.take_damage(card.physical_damage, "physical")
+		entity.take_damage((card.physical_damage+card_player.physical_dealt_increase), "physical")
+		card_player.physical_dealt_increase = 0
 
 func end_turn():
 	$EndTurn/VBoxContainer/Button.text = "End Turn"
