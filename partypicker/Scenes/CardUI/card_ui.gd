@@ -16,6 +16,8 @@ signal reparent_requested(which_card_ui: CardUI)
 @onready var mag_dam_num: Label = $"HBoxContainer/Card Ally Stat Bar/CardStats/MagDam Container/MagDam Label"
 @onready var phys_vul_num: Label = $"HBoxContainer/Card Ally Stat Bar/CardStats/PhysVul Container/PhysVul Label"
 @onready var mag_vul_num: Label = $"HBoxContainer/Card Ally Stat Bar/CardStats/MagVul Container/MagVul Label"
+@onready var phys_up_num: Label = $"HBoxContainer/Card Ally Stat Bar/CardStats/PhysUp Container/PhysUp Label"
+@onready var mag_up_num: Label = $"HBoxContainer/Card Ally Stat Bar/CardStats/MagUp Container/MagUp Label"
 @onready var draw_num: Label = $"HBoxContainer/Card Ally Stat Bar/CardStats/Draw Container/Draw Label"
 @onready var heal_num: Label = $"HBoxContainer/Card Ally Stat Bar/CardStats/Heal Container/Heal Label"
 
@@ -112,6 +114,18 @@ func _set_card(value: Card) -> void:
 		mag_vul_num.get_parent().visible = true
 	else:
 		mag_vul_num.get_parent().visible = false
+	
+	if card.physical_dealt_increase > 0:
+		phys_up_num.text = str(card.physical_dealt_increase)
+		phys_up_num.get_parent().visible = true
+	else:
+		phys_up_num.get_parent().visible = false
+	
+	if card.magical_dealt_increase > 0:
+		mag_up_num.text = str(card.magical_dealt_increase)
+		mag_up_num.get_parent().visible = true
+	else:
+		mag_up_num.get_parent().visible = false
 	
 	if card.card_draw > 0:
 		draw_num.text = str(card.card_draw)

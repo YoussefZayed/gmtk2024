@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://5xqwmu2gdanx"]
+[gd_scene load_steps=21 format=3 uid="uid://5xqwmu2gdanx"]
 
 [ext_resource type="Script" path="res://Scenes/CardUI/card_ui.gd" id="1_a8plt"]
 [ext_resource type="Resource" uid="uid://dbrthdi8nca7b" path="res://characters/generic/wretch.tres" id="2_fur0e"]
@@ -15,8 +15,10 @@
 [ext_resource type="Texture2D" uid="uid://8h5ppop1n8ex" path="res://Assets/Art/Icons/PhysVul Icon.png" id="6_rvatk"]
 [ext_resource type="Script" path="res://Scenes/CardUI/CardStates/card_aiming_state.gd" id="7_1cdm7"]
 [ext_resource type="Texture2D" uid="uid://diur5ks5h0uw4" path="res://Assets/Art/Icons/MagVul Icon.png" id="7_3l3gp"]
+[ext_resource type="Texture2D" uid="uid://dsfbc8ojc26ps" path="res://Assets/Art/Icons/PhysUp Icon.png" id="9_vchbw"]
 [ext_resource type="Texture2D" uid="uid://d3btxe5u08r2g" path="res://Assets/Art/Icons/CardDraw Icon.png" id="10_4hmx3"]
 [ext_resource type="Texture2D" uid="uid://cw4wnknya5pq3" path="res://Assets/Art/Icons/Heal Icon.png" id="10_7amlf"]
+[ext_resource type="Texture2D" uid="uid://16p8oeu0xffn" path="res://Assets/Art/Icons/MagUp Icon.png" id="10_ek5hb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jx84x"]
 size = Vector2(64, 89)
@@ -201,6 +203,46 @@ texture = ExtResource("7_3l3gp")
 expand_mode = 3
 
 [node name="MagVul Label" type="Label" parent="HBoxContainer/Card Ally Stat Bar/CardStats/MagVul Container"]
+custom_minimum_size = Vector2(25, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 24
+text = "0
+"
+horizontal_alignment = 1
+
+[node name="PhysUp Container" type="HBoxContainer" parent="HBoxContainer/Card Ally Stat Bar/CardStats"]
+layout_mode = 2
+size_flags_horizontal = 2
+
+[node name="PhysUp Icon" type="TextureRect" parent="HBoxContainer/Card Ally Stat Bar/CardStats/PhysUp Container"]
+layout_mode = 2
+size_flags_horizontal = 0
+texture = ExtResource("9_vchbw")
+expand_mode = 3
+
+[node name="PhysUp Label" type="Label" parent="HBoxContainer/Card Ally Stat Bar/CardStats/PhysUp Container"]
+custom_minimum_size = Vector2(25, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 24
+text = "0
+"
+horizontal_alignment = 1
+
+[node name="MagUp Container" type="HBoxContainer" parent="HBoxContainer/Card Ally Stat Bar/CardStats"]
+layout_mode = 2
+size_flags_horizontal = 2
+
+[node name="MagUp Icon" type="TextureRect" parent="HBoxContainer/Card Ally Stat Bar/CardStats/MagUp Container"]
+layout_mode = 2
+size_flags_horizontal = 0
+texture = ExtResource("10_ek5hb")
+expand_mode = 3
+
+[node name="MagUp Label" type="Label" parent="HBoxContainer/Card Ally Stat Bar/CardStats/MagUp Container"]
 custom_minimum_size = Vector2(25, 0)
 layout_mode = 2
 size_flags_horizontal = 0
