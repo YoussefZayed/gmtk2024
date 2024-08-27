@@ -16,6 +16,7 @@ signal reparent_requested(which_card_ui: CardUI)
 @onready var mag_dam_num: Label = $"HBoxContainer/Card Ally Stat Bar/CardStats/MagDam Container/MagDam Label"
 @onready var phys_vul_num: Label = $"HBoxContainer/Card Ally Stat Bar/CardStats/PhysVul Container/PhysVul Label"
 @onready var mag_vul_num: Label = $"HBoxContainer/Card Ally Stat Bar/CardStats/MagVul Container/MagVul Label"
+@onready var draw_num: Label = $"HBoxContainer/Card Ally Stat Bar/CardStats/Draw Container/Draw Label"
 @onready var heal_num: Label = $"HBoxContainer/Card Ally Stat Bar/CardStats/Heal Container/Heal Label"
 
 @onready var color: ColorRect = $Color
@@ -111,6 +112,12 @@ func _set_card(value: Card) -> void:
 		mag_vul_num.get_parent().visible = true
 	else:
 		mag_vul_num.get_parent().visible = false
+	
+	if card.card_draw > 0:
+		draw_num.text = str(card.card_draw)
+		draw_num.get_parent().visible = true
+	else:
+		draw_num.get_parent().visible = false
 	
 	if card.health_increase > 0:
 		heal_num.text = str(card.health_increase)
