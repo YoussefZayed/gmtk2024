@@ -1,7 +1,7 @@
 class_name BattleController
 extends Node2D
 
-
+var timeTrial = true
 var entities: Array[Entity]
 var battles: Array[Battle]
 var entitiesDict = {}
@@ -22,6 +22,8 @@ func _ready() -> void:
 	if demo_scene and self.get_parent().name != "Game":
 		var test_items = testSetup(demo_scene_battles)
 		init(test_items[0], test_items[1], timer_time_limit)
+	$EndTurn.visible = timeTrial
+	$"Start Battle".visible = !timeTrial
 
 
 func init(all_entities, battles_for_combat, timer_time_amount: int):
@@ -39,7 +41,8 @@ func init(all_entities, battles_for_combat, timer_time_amount: int):
 		turnTimer.wait_time = 100
 	else:
 		turnTimer.wait_time = timer_time_amount
-	turnTimer.start()
+	if timeTrial == true:
+		turnTimer.start()
 	
 
 
@@ -178,6 +181,7 @@ func applyCardToEntity(card_player: Entity, card: Card, entity: Entity) -> void:
 
 func end_turn():
 	$EndTurn/VBoxContainer/Button.text = "End Turn"
+	$"Start Battle".text = "End Turn"
 	for battle in battles:
 		if battle.battleEnded:
 			hero_lane_won_ability(battle)
@@ -196,7 +200,8 @@ func end_turn():
 		
 	checkDeaths()
 	#turnTimer.wait_time = max(30, turnTimer.wait_time - 10)
-	turnTimer.start()
+	if timeTrial == true:
+		turnTimer.start()
 
 func player_stat_endturn(battle):
 	if battle.player.physical_block > 0: # reset block at end of turn

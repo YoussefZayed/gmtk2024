@@ -106,7 +106,19 @@ handle_input_locally = false
 size = Vector2i(640, 1080)
 render_target_update_mode = 0
 
+[node name="Start Battle" type="Button" parent="."]
+offset_left = 51.0
+offset_top = 49.0
+offset_right = 201.0
+offset_bottom = 199.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 32
+text = "Start
+Battle"
+
 [node name="EndTurn" type="MarginContainer" parent="."]
+visible = false
 custom_minimum_size = Vector2(0, 1080)
 offset_right = 40.0
 offset_bottom = 40.0
@@ -156,4 +168,5 @@ text = "(100 secs)"
 
 [node name="TurnTimer" type="Timer" parent="EndTurn/VBoxContainer"]
 
+[connection signal="pressed" from="Start Battle" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="EndTurn/VBoxContainer/Button" to="." method="_on_button_pressed"]
