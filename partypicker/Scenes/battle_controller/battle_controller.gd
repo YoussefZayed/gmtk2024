@@ -264,6 +264,10 @@ func hero_powers(card_player, card: Card):
 			if card.magical_damage>0:
 				for entity in appliedEnemies:
 					entity.take_damage(1, "magical")
+		"Mystic":
+			if card.magical_block>0:
+				for entity in appliedAllies:
+					entity.change_magical_block(1)
 
 func hero_lane_won_ability(battle):
 	print("Ability Cast")
