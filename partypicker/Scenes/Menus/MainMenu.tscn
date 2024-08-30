@@ -1,5 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://ccd4pm0b04v1d"]
+[gd_scene load_steps=6 format=3 uid="uid://ccd4pm0b04v1d"]
 
+[ext_resource type="Script" path="res://Scenes/Menus/main_menu.gd" id="1_6lm5c"]
 [ext_resource type="Texture2D" uid="uid://d28f246kt6uag" path="res://Assets/Art/PartyPickerTempMainMenu.png" id="1_xnt8q"]
 
 [sub_resource type="Gradient" id="Gradient_p1k0t"]
@@ -16,6 +17,7 @@ color_ramp = SubResource("Gradient_p1k0t")
 noise = SubResource("FastNoiseLite_lp3xx")
 
 [node name="Node2D" type="Node2D"]
+script = ExtResource("1_6lm5c")
 
 [node name="TextureRect2" type="TextureRect" parent="."]
 offset_right = 1920.0
@@ -48,15 +50,40 @@ layout_mode = 2
 size_flags_horizontal = 8
 alignment = 1
 
-[node name="StartButton" type="Button" parent="Margin Container/VBoxContainer"]
+[node name="New Game" type="Button" parent="Margin Container/VBoxContainer"]
+custom_minimum_size = Vector2(250, 80)
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "Start Game
 "
 
-[node name="Options Button" type="Button" parent="Margin Container/VBoxContainer"]
+[node name="Load Game" type="Button" parent="Margin Container/VBoxContainer"]
+custom_minimum_size = Vector2(250, 80)
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 disabled = true
+text = "Load Game
+"
+
+[node name="Quick Run" type="Button" parent="Margin Container/VBoxContainer"]
+custom_minimum_size = Vector2(250, 80)
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+disabled = true
+text = "Quick Run"
+
+[node name="Options Button" type="Button" parent="Margin Container/VBoxContainer"]
+custom_minimum_size = Vector2(250, 80)
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
 text = "Options
 "
+
+[node name="Exit Game" type="Button" parent="Margin Container/VBoxContainer"]
+custom_minimum_size = Vector2(250, 80)
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Exit Game
+"
+
+[connection signal="pressed" from="Margin Container/VBoxContainer/Exit Game" to="." method="_on_exit_game_pressed"]

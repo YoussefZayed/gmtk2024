@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://bnj3emdrvilnr"]
+[gd_scene load_steps=19 format=3 uid="uid://bnj3emdrvilnr"]
 
 [ext_resource type="PackedScene" uid="uid://c3orxpr6ll0jc" path="res://Scenes/battle_controller/battle_controller.tscn" id="1_utmhg"]
 [ext_resource type="PackedScene" uid="uid://ccd4pm0b04v1d" path="res://Scenes/Menus/MainMenu.tscn" id="2_mrty1"]
@@ -16,12 +16,14 @@
 [ext_resource type="Resource" uid="uid://d0qyy41hh5272" path="res://Enemy_resources/Skeletons/mage_skelly.tres" id="11_iafoj"]
 [ext_resource type="Resource" uid="uid://dmm44vioiqfa1" path="res://characters/hunter/hunter.tres" id="11_mo1va"]
 [ext_resource type="Resource" uid="uid://tmf78ri77wg7" path="res://Enemy_resources/Skeletons/boss_skelly.tres" id="12_uslkw"]
+[ext_resource type="PackedScene" uid="uid://cbiljfcns5dn0" path="res://Scenes/Menus/settings_menu.tscn" id="17_cxvhg"]
 
 [sub_resource type="GDScript" id="GDScript_gd4kx"]
 script/source = "extends Node2D
 
 @export var battleControllerScene: PackedScene
 @export var mainMenuScene: PackedScene
+@export var settings_menu: PackedScene
 @export var postBattleScreenScene: PackedScene
 @export var shopScreenScene: PackedScene 
 @export var playerChars: Array[Entity]
@@ -30,6 +32,7 @@ script/source = "extends Node2D
 
 var battleController: BattleController
 var mainMenu: Node
+var settingsMenu: Node
 var shopScreen: Node
 var players: Array[Entity] = []
 var ids = 1;
@@ -44,7 +47,13 @@ func _ready() -> void:
 	mainMenu = mainMenuScene.instantiate()
 	print(mainMenu)
 	self.add_child(mainMenu)
-	mainMenu.find_child(\"StartButton\").connect('pressed',startGame)
+	settingsMenu = settings_menu.instantiate()
+	self.add_child(settingsMenu)
+	
+	mainMenu.find_child(\"New Game\").connect('pressed',startGame)
+	mainMenu.find_child(\"Options Button\").connect('pressed',showOptionsMenu)
+	
+	settingsMenu.find_child(\"Settings Canvas\").visible = false
 
 func showTavernBar():
 	if (self.get_child_count() > 3):
@@ -174,8 +183,14 @@ func startGame():
 	print(\"STARTED!\")
 	showTavernBar()
 	mainMenu.queue_free()
-	
-	
+
+func showOptionsMenu():
+	settingsMenu.find_child(\"Settings Canvas\").visible = true
+
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed(\"ui_cancel\"):
+		settingsMenu.find_child(\"Settings Canvas\").visible = !settingsMenu.find_child(\"Settings Canvas\").visible
+
 func addPlayer(resource: Resource):
 	var player = Entity.new()
 	player.load_from_resource(resource)
@@ -211,6 +226,7 @@ func getBattleControllerItems():
 script = SubResource("GDScript_gd4kx")
 battleControllerScene = ExtResource("1_utmhg")
 mainMenuScene = ExtResource("2_mrty1")
+settings_menu = ExtResource("17_cxvhg")
 shopScreenScene = ExtResource("3_l8qpc")
 playerChars = Array[ExtResource("3_6io0h")]([ExtResource("5_xkilt"), ExtResource("4_mpn64"), ExtResource("6_xege5"), ExtResource("7_roi6b"), ExtResource("5_ng1im"), ExtResource("10_4opj8"), ExtResource("11_mo1va"), ExtResource("9_yy8s6")])
 EnemyChars = Array[ExtResource("3_6io0h")]([ExtResource("10_mc6us"), ExtResource("10_7hub4"), ExtResource("11_iafoj")])
