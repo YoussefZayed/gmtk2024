@@ -56,7 +56,7 @@ func _ready() -> void:
 	settingsMenu.find_child(\"Settings Canvas\").visible = false
 
 func showTavernBar():
-	if (self.get_child_count() > 3):
+	if (self.get_child_count() > 4):
 		print(self.get_child_count())
 		return
 	shopScreen = shopScreenScene.instantiate()
@@ -187,7 +187,7 @@ func startGame():
 func showOptionsMenu():
 	settingsMenu.find_child(\"Settings Canvas\").visible = true
 
-func _input(event: InputEvent) -> void:
+func _input(event: InputEvent) -> void: # disabled until ordering fix
 	if event.is_action_pressed(\"ui_cancel\"):
 		settingsMenu.find_child(\"Settings Canvas\").visible = !settingsMenu.find_child(\"Settings Canvas\").visible
 

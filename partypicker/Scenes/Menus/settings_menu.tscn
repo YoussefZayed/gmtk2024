@@ -17,6 +17,7 @@ grow_vertical = 2
 script = ExtResource("1_wqslh")
 
 [node name="Settings Canvas" type="CanvasLayer" parent="."]
+layer = 10
 
 [node name="Blur Rectangle" type="ColorRect" parent="Settings Canvas"]
 material = SubResource("ShaderMaterial_3cykc")
