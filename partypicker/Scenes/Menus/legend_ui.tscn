@@ -1,0 +1,573 @@
+[gd_scene load_steps=22 format=3 uid="uid://dvyb1ymj3od2j"]
+
+[ext_resource type="Texture2D" uid="uid://blggm0xupsq88" path="res://Assets/Art/Icons/MagDef Icon.png" id="1_vbwic"]
+[ext_resource type="Texture2D" uid="uid://b1kridefxia3e" path="res://Assets/Art/Icons/MagDam Icon.png" id="2_sgchl"]
+[ext_resource type="Texture2D" uid="uid://diur5ks5h0uw4" path="res://Assets/Art/Icons/MagVul Icon.png" id="3_35wru"]
+[ext_resource type="Texture2D" uid="uid://16p8oeu0xffn" path="res://Assets/Art/Icons/MagUp Icon.png" id="4_j07kq"]
+[ext_resource type="Texture2D" uid="uid://bdts50mncwnx8" path="res://Assets/Art/Icons/PhysDef Icon.png" id="5_kdouf"]
+[ext_resource type="Texture2D" uid="uid://cngehbm20ema" path="res://Assets/Art/Icons/PhysDam Icon.png" id="6_1ey8y"]
+[ext_resource type="Texture2D" uid="uid://8h5ppop1n8ex" path="res://Assets/Art/Icons/PhysVul Icon.png" id="7_62bx4"]
+[ext_resource type="Texture2D" uid="uid://dsfbc8ojc26ps" path="res://Assets/Art/Icons/PhysUp Icon.png" id="8_ocs3n"]
+[ext_resource type="Texture2D" uid="uid://5qcjk1vucgx1" path="res://Assets/Art/Icons/LaneTargeted Icon.png" id="9_0f5nn"]
+[ext_resource type="Texture2D" uid="uid://crn2qobtif7wq" path="res://Assets/Art/Icons/LaneAll Icon.png" id="10_6l8us"]
+[ext_resource type="Texture2D" uid="uid://c3s34axh1cce7" path="res://Assets/Art/Icons/LaneSelf Icon.png" id="11_sdjo5"]
+[ext_resource type="Texture2D" uid="uid://74cgnm14pstc" path="res://Assets/Art/Icons/LaneEnemy Icon.png" id="12_50uxq"]
+[ext_resource type="Texture2D" uid="uid://c30qqy5227c7s" path="res://Assets/Art/Icons/CardMana.png" id="13_lxdcu"]
+[ext_resource type="Texture2D" uid="uid://bvammojqyacbk" path="res://Assets/Art/Icons/Energy Icon.png" id="14_gmru0"]
+[ext_resource type="Texture2D" uid="uid://d3btxe5u08r2g" path="res://Assets/Art/Icons/CardDraw Icon.png" id="15_2b43l"]
+[ext_resource type="Texture2D" uid="uid://baalytrj18eyn" path="res://Assets/Art/Icons/CardDiscard Icon.png" id="16_408a8"]
+[ext_resource type="Texture2D" uid="uid://c221c4ijgqln1" path="res://Assets/Art/Icons/Health Icon.png" id="17_12bhe"]
+[ext_resource type="Texture2D" uid="uid://cw4wnknya5pq3" path="res://Assets/Art/Icons/Heal Icon.png" id="18_qmcds"]
+
+[sub_resource type="Gradient" id="Gradient_p1k0t"]
+offsets = PackedFloat32Array(0, 0.998008)
+colors = PackedColorArray(0.666667, 0.580392, 0.431373, 1, 0.870588, 0.768627, 0.580392, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_lp3xx"]
+frequency = 0.001
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_cc817"]
+width = 1920
+height = 1080
+color_ramp = SubResource("Gradient_p1k0t")
+noise = SubResource("FastNoiseLite_lp3xx")
+
+[node name="Legend UI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Legend Canvas" type="CanvasLayer" parent="."]
+
+[node name="TextureRect2" type="TextureRect" parent="Legend Canvas"]
+offset_right = 1920.0
+offset_bottom = 1080.0
+texture = SubResource("NoiseTexture2D_cc817")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Legend Canvas"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -887.5
+offset_top = -215.0
+offset_right = 887.5
+offset_bottom = 215.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Legend Canvas/HBoxContainer"]
+layout_mode = 2
+
+[node name="Upper Hbox" type="HBoxContainer" parent="Legend Canvas/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Magical Margin (Outer)" type="MarginContainer" parent="Legend Canvas/HBoxContainer/VBoxContainer/Upper Hbox"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="ColorRect" type="ColorRect" parent="Legend Canvas/HBoxContainer/VBoxContainer/Upper Hbox/Magical Margin (Outer)"]
+layout_mode = 2
+color = Color(0, 0, 0, 0.498039)
+
+[node name="Magical Margin (Inner)" type="MarginContainer" parent="Legend Canvas/HBoxContainer/VBoxContainer/Upper Hbox/Magical Margin (Outer)"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="Magical Stats" type="VBoxContainer" parent="Legend Canvas/HBoxContainer/VBoxContainer/Upper Hbox/Magical Margin (Outer)/Magical Margin (Inner)"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 0
+size_flags_stretch_ratio = 2.0
+
+[node name="MagDef Container" type="HBoxContainer" parent="Legend Canvas/HBoxContainer/VBoxContainer/Upper Hbox/Magical Margin (Outer)/Magical Margin (Inner)/Magical Stats"]
+layout_mode = 2
+size_flags_horizontal = 2
+
+[node name="MagDef Icon" type="TextureRect" parent="Legend Canvas/HBoxContainer/VBoxContainer/Upper Hbox/Magical Margin (Outer)/Magical Margin (Inner)/Magical Stats/MagDef Container"]
+layout_mode = 2
+size_flags_horizontal = 0
+texture = ExtResource("1_vbwic")
+expand_mode = 3
+
+[node name="MagDef Label" type="Label" parent="Legend Canvas/HBoxContainer/VBoxContainer/Upper Hbox/Magical Margin (Outer)/Magical Margin (Inner)/Magical Stats/MagDef Container"]
+custom_minimum_size = Vector2(25, 50)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 40
+text = "Magical Defense
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MagDam Container" type="HBoxContainer" parent="Legend Canvas/HBoxContainer/VBoxContainer/Upper Hbox/Magical Margin (Outer)/Magical Margin (Inner)/Magical Stats"]
+layout_mode = 2
+size_flags_horizontal = 2
+
+[node name="MagDam Icon" type="TextureRect" parent="Legend Canvas/HBoxContainer/VBoxContainer/Upper Hbox/Magical Margin (Outer)/Magical Margin (Inner)/Magical Stats/MagDam Container"]
+layout_mode = 2
+size_flags_horizontal = 0
+texture = ExtResource("2_sgchl")
+expand_mode = 3
+
+[node name="MagDam Label" type="Label" parent="Legend Canvas/HBoxContainer/VBoxContainer/Upper Hbox/Magical Margin (Outer)/Magical Margin (Inner)/Magical Stats/MagDam Container"]
+custom_minimum_size = Vector2(25, 50)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 40
+text = "Magic Damage"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MagVul Container" type="HBoxContainer" parent="Legend Canvas/HBoxContainer/VBoxContainer/Upper Hbox/Magical Margin (Outer)/Magical Margin (Inner)/Magical Stats"]
+layout_mode = 2
+size_flags_horizontal = 2
+
+[node name="MagVul Icon" type="TextureRect" parent="Legend Canvas/HBoxContainer/VBoxContainer/Upper Hbox/Magical Margin (Outer)/Magical Margin (Inner)/Magical Stats/MagVul Container"]
+layout_mode = 2
+size_flags_horizontal = 0
+texture = ExtResource("3_35wru")
+expand_mode = 3
+
+[node name="MagVul Label" type="Label" parent="Legend Canvas/HBoxContainer/VBoxContainer/Upper Hbox/Magical Margin (Outer)/Magical Margin (Inner)/Magical Stats/MagVul Container"]
+custom_minimum_size = Vector2(25, 50)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 40
+text = "Magical Vulnerability
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MagUp Container" type="HBoxContainer" parent="Legend Canvas/HBoxContainer/VBoxContainer/Upper Hbox/Magical Margin (Outer)/Magical Margin (Inner)/Magical Stats"]
+layout_mode = 2
+size_flags_horizontal = 2
+
+[node name="MagUp Icon" type="TextureRect" parent="Legend Canvas/HBoxContainer/VBoxContainer/Upper Hbox/Magical Margin (Outer)/Magical Margin (Inner)/Magical Stats/MagUp Container"]
+layout_mode = 2
+size_flags_horizontal = 0
+texture = ExtResource("4_j07kq")
+expand_mode = 3
+
+[node name="MagUp Label" type="Label" parent="Legend Canvas/HBoxContainer/VBoxContainer/Upper Hbox/Magical Margin (Outer)/Magical Margin (Inner)/Magical Stats/MagUp Container"]
+custom_minimum_size = Vector2(25, 50)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 40
+text = "Magic Damage Increase
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Physical Margin (Outer)" type="MarginContainer" parent="Legend Canvas/HBoxContainer/VBoxContainer/Upper Hbox"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="ColorRect" type="ColorRect" parent="Legend Canvas/HBoxContainer/VBoxContainer/Upper Hbox/Physical Margin (Outer)"]
+layout_mode = 2
+color = Color(0, 0, 0, 0.498039)
+
+[node name="Physical Margin (Inner)" type="MarginContainer" parent="Legend Canvas/HBoxContainer/VBoxContainer/Upper Hbox/Physical Margin (Outer)"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="Physical Stats" type="VBoxContainer" parent="Legend Canvas/HBoxContainer/VBoxContainer/Upper Hbox/Physical Margin (Outer)/Physical Margin (Inner)"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 0
+size_flags_stretch_ratio = 2.0
+
+[node name="PhysDef Container" type="HBoxContainer" parent="Legend Canvas/HBoxContainer/VBoxContainer/Upper Hbox/Physical Margin (Outer)/Physical Margin (Inner)/Physical Stats"]
+layout_mode = 2
+size_flags_horizontal = 2
+
+[node name="PhysDef Icon" type="TextureRect" parent="Legend Canvas/HBoxContainer/VBoxContainer/Upper Hbox/Physical Margin (Outer)/Physical Margin (Inner)/Physical Stats/PhysDef Container"]
+layout_mode = 2
+size_flags_horizontal = 0
+texture = ExtResource("5_kdouf")
+expand_mode = 3
+
+[node name="PhysDef Label" type="Label" parent="Legend Canvas/HBoxContainer/VBoxContainer/Upper Hbox/Physical Margin (Outer)/Physical Margin (Inner)/Physical Stats/PhysDef Container"]
+custom_minimum_size = Vector2(25, 50)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 40
+text = "Physical Defense
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PhysDam Container" type="HBoxContainer" parent="Legend Canvas/HBoxContainer/VBoxContainer/Upper Hbox/Physical Margin (Outer)/Physical Margin (Inner)/Physical Stats"]
+layout_mode = 2
+size_flags_horizontal = 2
+
+[node name="PhysDam Icon" type="TextureRect" parent="Legend Canvas/HBoxContainer/VBoxContainer/Upper Hbox/Physical Margin (Outer)/Physical Margin (Inner)/Physical Stats/PhysDam Container"]
+layout_mode = 2
+size_flags_horizontal = 0
+texture = ExtResource("6_1ey8y")
+expand_mode = 3
+
+[node name="PhysDam Label" type="Label" parent="Legend Canvas/HBoxContainer/VBoxContainer/Upper Hbox/Physical Margin (Outer)/Physical Margin (Inner)/Physical Stats/PhysDam Container"]
+custom_minimum_size = Vector2(25, 50)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 40
+text = "Physical Damage"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PhysVul Container" type="HBoxContainer" parent="Legend Canvas/HBoxContainer/VBoxContainer/Upper Hbox/Physical Margin (Outer)/Physical Margin (Inner)/Physical Stats"]
+layout_mode = 2
+size_flags_horizontal = 2
+
+[node name="PhysVul Icon" type="TextureRect" parent="Legend Canvas/HBoxContainer/VBoxContainer/Upper Hbox/Physical Margin (Outer)/Physical Margin (Inner)/Physical Stats/PhysVul Container"]
+layout_mode = 2
+size_flags_horizontal = 0
+texture = ExtResource("7_62bx4")
+expand_mode = 3
+
+[node name="PhysVul Label" type="Label" parent="Legend Canvas/HBoxContainer/VBoxContainer/Upper Hbox/Physical Margin (Outer)/Physical Margin (Inner)/Physical Stats/PhysVul Container"]
+custom_minimum_size = Vector2(25, 50)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 40
+text = "Physical Vulnerability
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PhysUp Container" type="HBoxContainer" parent="Legend Canvas/HBoxContainer/VBoxContainer/Upper Hbox/Physical Margin (Outer)/Physical Margin (Inner)/Physical Stats"]
+layout_mode = 2
+size_flags_horizontal = 2
+
+[node name="PhysUp Icon" type="TextureRect" parent="Legend Canvas/HBoxContainer/VBoxContainer/Upper Hbox/Physical Margin (Outer)/Physical Margin (Inner)/Physical Stats/PhysUp Container"]
+layout_mode = 2
+size_flags_horizontal = 0
+texture = ExtResource("8_ocs3n")
+expand_mode = 3
+
+[node name="PhysUp Label" type="Label" parent="Legend Canvas/HBoxContainer/VBoxContainer/Upper Hbox/Physical Margin (Outer)/Physical Margin (Inner)/Physical Stats/PhysUp Container"]
+custom_minimum_size = Vector2(25, 50)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 40
+text = "Physical Damage Increase
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Target Margin (Outer)" type="MarginContainer" parent="Legend Canvas/HBoxContainer/VBoxContainer/Upper Hbox"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="ColorRect" type="ColorRect" parent="Legend Canvas/HBoxContainer/VBoxContainer/Upper Hbox/Target Margin (Outer)"]
+layout_mode = 2
+color = Color(0, 0, 0, 0.498039)
+
+[node name="Target Margin (Inner)" type="MarginContainer" parent="Legend Canvas/HBoxContainer/VBoxContainer/Upper Hbox/Target Margin (Outer)"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="Target Stats" type="VBoxContainer" parent="Legend Canvas/HBoxContainer/VBoxContainer/Upper Hbox/Target Margin (Outer)/Target Margin (Inner)"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 0
+size_flags_stretch_ratio = 2.0
+
+[node name="Target Card Container" type="HBoxContainer" parent="Legend Canvas/HBoxContainer/VBoxContainer/Upper Hbox/Target Margin (Outer)/Target Margin (Inner)/Target Stats"]
+layout_mode = 2
+size_flags_horizontal = 2
+
+[node name="Target Card Icon" type="TextureRect" parent="Legend Canvas/HBoxContainer/VBoxContainer/Upper Hbox/Target Margin (Outer)/Target Margin (Inner)/Target Stats/Target Card Container"]
+layout_mode = 2
+size_flags_horizontal = 0
+texture = ExtResource("9_0f5nn")
+expand_mode = 3
+
+[node name="Target Card Label" type="Label" parent="Legend Canvas/HBoxContainer/VBoxContainer/Upper Hbox/Target Margin (Outer)/Target Margin (Inner)/Target Stats/Target Card Container"]
+custom_minimum_size = Vector2(25, 50)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 40
+text = "Targeted card
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Target All Container" type="HBoxContainer" parent="Legend Canvas/HBoxContainer/VBoxContainer/Upper Hbox/Target Margin (Outer)/Target Margin (Inner)/Target Stats"]
+layout_mode = 2
+size_flags_horizontal = 2
+
+[node name="Target All Icon" type="TextureRect" parent="Legend Canvas/HBoxContainer/VBoxContainer/Upper Hbox/Target Margin (Outer)/Target Margin (Inner)/Target Stats/Target All Container"]
+layout_mode = 2
+size_flags_horizontal = 0
+texture = ExtResource("10_6l8us")
+expand_mode = 3
+
+[node name="Target All Label" type="Label" parent="Legend Canvas/HBoxContainer/VBoxContainer/Upper Hbox/Target Margin (Outer)/Target Margin (Inner)/Target Stats/Target All Container"]
+custom_minimum_size = Vector2(25, 50)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 40
+text = "Card hits all units in lane"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Target Self Container" type="HBoxContainer" parent="Legend Canvas/HBoxContainer/VBoxContainer/Upper Hbox/Target Margin (Outer)/Target Margin (Inner)/Target Stats"]
+layout_mode = 2
+size_flags_horizontal = 2
+
+[node name="Target Self  Icon" type="TextureRect" parent="Legend Canvas/HBoxContainer/VBoxContainer/Upper Hbox/Target Margin (Outer)/Target Margin (Inner)/Target Stats/Target Self Container"]
+layout_mode = 2
+size_flags_horizontal = 0
+texture = ExtResource("11_sdjo5")
+expand_mode = 3
+
+[node name="Target Self  Label" type="Label" parent="Legend Canvas/HBoxContainer/VBoxContainer/Upper Hbox/Target Margin (Outer)/Target Margin (Inner)/Target Stats/Target Self Container"]
+custom_minimum_size = Vector2(25, 50)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 40
+text = "Card affects self in lane"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Target Enemy Container" type="HBoxContainer" parent="Legend Canvas/HBoxContainer/VBoxContainer/Upper Hbox/Target Margin (Outer)/Target Margin (Inner)/Target Stats"]
+layout_mode = 2
+size_flags_horizontal = 2
+
+[node name="Target Enemy Icon" type="TextureRect" parent="Legend Canvas/HBoxContainer/VBoxContainer/Upper Hbox/Target Margin (Outer)/Target Margin (Inner)/Target Stats/Target Enemy Container"]
+layout_mode = 2
+size_flags_horizontal = 0
+texture = ExtResource("12_50uxq")
+expand_mode = 3
+
+[node name="Target Enemy Label" type="Label" parent="Legend Canvas/HBoxContainer/VBoxContainer/Upper Hbox/Target Margin (Outer)/Target Margin (Inner)/Target Stats/Target Enemy Container"]
+custom_minimum_size = Vector2(25, 50)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 40
+text = "Card affects enemy in lane"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Lower Hbox" type="HBoxContainer" parent="Legend Canvas/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Other Margin (Outer)" type="MarginContainer" parent="Legend Canvas/HBoxContainer/VBoxContainer/Lower Hbox"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 1.9
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="ColorRect" type="ColorRect" parent="Legend Canvas/HBoxContainer/VBoxContainer/Lower Hbox/Other Margin (Outer)"]
+layout_mode = 2
+color = Color(0, 0, 0, 0.498039)
+
+[node name="Other Margin (Inner)" type="MarginContainer" parent="Legend Canvas/HBoxContainer/VBoxContainer/Lower Hbox/Other Margin (Outer)"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Legend Canvas/HBoxContainer/VBoxContainer/Lower Hbox/Other Margin (Outer)/Other Margin (Inner)"]
+layout_mode = 2
+
+[node name="Energy Icons" type="VBoxContainer" parent="Legend Canvas/HBoxContainer/VBoxContainer/Lower Hbox/Other Margin (Outer)/Other Margin (Inner)/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 0
+size_flags_stretch_ratio = 2.0
+
+[node name="Enemy Actions Container" type="HBoxContainer" parent="Legend Canvas/HBoxContainer/VBoxContainer/Lower Hbox/Other Margin (Outer)/Other Margin (Inner)/HBoxContainer/Energy Icons"]
+layout_mode = 2
+size_flags_horizontal = 2
+
+[node name="Enemy Action Icon" type="TextureRect" parent="Legend Canvas/HBoxContainer/VBoxContainer/Lower Hbox/Other Margin (Outer)/Other Margin (Inner)/HBoxContainer/Energy Icons/Enemy Actions Container"]
+layout_mode = 2
+size_flags_horizontal = 0
+texture = ExtResource("13_lxdcu")
+expand_mode = 3
+
+[node name="Enemy Action Label" type="Label" parent="Legend Canvas/HBoxContainer/VBoxContainer/Lower Hbox/Other Margin (Outer)/Other Margin (Inner)/HBoxContainer/Energy Icons/Enemy Actions Container"]
+custom_minimum_size = Vector2(25, 50)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 40
+text = "Enemy Actions"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PC Energy Container" type="HBoxContainer" parent="Legend Canvas/HBoxContainer/VBoxContainer/Lower Hbox/Other Margin (Outer)/Other Margin (Inner)/HBoxContainer/Energy Icons"]
+layout_mode = 2
+size_flags_horizontal = 2
+
+[node name="PC Enegy Icon" type="TextureRect" parent="Legend Canvas/HBoxContainer/VBoxContainer/Lower Hbox/Other Margin (Outer)/Other Margin (Inner)/HBoxContainer/Energy Icons/PC Energy Container"]
+layout_mode = 2
+size_flags_horizontal = 0
+texture = ExtResource("14_gmru0")
+expand_mode = 3
+
+[node name="PC Energy Label" type="Label" parent="Legend Canvas/HBoxContainer/VBoxContainer/Lower Hbox/Other Margin (Outer)/Other Margin (Inner)/HBoxContainer/Energy Icons/PC Energy Container"]
+custom_minimum_size = Vector2(25, 50)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 40
+text = "Player Character Energy"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Card Draw" type="VBoxContainer" parent="Legend Canvas/HBoxContainer/VBoxContainer/Lower Hbox/Other Margin (Outer)/Other Margin (Inner)/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 0
+size_flags_stretch_ratio = 2.0
+
+[node name="Card Draw Container" type="HBoxContainer" parent="Legend Canvas/HBoxContainer/VBoxContainer/Lower Hbox/Other Margin (Outer)/Other Margin (Inner)/HBoxContainer/Card Draw"]
+layout_mode = 2
+size_flags_horizontal = 2
+
+[node name="Card Draw Icon" type="TextureRect" parent="Legend Canvas/HBoxContainer/VBoxContainer/Lower Hbox/Other Margin (Outer)/Other Margin (Inner)/HBoxContainer/Card Draw/Card Draw Container"]
+layout_mode = 2
+size_flags_horizontal = 0
+texture = ExtResource("15_2b43l")
+expand_mode = 3
+
+[node name="Card Draw Label" type="Label" parent="Legend Canvas/HBoxContainer/VBoxContainer/Lower Hbox/Other Margin (Outer)/Other Margin (Inner)/HBoxContainer/Card Draw/Card Draw Container"]
+custom_minimum_size = Vector2(25, 50)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 40
+text = "Draw a card"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Card Discard  Container" type="HBoxContainer" parent="Legend Canvas/HBoxContainer/VBoxContainer/Lower Hbox/Other Margin (Outer)/Other Margin (Inner)/HBoxContainer/Card Draw"]
+layout_mode = 2
+size_flags_horizontal = 2
+
+[node name="Card Discard Icon" type="TextureRect" parent="Legend Canvas/HBoxContainer/VBoxContainer/Lower Hbox/Other Margin (Outer)/Other Margin (Inner)/HBoxContainer/Card Draw/Card Discard  Container"]
+layout_mode = 2
+size_flags_horizontal = 0
+texture = ExtResource("16_408a8")
+expand_mode = 3
+
+[node name="Card Discard Label" type="Label" parent="Legend Canvas/HBoxContainer/VBoxContainer/Lower Hbox/Other Margin (Outer)/Other Margin (Inner)/HBoxContainer/Card Draw/Card Discard  Container"]
+custom_minimum_size = Vector2(25, 50)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 40
+text = "Discard a card"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Other Margin (Outer)2" type="MarginContainer" parent="Legend Canvas/HBoxContainer/VBoxContainer/Lower Hbox"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="ColorRect" type="ColorRect" parent="Legend Canvas/HBoxContainer/VBoxContainer/Lower Hbox/Other Margin (Outer)2"]
+layout_mode = 2
+color = Color(0, 0, 0, 0.498039)
+
+[node name="Other Margin (Inner)" type="MarginContainer" parent="Legend Canvas/HBoxContainer/VBoxContainer/Lower Hbox/Other Margin (Outer)2"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Legend Canvas/HBoxContainer/VBoxContainer/Lower Hbox/Other Margin (Outer)2/Other Margin (Inner)"]
+layout_mode = 2
+
+[node name="Health Icons" type="VBoxContainer" parent="Legend Canvas/HBoxContainer/VBoxContainer/Lower Hbox/Other Margin (Outer)2/Other Margin (Inner)/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 0
+size_flags_stretch_ratio = 2.0
+
+[node name="Health Icon Container" type="HBoxContainer" parent="Legend Canvas/HBoxContainer/VBoxContainer/Lower Hbox/Other Margin (Outer)2/Other Margin (Inner)/HBoxContainer/Health Icons"]
+layout_mode = 2
+size_flags_horizontal = 2
+
+[node name="Health Icon Action Icon" type="TextureRect" parent="Legend Canvas/HBoxContainer/VBoxContainer/Lower Hbox/Other Margin (Outer)2/Other Margin (Inner)/HBoxContainer/Health Icons/Health Icon Container"]
+layout_mode = 2
+size_flags_horizontal = 0
+texture = ExtResource("17_12bhe")
+expand_mode = 3
+
+[node name="Health Icon Action Label" type="Label" parent="Legend Canvas/HBoxContainer/VBoxContainer/Lower Hbox/Other Margin (Outer)2/Other Margin (Inner)/HBoxContainer/Health Icons/Health Icon Container"]
+custom_minimum_size = Vector2(25, 50)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 40
+text = "Character Health
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Healing Icon Container2" type="HBoxContainer" parent="Legend Canvas/HBoxContainer/VBoxContainer/Lower Hbox/Other Margin (Outer)2/Other Margin (Inner)/HBoxContainer/Health Icons"]
+layout_mode = 2
+size_flags_horizontal = 2
+
+[node name="Healing Icon Icon" type="TextureRect" parent="Legend Canvas/HBoxContainer/VBoxContainer/Lower Hbox/Other Margin (Outer)2/Other Margin (Inner)/HBoxContainer/Health Icons/Healing Icon Container2"]
+layout_mode = 2
+size_flags_horizontal = 0
+texture = ExtResource("18_qmcds")
+expand_mode = 3
+
+[node name="Healing Icon Label" type="Label" parent="Legend Canvas/HBoxContainer/VBoxContainer/Lower Hbox/Other Margin (Outer)2/Other Margin (Inner)/HBoxContainer/Health Icons/Healing Icon Container2"]
+custom_minimum_size = Vector2(25, 50)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 40
+text = "Healing amount"
+horizontal_alignment = 1
+vertical_alignment = 1
