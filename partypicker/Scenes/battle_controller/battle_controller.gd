@@ -1,7 +1,7 @@
 class_name BattleController
 extends Node2D
 
-var timeTrial = true
+var timeTrial = false
 var entities: Array[Entity]
 var battles: Array[Battle]
 var entitiesDict = {}
