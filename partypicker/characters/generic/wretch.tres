@@ -10,6 +10,7 @@
 [resource]
 script = ExtResource("2_fk11v")
 name = "Wretch"
+expansion = "Basic"
 max_health = 100
 max_draw = 7
 draw = 4

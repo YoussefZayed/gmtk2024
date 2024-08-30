@@ -13,6 +13,7 @@
 [resource]
 script = ExtResource("2_4ipj1")
 name = "Alchemist"
+expansion = "Basic Damage Dealer"
 max_health = 80
 max_draw = 7
 draw = 4

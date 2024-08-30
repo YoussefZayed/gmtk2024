@@ -13,6 +13,7 @@
 [resource]
 script = ExtResource("2_rok25")
 name = "Grenadier"
+expansion = "Basic Damage Dealer"
 max_health = 100
 max_draw = 7
 draw = 4
