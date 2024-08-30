@@ -1,9 +1,10 @@
-[gd_scene load_steps=19 format=3 uid="uid://bnj3emdrvilnr"]
+[gd_scene load_steps=20 format=3 uid="uid://bnj3emdrvilnr"]
 
 [ext_resource type="PackedScene" uid="uid://c3orxpr6ll0jc" path="res://Scenes/battle_controller/battle_controller.tscn" id="1_utmhg"]
 [ext_resource type="PackedScene" uid="uid://ccd4pm0b04v1d" path="res://Scenes/Menus/MainMenu.tscn" id="2_mrty1"]
 [ext_resource type="Script" path="res://custom_resources/entity.gd" id="3_6io0h"]
 [ext_resource type="PackedScene" uid="uid://2du2d3kelks6" path="res://Scenes/Menus/TavernBar.tscn" id="3_l8qpc"]
+[ext_resource type="PackedScene" uid="uid://dvyb1ymj3od2j" path="res://Scenes/Menus/legend_ui.tscn" id="4_jw1sc"]
 [ext_resource type="Resource" uid="uid://dk2jueyvb1x5t" path="res://characters/armourer/armourer.tres" id="4_mpn64"]
 [ext_resource type="Resource" uid="uid://bxaroytjwirl3" path="res://characters/fortune_teller/fortune_teller.tres" id="5_ng1im"]
 [ext_resource type="Resource" uid="uid://b0wvoa777equr" path="res://characters/alchemist/alchemist.tres" id="5_xkilt"]
@@ -24,6 +25,7 @@ script/source = "extends Node2D
 @export var battleControllerScene: PackedScene
 @export var mainMenuScene: PackedScene
 @export var settings_menu: PackedScene
+@export var legend_ui: PackedScene
 @export var postBattleScreenScene: PackedScene
 @export var shopScreenScene: PackedScene 
 @export var playerChars: Array[Entity]
@@ -33,6 +35,7 @@ script/source = "extends Node2D
 var battleController: BattleController
 var mainMenu: Node
 var settingsMenu: Node
+var legendUI: Node
 var shopScreen: Node
 var players: Array[Entity] = []
 var ids = 1;
@@ -49,14 +52,18 @@ func _ready() -> void:
 	self.add_child(mainMenu)
 	settingsMenu = settings_menu.instantiate()
 	self.add_child(settingsMenu)
+	legendUI = legend_ui.instantiate()
+	self.add_child(legendUI)
 	
 	mainMenu.find_child(\"New Game\").connect('pressed',startGame)
+	mainMenu.find_child(\"Icon Legend Button\").connect('pressed',showLegendMenu)
 	mainMenu.find_child(\"Options Button\").connect('pressed',showOptionsMenu)
 	
 	settingsMenu.find_child(\"Settings Canvas\").visible = false
+	legendUI.find_child(\"Legend Canvas\").visible = false
 
 func showTavernBar():
-	if (self.get_child_count() > 4):
+	if (self.get_child_count() > 5):
 		print(self.get_child_count())
 		return
 	shopScreen = shopScreenScene.instantiate()
@@ -187,9 +194,15 @@ func startGame():
 func showOptionsMenu():
 	settingsMenu.find_child(\"Settings Canvas\").visible = true
 
+func showLegendMenu():
+	legendUI.find_child(\"Legend Canvas\").visible = true
+
 func _input(event: InputEvent) -> void: # disabled until ordering fix
 	if event.is_action_pressed(\"ui_cancel\"):
 		settingsMenu.find_child(\"Settings Canvas\").visible = !settingsMenu.find_child(\"Settings Canvas\").visible
+	if event.is_action_pressed(\"l_pressed\"):
+		legendUI.find_child(\"Legend Canvas\").visible = !legendUI.find_child(\"Legend Canvas\").visible
+
 
 func addPlayer(resource: Resource):
 	var player = Entity.new()
@@ -227,6 +240,7 @@ script = SubResource("GDScript_gd4kx")
 battleControllerScene = ExtResource("1_utmhg")
 mainMenuScene = ExtResource("2_mrty1")
 settings_menu = ExtResource("17_cxvhg")
+legend_ui = ExtResource("4_jw1sc")
 shopScreenScene = ExtResource("3_l8qpc")
 playerChars = Array[ExtResource("3_6io0h")]([ExtResource("5_xkilt"), ExtResource("4_mpn64"), ExtResource("6_xege5"), ExtResource("7_roi6b"), ExtResource("5_ng1im"), ExtResource("10_4opj8"), ExtResource("11_mo1va"), ExtResource("9_yy8s6")])
 EnemyChars = Array[ExtResource("3_6io0h")]([ExtResource("10_mc6us"), ExtResource("10_7hub4"), ExtResource("11_iafoj")])
