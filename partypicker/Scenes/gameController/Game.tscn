@@ -91,6 +91,8 @@ func showTavernBar():
 	shopScreen.find_child(\"Continue Quest\").connect(\"pressed\",continueQuest)
 	if len(players) > 0:
 		shopScreen.find_child(\"Continue Quest\").disabled = false
+	if len(players) > 0:
+		shopScreen.find_child(\"Continue Quest\").text = \"Continue Adventure\"
 	
 	self.add_child(shopScreen)
 
