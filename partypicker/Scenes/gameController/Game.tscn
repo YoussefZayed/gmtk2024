@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://bnj3emdrvilnr"]
+[gd_scene load_steps=24 format=3 uid="uid://bnj3emdrvilnr"]
 
 [ext_resource type="PackedScene" uid="uid://c3orxpr6ll0jc" path="res://Scenes/battle_controller/battle_controller.tscn" id="1_utmhg"]
 [ext_resource type="PackedScene" uid="uid://ccd4pm0b04v1d" path="res://Scenes/Menus/MainMenu.tscn" id="2_mrty1"]
@@ -19,6 +19,8 @@
 [ext_resource type="Resource" uid="uid://tmf78ri77wg7" path="res://Enemy_resources/Skeletons/boss_skelly.tres" id="12_uslkw"]
 [ext_resource type="Resource" uid="uid://cxj1lxj3i2uwc" path="res://characters/mystic/mystic.tres" id="15_fn82o"]
 [ext_resource type="PackedScene" uid="uid://cbiljfcns5dn0" path="res://Scenes/Menus/settings_menu.tscn" id="17_cxvhg"]
+[ext_resource type="Shader" path="res://Scenes/Menus/BlurBackgroundShader.gdshader" id="20_5j716"]
+[ext_resource type="Texture2D" uid="uid://56vheg7ekeil" path="res://Assets/Art/Backgrounds/Background1.png" id="20_iqc2g"]
 
 [sub_resource type="GDScript" id="GDScript_gd4kx"]
 script/source = "extends Node2D
@@ -164,10 +166,10 @@ func battleEnded():
 	print(\"👍\")
 	battleController.queue_free()
 	if level == 6:
-		print(\"ASDasd\")
-		$GameOver2.visible = true
-		$GameOver2/VBoxContainer/HBoxContainer/Button.connect(\"pressed\",restart)
-		$GameOver2/VBoxContainer/HBoxContainer/Button2.connect(\"pressed\",quit)
+		print(\"Condition 1\")
+		$GameOverWin.visible = true
+		$\"GameOverWin/Win Container/HBoxContainer/Restart\".connect(\"pressed\",restart)
+		$\"GameOverWin/Win Container/HBoxContainer/Exit Game\".connect(\"pressed\",quit)
 	else:
 		if len(players) < 4 && len(players)>0:
 			showTavernBar()
@@ -177,9 +179,9 @@ func battleEnded():
 
 func gameOver():
 	battleController.queue_free()
-	$GameOver.visible = true
-	$GameOver/VBoxContainer/HBoxContainer/Button.connect(\"pressed\",restart)
-	$GameOver/VBoxContainer/HBoxContainer/Button2.connect(\"pressed\",quit)
+	$GameOverLose.visible = true
+	$\"GameOverLose/Lose Container/HBoxContainer/Restart\".connect(\"pressed\",restart)
+	$\"GameOverLose/Lose Container/HBoxContainer/Exit Game\".connect(\"pressed\",quit)
 
 func quit():
 	get_tree().quit()
@@ -238,6 +240,10 @@ func getBattleControllerItems():
 	
 "
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wjjm0"]
+shader = ExtResource("20_5j716")
+shader_parameter/lod = 2.0
+
 [node name="Game" type="Node2D"]
 script = SubResource("GDScript_gd4kx")
 battleControllerScene = ExtResource("1_utmhg")
@@ -249,46 +255,105 @@ playerChars = Array[ExtResource("3_6io0h")]([ExtResource("5_xkilt"), ExtResource
 EnemyChars = Array[ExtResource("3_6io0h")]([ExtResource("10_mc6us"), ExtResource("10_7hub4"), ExtResource("11_iafoj")])
 boss = ExtResource("12_uslkw")
 
-[node name="GameOver" type="CenterContainer" parent="."]
+[node name="GameOverLose" type="CenterContainer" parent="."]
 visible = false
 custom_minimum_size = Vector2(1920, 1080)
 
-[node name="VBoxContainer" type="VBoxContainer" parent="GameOver"]
+[node name="Loss Background" type="TextureRect" parent="GameOverLose"]
+layout_mode = 2
+texture = ExtResource("20_iqc2g")
+
+[node name="Blur Rectangle" type="ColorRect" parent="GameOverLose"]
+material = SubResource("ShaderMaterial_wjjm0")
+custom_minimum_size = Vector2(1920, 1080)
 layout_mode = 2
 
-[node name="GameOver" type="Label" parent="GameOver/VBoxContainer"]
-layout_mode = 2
-text = "GAME OVER!"
-
-[node name="HBoxContainer" type="HBoxContainer" parent="GameOver/VBoxContainer"]
+[node name="Lose Container" type="VBoxContainer" parent="GameOverLose"]
 layout_mode = 2
 
-[node name="Button" type="Button" parent="GameOver/VBoxContainer/HBoxContainer"]
+[node name="GameOver" type="Label" parent="GameOverLose/Lose Container"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "You have failed your quest!
+Game Over."
+horizontal_alignment = 1
+
+[node name="Vertical Spacer" type="Control" parent="GameOverLose/Lose Container"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="GameOverLose/Lose Container"]
+layout_mode = 2
+
+[node name="Restart" type="Button" parent="GameOverLose/Lose Container/HBoxContainer"]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+theme_override_font_sizes/font_size = 32
 text = "Restart"
 
-[node name="Button2" type="Button" parent="GameOver/VBoxContainer/HBoxContainer"]
+[node name="Spacer" type="Control" parent="GameOverLose/Lose Container/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
-text = "Exit"
+size_flags_horizontal = 3
 
-[node name="GameOver2" type="CenterContainer" parent="."]
+[node name="Exit Game" type="Button" parent="GameOverLose/Lose Container/HBoxContainer"]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+theme_override_font_sizes/font_size = 32
+text = "Exit Game"
+
+[node name="GameOverWin" type="CenterContainer" parent="."]
 visible = false
 custom_minimum_size = Vector2(1920, 1080)
 
-[node name="VBoxContainer" type="VBoxContainer" parent="GameOver2"]
+[node name="Loss Background" type="TextureRect" parent="GameOverWin"]
+layout_mode = 2
+texture = ExtResource("20_iqc2g")
+
+[node name="Blur Rectangle" type="ColorRect" parent="GameOverWin"]
+material = SubResource("ShaderMaterial_wjjm0")
+custom_minimum_size = Vector2(1920, 1080)
 layout_mode = 2
 
-[node name="GameOver" type="Label" parent="GameOver2/VBoxContainer"]
-layout_mode = 2
-text = "YOU WON!"
-
-[node name="HBoxContainer" type="HBoxContainer" parent="GameOver2/VBoxContainer"]
+[node name="Win Container" type="VBoxContainer" parent="GameOverWin"]
 layout_mode = 2
 
-[node name="Button" type="Button" parent="GameOver2/VBoxContainer/HBoxContainer"]
+[node name="GameOver" type="Label" parent="GameOverWin/Win Container"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Congratulations,
+ you have suceeeded on your quest
+ and saved the land!"
+horizontal_alignment = 1
+
+[node name="Vertical Spacer" type="Control" parent="GameOverWin/Win Container"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="GameOverWin/Win Container"]
+layout_mode = 2
+
+[node name="Restart" type="Button" parent="GameOverWin/Win Container/HBoxContainer"]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+theme_override_font_sizes/font_size = 32
 text = "Restart"
 
-[node name="Button2" type="Button" parent="GameOver2/VBoxContainer/HBoxContainer"]
+[node name="Spacer" type="Control" parent="GameOverWin/Win Container/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
-text = "Exit"
+size_flags_horizontal = 3
+
+[node name="Exit Game" type="Button" parent="GameOverWin/Win Container/HBoxContainer"]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+theme_override_font_sizes/font_size = 32
+text = "Exit Game"
