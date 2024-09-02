@@ -1,0 +1,263 @@
+[gd_scene load_steps=7 format=3 uid="uid://g3pfxffsyvnu"]
+
+[ext_resource type="Texture2D" uid="uid://c7ym3kelckbn5" path="res://Assets/Art/Icons/Checkbox Icon Uncheck.png" id="1_4mbrx"]
+[ext_resource type="Texture2D" uid="uid://bpo6s2p2ct230" path="res://Assets/Art/Icons/Checkbox Icon Check.png" id="2_1wjqk"]
+[ext_resource type="Texture2D" uid="uid://fam83hjdq0wt" path="res://Assets/Art/Icons/Checkbox Icon Disabled.png" id="3_o2p86"]
+
+[sub_resource type="Gradient" id="Gradient_ben7i"]
+offsets = PackedFloat32Array(0, 0.998008)
+colors = PackedColorArray(0.666667, 0.580392, 0.431373, 1, 0.870588, 0.768627, 0.580392, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_xb34l"]
+frequency = 0.001
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_ogriy"]
+width = 1920
+height = 1080
+color_ramp = SubResource("Gradient_ben7i")
+noise = SubResource("FastNoiseLite_xb34l")
+
+[node name="Expansion Select Menu" type="Node2D"]
+
+[node name="Background Texture" type="TextureRect" parent="."]
+offset_right = 1920.0
+offset_bottom = 1080.0
+texture = SubResource("NoiseTexture2D_ogriy")
+
+[node name="Outer Margin" type="MarginContainer" parent="."]
+custom_minimum_size = Vector2(1920, 1080)
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 50
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Outer Margin"]
+layout_mode = 2
+
+[node name="Left Margin" type="MarginContainer" parent="Outer Margin/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 50
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Outer Margin/HBoxContainer/Left Margin"]
+layout_mode = 2
+
+[node name="Game Settings Label" type="Label" parent="Outer Margin/HBoxContainer/Left Margin/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 64
+text = "Game Settings"
+horizontal_alignment = 1
+
+[node name="Right Margin" type="MarginContainer" parent="Outer Margin/HBoxContainer"]
+custom_minimum_size = Vector2(480, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 50
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Outer Margin/HBoxContainer/Right Margin"]
+layout_mode = 2
+
+[node name="Expansions Settings Label" type="Label" parent="Outer Margin/HBoxContainer/Right Margin/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 64
+text = "Expansion Select"
+horizontal_alignment = 1
+
+[node name="GridContainer" type="GridContainer" parent="Outer Margin/HBoxContainer/Right Margin/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/h_separation = 10
+theme_override_constants/v_separation = 10
+columns = 3
+
+[node name="Honorbound Label" type="Label" parent="Outer Margin/HBoxContainer/Right Margin/VBoxContainer/GridContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Honorbound"
+
+[node name="Honorbound Separator" type="Control" parent="Outer Margin/HBoxContainer/Right Margin/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+
+[node name="Honorbound Button" type="TextureButton" parent="Outer Margin/HBoxContainer/Right Margin/VBoxContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 10
+toggle_mode = true
+texture_normal = ExtResource("1_4mbrx")
+texture_pressed = ExtResource("2_1wjqk")
+texture_disabled = ExtResource("3_o2p86")
+stretch_mode = 3
+
+[node name="Dark Dealings Label" type="Label" parent="Outer Margin/HBoxContainer/Right Margin/VBoxContainer/GridContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Dark Dealings
+"
+
+[node name="Dark Dealings Separator" type="Control" parent="Outer Margin/HBoxContainer/Right Margin/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+
+[node name="Dark Dealings Button" type="TextureButton" parent="Outer Margin/HBoxContainer/Right Margin/VBoxContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 10
+toggle_mode = true
+texture_normal = ExtResource("1_4mbrx")
+texture_pressed = ExtResource("2_1wjqk")
+texture_disabled = ExtResource("3_o2p86")
+stretch_mode = 3
+
+[node name="Rise of Slayers Label" type="Label" parent="Outer Margin/HBoxContainer/Right Margin/VBoxContainer/GridContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Rise of Slayers "
+
+[node name="Rise of Slayers Separator" type="Control" parent="Outer Margin/HBoxContainer/Right Margin/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+
+[node name="Rise of Slayers Button" type="TextureButton" parent="Outer Margin/HBoxContainer/Right Margin/VBoxContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 10
+toggle_mode = true
+texture_normal = ExtResource("1_4mbrx")
+texture_pressed = ExtResource("2_1wjqk")
+texture_disabled = ExtResource("3_o2p86")
+stretch_mode = 3
+
+[node name="Vertical Spacer" type="Control" parent="Outer Margin/HBoxContainer/Right Margin/VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+
+[node name="Character Label" type="Label" parent="Outer Margin/HBoxContainer/Right Margin/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Characters Available
+"
+horizontal_alignment = 1
+
+[node name="TabContainer" type="TabContainer" parent="Outer Margin/HBoxContainer/Right Margin/VBoxContainer"]
+layout_mode = 2
+tab_alignment = 1
+current_tab = 0
+
+[node name="Honorbound" type="TabBar" parent="Outer Margin/HBoxContainer/Right Margin/VBoxContainer/TabContainer"]
+layout_mode = 2
+metadata/_tab_index = 0
+
+[node name="ColorRect" type="ColorRect" parent="Outer Margin/HBoxContainer/Right Margin/VBoxContainer/TabContainer/Honorbound"]
+custom_minimum_size = Vector2(400, 400)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+color = Color(0, 0, 0, 0.247059)
+
+[node name="MarginContainer" type="MarginContainer" parent="Outer Margin/HBoxContainer/Right Margin/VBoxContainer/TabContainer/Honorbound"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 312.0
+grow_horizontal = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 50
+
+[node name="GridContainer" type="GridContainer" parent="Outer Margin/HBoxContainer/Right Margin/VBoxContainer/TabContainer/Honorbound/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/h_separation = 10
+theme_override_constants/v_separation = 10
+columns = 3
+
+[node name="Monk Label" type="Label" parent="Outer Margin/HBoxContainer/Right Margin/VBoxContainer/TabContainer/Honorbound/MarginContainer/GridContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Monk"
+
+[node name="Monk Separator" type="Control" parent="Outer Margin/HBoxContainer/Right Margin/VBoxContainer/TabContainer/Honorbound/MarginContainer/GridContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+
+[node name="Monk Button" type="TextureButton" parent="Outer Margin/HBoxContainer/Right Margin/VBoxContainer/TabContainer/Honorbound/MarginContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 10
+toggle_mode = true
+texture_normal = ExtResource("1_4mbrx")
+texture_pressed = ExtResource("2_1wjqk")
+texture_disabled = ExtResource("3_o2p86")
+stretch_mode = 3
+
+[node name="Druid Label" type="Label" parent="Outer Margin/HBoxContainer/Right Margin/VBoxContainer/TabContainer/Honorbound/MarginContainer/GridContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Druid
+"
+
+[node name="Druid Separator" type="Control" parent="Outer Margin/HBoxContainer/Right Margin/VBoxContainer/TabContainer/Honorbound/MarginContainer/GridContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+
+[node name="Druid Button" type="TextureButton" parent="Outer Margin/HBoxContainer/Right Margin/VBoxContainer/TabContainer/Honorbound/MarginContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 10
+toggle_mode = true
+texture_normal = ExtResource("1_4mbrx")
+texture_pressed = ExtResource("2_1wjqk")
+texture_disabled = ExtResource("3_o2p86")
+stretch_mode = 3
+
+[node name="Artificer Label" type="Label" parent="Outer Margin/HBoxContainer/Right Margin/VBoxContainer/TabContainer/Honorbound/MarginContainer/GridContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Artificer "
+
+[node name="Artificer Separator" type="Control" parent="Outer Margin/HBoxContainer/Right Margin/VBoxContainer/TabContainer/Honorbound/MarginContainer/GridContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+
+[node name="Artificer Button" type="TextureButton" parent="Outer Margin/HBoxContainer/Right Margin/VBoxContainer/TabContainer/Honorbound/MarginContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 10
+toggle_mode = true
+texture_normal = ExtResource("1_4mbrx")
+texture_pressed = ExtResource("2_1wjqk")
+texture_disabled = ExtResource("3_o2p86")
+stretch_mode = 3
+
+[node name="Knight Label" type="Label" parent="Outer Margin/HBoxContainer/Right Margin/VBoxContainer/TabContainer/Honorbound/MarginContainer/GridContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Knight"
+
+[node name="Knight Separator" type="Control" parent="Outer Margin/HBoxContainer/Right Margin/VBoxContainer/TabContainer/Honorbound/MarginContainer/GridContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+
+[node name="Knight Button" type="TextureButton" parent="Outer Margin/HBoxContainer/Right Margin/VBoxContainer/TabContainer/Honorbound/MarginContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 10
+toggle_mode = true
+texture_normal = ExtResource("1_4mbrx")
+texture_pressed = ExtResource("2_1wjqk")
+texture_disabled = ExtResource("3_o2p86")
+stretch_mode = 3
+
+[node name="Dark Dealings" type="TabBar" parent="Outer Margin/HBoxContainer/Right Margin/VBoxContainer/TabContainer"]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 1
+
+[node name="Rise of Slayers" type="TabBar" parent="Outer Margin/HBoxContainer/Right Margin/VBoxContainer/TabContainer"]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 2
