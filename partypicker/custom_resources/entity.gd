@@ -28,6 +28,7 @@ var id: String = '':
 		return id
 @export var name: String = "Entity"
 @export var expansion: String = "Basic"
+@export var level: int = 1
 @export var max_health: int = 100
 @export var max_draw: int = 7
 @export var draw: int = 4
