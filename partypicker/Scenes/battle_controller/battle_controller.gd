@@ -232,9 +232,9 @@ func hero_powers(card_player, card: Card):
 	var appliedAllies = [] # need to change this to all allies
 	var appliedEnemies = [] # need to change this to all enemies
 	
-	for battle in battles:
-		appliedAllies.append(battle.player)
-		appliedEnemies.append(battle.enemy)
+	for battleInstance in battles:
+		appliedAllies.append(battleInstance.player)
+		appliedEnemies.append(battleInstance.enemy)
 	
 	match entity_class:
 		"Alchemist":
@@ -249,6 +249,9 @@ func hero_powers(card_player, card: Card):
 			if card.magical_damage>0 or card.physical_damage>0:
 				for entity in appliedAllies:
 					entity.heal_character(1)
+		"Beast Master":
+			for n in card_player.level:
+				print("Deal 1 damage to lane enemy")
 		"Cleric":
 			if card.health_increase>0:
 				for entity in appliedAllies:
