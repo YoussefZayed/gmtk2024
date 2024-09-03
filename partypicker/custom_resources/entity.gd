@@ -127,16 +127,21 @@ func load_from_resource(resource) -> void:
 
 func heal_character(amount: int)-> void:
 	health += amount
+	if name == "Zealot":
+		physical_dealt_increase += 2
 
 func change_physical_block(amount: int) -> void:
 	if amount == 0:
 		return
 	if amount > 0:
 		physical_block += amount
-		# If class = Knight, physical_dealt_increase += 1
-		# If class = Artificer, magical_dealt_increase += 1
+		if name == "Knight":
+			physical_dealt_increase += 2
+		if name == "Artificer":
+			magical_dealt_increase += 2
 	else:
 		physical_block = min(0, physical_block + amount)
+	
 	emit_signal("physical_block_changed", id, physical_block)
 
 func change_magical_block(amount: int) -> void:
@@ -144,6 +149,10 @@ func change_magical_block(amount: int) -> void:
 		return
 	if amount > 0:
 		magical_block += amount
+		if name == "Knight":
+			physical_dealt_increase += 2
+		if name == "Artificer":
+			magical_dealt_increase += 2
 	else:
 		magical_block = min(0, magical_block + amount)
 	emit_signal("magical_block_changed", id, magical_block)
