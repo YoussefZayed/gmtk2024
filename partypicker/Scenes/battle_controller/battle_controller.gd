@@ -169,7 +169,7 @@ func applyCardToEntity(card_player: Entity, card: Card, entity: Entity) -> void:
 	entity.magical_dealt_increase += card.magical_dealt_increase
 	entity.physical_taken_increase += card.physical_taken_increase
 	entity.magical_taken_increase += card.magical_taken_increase
-	entity.health += card.health_increase
+	entity.heal_character(card.health_increase)
 	for i in range(card.card_draw):
 		entity.draw_card()
 	if card.magical_damage > 0:
@@ -248,11 +248,11 @@ func hero_powers(card_player, card: Card):
 		"Bard":
 			if card.magical_damage>0 or card.physical_damage>0:
 				for entity in appliedAllies:
-					entity.health += 1
+					entity.heal_character(1)
 		"Cleric":
 			if card.health_increase>0:
 				for entity in appliedAllies:
-					entity.health += 2
+					entity.heal_character(1)
 		"Fortune Teller":
 			if (card_player.cards_played%5) == 0:
 				for entity in appliedAllies:

@@ -109,6 +109,7 @@ layout_mode = 2
 [node name="Dark Dealings Button" type="TextureButton" parent="Outer Margin/HBoxContainer/Right Margin/VBoxContainer/GridContainer"]
 layout_mode = 2
 size_flags_horizontal = 10
+disabled = true
 toggle_mode = true
 texture_normal = ExtResource("1_4mbrx")
 texture_pressed = ExtResource("2_1wjqk")
@@ -127,6 +128,7 @@ layout_mode = 2
 [node name="Rise of Slayers Button" type="TextureButton" parent="Outer Margin/HBoxContainer/Right Margin/VBoxContainer/GridContainer"]
 layout_mode = 2
 size_flags_horizontal = 10
+disabled = true
 toggle_mode = true
 texture_normal = ExtResource("1_4mbrx")
 texture_pressed = ExtResource("2_1wjqk")
@@ -138,6 +140,7 @@ custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 
 [node name="Character Label" type="Label" parent="Outer Margin/HBoxContainer/Right Margin/VBoxContainer"]
+visible = false
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "Characters Available
@@ -145,6 +148,7 @@ text = "Characters Available
 horizontal_alignment = 1
 
 [node name="TabContainer" type="TabContainer" parent="Outer Margin/HBoxContainer/Right Margin/VBoxContainer"]
+visible = false
 layout_mode = 2
 tab_alignment = 1
 current_tab = 0

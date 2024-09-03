@@ -124,6 +124,9 @@ func load_from_resource(resource) -> void:
 	deck = resource.hand.duplicate()
 	print(["here ->", resource.hand])
 
+func heal_character(amount: int)-> void:
+	health += amount
+
 func change_physical_block(amount: int) -> void:
 	if amount == 0:
 		return
