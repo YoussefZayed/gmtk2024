@@ -15,6 +15,7 @@
 script = ExtResource("2_5yo5l")
 name = "Bard"
 expansion = "Basic Support"
+level = 1
 max_health = 80
 max_draw = 7
 draw = 4

@@ -13,6 +13,7 @@
 script = ExtResource("8_lpd43")
 name = "Mystic"
 expansion = "Basic Support"
+level = 1
 max_health = 100
 max_draw = 7
 draw = 4

@@ -14,6 +14,7 @@
 script = ExtResource("7_vrldo")
 name = "Mage"
 expansion = "Basic Damage Dealer"
+level = 1
 max_health = 80
 max_draw = 7
 draw = 4

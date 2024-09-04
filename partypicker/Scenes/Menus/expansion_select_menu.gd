@@ -1,6 +1,7 @@
 extends Node2D
 
-var expansions = ["Basic Support", "Basic Damage Dealer"]
+var basic_damage_on = true
+var basic_support_on = true
 var honorbound_on = false
 var call_of_the_wild_on = false
 var rise_of_slayers_on = false
@@ -39,16 +40,7 @@ func _on_kings_court_button_pressed() -> void:
 
 
 func _on_button_pressed() -> void:
-	expansions = ["Basic Support", "Basic Damage Dealer"]
-	if honorbound_on:
-		expansions.append("HB")
-	if call_of_the_wild_on:
-		expansions.append("COTW")
-	if rise_of_slayers_on:
-		expansions.append("ROS")
-	if dark_dealings_on:
-		expansions.append("DD")
-	if kings_court_on:
-		expansions.append("KC")
-	print(expansions)
+	#pass through states of expansions here
+	pass
+
 	

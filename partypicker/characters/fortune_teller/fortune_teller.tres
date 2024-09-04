@@ -13,6 +13,7 @@
 script = ExtResource("9_72es8")
 name = "Fortune Teller"
 expansion = "Basic Support"
+level = 1
 max_health = 80
 max_draw = 7
 draw = 4

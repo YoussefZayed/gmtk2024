@@ -9,6 +9,7 @@
 script = ExtResource("2_f0k01")
 name = "Entity"
 expansion = "Basic"
+level = 1
 max_health = 100
 max_draw = 1
 draw = 1

@@ -244,18 +244,18 @@ func hero_powers(card_player, card: Card):
 		"Armourer":
 			if card.physical_block>0:
 				for entity in appliedAllies:
-					entity.change_physical_block(1)
+					entity.change_physical_block(card_player.level)
 		"Bard":
 			if card.magical_damage>0 or card.physical_damage>0:
 				for entity in appliedAllies:
-					entity.heal_character(1)
+					entity.heal_character(card_player.level)
 		"Beast Master":
 			for n in card_player.level:
 				print("Deal 1 damage to lane enemy")
 		"Cleric":
 			if card.health_increase>0:
 				for entity in appliedAllies:
-					entity.heal_character(1)
+					entity.heal_character(card_player.level)
 		"Fortune Teller":
 			if (card_player.cards_played%5) == 0:
 				for entity in appliedAllies:
@@ -263,19 +263,19 @@ func hero_powers(card_player, card: Card):
 		"Grenadier":
 			if card.physical_damage>0:
 				for entity in appliedEnemies:
-					entity.take_damage(1, "physical")
+					entity.take_damage(card_player.level, "physical")
 		"Hunter":
 			if card.physical_damage>0:
 				for entity in appliedEnemies:
-					entity.physical_taken_increase += 1
+					entity.physical_taken_increase += card_player.level
 		"Mage":
 			if card.magical_damage>0:
 				for entity in appliedEnemies:
-					entity.take_damage(1, "magical")
+					entity.take_damage(card_player.level, "magical")
 		"Mystic":
 			if card.magical_block>0:
 				for entity in appliedAllies:
-					entity.change_magical_block(1)
+					entity.change_magical_block(card_player.level)
 
 func hero_lane_won_ability(battle):
 	print("Ability Cast")
