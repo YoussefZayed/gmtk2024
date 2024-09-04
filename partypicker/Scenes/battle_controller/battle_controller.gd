@@ -202,6 +202,8 @@ func end_turn():
 	#turnTimer.wait_time = max(30, turnTimer.wait_time - 10)
 	if timeTrial == true:
 		turnTimer.start()
+	
+	hero_turn_start()
 
 func player_stat_endturn(battle):
 	if battle.player.physical_block > 0: # reset block at end of turn
@@ -240,7 +242,7 @@ func hero_powers(card_player, card: Card):
 		"Alchemist":
 			if card.magical_damage>0:
 				for entity in appliedEnemies:
-					entity.magical_taken_increase += 1
+					entity.magical_taken_increase += card_player.level
 		"Armourer":
 			if card.physical_block>0:
 				for entity in appliedAllies:
@@ -302,6 +304,51 @@ func checkDeaths():
 			battle_on_going = true
 	if (not battle_on_going):
 		self.emit_signal("battle_ended")
+
+func hero_turn_start() -> void:
+	for battle in battles:
+			if battle.player.health > 0 && battle.battleEnded:
+				turn_start_ability(battle.player)
+				print(["Play start of turn ability", battle.player.name])
+
+func turn_start_ability(player):
+	var entity_class = player.name
+	
+	var appliedAllies = [] # need to change this to all allies
+	var appliedEnemies = [] # need to change this to all enemies
+	
+	for battleInstance in battles:
+		appliedAllies.append(battleInstance.player)
+		appliedEnemies.append(battleInstance.enemy)
+	
+	match entity_class:
+		"Alchemist":
+			for entity in appliedEnemies:
+				entity.magical_taken_increase += 2*player.level
+		"Armourer":
+			for entity in appliedAllies:
+				entity.change_physical_block(2*player.level)
+		"Bard":
+			for entity in appliedAllies:
+				entity.heal_character(2*player.level)
+		"Cleric":
+			for entity in appliedAllies:
+				entity.heal_character(2*player.level)
+		"Fortune Teller":
+			for entity in appliedAllies:
+				entity.draw_card()
+		"Grenadier":
+			for entity in appliedEnemies:
+				entity.take_damage(2*player.level, "physical")
+		"Hunter":
+			for entity in appliedEnemies:
+				entity.physical_taken_increase += 2*player.level
+		"Mage":
+			for entity in appliedEnemies:
+				entity.take_damage(2*player.level, "magical")
+		"Mystic":
+			for entity in appliedAllies:
+				entity.change_magical_block(2*player.level)
 
 func _on_button_pressed() -> void:
 	end_turn()
