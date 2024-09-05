@@ -1,0 +1,35 @@
+[gd_resource type="Resource" script_class="Entity" load_steps=9 format=3 uid="uid://b3mg7jdvdkwt7"]
+
+[ext_resource type="Texture2D" uid="uid://fqgdu0dtid72" path="res://Assets/Art/Characters/Warrior.png" id="1_f2r43"]
+[ext_resource type="Script" path="res://custom_resources/card.gd" id="2_l4t4t"]
+[ext_resource type="Resource" uid="uid://dgnqyfwclwvdg" path="res://characters/knight/cards/Gallop.tres" id="3_wg3db"]
+[ext_resource type="Resource" uid="uid://blua7x6lymiom" path="res://characters/generic/cards/Block.tres" id="4_vidie"]
+[ext_resource type="Resource" uid="uid://c025xmmvgll6d" path="res://characters/generic/cards/Resist.tres" id="5_slsb0"]
+[ext_resource type="Resource" uid="uid://cr76dw77mosli" path="res://characters/generic/cards/Strike.tres" id="6_wqu7q"]
+[ext_resource type="Resource" uid="uid://c8mxvqit2hs23" path="res://characters/generic/cards/Shatter.tres" id="7_05rh1"]
+[ext_resource type="Script" path="res://custom_resources/entity.gd" id="8_rr5gb"]
+
+[resource]
+script = ExtResource("8_rr5gb")
+name = "Knight"
+expansion = "Honorbound"
+level = 1
+max_health = 80
+max_draw = 7
+draw = 4
+max_energy = 3
+base_damage = 0
+base_defense = 0
+type = 0
+hand = Array[ExtResource("2_l4t4t")]([ExtResource("3_wg3db"), ExtResource("3_wg3db"), ExtResource("4_vidie"), ExtResource("4_vidie"), ExtResource("5_slsb0"), ExtResource("5_slsb0"), ExtResource("6_wqu7q"), ExtResource("6_wqu7q"), ExtResource("6_wqu7q"), ExtResource("7_05rh1")])
+physical_block = 0
+magical_block = 0
+art = ExtResource("1_f2r43")
+tool_tip = "Physical
+Damage
+Character abilities:
+Whenever I gain physical block,
+ I deal 2 additional damage on my next physical attack.
+If I have won my lane, and combat is still ongoing,
+ at the begining of each round,
+ I deal 5 damage to a random enemy."

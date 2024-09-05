@@ -314,12 +314,21 @@ func hero_turn_start() -> void:
 func turn_start_ability(player):
 	var entity_class = player.name
 	
-	var appliedAllies = [] # need to change this to all allies
-	var appliedEnemies = [] # need to change this to all enemies
+	var appliedAllies = [] # all allies
+	var appliedEnemies = [] # all enemies
+	var activeAllies = [] # all allies in active fights
+	var activeEnemies = [] # all enemies in active fights
+	
+	var rng = RandomNumberGenerator.new() # WIP stuff for random targetting.
+	print(rng.randf_range(1,len(activeEnemies))) # WIP stuff for random targetting.
 	
 	for battleInstance in battles:
 		appliedAllies.append(battleInstance.player)
 		appliedEnemies.append(battleInstance.enemy)
+		if battleInstance.battleEnded == false:
+			activeAllies.append(battleInstance.player)
+			activeEnemies.append(battleInstance.enemy)
+	
 	
 	match entity_class:
 		"Alchemist":
@@ -343,6 +352,8 @@ func turn_start_ability(player):
 		"Hunter":
 			for entity in appliedEnemies:
 				entity.physical_taken_increase += 2*player.level
+		"Knight":
+			print("WIP")
 		"Mage":
 			for entity in appliedEnemies:
 				entity.take_damage(2*player.level, "magical")
