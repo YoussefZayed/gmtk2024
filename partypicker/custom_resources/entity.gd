@@ -46,8 +46,8 @@ var cards_played = 0
 
 var physical_dealt_increase: int = 0:
 	set(value):
-		if value == 0:
-			return
+		#if value == 0:
+			#return
 		physical_dealt_increase = value
 		emit_signal("physical_dealt_increased", id, physical_dealt_increase)
 	get:
@@ -55,8 +55,8 @@ var physical_dealt_increase: int = 0:
 
 var magical_dealt_increase: int = 0:
 	set(value):
-		if value == 0:
-			return
+		#if value == 0:
+			#return
 		magical_dealt_increase = value
 		emit_signal("magical_dealt_increased", id, magical_dealt_increase)
 	get:
@@ -65,8 +65,8 @@ var magical_dealt_increase: int = 0:
 
 var physical_taken_increase: int = 0:
 	set(value):
-		if value == 0:
-			return
+		#if value == 0:
+			#return
 		physical_taken_increase = value
 		emit_signal("physical_taken_increased", id, physical_taken_increase)
 	get:
@@ -74,8 +74,8 @@ var physical_taken_increase: int = 0:
 
 var magical_taken_increase: int = 0:
 	set(value):
-		if value == 0:
-			return
+		#if value == 0:
+			#return
 		magical_taken_increase = value
 		emit_signal("magical_taken_increased", id, magical_taken_increase)
 	get:

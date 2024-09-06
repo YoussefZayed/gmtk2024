@@ -43,7 +43,8 @@ func init(all_entities, battles_for_combat, timer_time_amount: int):
 		turnTimer.wait_time = timer_time_amount
 	if timeTrial == true:
 		turnTimer.start()
-	
+	for battle in battles:
+		player_stat_endturn(battle)
 
 
 func createBattles(battles: Array[Battle]) -> void:
@@ -206,26 +207,18 @@ func end_turn():
 	hero_turn_start()
 
 func player_stat_endturn(battle):
-	if battle.player.physical_block > 0: # reset block at end of turn
-		battle.player.physical_block = 0
-	if battle.player.magical_block > 0: # reset block at end of turn
-		battle.player.magical_block = 0
+	battle.player.physical_block = 0
+	battle.player.magical_block = 0
 	
-	if battle.player.physical_taken_increase > 0: # decrement vulnerability by one at end of turn
-		battle.player.physical_taken_increase = floor(battle.player.physical_taken_increase/2)
-	if battle.player.magical_taken_increase > 0: # decrement vulnerability by one at end of turn
-		battle.player.magical_taken_increase = floor(battle.player.magical_taken_increase/2)
+	battle.player.physical_taken_increase = floor(battle.player.physical_taken_increase/2)
+	battle.player.magical_taken_increase = floor(battle.player.magical_taken_increase/2)
 
 func enemy_stat_endturn(battle):
-	if battle.enemy.physical_block > 0: # reset block at end of turn
-		battle.enemy.physical_block = 0
-	if battle.enemy.magical_block > 0: # reset block at end of turn
-		battle.enemy.magical_block = 0
+	battle.enemy.physical_block = 0
+	battle.enemy.magical_block = 0
 	
-	if battle.enemy.physical_taken_increase > 0: # decrement vulnerability by one at end of turn
-		battle.enemy.physical_taken_increase = floor(battle.enemy.physical_taken_increase/2)
-	if battle.enemy.magical_taken_increase > 0: # decrement vulnerability by one at end of turn
-		battle.enemy.magical_taken_increase = floor(battle.enemy.magical_taken_increase/2)
+	battle.enemy.physical_taken_increase = floor(battle.enemy.physical_taken_increase/2)
+	battle.enemy.magical_taken_increase = floor(battle.enemy.magical_taken_increase/2)
 
 func hero_powers(card_player, card: Card):
 	card_player.cards_played += 1
@@ -310,6 +303,7 @@ func hero_turn_start() -> void:
 			if battle.player.health > 0 && battle.battleEnded:
 				turn_start_ability(battle.player)
 				print(["Play start of turn ability", battle.player.name])
+	checkDeaths()
 
 func turn_start_ability(player):
 	var entity_class = player.name
@@ -319,9 +313,6 @@ func turn_start_ability(player):
 	var activeAllies = [] # all allies in active fights
 	var activeEnemies = [] # all enemies in active fights
 	
-	var rng = RandomNumberGenerator.new() # WIP stuff for random targetting.
-	print(rng.randf_range(1,len(activeEnemies))) # WIP stuff for random targetting.
-	
 	for battleInstance in battles:
 		appliedAllies.append(battleInstance.player)
 		appliedEnemies.append(battleInstance.enemy)
@@ -329,6 +320,9 @@ func turn_start_ability(player):
 			activeAllies.append(battleInstance.player)
 			activeEnemies.append(battleInstance.enemy)
 	
+	var rng = RandomNumberGenerator.new() # WIP stuff for random targetting.
+	var random_enemy = activeEnemies[ceil(rng.randf_range(1,len(activeEnemies)))-1]
+	var random_ally = activeEnemies[ceil(rng.randf_range(1,len(activeAllies)))-1]
 	
 	match entity_class:
 		"Alchemist":
@@ -353,7 +347,7 @@ func turn_start_ability(player):
 			for entity in appliedEnemies:
 				entity.physical_taken_increase += 2*player.level
 		"Knight":
-			print("WIP")
+			random_enemy.take_damage(5*player.level, "physical")
 		"Mage":
 			for entity in appliedEnemies:
 				entity.take_damage(2*player.level, "magical")
