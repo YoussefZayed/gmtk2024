@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="Card" load_steps=3 format=3 uid="uid://15d7t4q5kt6h"]
+
+[ext_resource type="Texture2D" uid="uid://16p8oeu0xffn" path="res://Assets/Art/Icons/MagUp Icon.png" id="1_rt38n"]
+[ext_resource type="Script" path="res://custom_resources/card.gd" id="1_wo0tf"]
+
+[resource]
+script = ExtResource("1_wo0tf")
+name = "Recharge"
+type = 3
+target = 0
+energy_cost = 1
+physical_damage = 0
+magical_damage = 0
+physical_block = 0
+magical_block = 0
+card_draw = 1
+card_discard = 0
+physical_dealt_increase = 0
+magical_dealt_increase = 4
+physical_taken_increase = 0
+magical_taken_increase = 0
+health_increase = 0
+card_art = ExtResource("1_rt38n")
+tooltip_text = ""

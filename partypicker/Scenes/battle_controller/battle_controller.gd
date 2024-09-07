@@ -331,6 +331,8 @@ func turn_start_ability(player):
 		"Armourer":
 			for entity in appliedAllies:
 				entity.change_physical_block(2*player.level)
+		"Artificer":
+			random_enemy.take_damage(5*player.level, "magical")
 		"Bard":
 			for entity in appliedAllies:
 				entity.heal_character(2*player.level)
