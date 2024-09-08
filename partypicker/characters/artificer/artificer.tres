@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://di03cx0lox6d2" path="res://Assets/Art/Characters/Alchemist.png" id="1_qegfg"]
 [ext_resource type="Script" path="res://custom_resources/card.gd" id="2_56u8g"]
-[ext_resource type="Resource" uid="uid://dgnqyfwclwvdg" path="res://characters/knight/cards/Gallop.tres" id="3_jejj8"]
+[ext_resource type="Resource" uid="uid://15d7t4q5kt6h" path="res://characters/artificer/cards/recharge.tres" id="3_q2crf"]
 [ext_resource type="Resource" uid="uid://blua7x6lymiom" path="res://characters/generic/cards/Block.tres" id="4_c57wt"]
 [ext_resource type="Resource" uid="uid://c025xmmvgll6d" path="res://characters/generic/cards/Resist.tres" id="5_e1uh8"]
 [ext_resource type="Resource" uid="uid://5yxyhty4dsxy" path="res://characters/generic/cards/Smite.tres" id="6_lwnlo"]
@@ -21,7 +21,7 @@ max_energy = 3
 base_damage = 0
 base_defense = 0
 type = 0
-hand = Array[ExtResource("2_56u8g")]([null, ExtResource("3_jejj8"), ExtResource("4_c57wt"), ExtResource("4_c57wt"), ExtResource("5_e1uh8"), ExtResource("5_e1uh8"), ExtResource("6_lwnlo"), ExtResource("6_lwnlo"), ExtResource("6_lwnlo"), ExtResource("7_kydrs")])
+hand = Array[ExtResource("2_56u8g")]([ExtResource("3_q2crf"), ExtResource("3_q2crf"), ExtResource("4_c57wt"), ExtResource("4_c57wt"), ExtResource("5_e1uh8"), ExtResource("5_e1uh8"), ExtResource("6_lwnlo"), ExtResource("6_lwnlo"), ExtResource("6_lwnlo"), ExtResource("7_kydrs")])
 physical_block = 0
 magical_block = 0
 art = ExtResource("1_qegfg")

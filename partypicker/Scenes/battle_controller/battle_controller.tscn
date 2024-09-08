@@ -7,17 +7,24 @@ script = ExtResource("1_r7nbl")
 demo_scene = true
 demo_scene_battles = 4
 
+[node name="_1v1" type="HBoxContainer" parent="."]
+visible = false
+offset_top = 60.0
+offset_right = 1920.0
+offset_bottom = 1080.0
+
 [node name="_2piece" type="HBoxContainer" parent="."]
 visible = false
-offset_right = 40.0
-offset_bottom = 40.0
+offset_top = 60.0
+offset_right = 1924.0
+offset_bottom = 1080.0
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="_2piece"]
 layout_mode = 2
 
 [node name="SubViewport1" type="SubViewport" parent="_2piece/SubViewportContainer"]
 handle_input_locally = false
-size = Vector2i(960, 1080)
+size = Vector2i(960, 1020)
 render_target_update_mode = 0
 
 [node name="SubViewportContainer2" type="SubViewportContainer" parent="_2piece"]
@@ -25,18 +32,44 @@ layout_mode = 2
 
 [node name="SubViewport" type="SubViewport" parent="_2piece/SubViewportContainer2"]
 handle_input_locally = false
-size = Vector2i(960, 1080)
+size = Vector2i(960, 1020)
 render_target_update_mode = 0
 
-[node name="_1v1" type="HBoxContainer" parent="."]
+[node name="_3piece" type="HBoxContainer" parent="."]
 visible = false
-offset_right = 40.0
-offset_bottom = 40.0
+offset_top = 60.0
+offset_right = 1928.0
+offset_bottom = 1080.0
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="_3piece"]
+layout_mode = 2
+
+[node name="SubViewport1" type="SubViewport" parent="_3piece/SubViewportContainer"]
+handle_input_locally = false
+size = Vector2i(640, 1020)
+render_target_update_mode = 0
+
+[node name="SubViewportContainer2" type="SubViewportContainer" parent="_3piece"]
+layout_mode = 2
+
+[node name="SubViewport" type="SubViewport" parent="_3piece/SubViewportContainer2"]
+handle_input_locally = false
+size = Vector2i(640, 1020)
+render_target_update_mode = 0
+
+[node name="SubViewportContainer3" type="SubViewportContainer" parent="_3piece"]
+layout_mode = 2
+
+[node name="SubViewport" type="SubViewport" parent="_3piece/SubViewportContainer3"]
+handle_input_locally = false
+size = Vector2i(640, 1020)
+render_target_update_mode = 0
 
 [node name="_4piece" type="HBoxContainer" parent="."]
 visible = false
-offset_right = 1928.0
-offset_bottom = 1080.0
+offset_top = 60.0
+offset_right = 3844.0
+offset_bottom = 2104.0
 scale = Vector2(0.5, 0.5)
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="_4piece"]
@@ -47,7 +80,7 @@ layout_mode = 2
 
 [node name="SubViewport" type="SubViewport" parent="_4piece/VBoxContainer2/SubViewportContainer3"]
 handle_input_locally = false
-size = Vector2i(1920, 1080)
+size = Vector2i(1920, 1020)
 render_target_update_mode = 0
 
 [node name="SubViewportContainer4" type="SubViewportContainer" parent="_4piece/VBoxContainer2"]
@@ -55,7 +88,7 @@ layout_mode = 2
 
 [node name="SubViewport" type="SubViewport" parent="_4piece/VBoxContainer2/SubViewportContainer4"]
 handle_input_locally = false
-size = Vector2i(1920, 1080)
+size = Vector2i(1920, 1020)
 render_target_update_mode = 0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="_4piece"]
@@ -66,7 +99,7 @@ layout_mode = 2
 
 [node name="SubViewport1" type="SubViewport" parent="_4piece/VBoxContainer/SubViewportContainer"]
 handle_input_locally = false
-size = Vector2i(1920, 1080)
+size = Vector2i(1920, 1020)
 render_target_update_mode = 0
 
 [node name="SubViewportContainer2" type="SubViewportContainer" parent="_4piece/VBoxContainer"]
@@ -74,48 +107,17 @@ layout_mode = 2
 
 [node name="SubViewport" type="SubViewport" parent="_4piece/VBoxContainer/SubViewportContainer2"]
 handle_input_locally = false
-size = Vector2i(1920, 1080)
-render_target_update_mode = 0
-
-[node name="_3piece" type="HBoxContainer" parent="."]
-visible = false
-offset_right = 1924.0
-offset_bottom = 1080.0
-
-[node name="SubViewportContainer" type="SubViewportContainer" parent="_3piece"]
-layout_mode = 2
-
-[node name="SubViewport1" type="SubViewport" parent="_3piece/SubViewportContainer"]
-handle_input_locally = false
-size = Vector2i(640, 1080)
-render_target_update_mode = 0
-
-[node name="SubViewportContainer2" type="SubViewportContainer" parent="_3piece"]
-layout_mode = 2
-
-[node name="SubViewport" type="SubViewport" parent="_3piece/SubViewportContainer2"]
-handle_input_locally = false
-size = Vector2i(640, 1080)
-render_target_update_mode = 0
-
-[node name="SubViewportContainer3" type="SubViewportContainer" parent="_3piece"]
-layout_mode = 2
-
-[node name="SubViewport" type="SubViewport" parent="_3piece/SubViewportContainer3"]
-handle_input_locally = false
-size = Vector2i(640, 1080)
+size = Vector2i(1920, 1020)
 render_target_update_mode = 0
 
 [node name="Start Battle" type="Button" parent="."]
-offset_left = 51.0
-offset_top = 49.0
-offset_right = 201.0
-offset_bottom = 199.0
+custom_minimum_size = Vector2(1920, 0)
+offset_right = 1920.0
+offset_bottom = 60.0
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_font_sizes/font_size = 32
-text = "Start
-Battle"
+text = "Start Battle"
 
 [node name="EndTurn" type="MarginContainer" parent="."]
 visible = false
