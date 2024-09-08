@@ -37,10 +37,3 @@ func _on_dark_dealings_button_pressed() -> void:
 
 func _on_kings_court_button_pressed() -> void:
 	kings_court_on =! kings_court_on
-
-
-func _on_button_pressed() -> void:
-	#pass through states of expansions here
-	pass
-
-	

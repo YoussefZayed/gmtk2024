@@ -118,12 +118,12 @@ size = Vector2i(1920, 1014)
 render_target_update_mode = 0
 
 [node name="Start Battle" type="Button" parent="."]
-custom_minimum_size = Vector2(960, 0)
+custom_minimum_size = Vector2(480, 0)
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = 480.0
-offset_right = 1440.0
+offset_left = 600.0
+offset_right = 1320.0
 offset_bottom = 64.0
 grow_horizontal = 2
 size_flags_horizontal = 4
@@ -132,22 +132,26 @@ theme_override_font_sizes/font_size = 32
 text = "Start Battle"
 
 [node name="EndTurn" type="MarginContainer" parent="."]
-visible = false
-custom_minimum_size = Vector2(0, 1080)
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = 600.0
+offset_top = 64.0
+offset_right = 664.0
+offset_bottom = 784.0
+rotation = -1.5708
 size_flags_vertical = 3
-theme_override_constants/margin_left = 5
-theme_override_constants/margin_top = 5
-theme_override_constants/margin_right = 5
-theme_override_constants/margin_bottom = 5
+mouse_filter = 2
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="EndTurn"]
 layout_mode = 2
+mouse_filter = 2
 
 [node name="Timer Bar" type="Panel" parent="EndTurn/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
+mouse_filter = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="EndTurn/VBoxContainer/Timer Bar"]
 layout_mode = 1
@@ -156,6 +160,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 theme_override_constants/margin_left = 5
 theme_override_constants/margin_top = 5
 theme_override_constants/margin_right = 5
@@ -165,22 +170,12 @@ theme_override_constants/margin_bottom = 5
 modulate = Color(0.561256, 0.633773, 0.874122, 1)
 layout_mode = 2
 size_flags_vertical = 1
-max_value = 60.0
-value = 60.0
+mouse_filter = 2
+max_value = 30.0
+value = 30.0
 fill_mode = 3
 show_percentage = false
-
-[node name="Button" type="Button" parent="EndTurn/VBoxContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 16
-text = "Start Battle"
-
-[node name="TurnTimerLabel" type="Label" parent="EndTurn/VBoxContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 16
-text = "(100 secs)"
 
 [node name="TurnTimer" type="Timer" parent="EndTurn/VBoxContainer"]
 
 [connection signal="pressed" from="Start Battle" to="." method="_on_button_pressed"]
-[connection signal="pressed" from="EndTurn/VBoxContainer/Button" to="." method="_on_button_pressed"]

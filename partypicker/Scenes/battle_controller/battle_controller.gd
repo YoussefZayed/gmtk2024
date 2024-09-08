@@ -21,12 +21,12 @@ signal battle_ended()
 func _ready() -> void:
 	if demo_scene and self.get_parent().name != "Game":
 		var test_items = testSetup(demo_scene_battles)
-		init(test_items[0], test_items[1], timer_time_limit)
+		init(test_items[0], test_items[1], timer_time_limit, false)
 	$EndTurn.visible = timeTrial
-	$"Start Battle".visible = !timeTrial
 
 
-func init(all_entities, battles_for_combat, timer_time_amount: int):
+func init(all_entities, battles_for_combat, timer_time_amount: int, InTimeTrial):
+	timeTrial = InTimeTrial
 	print([all_entities, battles_for_combat, timer_time_amount])
 	turnTimer = self.find_child("TurnTimer")
 	turnTimer.connect("timeout", on_turnTimer_timeout)
@@ -182,7 +182,6 @@ func applyCardToEntity(card_player: Entity, card: Card, entity: Entity) -> void:
 		card_player.physical_dealt_increase = 0
 
 func end_turn():
-	$EndTurn/VBoxContainer/Button.text = "End Turn"
 	$"Start Battle".text = "End Turn"
 	for battle in battles:
 		if battle.battleEnded:
@@ -367,4 +366,4 @@ func on_turnTimer_timeout() -> void:
 func _process(delta: float) -> void:
 	var time_rem = turnTimer.time_left
 	$"EndTurn/VBoxContainer/Timer Bar/MarginContainer/TimeRemaining".value = time_rem
-	$EndTurn/VBoxContainer/TurnTimerLabel.text = "( " + str(round(time_rem)) + " secs)"
+	#$EndTurn/VBoxContainer/TurnTimerLabel.text = "( " + str(round(time_rem)) + " secs)"

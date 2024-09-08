@@ -93,6 +93,7 @@ layout_mode = 2
 [node name="Call of the Wild Button" type="TextureButton" parent="Outer Margin/HBoxContainer/Exp Sel Margin/VBoxContainer/GridContainer"]
 layout_mode = 2
 size_flags_horizontal = 10
+disabled = true
 toggle_mode = true
 texture_normal = ExtResource("1_4mbrx")
 texture_pressed = ExtResource("2_1wjqk")
@@ -111,6 +112,7 @@ layout_mode = 2
 [node name="Rise of Slayers Button" type="TextureButton" parent="Outer Margin/HBoxContainer/Exp Sel Margin/VBoxContainer/GridContainer"]
 layout_mode = 2
 size_flags_horizontal = 10
+disabled = true
 toggle_mode = true
 texture_normal = ExtResource("1_4mbrx")
 texture_pressed = ExtResource("2_1wjqk")
@@ -130,6 +132,7 @@ layout_mode = 2
 [node name="Dark Dealings Button" type="TextureButton" parent="Outer Margin/HBoxContainer/Exp Sel Margin/VBoxContainer/GridContainer"]
 layout_mode = 2
 size_flags_horizontal = 10
+disabled = true
 toggle_mode = true
 texture_normal = ExtResource("1_4mbrx")
 texture_pressed = ExtResource("2_1wjqk")
@@ -149,6 +152,7 @@ layout_mode = 2
 [node name="Kings Court Button" type="TextureButton" parent="Outer Margin/HBoxContainer/Exp Sel Margin/VBoxContainer/GridContainer"]
 layout_mode = 2
 size_flags_horizontal = 10
+disabled = true
 toggle_mode = true
 texture_normal = ExtResource("1_4mbrx")
 texture_pressed = ExtResource("2_1wjqk")
@@ -293,14 +297,37 @@ theme_override_font_sizes/font_size = 64
 text = "Game Settings"
 horizontal_alignment = 1
 
-[node name="Button" type="Button" parent="Outer Margin/HBoxContainer/GS Margin/VBoxContainer"]
+[node name="GridContainer" type="GridContainer" parent="Outer Margin/HBoxContainer/GS Margin/VBoxContainer"]
+layout_mode = 2
+columns = 3
+
+[node name="Time Trial Label" type="Label" parent="Outer Margin/HBoxContainer/GS Margin/VBoxContainer/GridContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Time Trial Mode"
+
+[node name="Time Trial Separator" type="Control" parent="Outer Margin/HBoxContainer/GS Margin/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+
+[node name="Time Trial Button" type="TextureButton" parent="Outer Margin/HBoxContainer/GS Margin/VBoxContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 10
+disabled = true
+toggle_mode = true
+texture_normal = ExtResource("1_4mbrx")
+texture_pressed = ExtResource("2_1wjqk")
+texture_disabled = ExtResource("3_o2p86")
+stretch_mode = 3
+
+[node name="Start Game Button" type="Button" parent="Outer Margin/HBoxContainer/GS Margin/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 10
-text = "Test Button"
+text = "Start Game"
 
 [connection signal="pressed" from="Outer Margin/HBoxContainer/Exp Sel Margin/VBoxContainer/GridContainer/Honorbound Button" to="." method="_on_honorbound_button_pressed"]
 [connection signal="pressed" from="Outer Margin/HBoxContainer/Exp Sel Margin/VBoxContainer/GridContainer/Call of the Wild Button" to="." method="_on_call_of_the_wild_button_pressed"]
 [connection signal="pressed" from="Outer Margin/HBoxContainer/Exp Sel Margin/VBoxContainer/GridContainer/Rise of Slayers Button" to="." method="_on_rise_of_slayers_button_pressed"]
 [connection signal="pressed" from="Outer Margin/HBoxContainer/Exp Sel Margin/VBoxContainer/GridContainer/Dark Dealings Button" to="." method="_on_dark_dealings_button_pressed"]
 [connection signal="pressed" from="Outer Margin/HBoxContainer/Exp Sel Margin/VBoxContainer/GridContainer/Kings Court Button" to="." method="_on_kings_court_button_pressed"]
-[connection signal="pressed" from="Outer Margin/HBoxContainer/GS Margin/VBoxContainer/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Outer Margin/HBoxContainer/GS Margin/VBoxContainer/Start Game Button" to="." method="_on_button_pressed"]
