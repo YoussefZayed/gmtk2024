@@ -9,22 +9,22 @@ demo_scene_battles = 4
 
 [node name="_1v1" type="HBoxContainer" parent="."]
 visible = false
-offset_top = 60.0
+offset_top = 64.0
 offset_right = 1920.0
 offset_bottom = 1080.0
 
 [node name="_2piece" type="HBoxContainer" parent="."]
 visible = false
-offset_top = 60.0
+offset_top = 64.0
 offset_right = 1924.0
-offset_bottom = 1080.0
+offset_bottom = 1078.0
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="_2piece"]
 layout_mode = 2
 
 [node name="SubViewport1" type="SubViewport" parent="_2piece/SubViewportContainer"]
 handle_input_locally = false
-size = Vector2i(960, 1020)
+size = Vector2i(960, 1014)
 render_target_update_mode = 0
 
 [node name="SubViewportContainer2" type="SubViewportContainer" parent="_2piece"]
@@ -32,21 +32,21 @@ layout_mode = 2
 
 [node name="SubViewport" type="SubViewport" parent="_2piece/SubViewportContainer2"]
 handle_input_locally = false
-size = Vector2i(960, 1020)
+size = Vector2i(960, 1014)
 render_target_update_mode = 0
 
 [node name="_3piece" type="HBoxContainer" parent="."]
 visible = false
-offset_top = 60.0
+offset_top = 64.0
 offset_right = 1928.0
-offset_bottom = 1080.0
+offset_bottom = 1078.0
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="_3piece"]
 layout_mode = 2
 
 [node name="SubViewport1" type="SubViewport" parent="_3piece/SubViewportContainer"]
 handle_input_locally = false
-size = Vector2i(640, 1020)
+size = Vector2i(640, 1014)
 render_target_update_mode = 0
 
 [node name="SubViewportContainer2" type="SubViewportContainer" parent="_3piece"]
@@ -54,7 +54,7 @@ layout_mode = 2
 
 [node name="SubViewport" type="SubViewport" parent="_3piece/SubViewportContainer2"]
 handle_input_locally = false
-size = Vector2i(640, 1020)
+size = Vector2i(640, 1014)
 render_target_update_mode = 0
 
 [node name="SubViewportContainer3" type="SubViewportContainer" parent="_3piece"]
@@ -62,14 +62,14 @@ layout_mode = 2
 
 [node name="SubViewport" type="SubViewport" parent="_3piece/SubViewportContainer3"]
 handle_input_locally = false
-size = Vector2i(640, 1020)
+size = Vector2i(640, 1014)
 render_target_update_mode = 0
 
 [node name="_4piece" type="HBoxContainer" parent="."]
 visible = false
-offset_top = 60.0
+offset_top = 64.0
 offset_right = 3844.0
-offset_bottom = 2104.0
+offset_bottom = 2096.0
 scale = Vector2(0.5, 0.5)
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="_4piece"]
@@ -80,7 +80,7 @@ layout_mode = 2
 
 [node name="SubViewport" type="SubViewport" parent="_4piece/VBoxContainer2/SubViewportContainer3"]
 handle_input_locally = false
-size = Vector2i(1920, 1020)
+size = Vector2i(1920, 1014)
 render_target_update_mode = 0
 
 [node name="SubViewportContainer4" type="SubViewportContainer" parent="_4piece/VBoxContainer2"]
@@ -88,7 +88,7 @@ layout_mode = 2
 
 [node name="SubViewport" type="SubViewport" parent="_4piece/VBoxContainer2/SubViewportContainer4"]
 handle_input_locally = false
-size = Vector2i(1920, 1020)
+size = Vector2i(1920, 1014)
 render_target_update_mode = 0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="_4piece"]
@@ -99,7 +99,7 @@ layout_mode = 2
 
 [node name="SubViewport1" type="SubViewport" parent="_4piece/VBoxContainer/SubViewportContainer"]
 handle_input_locally = false
-size = Vector2i(1920, 1020)
+size = Vector2i(1920, 1014)
 render_target_update_mode = 0
 
 [node name="SubViewportContainer2" type="SubViewportContainer" parent="_4piece/VBoxContainer"]
@@ -107,13 +107,18 @@ layout_mode = 2
 
 [node name="SubViewport" type="SubViewport" parent="_4piece/VBoxContainer/SubViewportContainer2"]
 handle_input_locally = false
-size = Vector2i(1920, 1020)
+size = Vector2i(1920, 1014)
 render_target_update_mode = 0
 
 [node name="Start Battle" type="Button" parent="."]
-custom_minimum_size = Vector2(1920, 0)
-offset_right = 1920.0
-offset_bottom = 60.0
+custom_minimum_size = Vector2(960, 0)
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 480.0
+offset_right = 1440.0
+offset_bottom = 64.0
+grow_horizontal = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_font_sizes/font_size = 32

@@ -1,0 +1,31 @@
+[gd_scene load_steps=3 format=3 uid="uid://tg0g7onxaach"]
+
+[ext_resource type="Texture2D" uid="uid://b22cyo73o5txb" path="res://Assets/Art/Icons/Settings Icon.png" id="1_463is"]
+[ext_resource type="Texture2D" uid="uid://cno5kqtbm1d8o" path="res://Assets/Art/Icons/Party Icon.png" id="2_mfhmc"]
+
+[node name="UI Overlay" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="UI Elements Canvas" type="CanvasLayer" parent="."]
+layer = 9
+
+[node name="Top Right Menu Items" type="HBoxContainer" parent="UI Elements Canvas"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -132.0
+offset_bottom = 64.0
+grow_horizontal = 0
+
+[node name="Party View Button" type="TextureButton" parent="UI Elements Canvas/Top Right Menu Items"]
+layout_mode = 2
+texture_normal = ExtResource("2_mfhmc")
+
+[node name="Settings Button" type="TextureButton" parent="UI Elements Canvas/Top Right Menu Items"]
+layout_mode = 2
+texture_normal = ExtResource("1_463is")

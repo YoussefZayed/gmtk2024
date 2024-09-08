@@ -43,7 +43,7 @@ grow_vertical = 2
 script = ExtResource("1_o3h6b")
 
 [node name="Legend Canvas" type="CanvasLayer" parent="."]
-layer = 9
+layer = 8
 
 [node name="TextureRect2" type="TextureRect" parent="Legend Canvas"]
 offset_right = 1920.0

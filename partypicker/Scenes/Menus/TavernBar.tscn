@@ -42,10 +42,11 @@ anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -929.5
+offset_top = 64.0
 offset_right = 929.5
-offset_bottom = 137.0
+offset_bottom = 152.0
 grow_horizontal = 2
-theme_override_font_sizes/font_size = 100
+theme_override_font_sizes/font_size = 64
 text = "Select a character to add to the party."
 horizontal_alignment = 1
 

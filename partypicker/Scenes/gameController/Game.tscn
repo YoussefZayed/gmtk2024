@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://bnj3emdrvilnr"]
+[gd_scene load_steps=27 format=3 uid="uid://bnj3emdrvilnr"]
 
 [ext_resource type="PackedScene" uid="uid://c3orxpr6ll0jc" path="res://Scenes/battle_controller/battle_controller.tscn" id="1_utmhg"]
 [ext_resource type="PackedScene" uid="uid://ccd4pm0b04v1d" path="res://Scenes/Menus/MainMenu.tscn" id="2_mrty1"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://2du2d3kelks6" path="res://Scenes/Menus/TavernBar.tscn" id="3_l8qpc"]
 [ext_resource type="PackedScene" uid="uid://dvyb1ymj3od2j" path="res://Scenes/Menus/legend_ui.tscn" id="4_jw1sc"]
 [ext_resource type="Resource" uid="uid://dk2jueyvb1x5t" path="res://characters/armourer/armourer.tres" id="4_mpn64"]
+[ext_resource type="PackedScene" uid="uid://tg0g7onxaach" path="res://Scenes/Menus/ui_overlay.tscn" id="4_mu20c"]
 [ext_resource type="Resource" uid="uid://bxaroytjwirl3" path="res://characters/fortune_teller/fortune_teller.tres" id="5_ng1im"]
 [ext_resource type="Resource" uid="uid://b0wvoa777equr" path="res://characters/alchemist/alchemist.tres" id="5_xkilt"]
 [ext_resource type="Resource" uid="uid://ehlsvfbpcsbh" path="res://characters/bard/bard.tres" id="6_xege5"]
@@ -30,6 +31,7 @@ script/source = "extends Node2D
 @export var battleControllerScene: PackedScene
 @export var mainMenuScene: PackedScene
 @export var settings_menu: PackedScene
+@export var ui_overlay: PackedScene
 @export var legend_ui: PackedScene
 @export var postBattleScreenScene: PackedScene
 @export var shopScreenScene: PackedScene 
@@ -41,6 +43,7 @@ var battleController: BattleController
 var mainMenu: Node
 var settingsMenu: Node
 var legendUI: Node
+var UIoverlay: Node
 var shopScreen: Node
 var players: Array[Entity] = []
 var ids = 1;
@@ -59,6 +62,8 @@ func _ready() -> void:
 	self.add_child(settingsMenu)
 	legendUI = legend_ui.instantiate()
 	self.add_child(legendUI)
+	UIoverlay = ui_overlay.instantiate()
+	self.add_child(UIoverlay)
 	
 	mainMenu.find_child(\"New Game\").connect('pressed',startGame)
 	mainMenu.find_child(\"Icon Legend Button\").connect('pressed',showLegendMenu)
@@ -66,9 +71,10 @@ func _ready() -> void:
 	
 	settingsMenu.find_child(\"Settings Canvas\").visible = false
 	legendUI.find_child(\"Legend Canvas\").visible = false
+	UIoverlay.find_child(\"UI Elements Canvas\").visible = false
 
 func showTavernBar():
-	if (self.get_child_count() > 5):
+	if (self.get_child_count() > 6):
 		print(self.get_child_count())
 		return
 	shopScreen = shopScreenScene.instantiate()
@@ -195,6 +201,7 @@ func restart():
 
 func startGame():
 	print(\"STARTED!\")
+	UIoverlay.find_child(\"UI Elements Canvas\").visible = true
 	showTavernBar()
 	mainMenu.queue_free()
 
@@ -251,6 +258,7 @@ script = SubResource("GDScript_gd4kx")
 battleControllerScene = ExtResource("1_utmhg")
 mainMenuScene = ExtResource("2_mrty1")
 settings_menu = ExtResource("17_cxvhg")
+ui_overlay = ExtResource("4_mu20c")
 legend_ui = ExtResource("4_jw1sc")
 shopScreenScene = ExtResource("3_l8qpc")
 playerChars = Array[ExtResource("3_6io0h")]([ExtResource("5_xkilt"), ExtResource("4_mpn64"), ExtResource("9_tq734"), ExtResource("6_xege5"), ExtResource("7_roi6b"), ExtResource("5_ng1im"), ExtResource("10_4opj8"), ExtResource("11_mo1va"), ExtResource("8_ld1mr"), ExtResource("9_yy8s6"), ExtResource("15_fn82o")])
