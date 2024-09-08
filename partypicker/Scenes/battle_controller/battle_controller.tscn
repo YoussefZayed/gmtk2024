@@ -7,11 +7,18 @@ script = ExtResource("1_r7nbl")
 demo_scene = true
 demo_scene_battles = 4
 
-[node name="_1v1" type="HBoxContainer" parent="."]
-visible = false
+[node name="_1piece" type="HBoxContainer" parent="."]
 offset_top = 64.0
 offset_right = 1920.0
 offset_bottom = 1080.0
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="_1piece"]
+layout_mode = 2
+
+[node name="SubViewport1" type="SubViewport" parent="_1piece/SubViewportContainer"]
+handle_input_locally = false
+size = Vector2i(1920, 1020)
+render_target_update_mode = 4
 
 [node name="_2piece" type="HBoxContainer" parent="."]
 visible = false

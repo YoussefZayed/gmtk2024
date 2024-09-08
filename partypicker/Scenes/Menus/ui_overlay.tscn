@@ -1,7 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://tg0g7onxaach"]
+[gd_scene load_steps=6 format=3 uid="uid://tg0g7onxaach"]
 
 [ext_resource type="Texture2D" uid="uid://b22cyo73o5txb" path="res://Assets/Art/Icons/Settings Icon.png" id="1_463is"]
+[ext_resource type="Texture2D" uid="uid://bi7ugspt4a6f1" path="res://Assets/Art/Icons/Relic Bag Icon.png" id="1_g40k5"]
+[ext_resource type="Texture2D" uid="uid://dnxyucqkli6fc" path="res://Assets/Art/ui overlay banner.png" id="1_wp3sf"]
 [ext_resource type="Texture2D" uid="uid://cno5kqtbm1d8o" path="res://Assets/Art/Icons/Party Icon.png" id="2_mfhmc"]
+[ext_resource type="Texture2D" uid="uid://caxeldddq0jts" path="res://Assets/Art/Icons/Coin Icon.png" id="4_vter3"]
 
 [node name="UI Overlay" type="Control"]
 layout_mode = 3
@@ -14,6 +17,12 @@ grow_vertical = 2
 [node name="UI Elements Canvas" type="CanvasLayer" parent="."]
 layer = 9
 
+[node name="TextureRect" type="TextureRect" parent="UI Elements Canvas"]
+offset_right = 1920.0
+offset_bottom = 128.0
+mouse_filter = 2
+texture = ExtResource("1_wp3sf")
+
 [node name="Top Right Menu Items" type="HBoxContainer" parent="UI Elements Canvas"]
 anchors_preset = 1
 anchor_left = 1.0
@@ -22,6 +31,10 @@ offset_left = -132.0
 offset_bottom = 64.0
 grow_horizontal = 0
 
+[node name="Relic Bag View Button" type="TextureButton" parent="UI Elements Canvas/Top Right Menu Items"]
+layout_mode = 2
+texture_normal = ExtResource("1_g40k5")
+
 [node name="Party View Button" type="TextureButton" parent="UI Elements Canvas/Top Right Menu Items"]
 layout_mode = 2
 texture_normal = ExtResource("2_mfhmc")
@@ -29,3 +42,38 @@ texture_normal = ExtResource("2_mfhmc")
 [node name="Settings Button" type="TextureButton" parent="UI Elements Canvas/Top Right Menu Items"]
 layout_mode = 2
 texture_normal = ExtResource("1_463is")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI Elements Canvas"]
+offset_right = 362.0
+offset_bottom = 64.0
+
+[node name="Hspacer1" type="Control" parent="UI Elements Canvas/HBoxContainer"]
+custom_minimum_size = Vector2(64, 0)
+layout_mode = 2
+
+[node name="Act Number" type="Label" parent="UI Elements Canvas/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Act: 0"
+
+[node name="Hspacer2" type="Control" parent="UI Elements Canvas/HBoxContainer"]
+custom_minimum_size = Vector2(64, 0)
+layout_mode = 2
+
+[node name="Dungeon Number" type="Label" parent="UI Elements Canvas/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Dungeon: 0"
+
+[node name="Hspacer3" type="Control" parent="UI Elements Canvas/HBoxContainer"]
+custom_minimum_size = Vector2(64, 0)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="UI Elements Canvas/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("4_vter3")
+
+[node name="Gold" type="Label" parent="UI Elements Canvas/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "0"

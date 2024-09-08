@@ -72,9 +72,10 @@ func createBattles(battles: Array[Battle]) -> void:
 		var battle_instance_parent2 = $_2piece/SubViewportContainer2/SubViewport
 		createBattleInstance(battles[0], battle_instance_parent1)
 		createBattleInstance(battles[1], battle_instance_parent2)
-	else:
-		$_1v1.visible = true
-		createBattleInstance(battles[0], $_1v1)
+	elif battles.size() == 1:
+		$_1piece.visible = true
+		var battle_instance_parent1 = $_1piece/SubViewportContainer/SubViewport1
+		createBattleInstance(battles[0], battle_instance_parent1)
 
 func createBattleInstance(battle: Battle, parent: Node) -> void:
 	var battle_instance = battleInstanceScene.instantiate()

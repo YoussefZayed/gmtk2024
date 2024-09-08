@@ -68,6 +68,7 @@ func _ready() -> void:
 	mainMenu.find_child(\"New Game\").connect('pressed',startGame)
 	mainMenu.find_child(\"Icon Legend Button\").connect('pressed',showLegendMenu)
 	mainMenu.find_child(\"Options Button\").connect('pressed',showOptionsMenu)
+	UIoverlay.find_child(\"Settings Button\").connect('pressed',showOptionsMenu)
 	
 	settingsMenu.find_child(\"Settings Canvas\").visible = false
 	legendUI.find_child(\"Legend Canvas\").visible = false
