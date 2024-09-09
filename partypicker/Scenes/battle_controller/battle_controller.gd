@@ -239,9 +239,6 @@ func hero_powers(card_player, card: Card):
 			if battleInstance.battleEnded == false:
 				activeEnemies.append(battleInstance.enemy)
 	
-	print(["Applied allies ->", appliedAllies])
-	print(["Applied enemies ->", appliedEnemies])
-	
 	match entity_class:
 		"Alchemist":
 			if card.magical_damage>0:
@@ -333,9 +330,6 @@ func turn_start_ability(player):
 			appliedEnemies.append(battleInstance.enemy)
 			if battleInstance.battleEnded == false:
 				activeEnemies.append(battleInstance.enemy)
-	
-	print(["Applied allies ->", appliedAllies])
-	print(["Applied enemies ->", appliedEnemies])
 	
 	var rng = RandomNumberGenerator.new() # WIP stuff for random targetting.
 	var random_enemy = activeEnemies[ceil(rng.randf_range(1,len(activeEnemies)))-1]
