@@ -75,6 +75,13 @@ layout_mode = 2
 [node name="Honorbound Button" type="TextureButton" parent="Outer Margin/HBoxContainer/Exp Sel Margin/VBoxContainer/GridContainer"]
 layout_mode = 2
 size_flags_horizontal = 10
+tooltip_text = "Honorbound expansion
+Unlocked by completing act 4.
+Includes:
+Monk
+Zealot
+Artificer
+Knight"
 toggle_mode = true
 texture_normal = ExtResource("1_4mbrx")
 texture_pressed = ExtResource("2_1wjqk")
@@ -93,6 +100,13 @@ layout_mode = 2
 [node name="Call of the Wild Button" type="TextureButton" parent="Outer Margin/HBoxContainer/Exp Sel Margin/VBoxContainer/GridContainer"]
 layout_mode = 2
 size_flags_horizontal = 10
+tooltip_text = "Call of the wild expansion
+Unlocked by ___.
+Includes:
+Beastmaster
+Druid
+Werewolf
+Shaman"
 disabled = true
 toggle_mode = true
 texture_normal = ExtResource("1_4mbrx")
@@ -112,6 +126,14 @@ layout_mode = 2
 [node name="Rise of Slayers Button" type="TextureButton" parent="Outer Margin/HBoxContainer/Exp Sel Margin/VBoxContainer/GridContainer"]
 layout_mode = 2
 size_flags_horizontal = 10
+tooltip_text = "Rise of Slayers expansion
+Unlocked by ___.
+Includes:
+Rogue
+Sorceror
+Executioner
+____
+"
 disabled = true
 toggle_mode = true
 texture_normal = ExtResource("1_4mbrx")
@@ -132,6 +154,14 @@ layout_mode = 2
 [node name="Dark Dealings Button" type="TextureButton" parent="Outer Margin/HBoxContainer/Exp Sel Margin/VBoxContainer/GridContainer"]
 layout_mode = 2
 size_flags_horizontal = 10
+tooltip_text = "Rise of Slayers expansion
+Unlocked by defeating the void creature.
+Includes:
+Paladin
+Barbarian
+Warlock
+Acolyte
+"
 disabled = true
 toggle_mode = true
 texture_normal = ExtResource("1_4mbrx")
@@ -152,6 +182,17 @@ layout_mode = 2
 [node name="Kings Court Button" type="TextureButton" parent="Outer Margin/HBoxContainer/Exp Sel Margin/VBoxContainer/GridContainer"]
 layout_mode = 2
 size_flags_horizontal = 10
+tooltip_text = "Rise of Slayers expansion
+Unlocked by comepleting act 4 with a knight in your party.
+Includes:
+King
+Guard
+Jester
+—--
+Unique act 4.
+
+
+"
 disabled = true
 toggle_mode = true
 texture_normal = ExtResource("1_4mbrx")
@@ -313,6 +354,9 @@ layout_mode = 2
 [node name="Time Trial Button" type="TextureButton" parent="Outer Margin/HBoxContainer/GS Margin/VBoxContainer/GridContainer"]
 layout_mode = 2
 size_flags_horizontal = 10
+tooltip_text = "Enables a timer which 
+ends your turn once 
+it is done counting down."
 disabled = true
 toggle_mode = true
 texture_normal = ExtResource("1_4mbrx")
