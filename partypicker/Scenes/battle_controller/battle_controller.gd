@@ -224,12 +224,23 @@ func hero_powers(card_player, card: Card):
 	card_player.cards_played += 1
 	var entity_class = card_player.name
 	
-	var appliedAllies = [] # need to change this to all allies
-	var appliedEnemies = [] # need to change this to all enemies
+	var appliedAllies = [] # all allies
+	var appliedEnemies = [] # all enemies
+	var activeAllies = [] # all allies in active fights
+	var activeEnemies = [] # all enemies in active fights
 	
 	for battleInstance in battles:
-		appliedAllies.append(battleInstance.player)
-		appliedEnemies.append(battleInstance.enemy)
+		if appliedAllies.find(battleInstance.player)<0:
+			appliedAllies.append(battleInstance.player)
+			if battleInstance.battleEnded == false:
+				activeAllies.append(battleInstance.player)
+		if appliedEnemies.find(battleInstance.enemy)<0:
+			appliedEnemies.append(battleInstance.enemy)
+			if battleInstance.battleEnded == false:
+				activeEnemies.append(battleInstance.enemy)
+	
+	print(["Applied allies ->", appliedAllies])
+	print(["Applied enemies ->", appliedEnemies])
 	
 	match entity_class:
 		"Alchemist":
@@ -314,11 +325,17 @@ func turn_start_ability(player):
 	var activeEnemies = [] # all enemies in active fights
 	
 	for battleInstance in battles:
-		appliedAllies.append(battleInstance.player)
-		appliedEnemies.append(battleInstance.enemy)
-		if battleInstance.battleEnded == false:
-			activeAllies.append(battleInstance.player)
-			activeEnemies.append(battleInstance.enemy)
+		if appliedAllies.find(battleInstance.player)<0:
+			appliedAllies.append(battleInstance.player)
+			if battleInstance.battleEnded == false:
+				activeAllies.append(battleInstance.player)
+		if appliedEnemies.find(battleInstance.enemy)<0:
+			appliedEnemies.append(battleInstance.enemy)
+			if battleInstance.battleEnded == false:
+				activeEnemies.append(battleInstance.enemy)
+	
+	print(["Applied allies ->", appliedAllies])
+	print(["Applied enemies ->", appliedEnemies])
 	
 	var rng = RandomNumberGenerator.new() # WIP stuff for random targetting.
 	var random_enemy = activeEnemies[ceil(rng.randf_range(1,len(activeEnemies)))-1]
