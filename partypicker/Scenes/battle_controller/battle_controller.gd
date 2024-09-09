@@ -127,6 +127,24 @@ func testSetup(battle_num):
 func connectToEntity(entity: Entity) -> void:
 	entity.card_played.connect(play_card)
 
+func get_active() -> Array:
+	var appliedAllies = [] # all allies
+	var appliedEnemies = [] # all enemies
+	var activeAllies = [] # all allies in active fights
+	var activeEnemies = [] # all enemies in active fights
+	
+	for battleInstance in battles:
+		if appliedAllies.find(battleInstance.player)<0:
+			appliedAllies.append(battleInstance.player)
+			if battleInstance.battleEnded == false:
+				activeAllies.append(battleInstance.player)
+		if appliedEnemies.find(battleInstance.enemy)<0:
+			appliedEnemies.append(battleInstance.enemy)
+			if battleInstance.battleEnded == false:
+				activeEnemies.append(battleInstance.enemy)
+	
+	return [appliedAllies,appliedEnemies,activeAllies,activeEnemies]
+
 func play_card(id: String, card: Card, target: String) -> void:
 	print(id)
 	var card_player = entitiesDict[id]
@@ -134,7 +152,8 @@ func play_card(id: String, card: Card, target: String) -> void:
 		assert(target != "", "ERROR: You must give target a value.");
 	var appliedEntites = []
 	
-	hero_powers(card_player, card)
+	var activeChars = get_active()
+	hero_powers(card_player, card, activeChars[0], activeChars[1], activeChars[2], activeChars[3])
 	
 	if card.target == card.Target.LANE_SELF:
 		appliedEntites = [card_player]
@@ -156,14 +175,14 @@ func play_card(id: String, card: Card, target: String) -> void:
 		appliedEntites.append(entitiesDict[target])
 	
 	for entity in appliedEntites:
-		applyCardToEntity(card_player, card, entity)
+		applyCardToEntity(card_player, card, entity, activeChars)
 
 	card_player.energy -= card.energy_cost
 	checkDeaths()
 
 
 	
-func applyCardToEntity(card_player: Entity, card: Card, entity: Entity) -> void:
+func applyCardToEntity(card_player: Entity, card: Card, entity: Entity, activeChars: Array) -> void:
 	print(["What entity? ->", entity])
 	entity.change_physical_block(card.physical_block)
 	entity.change_magical_block(card.magical_block)
@@ -171,7 +190,7 @@ func applyCardToEntity(card_player: Entity, card: Card, entity: Entity) -> void:
 	entity.magical_dealt_increase += card.magical_dealt_increase
 	entity.physical_taken_increase += card.physical_taken_increase
 	entity.magical_taken_increase += card.magical_taken_increase
-	entity.heal_character(card.health_increase)
+	entity.heal_character(card.health_increase, activeChars)
 	for i in range(card.card_draw):
 		entity.draw_card()
 	if card.magical_damage > 0:
@@ -220,24 +239,9 @@ func enemy_stat_endturn(battle):
 	battle.enemy.physical_taken_increase = floor(battle.enemy.physical_taken_increase/2)
 	battle.enemy.magical_taken_increase = floor(battle.enemy.magical_taken_increase/2)
 
-func hero_powers(card_player, card: Card):
+func hero_powers(card_player, card: Card, appliedAllies, appliedEnemies, activeAllies, activeEnemies):
 	card_player.cards_played += 1
 	var entity_class = card_player.name
-	
-	var appliedAllies = [] # all allies
-	var appliedEnemies = [] # all enemies
-	var activeAllies = [] # all allies in active fights
-	var activeEnemies = [] # all enemies in active fights
-	
-	for battleInstance in battles:
-		if appliedAllies.find(battleInstance.player)<0:
-			appliedAllies.append(battleInstance.player)
-			if battleInstance.battleEnded == false:
-				activeAllies.append(battleInstance.player)
-		if appliedEnemies.find(battleInstance.enemy)<0:
-			appliedEnemies.append(battleInstance.enemy)
-			if battleInstance.battleEnded == false:
-				activeEnemies.append(battleInstance.enemy)
 	
 	match entity_class:
 		"Alchemist":
@@ -316,20 +320,12 @@ func hero_turn_start() -> void:
 func turn_start_ability(player):
 	var entity_class = player.name
 	
-	var appliedAllies = [] # all allies
-	var appliedEnemies = [] # all enemies
-	var activeAllies = [] # all allies in active fights
-	var activeEnemies = [] # all enemies in active fights
+	var activeChars = get_active()
 	
-	for battleInstance in battles:
-		if appliedAllies.find(battleInstance.player)<0:
-			appliedAllies.append(battleInstance.player)
-			if battleInstance.battleEnded == false:
-				activeAllies.append(battleInstance.player)
-		if appliedEnemies.find(battleInstance.enemy)<0:
-			appliedEnemies.append(battleInstance.enemy)
-			if battleInstance.battleEnded == false:
-				activeEnemies.append(battleInstance.enemy)
+	var appliedAllies = activeChars[0] # all allies
+	var appliedEnemies = activeChars[1] # all enemies
+	var activeAllies = activeChars[2] # all allies in active fights
+	var activeEnemies = activeChars[3] # all enemies in active fights
 	
 	var rng = RandomNumberGenerator.new() # WIP stuff for random targetting.
 	var random_enemy = activeEnemies[ceil(rng.randf_range(1,len(activeEnemies)))-1]

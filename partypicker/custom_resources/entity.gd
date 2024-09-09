@@ -125,10 +125,14 @@ func load_from_resource(resource) -> void:
 	deck = resource.hand.duplicate()
 	print(["here ->", resource.hand])
 
-func heal_character(amount: int)-> void:
+func heal_character(amount: int, activeChars)-> void:
 	health += amount
 	if name == "Zealot":
 		physical_dealt_increase += 2
+	if name == "Monk":
+		for entity in activeChars[0]:
+			entity.change_physical_block(level)
+			entity.change_magical_block(level)
 
 func change_physical_block(amount: int) -> void:
 	if amount == 0:

@@ -1,0 +1,35 @@
+[gd_resource type="Resource" script_class="Entity" load_steps=9 format=3 uid="uid://cgee2myb7w5yi"]
+
+[ext_resource type="Texture2D" uid="uid://ds0njri1t5j6t" path="res://Assets/Art/Characters/Cleric.png" id="1_stdsv"]
+[ext_resource type="Script" path="res://custom_resources/card.gd" id="2_o22c5"]
+[ext_resource type="Resource" uid="uid://dwcls34dqcgfw" path="res://characters/cleric/cards/Protection.tres" id="3_nu6ny"]
+[ext_resource type="Resource" uid="uid://blua7x6lymiom" path="res://characters/generic/cards/Block.tres" id="4_tk5wr"]
+[ext_resource type="Resource" uid="uid://be4vg1w4cxn23" path="res://characters/generic/cards/Heal.tres" id="5_wmf6v"]
+[ext_resource type="Resource" uid="uid://5yxyhty4dsxy" path="res://characters/generic/cards/Smite.tres" id="6_ribk6"]
+[ext_resource type="Resource" uid="uid://dutidssai5qni" path="res://characters/generic/cards/Hex.tres" id="7_flt52"]
+[ext_resource type="Script" path="res://custom_resources/entity.gd" id="8_828xb"]
+
+[resource]
+script = ExtResource("8_828xb")
+name = "Monk"
+expansion = "Honorbound"
+level = 1
+max_health = 100
+max_draw = 7
+draw = 4
+max_energy = 3
+base_damage = 0
+base_defense = 0
+type = 0
+hand = Array[ExtResource("2_o22c5")]([ExtResource("3_nu6ny"), ExtResource("3_nu6ny"), ExtResource("4_tk5wr"), ExtResource("4_tk5wr"), ExtResource("5_wmf6v"), ExtResource("6_ribk6"), ExtResource("6_ribk6"), ExtResource("6_ribk6"), ExtResource("6_ribk6"), ExtResource("7_flt52")])
+physical_block = 0
+magical_block = 0
+art = ExtResource("1_stdsv")
+tool_tip = "Physical
+Support
+Character abilities:
+Whenever I am healed, all allies gain
+1 phyiscal block and 1 magical block.
+If I have won my lane, and combat is still ongoing,
+ at the begining of each round,
+ I grant all allies 2 phyiscal block and 2 magical block."
