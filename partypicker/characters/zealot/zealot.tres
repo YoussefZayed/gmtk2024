@@ -29,8 +29,8 @@ art = ExtResource("1_0i36i")
 tool_tip = "Physical
 Support
 Character abilities:
-Whenever I am healed, all allies gain
-1 phyiscal block and 1 magical block.
+Whenever I am healed, I gain
+1 phyiscal damage increase and 1 magical damage increase.
 If I have won my lane, and combat is still ongoing,
  at the begining of each round,
- I grant all allies 1 phyiscal block and 1 magical block."
+ I grant a random ally 2 phyiscal damage increase and 2 magical damage increase, and heal them 1."

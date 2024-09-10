@@ -1,7 +1,6 @@
-[gd_scene load_steps=8 format=3 uid="uid://g3pfxffsyvnu"]
+[gd_scene load_steps=7 format=3 uid="uid://g3pfxffsyvnu"]
 
 [ext_resource type="Texture2D" uid="uid://c7ym3kelckbn5" path="res://Assets/Art/Icons/Checkbox Icon Uncheck.png" id="1_4mbrx"]
-[ext_resource type="Script" path="res://Scenes/Menus/expansion_select_menu.gd" id="1_30pcu"]
 [ext_resource type="Texture2D" uid="uid://bpo6s2p2ct230" path="res://Assets/Art/Icons/Checkbox Icon Check.png" id="2_1wjqk"]
 [ext_resource type="Texture2D" uid="uid://fam83hjdq0wt" path="res://Assets/Art/Icons/Checkbox Icon Disabled.png" id="3_o2p86"]
 
@@ -19,7 +18,6 @@ color_ramp = SubResource("Gradient_ben7i")
 noise = SubResource("FastNoiseLite_xb34l")
 
 [node name="Expansion Select Menu" type="Node2D"]
-script = ExtResource("1_30pcu")
 
 [node name="Background Texture" type="TextureRect" parent="."]
 offset_right = 1920.0
@@ -62,6 +60,58 @@ size_flags_horizontal = 4
 theme_override_constants/h_separation = 10
 theme_override_constants/v_separation = 10
 columns = 3
+
+[node name="Basic Damage Label" type="Label" parent="Outer Margin/HBoxContainer/Exp Sel Margin/VBoxContainer/GridContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Basic Damage"
+
+[node name="Basic Damage Separator" type="Control" parent="Outer Margin/HBoxContainer/Exp Sel Margin/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+
+[node name="Basic Damage Button" type="TextureButton" parent="Outer Margin/HBoxContainer/Exp Sel Margin/VBoxContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 10
+tooltip_text = "Honorbound expansion
+Unlocked by completing act 4.
+Includes:
+Monk
+Zealot
+Artificer
+Knight"
+toggle_mode = true
+button_pressed = true
+texture_normal = ExtResource("1_4mbrx")
+texture_pressed = ExtResource("2_1wjqk")
+texture_disabled = ExtResource("3_o2p86")
+stretch_mode = 3
+
+[node name="Basic Support Label" type="Label" parent="Outer Margin/HBoxContainer/Exp Sel Margin/VBoxContainer/GridContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Basic Support"
+
+[node name="Basic Support Separator" type="Control" parent="Outer Margin/HBoxContainer/Exp Sel Margin/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+
+[node name="Basic Support Button" type="TextureButton" parent="Outer Margin/HBoxContainer/Exp Sel Margin/VBoxContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 10
+tooltip_text = "Honorbound expansion
+Unlocked by completing act 4.
+Includes:
+Monk
+Zealot
+Artificer
+Knight"
+toggle_mode = true
+button_pressed = true
+texture_normal = ExtResource("1_4mbrx")
+texture_pressed = ExtResource("2_1wjqk")
+texture_disabled = ExtResource("3_o2p86")
+stretch_mode = 3
 
 [node name="Honorbound Label" type="Label" parent="Outer Margin/HBoxContainer/Exp Sel Margin/VBoxContainer/GridContainer"]
 layout_mode = 2
@@ -368,10 +418,3 @@ stretch_mode = 3
 layout_mode = 2
 size_flags_vertical = 10
 text = "Start Game"
-
-[connection signal="pressed" from="Outer Margin/HBoxContainer/Exp Sel Margin/VBoxContainer/GridContainer/Honorbound Button" to="." method="_on_honorbound_button_pressed"]
-[connection signal="pressed" from="Outer Margin/HBoxContainer/Exp Sel Margin/VBoxContainer/GridContainer/Call of the Wild Button" to="." method="_on_call_of_the_wild_button_pressed"]
-[connection signal="pressed" from="Outer Margin/HBoxContainer/Exp Sel Margin/VBoxContainer/GridContainer/Rise of Slayers Button" to="." method="_on_rise_of_slayers_button_pressed"]
-[connection signal="pressed" from="Outer Margin/HBoxContainer/Exp Sel Margin/VBoxContainer/GridContainer/Dark Dealings Button" to="." method="_on_dark_dealings_button_pressed"]
-[connection signal="pressed" from="Outer Margin/HBoxContainer/Exp Sel Margin/VBoxContainer/GridContainer/Kings Court Button" to="." method="_on_kings_court_button_pressed"]
-[connection signal="pressed" from="Outer Margin/HBoxContainer/GS Margin/VBoxContainer/Start Game Button" to="." method="_on_button_pressed"]

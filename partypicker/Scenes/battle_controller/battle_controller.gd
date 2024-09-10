@@ -45,8 +45,11 @@ func init(all_entities, battles_for_combat, timer_time_amount: int, InTimeTrial)
 		turnTimer.start()
 	for battle in battles:
 		player_stat_endturn(battle) # remove block and vulnerability
+		battle.player.physical_dealt_increase = 0 # removes damage increase from last round
+		battle.player.magical_dealt_increase = 0 # removes damage increase from last round
 		while (battle.player.physical_taken_increase>0) or (battle.player.physical_taken_increase>0):
 			player_stat_endturn(battle) # ensure all vulnerability is removed
+			
 
 
 func createBattles(battles: Array[Battle]) -> void:
@@ -372,9 +375,9 @@ func turn_start_ability(player):
 			for entity in appliedAllies:
 				entity.change_magical_block(2*player.level)
 		"Zealot":
-			random_ally.physical_dealt_increased += (2*player.level)
-			random_ally.magical_dealt_increased += (2*player.level)
-			random_ally.heal_character(2*player.level)
+			random_ally.heal_character(2*player.level, activeChars)
+			random_ally.physical_dealt_increase += (2*player.level)
+			random_ally.magical_dealt_increase += (2*player.level)
 
 func _on_button_pressed() -> void:
 	end_turn()

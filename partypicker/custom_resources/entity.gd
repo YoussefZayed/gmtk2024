@@ -126,7 +126,7 @@ func load_from_resource(resource) -> void:
 	print(["here ->", resource.hand])
 
 func heal_character(amount: int, activeChars)-> void:
-	if health < max_health:
+	if (health < max_health) and (amount > 0):
 		health += amount
 		if name == "Zealot":
 			physical_dealt_increase += (1*level)
