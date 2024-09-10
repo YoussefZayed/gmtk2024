@@ -1,7 +1,7 @@
 class_name BattleController
 extends Node2D
 
-var timeTrial = false
+var timeTrial = false # bool to set if timer bar is on
 var entities: Array[Entity]
 var battles: Array[Battle]
 var entitiesDict = {}
@@ -44,7 +44,9 @@ func init(all_entities, battles_for_combat, timer_time_amount: int, InTimeTrial)
 	if timeTrial == true:
 		turnTimer.start()
 	for battle in battles:
-		player_stat_endturn(battle)
+		player_stat_endturn(battle) # remove block and vulnerability
+		while (battle.player.physical_taken_increase>0) or (battle.player.physical_taken_increase>0):
+			player_stat_endturn(battle) # ensure all vulnerability is removed
 
 
 func createBattles(battles: Array[Battle]) -> void:
@@ -143,7 +145,11 @@ func get_active() -> Array:
 			if battleInstance.battleEnded == false:
 				activeEnemies.append(battleInstance.enemy)
 	
-	return [appliedAllies,appliedEnemies,activeAllies,activeEnemies]
+	var rng = RandomNumberGenerator.new() # WIP stuff for random targetting.
+	var random_enemy = activeEnemies[ceil(rng.randf_range(1,len(activeEnemies)))-1]
+	var random_ally = activeAllies[ceil(rng.randf_range(1,len(activeAllies)))-1]
+	
+	return [appliedAllies,appliedEnemies,activeAllies,activeEnemies, random_ally, random_enemy]
 
 func play_card(id: String, card: Card, target: String) -> void:
 	print(id)
@@ -326,10 +332,8 @@ func turn_start_ability(player):
 	var appliedEnemies = activeChars[1] # all enemies
 	var activeAllies = activeChars[2] # all allies in active fights
 	var activeEnemies = activeChars[3] # all enemies in active fights
-	
-	var rng = RandomNumberGenerator.new() # WIP stuff for random targetting.
-	var random_enemy = activeEnemies[ceil(rng.randf_range(1,len(activeEnemies)))-1]
-	var random_ally = activeEnemies[ceil(rng.randf_range(1,len(activeAllies)))-1]
+	var random_ally = activeChars[4]
+	var random_enemy = activeChars[5]
 	
 	match entity_class:
 		"Alchemist":
@@ -360,9 +364,17 @@ func turn_start_ability(player):
 		"Mage":
 			for entity in appliedEnemies:
 				entity.take_damage(2*player.level, "magical")
+		"Monk":
+			for entity in appliedAllies:
+				entity.change_physical_block(1*player.level)
+				entity.change_physical_block(2*player.level)
 		"Mystic":
 			for entity in appliedAllies:
 				entity.change_magical_block(2*player.level)
+		"Zealot":
+			random_ally.physical_dealt_increased += (2*player.level)
+			random_ally.magical_dealt_increased += (2*player.level)
+			random_ally.heal_character(2*player.level)
 
 func _on_button_pressed() -> void:
 	end_turn()

@@ -126,13 +126,15 @@ func load_from_resource(resource) -> void:
 	print(["here ->", resource.hand])
 
 func heal_character(amount: int, activeChars)-> void:
-	health += amount
-	if name == "Zealot":
-		physical_dealt_increase += 2
-	if name == "Monk":
-		for entity in activeChars[0]:
-			entity.change_physical_block(level)
-			entity.change_magical_block(level)
+	if health < max_health:
+		health += amount
+		if name == "Zealot":
+			physical_dealt_increase += (1*level)
+			magical_dealt_increase += (1*level)
+		if name == "Monk":
+			for entity in activeChars[0]:
+				entity.change_physical_block(level)
+				entity.change_magical_block(level)
 
 func change_physical_block(amount: int) -> void:
 	if amount == 0:
@@ -140,9 +142,9 @@ func change_physical_block(amount: int) -> void:
 	if amount > 0:
 		physical_block += amount
 		if name == "Knight":
-			physical_dealt_increase += 2
+			physical_dealt_increase += (2*level)
 		if name == "Artificer":
-			magical_dealt_increase += 2
+			magical_dealt_increase += (2*level)
 	else:
 		physical_block = min(0, physical_block + amount)
 	

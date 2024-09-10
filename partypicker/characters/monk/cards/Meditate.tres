@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="Card" load_steps=3 format=3 uid="uid://3uutw3ytpw0u"]
+
+[ext_resource type="Texture2D" uid="uid://dsfbc8ojc26ps" path="res://Assets/Art/Icons/PhysUp Icon.png" id="1_oe85m"]
+[ext_resource type="Script" path="res://custom_resources/card.gd" id="1_y3o21"]
+
+[resource]
+script = ExtResource("1_y3o21")
+name = "Meditate"
+type = 3
+target = 0
+energy_cost = 1
+physical_damage = 0
+magical_damage = 0
+physical_block = 0
+magical_block = 0
+card_draw = 0
+card_discard = 0
+physical_dealt_increase = 2
+magical_dealt_increase = 2
+physical_taken_increase = 0
+magical_taken_increase = 0
+health_increase = 1
+card_art = ExtResource("1_oe85m")
+tooltip_text = ""

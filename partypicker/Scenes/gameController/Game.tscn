@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://bnj3emdrvilnr"]
+[gd_scene load_steps=30 format=3 uid="uid://bnj3emdrvilnr"]
 
 [ext_resource type="PackedScene" uid="uid://c3orxpr6ll0jc" path="res://Scenes/battle_controller/battle_controller.tscn" id="1_utmhg"]
 [ext_resource type="PackedScene" uid="uid://ccd4pm0b04v1d" path="res://Scenes/Menus/MainMenu.tscn" id="2_mrty1"]
@@ -26,6 +26,7 @@
 [ext_resource type="Shader" path="res://Scenes/Menus/BlurBackgroundShader.gdshader" id="20_5j716"]
 [ext_resource type="Resource" uid="uid://cgee2myb7w5yi" path="res://characters/monk/monk.tres" id="20_6mnxh"]
 [ext_resource type="Texture2D" uid="uid://56vheg7ekeil" path="res://Assets/Art/Backgrounds/Background1.png" id="20_iqc2g"]
+[ext_resource type="Resource" uid="uid://kcihpqybny0b" path="res://characters/zealot/zealot.tres" id="21_7rumb"]
 
 [sub_resource type="GDScript" id="GDScript_gd4kx"]
 script/source = "extends Node2D
@@ -302,7 +303,7 @@ legend_ui = ExtResource("4_jw1sc")
 expansionSelectScene = ExtResource("6_vy770")
 shopScreenScene = ExtResource("3_l8qpc")
 playerChars = Array[ExtResource("3_6io0h")]([ExtResource("5_xkilt"), ExtResource("4_mpn64"), ExtResource("6_xege5"), ExtResource("7_roi6b"), ExtResource("5_ng1im"), ExtResource("10_4opj8"), ExtResource("11_mo1va"), ExtResource("9_yy8s6"), ExtResource("15_fn82o")])
-HB_Chars = Array[ExtResource("3_6io0h")]([ExtResource("8_ld1mr"), ExtResource("9_tq734"), ExtResource("20_6mnxh")])
+HB_Chars = Array[ExtResource("3_6io0h")]([ExtResource("8_ld1mr"), ExtResource("9_tq734"), ExtResource("20_6mnxh"), ExtResource("21_7rumb")])
 EnemyChars = Array[ExtResource("3_6io0h")]([ExtResource("10_mc6us"), ExtResource("10_7hub4"), ExtResource("11_iafoj")])
 boss = ExtResource("12_uslkw")
 

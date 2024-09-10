@@ -28,7 +28,7 @@ art = ExtResource("1_f2r43")
 tool_tip = "Physical
 Damage
 Character abilities:
-Whenever I gain either block,
+Whenever I gain either physical or magical block,
  I deal 2 additional damage on my next physical attack.
 If I have won my lane, and combat is still ongoing,
  at the begining of each round,

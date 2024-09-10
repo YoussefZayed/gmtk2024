@@ -1,0 +1,36 @@
+[gd_resource type="Resource" script_class="Entity" load_steps=10 format=3 uid="uid://kcihpqybny0b"]
+
+[ext_resource type="Texture2D" uid="uid://ds0njri1t5j6t" path="res://Assets/Art/Characters/Cleric.png" id="1_0i36i"]
+[ext_resource type="Script" path="res://custom_resources/card.gd" id="2_5ayud"]
+[ext_resource type="Resource" uid="uid://dk8stgbyuaebs" path="res://characters/zealot/cards/Zealous_charge.tres" id="3_5sg4f"]
+[ext_resource type="Resource" uid="uid://blua7x6lymiom" path="res://characters/generic/cards/Block.tres" id="4_fwhma"]
+[ext_resource type="Resource" uid="uid://c025xmmvgll6d" path="res://characters/generic/cards/Resist.tres" id="5_aov4e"]
+[ext_resource type="Resource" uid="uid://5yxyhty4dsxy" path="res://characters/generic/cards/Smite.tres" id="6_e0wnh"]
+[ext_resource type="Resource" uid="uid://be4vg1w4cxn23" path="res://characters/generic/cards/Heal.tres" id="6_nwusl"]
+[ext_resource type="Resource" uid="uid://cr76dw77mosli" path="res://characters/generic/cards/Strike.tres" id="7_gk042"]
+[ext_resource type="Script" path="res://custom_resources/entity.gd" id="8_agcf0"]
+
+[resource]
+script = ExtResource("8_agcf0")
+name = "Zealot"
+expansion = "Honorbound"
+level = 1
+max_health = 100
+max_draw = 7
+draw = 4
+max_energy = 3
+base_damage = 0
+base_defense = 0
+type = 0
+hand = Array[ExtResource("2_5ayud")]([ExtResource("3_5sg4f"), ExtResource("3_5sg4f"), ExtResource("4_fwhma"), ExtResource("5_aov4e"), ExtResource("6_nwusl"), ExtResource("6_nwusl"), ExtResource("6_e0wnh"), ExtResource("6_e0wnh"), ExtResource("7_gk042"), ExtResource("7_gk042")])
+physical_block = 0
+magical_block = 0
+art = ExtResource("1_0i36i")
+tool_tip = "Physical
+Support
+Character abilities:
+Whenever I am healed, all allies gain
+1 phyiscal block and 1 magical block.
+If I have won my lane, and combat is still ongoing,
+ at the begining of each round,
+ I grant all allies 1 phyiscal block and 1 magical block."
