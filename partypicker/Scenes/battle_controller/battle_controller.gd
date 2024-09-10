@@ -49,7 +49,6 @@ func init(all_entities, battles_for_combat, timer_time_amount: int, InTimeTrial)
 		battle.player.magical_dealt_increase = 0 # removes damage increase from last round
 		while (battle.player.physical_taken_increase>0) or (battle.player.physical_taken_increase>0):
 			player_stat_endturn(battle) # ensure all vulnerability is removed
-			
 
 
 func createBattles(battles: Array[Battle]) -> void:

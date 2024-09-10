@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://cyw4l14arrjso"]
+[gd_scene load_steps=3 format=3 uid="uid://cyw4l14arrjso"]
 
 [ext_resource type="Texture2D" uid="uid://56vheg7ekeil" path="res://Assets/Art/Backgrounds/Background1.png" id="1_0rpr3"]
+[ext_resource type="Texture2D" uid="uid://b22cyo73o5txb" path="res://Assets/Art/Icons/Settings Icon.png" id="2_0c003"]
 
 [node name="Rewards Menu" type="Node2D"]
 
@@ -16,11 +17,70 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
+offset_left = -480.0
+offset_top = -405.0
+offset_right = 480.0
+offset_bottom = 405.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Panel/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_font_sizes/font_size = 64
+text = "Loot!"
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Panel/MarginContainer/VBoxContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="Example Reward Button" type="Button" parent="CanvasLayer/Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer"]
+self_modulate = Color(0.493514, 0.102588, 0.225479, 1)
+custom_minimum_size = Vector2(0, 124)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/Example Reward Button"]
+layout_mode = 0
+offset_right = 390.0
+offset_bottom = 128.0
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/Example Reward Button/HBoxContainer"]
+layout_mode = 2
+mouse_filter = 2
+texture = ExtResource("2_0c003")
+expand_mode = 3
+
+[node name="Example Spacer" type="Control" parent="CanvasLayer/Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/Example Reward Button/HBoxContainer"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+
+[node name="Example Reward Label" type="Label" parent="CanvasLayer/Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/Example Reward Button/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Example Reward"
