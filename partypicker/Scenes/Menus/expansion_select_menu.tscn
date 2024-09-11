@@ -62,15 +62,18 @@ theme_override_constants/v_separation = 10
 columns = 3
 
 [node name="Basic Damage Label" type="Label" parent="Outer Margin/HBoxContainer/Exp Sel Margin/VBoxContainer/GridContainer"]
+visible = false
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "Basic Damage"
 
 [node name="Basic Damage Separator" type="Control" parent="Outer Margin/HBoxContainer/Exp Sel Margin/VBoxContainer/GridContainer"]
+visible = false
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 
 [node name="Basic Damage Button" type="TextureButton" parent="Outer Margin/HBoxContainer/Exp Sel Margin/VBoxContainer/GridContainer"]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 10
 tooltip_text = "Honorbound expansion
@@ -88,15 +91,18 @@ texture_disabled = ExtResource("3_o2p86")
 stretch_mode = 3
 
 [node name="Basic Support Label" type="Label" parent="Outer Margin/HBoxContainer/Exp Sel Margin/VBoxContainer/GridContainer"]
+visible = false
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "Basic Support"
 
 [node name="Basic Support Separator" type="Control" parent="Outer Margin/HBoxContainer/Exp Sel Margin/VBoxContainer/GridContainer"]
+visible = false
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 
 [node name="Basic Support Button" type="TextureButton" parent="Outer Margin/HBoxContainer/Exp Sel Margin/VBoxContainer/GridContainer"]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 10
 tooltip_text = "Honorbound expansion

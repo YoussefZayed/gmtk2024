@@ -1,7 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://cyw4l14arrjso"]
+[gd_scene load_steps=2 format=3 uid="uid://cyw4l14arrjso"]
 
 [ext_resource type="Texture2D" uid="uid://56vheg7ekeil" path="res://Assets/Art/Backgrounds/Background1.png" id="1_0rpr3"]
-[ext_resource type="PackedScene" uid="uid://mc2javngspg3" path="res://reward_button_ui.tscn" id="2_2onw4"]
 
 [node name="Rewards Menu" type="Node2D"]
 
@@ -56,8 +55,16 @@ theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 50
 theme_override_constants/margin_bottom = 10
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Panel/MarginContainer/VBoxContainer/MarginContainer"]
+[node name="Button Vertical Container" type="VBoxContainer" parent="CanvasLayer/Panel/MarginContainer/VBoxContainer/MarginContainer"]
 layout_mode = 2
 
-[node name="Example Reward Button" parent="CanvasLayer/Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer" instance=ExtResource("2_2onw4")]
-layout_mode = 2
+[node name="End Rewards" type="Button" parent="CanvasLayer"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -360.0
+offset_right = 360.0
+offset_bottom = 64.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 32
+text = "Skip Rewards"

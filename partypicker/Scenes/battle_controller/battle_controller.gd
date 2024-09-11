@@ -161,7 +161,7 @@ func play_card(id: String, card: Card, target: String) -> void:
 	var appliedEntites = []
 	
 	var activeChars = get_active()
-	hero_powers(card_player, card, activeChars[0], activeChars[1], activeChars[2], activeChars[3])
+	hero_powers(card_player, card, activeChars)
 	
 	if card.target == card.Target.LANE_SELF:
 		appliedEntites = [card_player]
@@ -247,9 +247,16 @@ func enemy_stat_endturn(battle):
 	battle.enemy.physical_taken_increase = floor(battle.enemy.physical_taken_increase/2)
 	battle.enemy.magical_taken_increase = floor(battle.enemy.magical_taken_increase/2)
 
-func hero_powers(card_player, card: Card, appliedAllies, appliedEnemies, activeAllies, activeEnemies):
+func hero_powers(card_player, card: Card, activeChars):
 	card_player.cards_played += 1
 	var entity_class = card_player.name
+	
+	var appliedAllies = activeChars[0] # all allies
+	var appliedEnemies = activeChars[1] # all enemies
+	var activeAllies = activeChars[2] # all allies in active fights
+	var activeEnemies = activeChars[3] # all enemies in active fights
+	var random_ally = activeChars[4]
+	var random_enemy = activeChars[5]
 	
 	match entity_class:
 		"Alchemist":
@@ -263,14 +270,14 @@ func hero_powers(card_player, card: Card, appliedAllies, appliedEnemies, activeA
 		"Bard":
 			if card.magical_damage>0 or card.physical_damage>0:
 				for entity in appliedAllies:
-					entity.heal_character(card_player.level)
+					entity.heal_character(card_player.level, activeChars)
 		"Beast Master":
 			for n in card_player.level:
 				print("Deal 1 damage to lane enemy")
 		"Cleric":
 			if card.health_increase>0:
 				for entity in appliedAllies:
-					entity.heal_character(card_player.level)
+					entity.heal_character(card_player.level, activeChars)
 		"Fortune Teller":
 			if (card_player.cards_played%5) == 0:
 				for entity in appliedAllies:

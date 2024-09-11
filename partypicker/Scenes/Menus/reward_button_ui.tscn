@@ -12,7 +12,7 @@ layout_mode = 0
 offset_right = 390.0
 offset_bottom = 128.0
 
-[node name="TextureRect" type="TextureRect" parent="HBoxContainer"]
+[node name="Reward Texture" type="TextureRect" parent="HBoxContainer"]
 layout_mode = 2
 mouse_filter = 2
 texture = ExtResource("1_41elk")
@@ -22,7 +22,7 @@ expand_mode = 3
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 
-[node name="Example Reward Label" type="Label" parent="HBoxContainer"]
+[node name="Reward Label" type="Label" parent="HBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "100"
