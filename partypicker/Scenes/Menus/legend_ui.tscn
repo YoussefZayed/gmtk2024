@@ -134,17 +134,20 @@ text = "Magic Damage"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="MagVul Container" type="HBoxContainer" parent="Legend Canvas/HBoxContainer/VBoxContainer/Upper Hbox/Magical Margin (Outer)/Magical Margin (Inner)/Magical Stats"]
+[node name="MagVul Outer Container" type="VBoxContainer" parent="Legend Canvas/HBoxContainer/VBoxContainer/Upper Hbox/Magical Margin (Outer)/Magical Margin (Inner)/Magical Stats"]
+layout_mode = 2
+
+[node name="MagVul Container" type="HBoxContainer" parent="Legend Canvas/HBoxContainer/VBoxContainer/Upper Hbox/Magical Margin (Outer)/Magical Margin (Inner)/Magical Stats/MagVul Outer Container"]
 layout_mode = 2
 size_flags_horizontal = 2
 
-[node name="MagVul Icon" type="TextureRect" parent="Legend Canvas/HBoxContainer/VBoxContainer/Upper Hbox/Magical Margin (Outer)/Magical Margin (Inner)/Magical Stats/MagVul Container"]
+[node name="MagVul Icon" type="TextureRect" parent="Legend Canvas/HBoxContainer/VBoxContainer/Upper Hbox/Magical Margin (Outer)/Magical Margin (Inner)/Magical Stats/MagVul Outer Container/MagVul Container"]
 layout_mode = 2
 size_flags_horizontal = 0
 texture = ExtResource("3_35wru")
 expand_mode = 3
 
-[node name="MagVul Label" type="Label" parent="Legend Canvas/HBoxContainer/VBoxContainer/Upper Hbox/Magical Margin (Outer)/Magical Margin (Inner)/Magical Stats/MagVul Container"]
+[node name="MagVul Label" type="Label" parent="Legend Canvas/HBoxContainer/VBoxContainer/Upper Hbox/Magical Margin (Outer)/Magical Margin (Inner)/Magical Stats/MagVul Outer Container/MagVul Container"]
 custom_minimum_size = Vector2(25, 50)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -155,17 +158,25 @@ text = "Magical Vulnerability
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="MagUp Container" type="HBoxContainer" parent="Legend Canvas/HBoxContainer/VBoxContainer/Upper Hbox/Magical Margin (Outer)/Magical Margin (Inner)/Magical Stats"]
+[node name="MagVul Description" type="Label" parent="Legend Canvas/HBoxContainer/VBoxContainer/Upper Hbox/Magical Margin (Outer)/Magical Margin (Inner)/Magical Stats/MagVul Outer Container"]
+layout_mode = 2
+text = "Magical vulnerability is added to each instance of magical damage 
+taken. Magical vulnerability decays by half at the end of the turn."
+
+[node name="MagUp Outer Container" type="VBoxContainer" parent="Legend Canvas/HBoxContainer/VBoxContainer/Upper Hbox/Magical Margin (Outer)/Magical Margin (Inner)/Magical Stats"]
+layout_mode = 2
+
+[node name="MagUp Container" type="HBoxContainer" parent="Legend Canvas/HBoxContainer/VBoxContainer/Upper Hbox/Magical Margin (Outer)/Magical Margin (Inner)/Magical Stats/MagUp Outer Container"]
 layout_mode = 2
 size_flags_horizontal = 2
 
-[node name="MagUp Icon" type="TextureRect" parent="Legend Canvas/HBoxContainer/VBoxContainer/Upper Hbox/Magical Margin (Outer)/Magical Margin (Inner)/Magical Stats/MagUp Container"]
+[node name="MagUp Icon" type="TextureRect" parent="Legend Canvas/HBoxContainer/VBoxContainer/Upper Hbox/Magical Margin (Outer)/Magical Margin (Inner)/Magical Stats/MagUp Outer Container/MagUp Container"]
 layout_mode = 2
 size_flags_horizontal = 0
 texture = ExtResource("4_j07kq")
 expand_mode = 3
 
-[node name="MagUp Label" type="Label" parent="Legend Canvas/HBoxContainer/VBoxContainer/Upper Hbox/Magical Margin (Outer)/Magical Margin (Inner)/Magical Stats/MagUp Container"]
+[node name="MagUp Label" type="Label" parent="Legend Canvas/HBoxContainer/VBoxContainer/Upper Hbox/Magical Margin (Outer)/Magical Margin (Inner)/Magical Stats/MagUp Outer Container/MagUp Container"]
 custom_minimum_size = Vector2(25, 50)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -175,6 +186,13 @@ text = "Magic Damage Increase
 "
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="MagUp Description" type="Label" parent="Legend Canvas/HBoxContainer/VBoxContainer/Upper Hbox/Magical Margin (Outer)/Magical Margin (Inner)/Magical Stats/MagUp Outer Container"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "Magical damage increase is added to the next magical attack a 
+character plays. After it is applied to an attack, it is removed.
+Magical damage increase does not decay at the end of the turn."
 
 [node name="Physical Margin (Outer)" type="MarginContainer" parent="Legend Canvas/HBoxContainer/VBoxContainer/Upper Hbox"]
 layout_mode = 2
@@ -241,17 +259,20 @@ text = "Physical Damage"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="PhysVul Container" type="HBoxContainer" parent="Legend Canvas/HBoxContainer/VBoxContainer/Upper Hbox/Physical Margin (Outer)/Physical Margin (Inner)/Physical Stats"]
+[node name="PhysVul Outer Container" type="VBoxContainer" parent="Legend Canvas/HBoxContainer/VBoxContainer/Upper Hbox/Physical Margin (Outer)/Physical Margin (Inner)/Physical Stats"]
+layout_mode = 2
+
+[node name="PhysVul Container" type="HBoxContainer" parent="Legend Canvas/HBoxContainer/VBoxContainer/Upper Hbox/Physical Margin (Outer)/Physical Margin (Inner)/Physical Stats/PhysVul Outer Container"]
 layout_mode = 2
 size_flags_horizontal = 2
 
-[node name="PhysVul Icon" type="TextureRect" parent="Legend Canvas/HBoxContainer/VBoxContainer/Upper Hbox/Physical Margin (Outer)/Physical Margin (Inner)/Physical Stats/PhysVul Container"]
+[node name="PhysVul Icon" type="TextureRect" parent="Legend Canvas/HBoxContainer/VBoxContainer/Upper Hbox/Physical Margin (Outer)/Physical Margin (Inner)/Physical Stats/PhysVul Outer Container/PhysVul Container"]
 layout_mode = 2
 size_flags_horizontal = 0
 texture = ExtResource("7_62bx4")
 expand_mode = 3
 
-[node name="PhysVul Label" type="Label" parent="Legend Canvas/HBoxContainer/VBoxContainer/Upper Hbox/Physical Margin (Outer)/Physical Margin (Inner)/Physical Stats/PhysVul Container"]
+[node name="PhysVul Label" type="Label" parent="Legend Canvas/HBoxContainer/VBoxContainer/Upper Hbox/Physical Margin (Outer)/Physical Margin (Inner)/Physical Stats/PhysVul Outer Container/PhysVul Container"]
 custom_minimum_size = Vector2(25, 50)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -262,17 +283,25 @@ text = "Physical Vulnerability
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="PhysUp Container" type="HBoxContainer" parent="Legend Canvas/HBoxContainer/VBoxContainer/Upper Hbox/Physical Margin (Outer)/Physical Margin (Inner)/Physical Stats"]
+[node name="PhysVul Description" type="Label" parent="Legend Canvas/HBoxContainer/VBoxContainer/Upper Hbox/Physical Margin (Outer)/Physical Margin (Inner)/Physical Stats/PhysVul Outer Container"]
+layout_mode = 2
+text = "Physical vulnerability is added to each instance of physical damage 
+taken. Phyusical vulnerability decays by half at the end of the turn."
+
+[node name="PhysUp Outer Container" type="VBoxContainer" parent="Legend Canvas/HBoxContainer/VBoxContainer/Upper Hbox/Physical Margin (Outer)/Physical Margin (Inner)/Physical Stats"]
+layout_mode = 2
+
+[node name="PhysUp Container" type="HBoxContainer" parent="Legend Canvas/HBoxContainer/VBoxContainer/Upper Hbox/Physical Margin (Outer)/Physical Margin (Inner)/Physical Stats/PhysUp Outer Container"]
 layout_mode = 2
 size_flags_horizontal = 2
 
-[node name="PhysUp Icon" type="TextureRect" parent="Legend Canvas/HBoxContainer/VBoxContainer/Upper Hbox/Physical Margin (Outer)/Physical Margin (Inner)/Physical Stats/PhysUp Container"]
+[node name="PhysUp Icon" type="TextureRect" parent="Legend Canvas/HBoxContainer/VBoxContainer/Upper Hbox/Physical Margin (Outer)/Physical Margin (Inner)/Physical Stats/PhysUp Outer Container/PhysUp Container"]
 layout_mode = 2
 size_flags_horizontal = 0
 texture = ExtResource("8_ocs3n")
 expand_mode = 3
 
-[node name="PhysUp Label" type="Label" parent="Legend Canvas/HBoxContainer/VBoxContainer/Upper Hbox/Physical Margin (Outer)/Physical Margin (Inner)/Physical Stats/PhysUp Container"]
+[node name="PhysUp Label" type="Label" parent="Legend Canvas/HBoxContainer/VBoxContainer/Upper Hbox/Physical Margin (Outer)/Physical Margin (Inner)/Physical Stats/PhysUp Outer Container/PhysUp Container"]
 custom_minimum_size = Vector2(25, 50)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -282,6 +311,13 @@ text = "Physical Damage Increase
 "
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Phys Up Description" type="Label" parent="Legend Canvas/HBoxContainer/VBoxContainer/Upper Hbox/Physical Margin (Outer)/Physical Margin (Inner)/Physical Stats/PhysUp Outer Container"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "Physical damage increase is added to the next physical attack a 
+character plays. After it is applied to an attack, it is removed.
+Physical damage increase does not decay at the end of the turn."
 
 [node name="Target Margin (Outer)" type="MarginContainer" parent="Legend Canvas/HBoxContainer/VBoxContainer/Upper Hbox"]
 layout_mode = 2
