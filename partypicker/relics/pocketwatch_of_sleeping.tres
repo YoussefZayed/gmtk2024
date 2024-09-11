@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="Relic" load_steps=2 format=3 uid="uid://cn6m7o6wsj0ss"]
+
+[ext_resource type="Script" path="res://custom_resources/relic.gd" id="1_c47uy"]
+
+[resource]
+script = ExtResource("1_c47uy")
+public_name = "Clock"
+private_name = "Pocketwatch of Sleeping"
+relic_type = "Clock"
+expansion = "Basic"
+energy_cost = 0
+physical_damage = 0
+magical_damage = 0
+physical_block = 0
+magical_block = 0
+card_draw = 0
+card_discard = 0
+physical_dealt_increase = 0
+magical_dealt_increase = 0
+physical_taken_increase = 0
+magical_taken_increase = 0
+health_increase = 0
+tooltip_text = ""

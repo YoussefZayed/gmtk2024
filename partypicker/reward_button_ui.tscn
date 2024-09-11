@@ -1,0 +1,28 @@
+[gd_scene load_steps=2 format=3 uid="uid://mc2javngspg3"]
+
+[ext_resource type="Texture2D" uid="uid://caxeldddq0jts" path="res://Assets/Art/Icons/Coin Icon.png" id="1_41elk"]
+
+[node name="Example Reward Button" type="Button"]
+self_modulate = Color(0.493514, 0.102588, 0.225479, 1)
+custom_minimum_size = Vector2(0, 124)
+mouse_default_cursor_shape = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_right = 390.0
+offset_bottom = 128.0
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer"]
+layout_mode = 2
+mouse_filter = 2
+texture = ExtResource("1_41elk")
+expand_mode = 3
+
+[node name="Example Spacer" type="Control" parent="HBoxContainer"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+
+[node name="Example Reward Label" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "100"
