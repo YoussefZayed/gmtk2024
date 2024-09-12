@@ -24,8 +24,12 @@ func init(playerEntity, enemyEntity) -> void:
 	enemy.heal(0)
 	
 func set_enemy_card(id,card):
-	$"BattleUI/Intent Margin/EnemyIntent".card = card
-	$"BattleUI/Intent Margin/EnemyIntent".visible = true
+	var enemyIntent = $"BattleUI/Intent Margin/EnemyIntent"
+	enemyIntent.card = card
+	for childNode in enemyIntent.get_children():
+		childNode.visible = false
+	enemyIntent.find_child("HBoxContainer").visible = true
+	enemyIntent.visible = true
 	
 func add_player_card(id,card):
 	var new_card = $BattleUI/MarginContainer/CardUI.duplicate()

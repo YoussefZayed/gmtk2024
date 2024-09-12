@@ -88,8 +88,7 @@ func createBattleInstance(battle: Battle, parent: Node) -> void:
 	
 	parent.add_child(battle_instance)
 	
-	
-	
+
 func testSetup(battle_num):
 	var player = Entity.new()
 	player.load_from_resource(player_entity_wretch)
