@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="Relic" load_steps=3 format=3 uid="uid://cy6tpy0cnjni0"]
 
-[ext_resource type="Texture2D" uid="uid://b22cyo73o5txb" path="res://Assets/Art/Icons/Settings Icon.png" id="1_xvqnb"]
+[ext_resource type="Texture2D" uid="uid://b5b1l0mw2fmut" path="res://Assets/Art/Relic Icons/Relic Clock.png" id="1_mtic6"]
 [ext_resource type="Script" path="res://custom_resources/relic.gd" id="2_edjfl"]
 
 [resource]
@@ -22,5 +22,5 @@ magical_dealt_increase = 0
 physical_taken_increase = 0
 magical_taken_increase = 0
 health_increase = 0
-public_texture = ExtResource("1_xvqnb")
+public_texture = ExtResource("1_mtic6")
 tooltip_text = ""

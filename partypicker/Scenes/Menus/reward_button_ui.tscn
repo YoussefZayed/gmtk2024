@@ -4,7 +4,8 @@
 
 [node name="Example Reward Button" type="Button"]
 self_modulate = Color(0.493514, 0.102588, 0.225479, 1)
-custom_minimum_size = Vector2(0, 124)
+custom_minimum_size = Vector2(850, 124)
+size_flags_horizontal = 3
 mouse_default_cursor_shape = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]

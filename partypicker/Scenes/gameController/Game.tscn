@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://bnj3emdrvilnr"]
+[gd_scene load_steps=46 format=3 uid="uid://bnj3emdrvilnr"]
 
 [ext_resource type="PackedScene" uid="uid://c3orxpr6ll0jc" path="res://Scenes/battle_controller/battle_controller.tscn" id="1_utmhg"]
 [ext_resource type="PackedScene" uid="uid://ccd4pm0b04v1d" path="res://Scenes/Menus/MainMenu.tscn" id="2_mrty1"]
@@ -19,6 +19,7 @@
 [ext_resource type="Resource" uid="uid://bjfbnyhkw5tsy" path="res://characters/mage/mage.tres" id="9_yy8s6"]
 [ext_resource type="Resource" uid="uid://ckw7pj4ijx38i" path="res://characters/grenadier/grenadier.tres" id="10_4opj8"]
 [ext_resource type="Resource" uid="uid://b3o1ybivqmuyk" path="res://Enemy_resources/Skeletons/armourer_skelly.tres" id="10_7hub4"]
+[ext_resource type="PackedScene" uid="uid://cokwib5ci776i" path="res://Scenes/Menus/relics_list.tscn" id="10_ioeg2"]
 [ext_resource type="Resource" uid="uid://cir6i8nhld3wh" path="res://Enemy_resources/Skeletons/hunter_skelly.tres" id="10_mc6us"]
 [ext_resource type="Resource" uid="uid://d0qyy41hh5272" path="res://Enemy_resources/Skeletons/mage_skelly.tres" id="11_iafoj"]
 [ext_resource type="Resource" uid="uid://dmm44vioiqfa1" path="res://characters/hunter/hunter.tres" id="11_mo1va"]
@@ -33,6 +34,15 @@
 [ext_resource type="Script" path="res://custom_resources/relic.gd" id="25_1nqbj"]
 [ext_resource type="Resource" uid="uid://cn6m7o6wsj0ss" path="res://relics/bag_of_bags.tres" id="26_cjw5n"]
 [ext_resource type="Resource" uid="uid://cy6tpy0cnjni0" path="res://relics/pocketwatch_of_sleeping.tres" id="27_mia2e"]
+[ext_resource type="Resource" uid="uid://dyoqrifyvx40w" path="res://relics/amulet_moon_god.tres" id="29_6d72d"]
+[ext_resource type="Resource" uid="uid://s43cg5o1662i" path="res://relics/amulet_sun_god.tres" id="30_u7quw"]
+[ext_resource type="Resource" uid="uid://cl1beglqn76h3" path="res://relics/amulet_wolf.tres" id="31_trlhb"]
+[ext_resource type="Resource" uid="uid://cobcrb4lude23" path="res://relics/amulet_worm_god.tres" id="32_oa3l4"]
+[ext_resource type="Resource" uid="uid://b1sekanvn88s7" path="res://relics/dragon_lore_scroll.tres" id="33_d8lw3"]
+[ext_resource type="Resource" uid="uid://s2c7iela454k" path="res://relics/dream_sword.tres" id="34_88qld"]
+[ext_resource type="Resource" uid="uid://c4v37f1bk5fmy" path="res://relics/realm_sword.tres" id="35_nkqte"]
+[ext_resource type="Resource" uid="uid://c4to1bn40vywt" path="res://relics/sword_nimi.tres" id="36_qivqs"]
+[ext_resource type="Resource" uid="uid://b3ii337rvrq0q" path="res://relics/sword_of_light.tres" id="37_45a24"]
 
 [sub_resource type="GDScript" id="GDScript_gd4kx"]
 script/source = "extends Node2D
@@ -47,6 +57,7 @@ script/source = "extends Node2D
 @export var shopScreenScene: PackedScene 
 @export var postBattleScreenScene: PackedScene
 @export var rewardButtonScene: PackedScene
+@export var relicsListScene: PackedScene
 
 @export var playerChars: Array[Entity]
 @export var BD_Chars: Array[Entity]
@@ -59,6 +70,10 @@ script/source = "extends Node2D
 @export var Wretch: Array[Entity]
 
 @export var commonRelicPosibilities: Array[Relic]
+@export var rareRelicPosibilities: Array[Relic]
+@export var epicRelicPosibilities: Array[Relic]
+@export var legendaryRelicPosibilities: Array[Relic]
+@export var cursedRelicPosibilities: Array[Relic]
 
 @export var EnemyChars: Array[Entity]
 
@@ -72,12 +87,17 @@ var expansionSelect: Node
 var shopScreen: Node
 var rewardsScreen: Node
 var goldButton: Node
-var relicButton1: Node
-var relicButton2: Node
-var relicButton3: Node
-var relic1: Relic
-var relic2: Relic
-var relic3: Relic
+var relicButtonCommon: Node
+var relicButtonRare: Node
+var relicButtonEpic: Node
+var relicButtonLegendary: Node
+var relicButtonCursed: Node
+var relicCommon: Relic
+var relicRare: Relic
+var relicEpic: Relic
+var relicLegendary: Relic
+var relicCursed: Relic
+var relicsList: Node
 
 var timeTrial = false
 
@@ -103,18 +123,23 @@ func _ready() -> void:
 	self.add_child(legendUI)
 	UIoverlay = ui_overlay.instantiate()
 	self.add_child(UIoverlay)
+	relicsList = relicsListScene.instantiate()
+	self.add_child(relicsList)
 	
 	mainMenu.find_child(\"New Game\").connect('pressed',startGame)
 	mainMenu.find_child(\"Icon Legend Button\").connect('pressed',showLegendMenu)
 	mainMenu.find_child(\"Options Button\").connect('pressed',showOptionsMenu)
 	UIoverlay.find_child(\"Settings Button\").connect('pressed',showOptionsMenu)
+	UIoverlay.find_child(\"Party View Button\").connect('pressed',showPartyList)
+	UIoverlay.find_child(\"Relic Bag View Button\").connect('pressed',showRelicList)
 	
 	settingsMenu.find_child(\"Settings Canvas\").visible = false
 	legendUI.find_child(\"Legend Canvas\").visible = false
 	UIoverlay.find_child(\"UI Elements Canvas\").visible = false
+	relicsList.find_child(\"Relic List Canvas\").visible = false
 
 func showTavernBar():
-	if (self.get_child_count() > 6):
+	if (self.get_child_count() > 7):
 		print(self.get_child_count())
 		return
 	shopScreen = shopScreenScene.instantiate()
@@ -126,6 +151,7 @@ func showTavernBar():
 	var PC1 = shopScreen.find_child(\"PARTY_CHOICE_1\")
 	var PC2 = shopScreen.find_child(\"PARTY_CHOICE_2\")
 	var PC3 = shopScreen.find_child(\"PARTY_CHOICE_3\")
+	var IdentifyRelics = shopScreen.find_child(\"Identify Relics\")
 	
 	PC1.text= choices[0].name
 	PC1.tooltip_text = choices[0].tool_tip
@@ -137,13 +163,18 @@ func showTavernBar():
 	PC3.tooltip_text = choices[2].tool_tip
 	PC3.connect(\"pressed\",addChoice2)
 	
+	IdentifyRelics.connect(\"pressed\",indentifyAllRelics)
+	
 	# Location Select Buttons
 	shopScreen.find_child(\"Continue Quest\").disabled = true
 	shopScreen.find_child(\"Continue Quest\").connect(\"pressed\",continueQuest)
+	print([\"Aquired Relics ->\", aquiredRelics])
 	if len(players) > 0:
 		shopScreen.find_child(\"Continue Quest\").disabled = false
 	if len(players) > 0:
 		shopScreen.find_child(\"Continue Quest\").text = \"Continue Adventure\"
+	if len(aquiredRelics) > 0:
+		shopScreen.find_child(\"Identify Relics\").disabled = false
 	
 	self.add_child(shopScreen)
 
@@ -152,12 +183,19 @@ func showBattleRewards():
 	self.add_child(rewardsScreen)
 	rewardsScreen.find_child(\"End Rewards\").connect(\"pressed\",resolveRewards)
 	addGoldReward()
-	if 1:
-		addRelicReward1()
-	if 1:
-		addRelicReward2()
-	if 1:
-		addRelicReward3()
+	var rng = RandomNumberGenerator.new() # WIP stuff for random generation.
+	var randomValue = rng.randf_range(0,5)
+	if (randomValue>0) and (randomValue<3.5):
+		addRelicRewardCommon()
+	if (randomValue>1) and (randomValue<4):
+		addRelicRewardRare()
+	if randomValue>2:
+		addRelicRewardEpic()
+	if randomValue>3:
+		addRelicRewardLegendary()
+	if randomValue>4:
+		addRelicRewardCursed()
+
 
 func addGoldReward():
 	goldButton = rewardButtonScene.instantiate()
@@ -174,47 +212,93 @@ func collectGold():
 		rewardsScreen.find_child(\"End Rewards\").text = \"Continue\"
 	goldButton.queue_free()
 
-func addRelicReward1():
-	relicButton1 = rewardButtonScene.instantiate()
-	relic1 = commonRelicPosibilities.pick_random()
-	rewardsScreen.find_child(\"Button Vertical Container\").add_child(relicButton1)
-	relicButton1.connect(\"pressed\",collectRelic1)
-	relicButton1.find_child(\"Reward Label\").text = str(relic1.public_name)
-	relicButton1.find_child(\"Reward Texture\").texture = relic1.public_texture
+func addRelicRewardCommon():
+	relicButtonCommon = rewardButtonScene.instantiate()
+	relicCommon = commonRelicPosibilities.pick_random()
+	rewardsScreen.find_child(\"Button Vertical Container\").add_child(relicButtonCommon)
+	relicButtonCommon.connect(\"pressed\",collectRelicCommon)
+	relicButtonCommon.find_child(\"Reward Label\").text = str(relicCommon.public_name)
+	relicButtonCommon.find_child(\"Reward Texture\").texture = relicCommon.public_texture
 
-func collectRelic1():
-	aquiredRelics.append([relic1])
+func collectRelicCommon():
+	aquiredRelics.append(relicCommon)
+	addRelicToBag(relicCommon)
 	if rewardsScreen.find_child(\"Button Vertical Container\").get_child_count() == 1:
 		rewardsScreen.find_child(\"End Rewards\").text = \"Continue\"
-	relicButton1.queue_free()
+	relicButtonCommon.queue_free()
 
-func addRelicReward2():
-	relicButton2 = rewardButtonScene.instantiate()
-	relic2 = commonRelicPosibilities.pick_random()
-	rewardsScreen.find_child(\"Button Vertical Container\").add_child(relicButton2)
-	relicButton2.connect(\"pressed\",collectRelic2)
-	relicButton2.find_child(\"Reward Label\").text = str(relic2.public_name)
-	relicButton2.find_child(\"Reward Texture\").texture = relic2.public_texture
+func addRelicRewardRare():
+	relicButtonRare = rewardButtonScene.instantiate()
+	relicRare = commonRelicPosibilities.pick_random()
+	rewardsScreen.find_child(\"Button Vertical Container\").add_child(relicButtonRare)
+	relicButtonRare.connect(\"pressed\",collectRelicRare)
+	relicButtonRare.find_child(\"Reward Label\").text = str(relicRare.public_name)
+	relicButtonRare.find_child(\"Reward Texture\").texture = relicRare.public_texture
 
-func collectRelic2():
-	aquiredRelics.append([relic2])
+func collectRelicRare():
+	aquiredRelics.append(relicRare)
+	addRelicToBag(relicRare)
 	if rewardsScreen.find_child(\"Button Vertical Container\").get_child_count() == 1:
 		rewardsScreen.find_child(\"End Rewards\").text = \"Continue\"
-	relicButton2.queue_free()
+	relicButtonRare.queue_free()
 
-func addRelicReward3():
-	relicButton3 = rewardButtonScene.instantiate()
-	relic3 = commonRelicPosibilities.pick_random()
-	rewardsScreen.find_child(\"Button Vertical Container\").add_child(relicButton3)
-	relicButton3.connect(\"pressed\",collectRelic3)
-	relicButton3.find_child(\"Reward Label\").text = str(relic3.public_name)
-	relicButton3.find_child(\"Reward Texture\").texture = relic3.public_texture
+func addRelicRewardEpic():
+	relicButtonEpic = rewardButtonScene.instantiate()
+	relicEpic = commonRelicPosibilities.pick_random()
+	rewardsScreen.find_child(\"Button Vertical Container\").add_child(relicButtonEpic)
+	relicButtonEpic.connect(\"pressed\",collectRelicEpic)
+	relicButtonEpic.find_child(\"Reward Label\").text = str(relicEpic.public_name)
+	relicButtonEpic.find_child(\"Reward Texture\").texture = relicEpic.public_texture
 
-func collectRelic3():
-	aquiredRelics.append([relic3])
+func collectRelicEpic():
+	aquiredRelics.append(relicEpic)
+	addRelicToBag(relicEpic)
 	if rewardsScreen.find_child(\"Button Vertical Container\").get_child_count() == 1:
 		rewardsScreen.find_child(\"End Rewards\").text = \"Continue\"
-	relicButton3.queue_free()
+	relicButtonEpic.queue_free()
+
+func addRelicRewardLegendary():
+	relicButtonLegendary = rewardButtonScene.instantiate()
+	relicLegendary = commonRelicPosibilities.pick_random()
+	rewardsScreen.find_child(\"Button Vertical Container\").add_child(relicButtonLegendary)
+	relicButtonLegendary.connect(\"pressed\",collectRelicLegendary)
+	relicButtonLegendary.find_child(\"Reward Label\").text = str(relicLegendary.public_name)
+	relicButtonLegendary.find_child(\"Reward Texture\").texture = relicLegendary.public_texture
+
+func collectRelicLegendary():
+	aquiredRelics.append(relicLegendary)
+	addRelicToBag(relicLegendary)
+	if rewardsScreen.find_child(\"Button Vertical Container\").get_child_count() == 1:
+		rewardsScreen.find_child(\"End Rewards\").text = \"Continue\"
+	relicButtonLegendary.queue_free()
+
+func addRelicRewardCursed():
+	relicButtonCursed = rewardButtonScene.instantiate()
+	relicCursed = cursedRelicPosibilities.pick_random()
+	rewardsScreen.find_child(\"Button Vertical Container\").add_child(relicButtonCursed)
+	relicButtonCursed.connect(\"pressed\",collectRelicCursed)
+	relicButtonCursed.find_child(\"Reward Label\").text = str(relicCursed.public_name)
+	relicButtonCursed.find_child(\"Reward Texture\").texture = relicCursed.public_texture
+
+func collectRelicCursed():
+	aquiredRelics.append(relicCursed)
+	addRelicToBag(relicCursed)
+	if rewardsScreen.find_child(\"Button Vertical Container\").get_child_count() == 1:
+		rewardsScreen.find_child(\"End Rewards\").text = \"Continue\"
+	relicButtonCursed.queue_free()
+
+func addRelicToBag(relic: Relic):
+	var relicButton = rewardButtonScene.instantiate()
+	relicsList.find_child(\"Button Vertical Container\").add_child(relicButton)
+	relicButton.find_child(\"Reward Label\").text = str(relic.public_name)
+	relicButton.find_child(\"Reward Texture\").texture = relic.public_texture
+
+func indentifyAllRelics():
+	for button in relicsList.find_child(\"Button Vertical Container\").get_children():
+		button.queue_free()
+	for relicItem in aquiredRelics:
+		relicItem.identify()
+		addRelicToBag(relicItem)
 
 func resolveRewards():
 	rewardsScreen.queue_free()
@@ -351,6 +435,13 @@ func showOptionsMenu():
 func showLegendMenu():
 	legendUI.find_child(\"Legend Canvas\").visible = true
 
+func showPartyList():
+	pass
+
+func showRelicList():
+	relicsList.find_child(\"Relic List Canvas\").visible = !relicsList.find_child(\"Relic List Canvas\").visible
+	
+
 func _input(event: InputEvent) -> void: # disabled until ordering fix
 	if event.is_action_pressed(\"ui_cancel\"):
 		settingsMenu.find_child(\"Settings Canvas\").visible = !settingsMenu.find_child(\"Settings Canvas\").visible
@@ -404,11 +495,13 @@ expansionSelectScene = ExtResource("6_vy770")
 shopScreenScene = ExtResource("3_l8qpc")
 postBattleScreenScene = ExtResource("6_ymvj1")
 rewardButtonScene = ExtResource("9_2fj2h")
+relicsListScene = ExtResource("10_ioeg2")
 BD_Chars = Array[ExtResource("3_6io0h")]([ExtResource("5_xkilt"), ExtResource("10_4opj8"), ExtResource("11_mo1va"), ExtResource("9_yy8s6")])
 BS_Chars = Array[ExtResource("3_6io0h")]([ExtResource("4_mpn64"), ExtResource("6_xege5"), ExtResource("7_roi6b"), ExtResource("5_ng1im"), ExtResource("15_fn82o")])
 HB_Chars = Array[ExtResource("3_6io0h")]([ExtResource("8_ld1mr"), ExtResource("9_tq734"), ExtResource("20_6mnxh"), ExtResource("21_7rumb")])
 Wretch = Array[ExtResource("3_6io0h")]([ExtResource("22_kkmml")])
-commonRelicPosibilities = Array[ExtResource("25_1nqbj")]([ExtResource("26_cjw5n"), ExtResource("27_mia2e")])
+commonRelicPosibilities = Array[ExtResource("25_1nqbj")]([ExtResource("26_cjw5n"), ExtResource("27_mia2e"), ExtResource("29_6d72d"), ExtResource("30_u7quw"), ExtResource("31_trlhb"), ExtResource("33_d8lw3"), ExtResource("34_88qld"), ExtResource("35_nkqte"), ExtResource("37_45a24")])
+cursedRelicPosibilities = Array[ExtResource("25_1nqbj")]([ExtResource("36_qivqs"), ExtResource("32_oa3l4")])
 EnemyChars = Array[ExtResource("3_6io0h")]([ExtResource("10_mc6us"), ExtResource("10_7hub4"), ExtResource("11_iafoj")])
 boss = ExtResource("12_uslkw")
 

@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="Relic" load_steps=3 format=3 uid="uid://b3ii337rvrq0q"]
+
+[ext_resource type="Texture2D" uid="uid://ef1q8gdx2nhx" path="res://Assets/Art/Relic Icons/Relic Sword.png" id="1_dhhrb"]
+[ext_resource type="Script" path="res://custom_resources/relic.gd" id="2_mbo70"]
+
+[resource]
+script = ExtResource("2_mbo70")
+public_name = "Sword"
+private_name = "Sword of Light"
+relic_type = "Sword"
+expansion = "Basic"
+value = 0
+energy_cost = 0
+physical_damage = 0
+magical_damage = 0
+physical_block = 0
+magical_block = 0
+card_draw = 0
+card_discard = 0
+physical_dealt_increase = 0
+magical_dealt_increase = 0
+physical_taken_increase = 0
+magical_taken_increase = 0
+health_increase = 0
+public_texture = ExtResource("1_dhhrb")
+tooltip_text = ""

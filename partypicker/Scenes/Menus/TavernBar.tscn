@@ -140,6 +140,15 @@ theme_override_font_sizes/font_size = 50
 disabled = true
 text = "To market"
 
+[node name="Identify Relics" type="Button" parent="Travel Option Container"]
+custom_minimum_size = Vector2(650, 100)
+layout_mode = 2
+tooltip_text = "Go to the market.
+Buy and sell relics."
+theme_override_font_sizes/font_size = 50
+disabled = true
+text = "Identify Relics"
+
 [node name="Continue Quest" type="Button" parent="Travel Option Container"]
 custom_minimum_size = Vector2(650, 100)
 layout_mode = 2

@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="Relic" load_steps=3 format=3 uid="uid://s43cg5o1662i"]
+
+[ext_resource type="Texture2D" uid="uid://dy2v2uukgkq2c" path="res://Assets/Art/Relic Icons/Relic Amulet.png" id="1_svx8p"]
+[ext_resource type="Script" path="res://custom_resources/relic.gd" id="2_gv5hj"]
+
+[resource]
+script = ExtResource("2_gv5hj")
+public_name = "Amulet"
+private_name = "Amulet of the Sun God"
+relic_type = "Amulet"
+expansion = "Basic"
+value = 0
+energy_cost = 0
+physical_damage = 0
+magical_damage = 0
+physical_block = 0
+magical_block = 0
+card_draw = 0
+card_discard = 0
+physical_dealt_increase = 0
+magical_dealt_increase = 0
+physical_taken_increase = 0
+magical_taken_increase = 0
+health_increase = 0
+public_texture = ExtResource("1_svx8p")
+tooltip_text = ""

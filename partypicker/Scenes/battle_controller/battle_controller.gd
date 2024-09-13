@@ -354,10 +354,10 @@ func turn_start_ability(player):
 			random_enemy.take_damage(5*player.level, "magical")
 		"Bard":
 			for entity in appliedAllies:
-				entity.heal_character(2*player.level)
+				entity.heal_character(2*player.level, activeChars)
 		"Cleric":
 			for entity in appliedAllies:
-				entity.heal_character(2*player.level)
+				entity.heal_character(2*player.level, activeChars)
 		"Fortune Teller":
 			for entity in appliedAllies:
 				entity.draw_card()
