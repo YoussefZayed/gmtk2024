@@ -4,6 +4,7 @@ extends Node2D
 var timeTrial = false # bool to set if timer bar is on
 var entities: Array[Entity]
 var battles: Array[Battle]
+var relics: Array
 var entitiesDict = {}
 var gen_deck = preload("res://characters/generic/generic_deck.tres")
 var player_entity_wretch = preload("res://characters/generic/wretch.tres")
@@ -21,12 +22,13 @@ signal battle_ended()
 func _ready() -> void:
 	if demo_scene and self.get_parent().name != "Game":
 		var test_items = testSetup(demo_scene_battles)
-		init(test_items[0], test_items[1], timer_time_limit, false)
+		init(test_items[0], test_items[1], timer_time_limit, false, [])
 	$EndTurn.visible = timeTrial
 
 
-func init(all_entities, battles_for_combat, timer_time_amount: int, InTimeTrial):
+func init(all_entities, battles_for_combat, timer_time_amount: int, InTimeTrial, aquiredRelics):
 	timeTrial = InTimeTrial
+	relics = aquiredRelics
 	print([all_entities, battles_for_combat, timer_time_amount])
 	turnTimer = self.find_child("TurnTimer")
 	turnTimer.connect("timeout", on_turnTimer_timeout)
@@ -161,6 +163,7 @@ func play_card(id: String, card: Card, target: String) -> void:
 	
 	var activeChars = get_active()
 	hero_powers(card_player, card, activeChars)
+	card_play_relics(card_player, card, activeChars)
 	
 	if card.target == card.Target.LANE_SELF:
 		appliedEntites = [card_player]
@@ -246,6 +249,11 @@ func enemy_stat_endturn(battle):
 	battle.enemy.physical_taken_increase = floor(battle.enemy.physical_taken_increase/2)
 	battle.enemy.magical_taken_increase = floor(battle.enemy.magical_taken_increase/2)
 
+func card_play_relics(card_player, card: Card, activeChars) -> void:
+	for relic in relics:
+		if relic.private_name == "Sword of Nimi":
+			print("I MUST DRINK THE SOULS OF MY ENEMIES")
+
 func hero_powers(card_player, card: Card, activeChars):
 	card_player.cards_played += 1
 	var entity_class = card_player.name
@@ -325,6 +333,7 @@ func checkDeaths():
 		self.emit_signal("battle_ended")
 
 func hero_turn_start() -> void:
+	turn_start_relics()
 	for battle in battles:
 			if battle.player.health > 0 && battle.battleEnded:
 				turn_start_ability(battle.player)
@@ -383,6 +392,12 @@ func turn_start_ability(player):
 			random_ally.heal_character(2*player.level, activeChars)
 			random_ally.physical_dealt_increase += (2*player.level)
 			random_ally.magical_dealt_increase += (2*player.level)
+
+func turn_start_relics() -> void:
+	var activeChars = get_active()
+	for relic in relics:
+		if relic.private_name == "Bag of bags":
+			print("I have lots of bags...")
 
 func _on_button_pressed() -> void:
 	end_turn()

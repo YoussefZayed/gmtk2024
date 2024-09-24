@@ -373,7 +373,7 @@ func startBattle():
 	inBattle = true
 	var items = getBattleControllerItems()
 	battleController = battleControllerScene.instantiate()
-	battleController.init(items[0],items[1],items[2], timeTrial)
+	battleController.init(items[0],items[1],items[2], timeTrial, aquiredRelics)
 	battleController.connect(\"player_died\",player_died)
 	battleController.connect(\"battle_ended\",battleEnded)
 	self.add_child(battleController)
@@ -496,11 +496,19 @@ shopScreenScene = ExtResource("3_l8qpc")
 postBattleScreenScene = ExtResource("6_ymvj1")
 rewardButtonScene = ExtResource("9_2fj2h")
 relicsListScene = ExtResource("10_ioeg2")
+playerChars = null
 BD_Chars = Array[ExtResource("3_6io0h")]([ExtResource("5_xkilt"), ExtResource("10_4opj8"), ExtResource("11_mo1va"), ExtResource("9_yy8s6")])
 BS_Chars = Array[ExtResource("3_6io0h")]([ExtResource("4_mpn64"), ExtResource("6_xege5"), ExtResource("7_roi6b"), ExtResource("5_ng1im"), ExtResource("15_fn82o")])
 HB_Chars = Array[ExtResource("3_6io0h")]([ExtResource("8_ld1mr"), ExtResource("9_tq734"), ExtResource("20_6mnxh"), ExtResource("21_7rumb")])
+COTW_Chars = null
+ROS_Chars = null
+DD_Chars = null
+KC_Chars = null
 Wretch = Array[ExtResource("3_6io0h")]([ExtResource("22_kkmml")])
 commonRelicPosibilities = Array[ExtResource("25_1nqbj")]([ExtResource("26_cjw5n"), ExtResource("27_mia2e"), ExtResource("29_6d72d"), ExtResource("30_u7quw"), ExtResource("31_trlhb"), ExtResource("33_d8lw3"), ExtResource("34_88qld"), ExtResource("35_nkqte"), ExtResource("37_45a24")])
+rareRelicPosibilities = null
+epicRelicPosibilities = null
+legendaryRelicPosibilities = null
 cursedRelicPosibilities = Array[ExtResource("25_1nqbj")]([ExtResource("36_qivqs"), ExtResource("32_oa3l4")])
 EnemyChars = Array[ExtResource("3_6io0h")]([ExtResource("10_mc6us"), ExtResource("10_7hub4"), ExtResource("11_iafoj")])
 boss = ExtResource("12_uslkw")
