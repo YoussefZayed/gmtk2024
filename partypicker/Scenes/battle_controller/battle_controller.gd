@@ -160,11 +160,7 @@ func play_card(id: String, card: Card, target: String) -> void:
 	if (card.target == card.Target.LANE_CHOICE) && (target == "" || target == null):
 		assert(target != "", "ERROR: You must give target a value.");
 	var appliedEntites = []
-	
-	var activeChars = get_active()
-	hero_powers(card_player, card, activeChars)
-	card_play_relics(card_player, card, activeChars)
-	
+		
 	if card.target == card.Target.LANE_SELF:
 		appliedEntites = [card_player]
 	elif card.target == card.Target.LANE_ENEMY:
@@ -183,6 +179,10 @@ func play_card(id: String, card: Card, target: String) -> void:
 		appliedEntites.append(card_player)
 	elif card.target == card.Target.LANE_CHOICE:
 		appliedEntites.append(entitiesDict[target])
+	
+	var activeChars = get_active()
+	hero_powers(card_player, card, activeChars, appliedEntites)
+	card_play_relics(card_player, card, activeChars, appliedEntites)
 	
 	for entity in appliedEntites:
 		applyCardToEntity(card_player, card, entity, activeChars)
@@ -249,12 +249,31 @@ func enemy_stat_endturn(battle):
 	battle.enemy.physical_taken_increase = floor(battle.enemy.physical_taken_increase/2)
 	battle.enemy.magical_taken_increase = floor(battle.enemy.magical_taken_increase/2)
 
-func card_play_relics(card_player, card: Card, activeChars) -> void:
+func card_play_relics(card_player, card: Card, activeChars, appliedEntites) -> void:
+	var appliedAllies = activeChars[0] # all allies
+	var appliedEnemies = activeChars[1] # all enemies
+	var activeAllies = activeChars[2] # all allies in active fights
+	var activeEnemies = activeChars[3] # all enemies in active fights
+	var random_ally = activeChars[4]
+	var random_enemy = activeChars[5]
+	
 	for relic in relics:
-		if relic.private_name == "Sword of Nimi":
-			print("I MUST DRINK THE SOULS OF MY ENEMIES")
+		match relic.private_name:
+			"Sword of Nimi":
+				print("I MUST DRINK THE SOULS OF MY ENEMIES")
+			"Sword of Light":
+				print("BZZZT")
+				if (card.physical_damage > 0):
+					for entity in appliedEntites:
+						entity.take_damage(2, "true")
+			"Scroll of Dragon Lore":
+				print("The Dragon Roars")
+				if card.magical_damage > 0:
+					for entity in appliedEntites:
+						entity.take_damage(2, "magical")
+			
 
-func hero_powers(card_player, card: Card, activeChars):
+func hero_powers(card_player, card: Card, activeChars, appliedEntites):
 	card_player.cards_played += 1
 	var entity_class = card_player.name
 	

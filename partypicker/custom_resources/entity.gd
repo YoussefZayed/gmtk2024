@@ -165,7 +165,9 @@ func change_magical_block(amount: int) -> void:
 
 func take_damage(amount: int, attack_type: String) -> void:
 	var post_amount
-	if attack_type == "physical":
+	if attack_type == "true":
+		post_amount = amount
+	elif attack_type == "physical":
 		post_amount = max(0, (amount+physical_taken_increase-physical_block))
 		change_physical_block(-min(amount+physical_taken_increase, physical_block))
 	elif attack_type == "magical":
