@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=3 uid="uid://bnj3emdrvilnr"]
+[gd_scene load_steps=50 format=3 uid="uid://bnj3emdrvilnr"]
 
 [ext_resource type="PackedScene" uid="uid://c3orxpr6ll0jc" path="res://Scenes/battle_controller/battle_controller.tscn" id="1_utmhg"]
 [ext_resource type="PackedScene" uid="uid://ccd4pm0b04v1d" path="res://Scenes/Menus/MainMenu.tscn" id="2_mrty1"]
@@ -40,9 +40,13 @@
 [ext_resource type="Resource" uid="uid://cobcrb4lude23" path="res://relics/amulet_worm_god.tres" id="32_oa3l4"]
 [ext_resource type="Resource" uid="uid://b1sekanvn88s7" path="res://relics/dragon_lore_scroll.tres" id="33_d8lw3"]
 [ext_resource type="Resource" uid="uid://s2c7iela454k" path="res://relics/dream_sword.tres" id="34_88qld"]
+[ext_resource type="Resource" uid="uid://cd5kq2wfqybvw" path="res://relics/scroll_of_earth.tres" id="35_lwwaf"]
 [ext_resource type="Resource" uid="uid://c4v37f1bk5fmy" path="res://relics/realm_sword.tres" id="35_nkqte"]
+[ext_resource type="Resource" uid="uid://0uixv8jp1lvw" path="res://relics/scroll_of_fire.tres" id="36_ciuol"]
 [ext_resource type="Resource" uid="uid://c4to1bn40vywt" path="res://relics/sword_nimi.tres" id="36_qivqs"]
+[ext_resource type="Resource" uid="uid://dsa5fs76ijtlx" path="res://relics/scroll_of_ice.tres" id="37_5kdsu"]
 [ext_resource type="Resource" uid="uid://b3ii337rvrq0q" path="res://relics/sword_of_light.tres" id="37_45a24"]
+[ext_resource type="Resource" uid="uid://c1jcdn7ci761w" path="res://relics/scroll_of_lightning.tres" id="38_oxxx2"]
 
 [sub_resource type="GDScript" id="GDScript_gd4kx"]
 script/source = "extends Node2D
@@ -500,7 +504,7 @@ BD_Chars = Array[ExtResource("3_6io0h")]([ExtResource("5_xkilt"), ExtResource("1
 BS_Chars = Array[ExtResource("3_6io0h")]([ExtResource("4_mpn64"), ExtResource("6_xege5"), ExtResource("7_roi6b"), ExtResource("5_ng1im"), ExtResource("15_fn82o")])
 HB_Chars = Array[ExtResource("3_6io0h")]([ExtResource("8_ld1mr"), ExtResource("9_tq734"), ExtResource("20_6mnxh"), ExtResource("21_7rumb")])
 Wretch = Array[ExtResource("3_6io0h")]([ExtResource("22_kkmml")])
-commonRelicPosibilities = Array[ExtResource("25_1nqbj")]([ExtResource("26_cjw5n"), ExtResource("27_mia2e"), ExtResource("29_6d72d"), ExtResource("30_u7quw"), ExtResource("31_trlhb"), ExtResource("34_88qld"), ExtResource("35_nkqte"), ExtResource("37_45a24")])
+commonRelicPosibilities = Array[ExtResource("25_1nqbj")]([ExtResource("26_cjw5n"), ExtResource("27_mia2e"), ExtResource("29_6d72d"), ExtResource("30_u7quw"), ExtResource("31_trlhb"), ExtResource("34_88qld"), ExtResource("35_nkqte"), ExtResource("37_45a24"), ExtResource("35_lwwaf"), ExtResource("36_ciuol"), ExtResource("37_5kdsu"), ExtResource("38_oxxx2")])
 rareRelicPosibilities = Array[ExtResource("25_1nqbj")]([ExtResource("33_d8lw3")])
 cursedRelicPosibilities = Array[ExtResource("25_1nqbj")]([ExtResource("36_qivqs"), ExtResource("32_oa3l4")])
 EnemyChars = Array[ExtResource("3_6io0h")]([ExtResource("10_mc6us"), ExtResource("10_7hub4"), ExtResource("11_iafoj")])

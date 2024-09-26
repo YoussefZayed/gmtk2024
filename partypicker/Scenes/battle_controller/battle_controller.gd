@@ -259,6 +259,7 @@ func card_play_relics(card_player, card: Card, activeChars, appliedEntites) -> v
 	
 	for relic in relics:
 		match relic.private_name:
+			# Swords
 			"Sword of Nimi":
 				print("I MUST DRINK THE SOULS OF MY ENEMIES")
 			"Sword of Light":
@@ -266,11 +267,29 @@ func card_play_relics(card_player, card: Card, activeChars, appliedEntites) -> v
 				if (card.physical_damage > 0):
 					for entity in appliedEntites:
 						entity.take_damage(2, "true")
+			# Scrolls
 			"Scroll of Dragon Lore":
 				print("The Dragon Roars")
 				if card.magical_damage > 0:
+					for entity in appliedEnemies:
+						entity.take_damage(1, "magical")
+			"Scroll of Earth":
+				print("Solid as a rock")
+				if card.magical_damage > 0:
+					card_player.change_magical_block(2)
+			"Scroll of Fire":
+				print("I am the fire that burns the filth from this world")
+				if card.magical_damage > 0:
 					for entity in appliedEntites:
 						entity.take_damage(2, "magical")
+			"Scroll of Ice":
+				print("Slow down")
+				if card.magical_damage > 0:
+					card_player.change_physical_block(2)
+			"Scroll of Lightning":
+				print("It's only 30 thousand volts")
+				if card.magical_damage > 0:
+					card_player.magical_taken_increase += 2
 			
 
 func hero_powers(card_player, card: Card, activeChars, appliedEntites):
